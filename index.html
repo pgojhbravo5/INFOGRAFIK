@@ -16,8 +16,8 @@
     --abu: #b9c0c9;
     --teks: #1c1c1c;
     --bg-app: #eef1f6;
-    --padding-umum: 13px;
-    --padding-header: 15px;
+    --padding-umum: 12px;      /* 13px → 12px (5% lagi) */
+    --padding-header: 14px;    /* 15px → 14px */
   }
   *{box-sizing:border-box;}
   body{
@@ -263,95 +263,95 @@
   .card-bg.hidden { display: none; }
   .card > *:not(.card-bg) { position: relative; z-index: 1; }
 
-  /* HEADER */
+  /* HEADER - padding kiri/kanan kekal 26px */
   .header{
     position:relative;
-    padding:var(--padding-header) 26px 10px;
+    padding:var(--padding-header) 26px 8px;   /* atas/bawah dikurangkan */
     background:linear-gradient(135deg, rgba(255,255,255,0.65) 55%, rgba(244,246,250,0.65) 55%);
-    border-bottom:5px solid var(--biru);
+    border-bottom:4px solid var(--biru);      /* border sedikit nipis */
     flex-shrink:0;
   }
   .header-top{
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
-    margin-bottom:6px;
+    margin-bottom:4px;  /* dikurangkan */
   }
   .logo{
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:8px;
   }
   .logo img{
-    height:46px;
+    height:42px;   /* dikurangkan sedikit */
     width:auto;
     display:block;
   }
   .logo-text{
     font-weight:900;
-    font-size:18px;
+    font-size:17px;  /* 18px → 17px */
     color:var(--biru-gelap);
     letter-spacing:.02em;
   }
   .lokasi-tag{
     text-align:right;
-    font-size:10px;
+    font-size:9px;   /* 10px → 9px */
     font-weight:700;
     color:var(--merah);
-    line-height:1.3;
+    line-height:1.2;
   }
   .lokasi-tag span{
     display:block;
-    font-size:8px;
+    font-size:7px;   /* 8px → 7px */
     color:#8992a0;
     font-weight:600;
     text-transform:uppercase;
   }
   .lokasi-tag .tarikh-laporan {
     display:block;
-    font-size:8px;
+    font-size:7px;
     color:#6a7280;
     font-weight:600;
     text-transform:uppercase;
-    margin-top:3px;
+    margin-top:2px;
   }
   .lokasi-tag .tarikh-laporan-val {
     display:block;
     color:var(--biru-gelap);
-    font-size:10px;
+    font-size:9px;
     font-weight:700;
   }
   .kicker{
-    font-size:11px;
+    font-size:10px;   /* 11px → 10px */
     font-weight:800;
     color:var(--biru-gelap);
     letter-spacing:.05em;
-    margin:0 0 3px;
+    margin:0 0 2px;
   }
   .headline{
-    font-size:20px;
+    font-size:19px;   /* 20px → 19px */
     font-weight:900;
-    line-height:1.15;
-    margin:0 0 4px;
+    line-height:1.1;
+    margin:0 0 3px;
     color:#141414;
   }
   .subline{
     display:inline-block;
-    font-size:11px;
+    font-size:10px;   /* 11px → 10px */
     font-weight:700;
     color:#fff;
     background:var(--biru-gelap);
-    padding:3px 9px;
-    border-radius:4px;
+    padding:2px 8px;  /* 3px 9px → 2px 8px */
+    border-radius:3px;
   }
 
-  /* BADAN PAGE 1 */
+  /* BADAN PAGE 1 - padding kiri/kanan kekal 26px */
   .body-sitrep{
-    padding:var(--padding-umum) 26px 6px;
+    padding:var(--padding-umum) 26px 4px;   /* padding bawah dikurangkan */
     flex:1;
     display:grid;
     grid-template-columns:1fr 1fr;
-    column-gap:24px;
+    column-gap:20px;   /* 24px → 20px */
     align-content:start;
     background: rgba(255,255,255,0.35);
     backdrop-filter: blur(1px);
@@ -366,62 +366,62 @@
   .pill{
     display:flex;
     align-items:center;
-    gap:5px;
-    font-size:11px;
+    gap:4px;
+    font-size:10px;   /* 11px → 10px */
     font-weight:800;
     color:#fff;
     background:var(--biru);
-    padding:4px 10px;
-    border-radius:5px;
-    margin:0 0 5px;
-    box-shadow:0 2px 0 var(--merah);
+    padding:3px 8px;  /* 4px 10px → 3px 8px */
+    border-radius:4px;
+    margin:0 0 4px;
+    box-shadow:0 1px 0 var(--merah);
   }
-  .pill.follow{ margin-top:10px; }
-  .pill .ic{font-size:12px;}
+  .pill.follow{ margin-top:8px; }  /* 10px → 8px */
+  .pill .ic{font-size:11px;}
 
   .info-row{
     display:flex;
-    gap:8px;
-    padding:3px 0;
+    gap:6px;
+    padding:2px 0;    /* 3px → 2px */
     border-bottom:1px solid rgba(240,241,244,0.4);
-    font-size:11.5px;
+    font-size:10.5px; /* 11.5px → 10.5px */
   }
   .info-row:last-child{border-bottom:none;}
-  .info-row .ic{width:18px; flex-shrink:0; text-align:center; color:var(--biru);}
-  .info-row .label{ color:#6a7280; min-width:130px; font-weight:600;}
+  .info-row .ic{width:16px; flex-shrink:0; text-align:center; color:var(--biru);}
+  .info-row .label{ color:#6a7280; min-width:120px; font-weight:600;} /* 130px → 120px */
   .info-row .val{ font-weight:700; color:#171717; }
 
   .status-hero{
     display:flex;
     align-items:center;
-    gap:12px;
-    padding:3px 0 6px;
+    gap:10px;
+    padding:2px 0 4px;
   }
   .status-hero .pct{
-    font-size:32px;
+    font-size:28px;   /* 32px → 28px */
     font-weight:900;
     color:var(--hijau);
     line-height:1;
   }
   .status-hero .pct-label{
-    font-size:10px;
+    font-size:9px;    /* 10px → 9px */
     font-weight:800;
     color:#6a7280;
     text-transform:uppercase;
   }
   .status-hero .terjejas{
-    font-size:12px;
+    font-size:11px;   /* 12px → 11px */
     color:#333;
   }
-  .status-hero .terjejas b{ font-size:15px; display:block; color:var(--merah);}
+  .status-hero .terjejas b{ font-size:13px; display:block; color:var(--merah);} /* 15px → 13px */
 
   .bar-track{
-    height:11px;
+    height:10px;      /* 11px → 10px */
     width:100%;
     border-radius:10px;
     background:rgba(228,231,238,0.5);
     overflow:hidden;
-    margin:3px 0 8px;
+    margin:2px 0 6px;
   }
   .bar-fill{
     height:100%;
@@ -431,33 +431,33 @@
 
   .stat-2col{
     display:flex;
-    gap:10px;
-    margin-bottom:3px;
+    gap:8px;
+    margin-bottom:2px;
   }
   .stat-box{
     flex:1;
     background:rgba(246,248,251,0.5);
-    border-radius:6px;
-    padding:6px 8px;
+    border-radius:5px;
+    padding:4px 6px;  /* 6px 8px → 4px 6px */
   }
-  .stat-box .lbl{ font-size:9px; font-weight:700; color:#6a7280; text-transform:uppercase;}
-  .stat-box .num{ font-size:15px; font-weight:900; color:var(--biru-gelap); margin-top:1px;}
+  .stat-box .lbl{ font-size:8px; font-weight:700; color:#6a7280; text-transform:uppercase;} /* 9px → 8px */
+  .stat-box .num{ font-size:13px; font-weight:900; color:var(--biru-gelap); margin-top:1px;} /* 15px → 13px */
 
   .sektor-block {
-    margin-top: 6px;
+    margin-top: 4px;  /* 6px → 4px */
   }
   .sektor-row {
     display: flex;
-    gap:8px;
-    padding:2px 0;
-    font-size:11px;
+    gap:6px;
+    padding:1px 0;    /* 2px → 1px */
+    font-size:10px;   /* 11px → 10px */
     border-bottom:1px solid rgba(240,241,244,0.3);
   }
   .sektor-row:last-child { border-bottom: none; }
   .sektor-row .sektor-nama {
     font-weight: 700;
     color: var(--biru-gelap);
-    min-width: 70px;
+    min-width: 60px;  /* 70px → 60px */
   }
   .sektor-row .sektor-maklumat {
     font-weight: 500;
@@ -467,24 +467,24 @@
   .badge-row{
     display:flex;
     flex-direction:column;
-    gap:5px;
-    margin:6px 0 4px;
+    gap:4px;
+    margin:4px 0 3px;
   }
   .badge{
     display:flex;
     align-items:center;
-    gap:6px;
-    padding:5px 10px;
-    border-radius:6px;
+    gap:5px;
+    padding:4px 8px;  /* 5px 10px → 4px 8px */
+    border-radius:5px;
     font-weight:800;
-    font-size:11px;
+    font-size:10px;   /* 11px → 10px */
   }
   .badge.operasi{ background:rgba(255,244,224,0.7); color:var(--merah); border:1px solid #ffdca3; }
   .badge.mangsa{ background:rgba(233,241,255,0.7); color:var(--biru-gelap); border:1px solid #c3d6f7; }
   .badge .dot{
-    width:10px;height:10px;border-radius:50%;
+    width:9px;height:9px;border-radius:50%;
     background:var(--kuning);
-    box-shadow:0 0 0 3px #fff0cc;
+    box-shadow:0 0 0 2px #fff0cc;
   }
 
   .komander{
@@ -493,45 +493,45 @@
     align-items:center;
     background:var(--biru-gelap);
     color:#fff;
-    border-radius:6px;
-    padding:5px 10px;
-    margin-bottom:3px;
-    font-size:10.5px;
+    border-radius:5px;
+    padding:4px 8px;  /* 5px 10px → 4px 8px */
+    margin-bottom:2px;
+    font-size:9.5px;  /* 10.5px → 9.5px */
   }
   .komander .nama{ font-weight:700; }
-  .komander .peranan{ font-size:9px; opacity:.75; }
+  .komander .peranan{ font-size:8px; opacity:.75; } /* 9px → 8px */
   .komander .tel{ font-weight:800; letter-spacing:.02em; }
 
   .catatan-block{
     flex:1;
     min-height:0;
-    margin-top:3px;
+    margin-top:2px;   /* 3px → 2px */
     background:rgba(250,251,253,0.6);
-    border-radius:5px;
-    padding:6px 10px;
-    border-left:4px solid var(--biru);
-    font-size:11px;
-    line-height:1.5;
+    border-radius:4px;
+    padding:5px 8px;  /* 6px 10px → 5px 8px */
+    border-left:3px solid var(--biru);
+    font-size:10px;   /* 11px → 10px */
+    line-height:1.4;
     color:#1c1c1c;
     max-height:110px;
     overflow-y:auto;
   }
   .catatan-block .catatan-label{
     font-weight:800;
-    font-size:9px;
+    font-size:8px;    /* 9px → 8px */
     text-transform:uppercase;
     color:var(--biru);
     letter-spacing:.04em;
-    margin-bottom:2px;
+    margin-bottom:1px;
   }
   .catatan-block .catatan-teks{
     white-space:pre-wrap;
     word-break:break-word;
   }
 
-  /* ===== BADAN PAGE 2 & 3 ===== */
+  /* ===== BADAN PAGE 2 & 3 - padding kiri/kanan kekal 26px ===== */
   .body-gambar{
-    padding:var(--padding-umum) 26px 6px;
+    padding:var(--padding-umum) 26px 4px;
     flex:1 1 auto;
     display:flex;
     flex-direction:column;
@@ -544,7 +544,7 @@
     display:grid;
     grid-template-columns:1fr 1fr;
     grid-template-rows:1fr 1fr;
-    gap:10px 16px;
+    gap:8px 14px;    /* 10px 16px → 8px 14px */
     flex:1 1 auto;
     min-height:0;
   }
@@ -552,18 +552,18 @@
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:3px;
+    gap:2px;         /* 3px → 2px */
     min-height:0;
     height:auto;
   }
   .gambar-item-card .gambar-tajuk {
-    font-size:12px;
+    font-size:11px;   /* 12px → 11px */
     font-weight:700;
     color:var(--biru-gelap);
     text-transform:uppercase;
     letter-spacing:0.02em;
     text-align:center;
-    line-height:1.2;
+    line-height:1.1;
     flex-shrink:0;
   }
   .gambar-item-card .gambar-wadah {
@@ -571,7 +571,7 @@
     flex:1;
     min-height:0;
     overflow:hidden;
-    border-radius:5px;
+    border-radius:4px;
     border:1px solid rgba(0,0,0,0.08);
     display:flex;
     justify-content:center;
@@ -585,9 +585,9 @@
     display:block;
   }
   .gambar-item-card .gambar-kosong {
-    padding:8px;
+    padding:6px;
     color:#8992a0;
-    font-size:9px;
+    font-size:8px;
     font-weight:600;
     text-align:center;
   }
@@ -596,9 +596,9 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:6px;
-    padding:8px;
-    font-size:10px;
+    gap:5px;
+    padding:6px;      /* 8px → 6px */
+    font-size:9px;    /* 10px → 9px */
     font-weight:700;
     font-style:italic;
     color:#fff;
@@ -618,11 +618,10 @@
     .card{width:100%; max-width:100%;}
   }
 
-  /* ========== CETAK / PDF - PEMBETULAN ORIENTASI ========== */
+  /* ========== CETAK / PDF - LANDSCAPE ========== */
   @page{
-    size: landscape;           /* paksa landscape */
+    size: landscape;
     margin: 0mm;
-    /* ukuran eksplisit untuk mengelak salah tafsir */
     size: 297mm 210mm;
   }
 
@@ -636,7 +635,7 @@
       background:#fff; 
       margin:0; 
       padding:0;
-      transform: rotate(0deg) !important; /* pastikan tiada putaran */
+      transform: rotate(0deg) !important;
     }
     .panel-input{ display:none !important; }
     .preview-wrap{ 
@@ -653,7 +652,7 @@
     }
     .card{
       width:100% !important;
-      height:100% !important;          /* gunakan 100% bukan 100vh */
+      height:100% !important;
       min-height:100% !important;
       box-shadow:none !important;
       border-radius:0 !important;
@@ -661,7 +660,7 @@
       page-break-after:always;
       page-break-inside:avoid;
       background: #fff !important;
-      transform: scale(1) rotate(0deg) !important; /* pastikan tiada putaran */
+      transform: scale(1) rotate(0deg) !important;
     }
     .card:last-child{ page-break-after:auto; }
 
@@ -1069,7 +1068,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
             </div>
             <div class="lokasi-tag">
               <span>Lokasi</span>
-              <span id="out-lokasiTag" style="color:var(--merah); font-size:11px;">KAMPUNG PAYA KOPI</span>
+              <span id="out-lokasiTag" style="color:var(--merah); font-size:10px;">KAMPUNG PAYA KOPI</span>
               <span class="tarikh-laporan">Tarikh Laporan</span>
               <span class="tarikh-laporan-val" id="out-tarikhLaporan">25 OGOS 2026 (SELASA)</span>
             </div>
@@ -1105,7 +1104,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
               <div class="stat-box"><div class="lbl">Baki Belum Dipadam</div><div class="num" id="out-baki">0.16 Hektar</div></div>
             </div>
             <div class="sektor-block toggle-field" id="row-sektorBlock">
-              <p class="pill" style="margin-top:6px;"><span class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span> SEKTOR OPERASI</p>
+              <p class="pill" style="margin-top:4px;"><span class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span> SEKTOR OPERASI</p>
               <div class="sektor-row toggle-field" id="sektor1-row">
                 <span class="sektor-nama" id="out-sektor1_nama">SEKTOR 1</span>
                 <span class="sektor-maklumat" id="out-sektor1_maklumat">Tiada pemadaman dilakukan</span>
@@ -1179,7 +1178,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
             </div>
             <div class="lokasi-tag">
               <span>Lokasi</span>
-              <span id="out2-lokasiTag" style="color:var(--merah); font-size:11px;">KAMPUNG PAYA KOPI</span>
+              <span id="out2-lokasiTag" style="color:var(--merah); font-size:10px;">KAMPUNG PAYA KOPI</span>
               <span class="tarikh-laporan">Tarikh Laporan</span>
               <span class="tarikh-laporan-val" id="out2-tarikhLaporan">25 OGOS 2026 (SELASA)</span>
             </div>
@@ -1234,7 +1233,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
             </div>
             <div class="lokasi-tag">
               <span>Lokasi</span>
-              <span id="out3-lokasiTag" style="color:var(--merah); font-size:11px;">KAMPUNG PAYA KOPI</span>
+              <span id="out3-lokasiTag" style="color:var(--merah); font-size:10px;">KAMPUNG PAYA KOPI</span>
               <span class="tarikh-laporan">Tarikh Laporan</span>
               <span class="tarikh-laporan-val" id="out3-tarikhLaporan">25 OGOS 2026 (SELASA)</span>
             </div>
