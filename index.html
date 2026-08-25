@@ -161,7 +161,7 @@
     flex-direction:column;
     position:relative;
   }
-  /* ----- Latar Belakang Gambar ----- */
+  /* ----- Latar Belakang Gambar (lebih ketara) ----- */
   .card-bg {
     position: absolute;
     top: 0;
@@ -171,7 +171,7 @@
     background-image: url('https://raw.githubusercontent.com/pgojhbravo5/INFOGRAFIK/main/KEBAKARAN-TERBUKA.jpg');
     background-size: cover;
     background-position: center;
-    opacity: 0.15; /* lembut supaya teks jelas */
+    opacity: 0.35; /* dinaikkan dari 0.15 ke 0.35 */
     pointer-events: none;
     z-index: 0;
   }
@@ -183,11 +183,11 @@
     z-index: 1;
   }
 
-  /* header */
+  /* header - lebih lutsinar */
   .header{
     position:relative;
     padding:16px 28px 12px;
-    background:linear-gradient(135deg,rgba(255,255,255,0.92) 55%, rgba(244,246,250,0.92) 55%);
+    background:linear-gradient(135deg, rgba(255,255,255,0.75) 55%, rgba(244,246,250,0.75) 55%);
     border-bottom:5px solid var(--biru);
     flex-shrink:0;
   }
@@ -251,6 +251,7 @@
     border-radius:4px;
   }
 
+  /* badan – lebih lutsinar untuk bg kelihatan */
   .body{
     padding:14px 28px 6px;
     flex:1;
@@ -258,8 +259,8 @@
     grid-template-columns:1fr 1fr;
     column-gap:28px;
     align-content:start;
-    background: rgba(255,255,255,0.7); /* sedikit lutsinar untuk bg */
-    backdrop-filter: blur(2px);
+    background: rgba(255,255,255,0.55); /* diturunkan dari 0.7 */
+    backdrop-filter: blur(1px); /* kurang blur */
   }
   .col-left, .col-right{ min-width:0; }
 
@@ -283,7 +284,7 @@
     display:flex;
     gap:10px;
     padding:4px 0;
-    border-bottom:1px solid rgba(240,241,244,0.8);
+    border-bottom:1px solid rgba(240,241,244,0.6);
     font-size:12.5px;
   }
   .info-row:last-child{border-bottom:none;}
@@ -319,7 +320,7 @@
     height:13px;
     width:100%;
     border-radius:10px;
-    background:#e4e7ee;
+    background:rgba(228,231,238,0.7);
     overflow:hidden;
     margin:4px 0 10px;
   }
@@ -336,7 +337,7 @@
   }
   .stat-box{
     flex:1;
-    background:rgba(246,248,251,0.85);
+    background:rgba(246,248,251,0.7);
     border-radius:8px;
     padding:8px 10px;
   }
@@ -358,8 +359,8 @@
     font-weight:800;
     font-size:12px;
   }
-  .badge.operasi{ background:rgba(255,244,224,0.9); color:var(--merah); border:1px solid #ffdca3; }
-  .badge.mangsa{ background:rgba(233,241,255,0.9); color:var(--biru-gelap); border:1px solid #c3d6f7; }
+  .badge.operasi{ background:rgba(255,244,224,0.8); color:var(--merah); border:1px solid #ffdca3; }
+  .badge.mangsa{ background:rgba(233,241,255,0.8); color:var(--biru-gelap); border:1px solid #c3d6f7; }
   .badge .dot{
     width:11px;height:11px;border-radius:50%;
     background:var(--kuning);
@@ -383,7 +384,7 @@
 
   .catatan-block{
     margin-top:10px;
-    background:rgba(250,251,253,0.85);
+    background:rgba(250,251,253,0.75);
     border-radius:6px;
     padding:8px 12px;
     border-left:4px solid var(--biru);
@@ -446,7 +447,8 @@
       page-break-inside:avoid !important;
     }
     .catatan-block{ max-height:none !important; overflow-y:visible !important; }
-    .card-bg { opacity: 0.1 !important; }
+    .card-bg { opacity: 0.2 !important; }
+    .body { background: rgba(255,255,255,0.7) !important; }
   }
 </style>
 </head>
@@ -800,7 +802,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     if(el) el.addEventListener("input", render);
   });
 
-  // Togol untuk latar belakang
   document.getElementById("showBackground")?.addEventListener("change", render);
 
   toggleFieldIds.forEach(id => {
