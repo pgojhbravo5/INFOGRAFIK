@@ -73,7 +73,7 @@
     margin-bottom:8px;
     background:#fbfcfe;
   }
-  .blok textarea{resize:vertical; min-height:80px;}
+  .blok textarea{resize:vertical; min-height:60px;}
   .row2{display:flex; gap:8px;}
   .row2 > div{flex:1;}
   .btn{
@@ -168,6 +168,12 @@
     border-bottom:1px dashed #e2e6ec;
   }
   .gambar-item:last-child{border-bottom:none;}
+  .sektor-item {
+    margin-bottom:8px;
+    padding-bottom:8px;
+    border-bottom:1px dashed #e2e6ec;
+  }
+  .sektor-item:last-child{border-bottom:none;}
 
   /* ---------- PREVIEW (2 halaman) ---------- */
   .preview-wrap{
@@ -196,7 +202,6 @@
     flex-direction:column;
     position:relative;
   }
-  /* ----- Latar Belakang Gambar (sama untuk kedua-dua halaman) ----- */
   .card-bg {
     position: absolute;
     top: 0;
@@ -375,6 +380,28 @@
   .stat-box .lbl{ font-size:10px; font-weight:700; color:#6a7280; text-transform:uppercase;}
   .stat-box .num{ font-size:17px; font-weight:900; color:var(--biru-gelap); margin-top:2px;}
 
+  /* Sektor info */
+  .sektor-block {
+    margin-top: 8px;
+  }
+  .sektor-row {
+    display: flex;
+    gap: 10px;
+    padding: 3px 0;
+    font-size: 12px;
+    border-bottom: 1px solid rgba(240,241,244,0.3);
+  }
+  .sektor-row:last-child { border-bottom: none; }
+  .sektor-row .sektor-nama {
+    font-weight: 700;
+    color: var(--biru-gelap);
+    min-width: 80px;
+  }
+  .sektor-row .sektor-maklumat {
+    font-weight: 500;
+    color: #2c2c2c;
+  }
+
   .badge-row{
     display:flex;
     flex-direction:column;
@@ -495,7 +522,6 @@
     text-align: center;
   }
 
-  /* FOOTER (sama untuk kedua-dua halaman) */
   .footer{
     display:flex;
     align-items:center;
@@ -601,6 +627,30 @@
         </div>
       </div>
       <p class="hint">Peratus selesai &amp; baki belum dipadam dikira automatik.</p>
+    </div>
+
+    <!-- ===== SEKTOR OPERASI ===== -->
+    <div class="blok">
+      <p class="section-title">🗂️ Sektor Operasi (Halaman 1)</p>
+      <div class="sektor-item">
+        <label>Nama Sektor 1</label>
+        <input id="sektor1_nama" value="SEKTOR 1">
+        <label>Maklumat Sektor 1</label>
+        <input id="sektor1_maklumat" value="Tiada pemadaman dilakukan">
+      </div>
+      <div class="sektor-item">
+        <label>Nama Sektor 2</label>
+        <input id="sektor2_nama" value="SEKTOR 2">
+        <label>Maklumat Sektor 2</label>
+        <input id="sektor2_maklumat" value="1 pam GP 10/10, 1 breaching, 3 pancutan dan 700 kaki salur dari sumber air terbuka">
+      </div>
+      <div class="sektor-item">
+        <label>Nama Sektor 3</label>
+        <input id="sektor3_nama" value="SEKTOR 3">
+        <label>Maklumat Sektor 3</label>
+        <input id="sektor3_maklumat" value="Tiada pemadaman dilakukan">
+      </div>
+      <p class="hint">Masukkan nama dan maklumat untuk setiap sektor. Kosongkan jika tidak perlu.</p>
     </div>
 
     <div class="blok">
@@ -818,6 +868,24 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
               <div class="stat-box"><div class="lbl">Keluasan Berhasil Dipadam</div><div class="num" id="out-keluasanDipadam">3.48 Hektar</div></div>
               <div class="stat-box"><div class="lbl">Baki Belum Dipadam</div><div class="num" id="out-baki">0.16 Hektar</div></div>
             </div>
+
+            <!-- ===== SEKTOR OPERASI ===== -->
+            <div class="sektor-block">
+              <p class="pill" style="margin-top:8px;"><span class="ic">🗂️</span> SEKTOR OPERASI</p>
+              <div class="sektor-row" id="sektor1-row">
+                <span class="sektor-nama" id="out-sektor1_nama">SEKTOR 1</span>
+                <span class="sektor-maklumat" id="out-sektor1_maklumat">Tiada pemadaman dilakukan</span>
+              </div>
+              <div class="sektor-row" id="sektor2-row">
+                <span class="sektor-nama" id="out-sektor2_nama">SEKTOR 2</span>
+                <span class="sektor-maklumat" id="out-sektor2_maklumat">1 pam GP 10/10, 1 breaching, 3 pancutan dan 700 kaki salur dari sumber air terbuka</span>
+              </div>
+              <div class="sektor-row" id="sektor3-row">
+                <span class="sektor-nama" id="out-sektor3_nama">SEKTOR 3</span>
+                <span class="sektor-maklumat" id="out-sektor3_maklumat">Tiada pemadaman dilakukan</span>
+              </div>
+            </div>
+
           </div>
 
           <div class="col-right">
@@ -929,7 +997,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
           </div>
         </div>
 
-        <!-- FOOTER PAGE 2 (sama dengan page 1) -->
+        <!-- FOOTER PAGE 2 -->
         <div class="footer" id="out2-tagline">“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia</div>
       </div>
 
@@ -939,7 +1007,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
 
 <script>
   // ============================================================
-  //  SKRIP UTAMA — 2 halaman dengan header/footer berasingan
+  //  SKRIP UTAMA — 2 halaman + sektor
   // ============================================================
 
   // Simpan data gambar (sehingga 4)
@@ -966,6 +1034,13 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
 
   const numIds = ["jumlahKeluasan","keluasanDipadam"];
   const selectIds = ["statusOperasi"];
+
+  // ID untuk sektor
+  const sektorFields = [
+    { nama: "sektor1_nama", maklumat: "sektor1_maklumat" },
+    { nama: "sektor2_nama", maklumat: "sektor2_maklumat" },
+    { nama: "sektor3_nama", maklumat: "sektor3_maklumat" }
+  ];
 
   // Tajuk gambar
   const gambarTajukIds = ["gambarTajuk1","gambarTajuk2","gambarTajuk3","gambarTajuk4"];
@@ -1011,6 +1086,16 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
         if(showCb.checked) row.classList.remove("hidden-field");
         else row.classList.add("hidden-field");
       }
+    });
+
+    // --- Sektor ---
+    sektorFields.forEach((sf, idx) => {
+      const namaEl = document.getElementById(sf.nama);
+      const maklumatEl = document.getElementById(sf.maklumat);
+      const outNama = document.getElementById("out-"+sf.nama);
+      const outMaklumat = document.getElementById("out-"+sf.maklumat);
+      if (namaEl && outNama) outNama.textContent = namaEl.value || "SEKTOR "+(idx+1);
+      if (maklumatEl && outMaklumat) outMaklumat.textContent = maklumatEl.value || "-";
     });
 
     // --- Gambar (Page 2) ---
@@ -1097,14 +1182,17 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     setupFileUpload(i);
   }
 
-  // Event listener untuk semua input (kecuali fail yang dikendalikan berasingan)
+  // Event listener untuk semua input
   const allInputIds = [
     ...fieldIdsPage1,
     ...numIds,
     ...selectIds,
     "unitLuas",
     ...toggleFieldIds,
-    ...gambarTajukIds
+    ...gambarTajukIds,
+    // sektor
+    ...sektorFields.map(sf => sf.nama),
+    ...sektorFields.map(sf => sf.maklumat)
   ];
   allInputIds.forEach(id => {
     const el = document.getElementById(id);
@@ -1237,6 +1325,9 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     } else if(/masih\s*beroperasi/i.test(text)) {
       document.getElementById("statusOperasi").value = "MASIH BEROPERASI";
     }
+
+    // Auto-isi sektor? (contoh: dari teks "Sektor 1: ...")
+    // Kita boleh cuba parse, tetapi kita biarkan manual sahaja.
 
     const catatanMatch = text.match(/Catatan\s*:\s*([\s\S]*?)(?=\n\s*Sekian,|\n\s*"CEPAT DAN MESRA"|\n\s*PKPgB|\s*$)/i);
     if(catatanMatch){
