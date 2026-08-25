@@ -325,7 +325,7 @@
 
   /* BADAN PAGE 1 (2 lajur SITREP) */
   .body-sitrep{
-    padding:14px 28px 4px;  /* padding-bottom dikurangkan */
+    padding:14px 28px 0px;  /* padding-bottom = 0 supaya catatan rapat ke footer */
     flex:1;
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -335,7 +335,11 @@
     backdrop-filter: blur(1px);
     overflow-y:auto;
   }
-  .col-left, .col-right{ min-width:0; }
+  .col-left, .col-right{
+    min-width:0;
+    display:flex;
+    flex-direction:column;  /* penting untuk catatan mengisi baki ruang */
+  }
 
   .pill{
     display:flex;
@@ -478,7 +482,9 @@
   .komander .tel{ font-weight:800; letter-spacing:.02em; }
 
   .catatan-block{
-    margin-top:6px;          /* dikurangkan daripada 10px */
+    flex:1;                    /* mengisi baki ruang dalam lajur kanan */
+    min-height:0;              /* membenarkan fleks mengecut jika perlu */
+    margin-top:6px;
     background:rgba(250,251,253,0.6);
     border-radius:6px;
     padding:8px 12px;
