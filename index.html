@@ -140,6 +140,29 @@
   }
   .toggle-item input, .toggle-item textarea{margin-top:2px; margin-bottom:4px;}
   .toggle-item textarea{min-height:60px;}
+  /* Gaya untuk input fail */
+  .file-input-wrap {
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:2px;
+  }
+  .file-input-wrap input[type="file"] {
+    flex:1;
+    padding:6px 4px;
+    border:1px solid #cfd6e0;
+    border-radius:6px;
+    font-size:12px;
+    background:#fbfcfe;
+  }
+  .file-input-wrap .file-name {
+    font-size:11px;
+    color:#6a7280;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    max-width:120px;
+  }
 
   /* ---------- PREVIEW ---------- */
   .preview-wrap{
@@ -637,7 +660,7 @@ Setibanya pasukan keluaran operasi (pko) di tempat kejadian didapati benar berla
 Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), iaitu 99.9%, manakala baki keluasan yang belum dipadamkan adalah 0.1 ekar (0.04 hektar).</textarea>
       </div>
 
-      <!-- ===== PAGE 2: GAMBAR ===== -->
+      <!-- ===== PAGE 2: GAMBAR (UPLOAD JPG) ===== -->
       <div class="toggle-item">
         <div class="toggle-row">
           <input type="checkbox" id="showGambar" checked>
@@ -645,9 +668,12 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
         </div>
         <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap); margin-top:4px;">Tajuk Gambar</label>
         <input id="gambarTajuk" placeholder="Contoh: OPERASI PADAMAN DI TAPAK" value="KEBAKARAN KEBUN GAMBUT - TINDAKAN PEMADAMAN">
-        <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap); margin-top:2px;">URL Gambar</label>
-        <input id="gambarURL" placeholder="https://... atau kosongkan untuk tiada gambar" value="https://raw.githubusercontent.com/pgojhbravo5/INFOGRAFIK/main/KEBAKARAN-TERBUKA.jpg">
-        <p class="hint" style="margin:2px 0 0;">Masukkan URL gambar (contoh dari GitHub). Kosongkan untuk menyembunyikan slot.</p>
+        <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap); margin-top:2px;">Muat Naik Gambar (JPG)</label>
+        <div class="file-input-wrap">
+          <input type="file" id="gambarFile" accept=".jpg,.jpeg,image/jpeg">
+          <span class="file-name" id="fileNameDisplay">Tiada fail dipilih</span>
+        </div>
+        <p class="hint" style="margin:2px 0 0;">Pilih fail JPG dari peranti anda. Gambar akan dipaparkan dalam slot.</p>
       </div>
     </div>
 
@@ -787,7 +813,8 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
         <div class="gambar-slot" id="gambarSlot">
           <div class="gambar-tajuk" id="out-gambarTajuk">KEBAKARAN KEBUN GAMBUT - TINDAKAN PEMADAMAN</div>
           <div class="gambar-wadah" id="gambarWadah">
-            <img id="gambarImg" src="https://raw.githubusercontent.com/pgojhbravo5/INFOGRAFIK/main/KEBAKARAN-TERBUKA.jpg" alt="Gambar operasi">
+            <img id="gambarImg" src="" alt="Gambar operasi" style="display:none;">
+            <div class="gambar-kosong" id="gambarPlaceholder">Tiada gambar dimuatkan. Sila muat naik fail JPG.</div>
           </div>
         </div>
 
@@ -802,6 +829,9 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
   // ============================================================
   //  SKRIP UTAMA — Tiada kebergantungan pada CDN luar
   // ============================================================
+
+  // Pembolehubah untuk menyimpan data gambar yang dimuat naik
+  let uploadedImageData = null;
 
   const fieldIds = [
     "headline","subline","lokasiTag","tarikhMasa","masaTiba","lokasiPenuh",
@@ -820,7 +850,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
   const selectIds = ["statusOperasi"];
 
   // medan untuk halaman 2 (gambar)
-  const gambarFieldIds = ["gambarTajuk", "gambarURL"];
+  const gambarFieldIds = ["gambarTajuk"]; // gambarURL diganti dengan fail
 
   function fmtHa(n){
     const unit = document.getElementById("unitLuas") ? document.getElementById("unitLuas").value : "Hektar";
@@ -858,9 +888,9 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     const showGambarCb = document.getElementById("showGambar");
     const gambarSlot = document.getElementById("gambarSlot");
     const gambarTajuk = document.getElementById("gambarTajuk");
-    const gambarURL = document.getElementById("gambarURL");
     const outTajuk = document.getElementById("out-gambarTajuk");
     const imgEl = document.getElementById("gambarImg");
+    const placeholder = document.getElementById("gambarPlaceholder");
 
     // Togol visibility slot gambar
     if (showGambarCb && gambarSlot) {
@@ -876,33 +906,15 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       outTajuk.textContent = gambarTajuk.value || "Gambar Operasi";
     }
 
-    // Set gambar
-    if (gambarURL && imgEl) {
-      const url = gambarURL.value.trim();
-      if (url) {
-        imgEl.src = url;
-        imgEl.alt = "Gambar operasi";
+    // Set gambar dari muat naik
+    if (imgEl && placeholder) {
+      if (uploadedImageData) {
+        imgEl.src = uploadedImageData;
         imgEl.style.display = "block";
-        // Sembunyikan placeholder kosong (jika ada)
-        const wadah = document.getElementById("gambarWadah");
-        if (wadah) {
-          // Pastikan tiada teks kosong yang tersisa
-          const existing = wadah.querySelector(".gambar-kosong");
-          if (existing) existing.remove();
-        }
+        placeholder.style.display = "none";
       } else {
-        // Tiada URL – sembunyikan gambar dan tunjuk mesej kosong
         imgEl.style.display = "none";
-        const wadah = document.getElementById("gambarWadah");
-        if (wadah) {
-          let kosong = wadah.querySelector(".gambar-kosong");
-          if (!kosong) {
-            kosong = document.createElement("div");
-            kosong.className = "gambar-kosong";
-            kosong.textContent = "Tiada gambar dimuatkan. Masukkan URL di panel input.";
-            wadah.appendChild(kosong);
-          }
-        }
+        placeholder.style.display = "block";
       }
     }
 
@@ -927,7 +939,28 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     document.getElementById("out-bar").style.width = pct.toFixed(1) + "%";
   }
 
-  // Pasang event listener pada semua input
+  // ----- Muat naik fail -----
+  document.getElementById("gambarFile").addEventListener("change", function(e) {
+    const file = e.target.files[0];
+    const fileNameDisplay = document.getElementById("fileNameDisplay");
+    if (file) {
+      // Tunjukkan nama fail
+      fileNameDisplay.textContent = file.name;
+      // Baca fail sebagai Data URL
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        uploadedImageData = event.target.result;
+        render(); // kemas kini paparan
+      };
+      reader.readAsDataURL(file);
+    } else {
+      fileNameDisplay.textContent = "Tiada fail dipilih";
+      uploadedImageData = null;
+      render();
+    }
+  });
+
+  // Pasang event listener pada semua input (kecuali fail yang dikendalikan berasingan)
   const allInputIds = [...fieldIds, ...numIds, ...selectIds, "unitLuas", ...toggleFieldIds, ...gambarFieldIds];
   allInputIds.forEach(id => {
     const el = document.getElementById(id);
@@ -943,6 +976,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     if(cb) cb.addEventListener("change", render);
   });
 
+  // Fungsi auto-parse (sama seperti sebelumnya)
   const BULAN = ["JANUARI","FEBRUARI","MAC","APRIL","MEI","JUN","JULAI","OGOS","SEPTEMBER","OKTOBER","NOVEMBER","DISEMBER"];
 
   function formatTarikh(ddmmyyyy){
