@@ -100,7 +100,7 @@
     margin:-4px 0 8px;
     line-height:1.4;
   }
-  /* ---------- IKON (ganti emoji) ---------- */
+  /* ---------- IKON ---------- */
   .icon-svg{
     display:inline-block;
     width:14px;
@@ -221,9 +221,6 @@
     display:flex;
     flex-direction:column;
     position:relative;
-    /* Kekalkan nisbah A4 landskap. min-height ialah fallback (297:210 pada
-       lebar 1122px = ~794px) supaya .card tetap ada tinggi pasti walaupun
-       aspect-ratio lambat resolve semasa first paint di sesetengah browser. */
     aspect-ratio: 297 / 210;
     min-height: 794px;
   }
@@ -274,7 +271,7 @@
     color:var(--biru-gelap);
     letter-spacing:.02em;
   }
-  .lokasi-tag{ 
+  .lokasi-tag{
     text-align:right;
     font-size:11px;
     font-weight:700;
@@ -287,6 +284,20 @@
     color:#8992a0;
     font-weight:600;
     text-transform:uppercase;
+  }
+  .lokasi-tag .tarikh-laporan {
+    display:block;
+    font-size:9px;
+    color:#6a7280;
+    font-weight:600;
+    text-transform:uppercase;
+    margin-top:4px;
+  }
+  .lokasi-tag .tarikh-laporan-val {
+    display:block;
+    color:var(--biru-gelap);
+    font-size:11px;
+    font-weight:700;
   }
   .kicker{
     font-size:12px;
@@ -314,7 +325,7 @@
 
   /* BADAN PAGE 1 (2 lajur SITREP) */
   .body-sitrep{
-    padding:14px 28px 6px;
+    padding:14px 28px 4px;  /* padding-bottom dikurangkan */
     flex:1;
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -467,7 +478,7 @@
   .komander .tel{ font-weight:800; letter-spacing:.02em; }
 
   .catatan-block{
-    margin-top:10px;
+    margin-top:6px;          /* dikurangkan daripada 10px */
     background:rgba(250,251,253,0.6);
     border-radius:6px;
     padding:8px 12px;
@@ -491,25 +502,23 @@
     word-break:break-word;
   }
 
-  /* ===== BADAN PAGE 2 (grid 2x2) - VERSI PALING STABIL ===== */
+  /* ===== BADAN PAGE 2 (grid 2x2) ===== */
   .body-gambar{
     padding:10px 28px 6px;
-    flex:1 1 auto;                /* isi ruang kosong dalam card */
+    flex:1 1 auto;
     display:flex;
     flex-direction:column;
     background: rgba(255,255,255,0.35);
     backdrop-filter: blur(1px);
-    min-height:0;                /* penting untuk flex containment */
-    overflow:hidden;             /* elakkan scroll */
+    min-height:0;
+    overflow:hidden;
   }
   .grid-gambar{
     display:grid;
     grid-template-columns:1fr 1fr;
     grid-template-rows:1fr 1fr;
     gap:12px 20px;
-    flex:1 1 auto;                /* isi ruang dalam body-gambar - tak perlu
-                                      ibu bapa "resolve" tinggi dahulu,
-                                      berbeza dengan height:100% yang rapuh */
+    flex:1 1 auto;
     min-height:0;
   }
   .gambar-item-card {
@@ -518,7 +527,7 @@
     align-items:center;
     gap:4px;
     min-height:0;
-    height:auto;                  /* sel grid sendiri sudah tentukan tinggi */
+    height:auto;
   }
   .gambar-item-card .gambar-tajuk {
     font-size:13px;
@@ -532,7 +541,7 @@
   }
   .gambar-item-card .gambar-wadah {
     width:100%;
-    flex:1;                      /* ambil baki ruang dalam item */
+    flex:1;
     min-height:0;
     overflow:hidden;
     border-radius:6px;
@@ -545,7 +554,7 @@
   .gambar-item-card .gambar-wadah img {
     width:100%;
     height:100%;
-    object-fit:contain;          /* pastikan gambar kelihatan penuh */
+    object-fit:contain;
     display:block;
   }
   .gambar-item-card .gambar-kosong {
@@ -603,7 +612,7 @@
     }
     .card{
       width:100% !important;
-      height:100vh !important;   /* dalam cetakan, gunakan 100vh agar penuh */
+      height:100vh !important;
       box-shadow:none !important;
       border-radius:0 !important;
       aspect-ratio:auto !important;
@@ -645,7 +654,6 @@
     .komander { background:var(--biru-gelap) !important; }
     .footer { background:linear-gradient(90deg, var(--biru-gelap), var(--merah) 60%, var(--kuning) 100%) !important; }
 
-    /* paksa grid page 2 penuh */
     .grid-gambar {
       flex: 1 !important;
       height: 100% !important;
@@ -691,6 +699,8 @@
       <input id="subline" value="NEGERI JOHOR | BBP PAGOH">
       <label>Lokasi Pendek (kanan atas)</label>
       <input id="lokasiTag" value="KAMPUNG PAYA KOPI">
+      <label>Tarikh Laporan Dikeluarkan</label>
+      <input id="tarikhLaporan" value="25 OGOS 2026 (SELASA)">
     </div>
 
     <div class="blok">
@@ -955,6 +965,8 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
             <div class="lokasi-tag">
               <span>Lokasi</span>
               <span id="out-lokasiTag" style="color:var(--merah); font-size:12px;">KAMPUNG PAYA KOPI</span>
+              <span class="tarikh-laporan">Tarikh Laporan</span>
+              <span class="tarikh-laporan-val" id="out-tarikhLaporan">25 OGOS 2026 (SELASA)</span>
             </div>
           </div>
           <p class="kicker">LAPORAN SITUASI OPERASI (SITREP)</p>
@@ -1071,7 +1083,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
         <div class="footer" id="out-tagline1">“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia</div>
       </div>
 
-      <!-- ===== PAGE 2 (GAMBAR DENGAN SAIZ DIPERBESARKAN) ===== -->
+      <!-- ===== PAGE 2 (GAMBAR) ===== -->
       <div class="card" id="page2">
         <div class="card-bg" id="cardBg2"></div>
 
@@ -1085,6 +1097,8 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
             <div class="lokasi-tag">
               <span>Lokasi</span>
               <span id="out2-lokasiTag" style="color:var(--merah); font-size:12px;">KAMPUNG PAYA KOPI</span>
+              <span class="tarikh-laporan">Tarikh Laporan</span>
+              <span class="tarikh-laporan-val" id="out2-tarikhLaporan">25 OGOS 2026 (SELASA)</span>
             </div>
           </div>
           <p class="kicker">LAPORAN SITUASI OPERASI (SITREP)</p>
@@ -1092,7 +1106,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
           <span class="subline" id="out2-subline">NEGERI JOHOR | BBP PAGOH</span>
         </div>
 
-        <!-- BODY PAGE 2 (Gambar grid 2x2) - VERSI PALING STABIL -->
+        <!-- BODY PAGE 2 -->
         <div class="body-gambar">
           <div class="grid-gambar">
             <!-- Item 1 -->
@@ -1148,14 +1162,14 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
 
   // Senarai ID untuk page 1 (output utama)
   const fieldIdsPage1 = [
-    "headline","subline","lokasiTag","tarikhMasa","masaTiba","lokasiPenuh",
+    "headline","subline","lokasiTag","tarikhLaporan","tarikhMasa","masaTiba","lokasiPenuh",
     "tindakan","asetJentera","kekuatan","statusMangsa","tagline",
     "k1nama","k1peranan","k1tel","k2nama","k2peranan","k2tel"
   ];
 
   // Senarai ID untuk page 2 (output dengan awalan "out2-")
   const fieldIdsPage2 = [
-    "headline","subline","lokasiTag","tagline"
+    "headline","subline","lokasiTag","tarikhLaporan","tagline"
   ];
 
   const toggleFieldIds = [
@@ -1168,7 +1182,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
   const numIds = ["jumlahKeluasan","keluasanDipadam"];
   const selectIds = ["statusOperasi"];
 
-  // ID untuk sektor (4 sektor, setiap satu ada tickbox tunjuk/sembunyi)
+  // ID untuk sektor (4 sektor)
   const sektorFields = [
     { nama: "sektor1_nama", maklumat: "sektor1_maklumat", row: "sektor1-row", show: "showSektor1" },
     { nama: "sektor2_nama", maklumat: "sektor2_maklumat", row: "sektor2-row", show: "showSektor2" },
@@ -1361,7 +1375,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     if(cb) cb.addEventListener("change", render);
   });
 
-  // ---- Auto-parse (sama seperti sebelumnya) ----
+  // ---- Auto-parse ----
   const BULAN = ["JANUARI","FEBRUARI","MAC","APRIL","MEI","JUN","JULAI","OGOS","SEPTEMBER","OKTOBER","NOVEMBER","DISEMBER"];
 
   function formatTarikh(ddmmyyyy){
