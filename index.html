@@ -325,7 +325,7 @@
 
   /* BADAN PAGE 1 (2 lajur SITREP) */
   .body-sitrep{
-    padding:14px 28px 4px;    /* padding-bottom dikurangkan kepada 4px */
+    padding:14px 28px 4px;    /* padding-bottom sederhana */
     flex:1;
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -484,7 +484,7 @@
   .catatan-block{
     flex:1;
     min-height:0;
-    margin-top:4px;          /* dikurangkan sedikit */
+    margin-top:4px;
     background:rgba(250,251,253,0.6);
     border-radius:6px;
     padding:8px 12px;
@@ -493,7 +493,7 @@
     line-height:1.5;
     color:#1c1c1c;
     max-height:110px;
-    overflow-y:auto;
+    overflow-y:auto;          /* scroll jika teks panjang */
   }
   .catatan-block .catatan-label{
     font-weight:800;
@@ -651,7 +651,7 @@
       background: linear-gradient(135deg, rgba(255,255,255,0.65) 55%, rgba(244,246,250,0.65) 55%) !important;
     }
 
-    /* --- PENTING: Catatan isi penuh dan tiada had ketinggian --- */
+    /* Print: catatan tanpa had ketinggian dan flex penuh */
     .catatan-block {
       max-height: none !important;
       overflow-y: visible !important;
@@ -1167,10 +1167,10 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
 
 <script>
   // ============================================================
-  //  SKRIP UTAMA — 2 halaman + sektor
+  //  SKRIP UTAMA — 2 halaman + sektor + localStorage
   // ============================================================
 
-  // Simpan data gambar (sehingga 4)
+  // Simpan data gambar (sehingga 4) — tidak disimpan di localStorage (fail besar)
   const uploadedImages = [null, null, null, null];
 
   // Senarai ID untuk page 1 (output utama)
@@ -1208,6 +1208,73 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
   const outTajukIds = ["out-gambarTajuk1","out-gambarTajuk2","out-gambarTajuk3","out-gambarTajuk4"];
   const imgIds = ["gambarImg1","gambarImg2","gambarImg3","gambarImg4"];
   const placeholderIds = ["gambarPlaceholder1","gambarPlaceholder2","gambarPlaceholder3","gambarPlaceholder4"];
+
+  // Semua ID checkbox yang perlu disimpan
+  const checkboxIds = [
+    "showSektorBlock","showSektor1","showSektor2","showSektor3","showSektor4",
+    "showBackground","showMasaOperasiTerkawal","showMasaOperasiTamat",
+    "showKeanggotaanUnit","showCatatan","showGambar"
+  ];
+
+  // Semua ID input (text, textarea, select) untuk disimpan
+  const allInputIds = [
+    ...fieldIdsPage1,
+    ...numIds,
+    ...selectIds,
+    "unitLuas",
+    ...toggleFieldIds,
+    ...gambarTajukIds,
+    ...sektorFields.map(sf => sf.nama),
+    ...sektorFields.map(sf => sf.maklumat)
+  ];
+
+  // --- Fungsi simpan ke localStorage ---
+  function saveToLocalStorage() {
+    try {
+      // Simpan nilai input
+      allInputIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          localStorage.setItem('input_' + id, el.value);
+        }
+      });
+      // Simpan checkbox
+      checkboxIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          localStorage.setItem('checkbox_' + id, el.checked ? 'true' : 'false');
+        }
+      });
+    } catch (e) {
+      // Abaikan jika localStorage tidak tersedia
+    }
+  }
+
+  // --- Fungsi muat dari localStorage ---
+  function loadFromLocalStorage() {
+    try {
+      allInputIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          const val = localStorage.getItem('input_' + id);
+          if (val !== null) {
+            el.value = val;
+          }
+        }
+      });
+      checkboxIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          const val = localStorage.getItem('checkbox_' + id);
+          if (val !== null) {
+            el.checked = (val === 'true');
+          }
+        }
+      });
+    } catch (e) {
+      // Abaikan jika localStorage tidak tersedia
+    }
+  }
 
   function fmtHa(n){
     const unit = document.getElementById("unitLuas") ? document.getElementById("unitLuas").value : "Hektar";
@@ -1328,6 +1395,9 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     document.getElementById("out-baki").textContent = fmtHa(baki);
     document.getElementById("out-pct").textContent = pct.toFixed(1) + "%";
     document.getElementById("out-bar").style.width = pct.toFixed(1) + "%";
+
+    // Simpan ke localStorage selepas setiap render
+    saveToLocalStorage();
   }
 
   // Fungsi untuk mengendalikan muat naik fail bagi setiap slot
@@ -1359,33 +1429,15 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
   }
 
   // Event listener untuk semua input
-  const allInputIds = [
-    ...fieldIdsPage1,
-    ...numIds,
-    ...selectIds,
-    "unitLuas",
-    ...toggleFieldIds,
-    ...gambarTajukIds,
-    // sektor
-    ...sektorFields.map(sf => sf.nama),
-    ...sektorFields.map(sf => sf.maklumat)
-  ];
   allInputIds.forEach(id => {
     const el = document.getElementById(id);
     if(el) el.addEventListener("input", render);
   });
 
-  document.getElementById("showBackground")?.addEventListener("change", render);
-  document.getElementById("showGambar")?.addEventListener("change", render);
-  document.getElementById("showSektorBlock")?.addEventListener("change", render);
-  sektorFields.forEach(sf => {
-    const cb = document.getElementById(sf.show);
-    if (cb) cb.addEventListener("change", render);
-  });
-
-  toggleFieldIds.forEach(id => {
-    const cb = document.getElementById("show"+id.charAt(0).toUpperCase()+id.slice(1));
-    if(cb) cb.addEventListener("change", render);
+  // Event listener untuk checkbox
+  checkboxIds.forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.addEventListener("change", render);
   });
 
   // ---- Auto-parse ----
@@ -1535,7 +1587,14 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     });
   }
 
+  // --- Muat data dari localStorage pada permulaan ---
+  loadFromLocalStorage();
+
+  // --- Render pertama ---
   render();
+
+  // --- Event listener untuk rawText auto-parse (butang) ---
+  // (Butang sudah ada onclick)
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
