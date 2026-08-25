@@ -16,8 +16,8 @@
     --abu: #b9c0c9;
     --teks: #1c1c1c;
     --bg-app: #eef1f6;
-    --padding-umum: 13px;   /* dikurangkan 5% daripada 14px → ~13px */
-    --padding-header: 15px; /* dikurangkan daripada 16px */
+    --padding-umum: 13px;
+    --padding-header: 15px;
   }
   *{box-sizing:border-box;}
   body{
@@ -263,10 +263,10 @@
   .card-bg.hidden { display: none; }
   .card > *:not(.card-bg) { position: relative; z-index: 1; }
 
-  /* HEADER (sama untuk ketiga-tiga halaman) - margin dikurangkan 5% */
+  /* HEADER */
   .header{
     position:relative;
-    padding:var(--padding-header) 26px 10px;  /* padding dikurangkan */
+    padding:var(--padding-header) 26px 10px;
     background:linear-gradient(135deg, rgba(255,255,255,0.65) 55%, rgba(244,246,250,0.65) 55%);
     border-bottom:5px solid var(--biru);
     flex-shrink:0;
@@ -283,13 +283,13 @@
     gap:10px;
   }
   .logo img{
-    height:46px;  /* dikurangkan sedikit */
+    height:46px;
     width:auto;
     display:block;
   }
   .logo-text{
     font-weight:900;
-    font-size:18px;  /* dikurangkan */
+    font-size:18px;
     color:var(--biru-gelap);
     letter-spacing:.02em;
   }
@@ -329,7 +329,7 @@
     margin:0 0 3px;
   }
   .headline{
-    font-size:20px;  /* dikurangkan sedikit */
+    font-size:20px;
     font-weight:900;
     line-height:1.15;
     margin:0 0 4px;
@@ -345,7 +345,7 @@
     border-radius:4px;
   }
 
-  /* BADAN PAGE 1 (2 lajur SITREP) - margin dikurangkan */
+  /* BADAN PAGE 1 */
   .body-sitrep{
     padding:var(--padding-umum) 26px 6px;
     flex:1;
@@ -443,7 +443,6 @@
   .stat-box .lbl{ font-size:9px; font-weight:700; color:#6a7280; text-transform:uppercase;}
   .stat-box .num{ font-size:15px; font-weight:900; color:var(--biru-gelap); margin-top:1px;}
 
-  /* Sektor info */
   .sektor-block {
     margin-top: 6px;
   }
@@ -530,7 +529,7 @@
     word-break:break-word;
   }
 
-  /* ===== BADAN PAGE 2 & 3 (grid 2x2) - margin dikurangkan ===== */
+  /* ===== BADAN PAGE 2 & 3 ===== */
   .body-gambar{
     padding:var(--padding-umum) 26px 6px;
     flex:1 1 auto;
@@ -619,34 +618,50 @@
     .card{width:100%; max-width:100%;}
   }
 
-  /* ========== CETAK / PDF ========== */
+  /* ========== CETAK / PDF - PEMBETULAN ORIENTASI ========== */
   @page{
-    size: A4 landscape;
+    size: landscape;           /* paksa landscape */
     margin: 0mm;
+    /* ukuran eksplisit untuk mengelak salah tafsir */
+    size: 297mm 210mm;
   }
+
   @media print{
     * {
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
       color-adjust: exact !important;
     }
-    body{ background:#fff; }
+    body{ 
+      background:#fff; 
+      margin:0; 
+      padding:0;
+      transform: rotate(0deg) !important; /* pastikan tiada putaran */
+    }
     .panel-input{ display:none !important; }
-    .preview-wrap{ padding:0 !important; align-items:stretch !important; }
+    .preview-wrap{ 
+      padding:0 !important; 
+      align-items:stretch !important;
+      display:block !important;
+    }
     .pages-container{
       gap:0;
-      width:100%;
+      width:100% !important;
+      max-width:100% !important;
       margin:0 auto;
+      display:block !important;
     }
     .card{
       width:100% !important;
-      height:100vh !important;
+      height:100% !important;          /* gunakan 100% bukan 100vh */
+      min-height:100% !important;
       box-shadow:none !important;
       border-radius:0 !important;
       aspect-ratio:auto !important;
       page-break-after:always;
       page-break-inside:avoid;
       background: #fff !important;
+      transform: scale(1) rotate(0deg) !important; /* pastikan tiada putaran */
     }
     .card:last-child{ page-break-after:auto; }
 
@@ -673,7 +688,6 @@
       background: linear-gradient(135deg, rgba(255,255,255,0.65) 55%, rgba(244,246,250,0.65) 55%) !important;
     }
 
-    /* Print: catatan tanpa had ketinggian, tapi kekal margin bawah */
     .catatan-block {
       max-height: none !important;
       overflow-y: visible !important;
@@ -929,7 +943,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
         </div>
         <p class="hint" style="margin:2px 0 6px;">Muat naik gambar 1–4.</p>
 
-        <!-- Gambar 1 -->
         <div class="gambar-item">
           <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Tajuk Gambar 1</label>
           <input id="gambarTajuk1" placeholder="Tajuk 1" value="GAMBAR 1">
@@ -941,7 +954,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
           </div>
         </div>
 
-        <!-- Gambar 2 -->
         <div class="gambar-item">
           <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Tajuk Gambar 2</label>
           <input id="gambarTajuk2" placeholder="Tajuk 2" value="GAMBAR 2">
@@ -953,7 +965,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
           </div>
         </div>
 
-        <!-- Gambar 3 -->
         <div class="gambar-item">
           <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Tajuk Gambar 3</label>
           <input id="gambarTajuk3" placeholder="Tajuk 3" value="GAMBAR 3">
@@ -965,7 +976,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
           </div>
         </div>
 
-        <!-- Gambar 4 -->
         <div class="gambar-item">
           <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Tajuk Gambar 4</label>
           <input id="gambarTajuk4" placeholder="Tajuk 4" value="GAMBAR 4">
@@ -989,7 +999,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
         </div>
         <p class="hint" style="margin:2px 0 6px;">Muat naik gambar 5–8.</p>
 
-        <!-- Gambar 5 -->
         <div class="gambar-item">
           <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Tajuk Gambar 5</label>
           <input id="gambarTajuk5" placeholder="Tajuk 5" value="GAMBAR 5">
@@ -1001,7 +1010,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
           </div>
         </div>
 
-        <!-- Gambar 6 -->
         <div class="gambar-item">
           <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Tajuk Gambar 6</label>
           <input id="gambarTajuk6" placeholder="Tajuk 6" value="GAMBAR 6">
@@ -1013,7 +1021,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
           </div>
         </div>
 
-        <!-- Gambar 7 -->
         <div class="gambar-item">
           <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Tajuk Gambar 7</label>
           <input id="gambarTajuk7" placeholder="Tajuk 7" value="GAMBAR 7">
@@ -1025,7 +1032,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
           </div>
         </div>
 
-        <!-- Gambar 8 -->
         <div class="gambar-item">
           <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Tajuk Gambar 8</label>
           <input id="gambarTajuk8" placeholder="Tajuk 8" value="GAMBAR 8">
@@ -1055,8 +1061,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       <!-- ===== PAGE 1 ===== -->
       <div class="card" id="page1">
         <div class="card-bg" id="cardBg1"></div>
-
-        <!-- HEADER PAGE 1 -->
         <div class="header">
           <div class="header-top">
             <div class="logo">
@@ -1074,15 +1078,12 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
           <h1 class="headline" id="out-headline">INSIDEN KEBAKARAN KEBUN TANAH GAMBUT</h1>
           <span class="subline" id="out-subline">NEGERI JOHOR | BBP PAGOH</span>
         </div>
-
-        <!-- BODY PAGE 1 -->
         <div class="body-sitrep">
           <div class="col-left">
             <p class="pill"><span class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 22s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span> MAKLUMAT INSIDEN</p>
             <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></div><div class="label">Tarikh / Masa Penggilan:</div><div class="val" id="out-tarikhMasa">17 OGOS 2026 | 09:12:00 HRS</div></div>
             <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v6H8V7a4 4 0 0 1 4-4z"/><line x1="12" y1="1" x2="12" y2="3"/><rect x="4" y="13" width="16" height="3" rx="1"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg></div><div class="label">Masa Tiba &amp; Jarak:</div><div class="val" id="out-masaTiba">09:42:00 HRS (JARAK: 20 KM)</div></div>
             <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 22s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div class="label">Lokasi:</div><div class="val" id="out-lokasiPenuh">LOT 15060 KG PAYA KOPI, PAGOH (BIOTECH)</div></div>
-
             <div class="info-row toggle-field" id="row-masaOperasiTerkawal">
               <div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><line x1="12" y1="13" x2="12" y2="9"/><line x1="9" y1="2" x2="15" y2="2"/><line x1="12" y1="2" x2="12" y2="5"/></svg></div>
               <div class="label">Masa Operasi Terkawal:</div>
@@ -1093,25 +1094,16 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
               <div class="label">Masa Operasi Tamat:</div>
               <div class="val" id="out-masaOperasiTamat">Operasi Tangguh</div>
             </div>
-
             <p class="pill follow"><span class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2c1 4-4 5-4 9a4 4 0 0 0 8 0c0-1.5-1-2.5-1-2.5s2 1 2 4.5a6 6 0 1 1-12 0C5 8 9 6 12 2z"/></svg></span> STATUS PEMADAMAN (PROGRESS)</p>
             <div class="status-hero">
-              <div>
-                <div class="pct" id="out-pct">95.6%</div>
-                <div class="pct-label">Completed</div>
-              </div>
-              <div class="terjejas">
-                "Jumlah Keluasan Terjejas"
-                <b id="out-jumlahKeluasan">3.64 Hektar</b>
-              </div>
+              <div><div class="pct" id="out-pct">95.6%</div><div class="pct-label">Completed</div></div>
+              <div class="terjejas">"Jumlah Keluasan Terjejas"<b id="out-jumlahKeluasan">3.64 Hektar</b></div>
             </div>
             <div class="bar-track"><div class="bar-fill" id="out-bar" style="width:95.6%;"></div></div>
             <div class="stat-2col">
               <div class="stat-box"><div class="lbl">Keluasan Berhasil Dipadam</div><div class="num" id="out-keluasanDipadam">3.48 Hektar</div></div>
               <div class="stat-box"><div class="lbl">Baki Belum Dipadam</div><div class="num" id="out-baki">0.16 Hektar</div></div>
             </div>
-
-            <!-- SEKTOR OPERASI -->
             <div class="sektor-block toggle-field" id="row-sektorBlock">
               <p class="pill" style="margin-top:6px;"><span class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span> SEKTOR OPERASI</p>
               <div class="sektor-row toggle-field" id="sektor1-row">
@@ -1132,24 +1124,20 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
               </div>
             </div>
           </div>
-
           <div class="col-right">
             <p class="pill"><span class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg></span> TACTICAL OPERASI &amp; LOGISTIK</p>
             <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v6H8V7a4 4 0 0 1 4-4z"/><line x1="12" y1="1" x2="12" y2="3"/><rect x="4" y="13" width="16" height="3" rx="1"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg></div><div class="label">Tindakan Pemadaman:</div><div class="val" id="out-tindakan">Operasi menggunakan 3 unit Pam GP 10/10</div></div>
             <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 13a7.97 7.97 0 0 0 0-2l2.1-1.6-2-3.4-2.5 1a8 8 0 0 0-1.7-1L14.9 3h-4l-.4 2.9a8 8 0 0 0-1.7 1l-2.5-1-2 3.4L6.4 11a7.97 7.97 0 0 0 0 2l-2.1 1.6 2 3.4 2.5-1a8 8 0 0 0 1.7 1l.4 2.9h4l.4-2.9a8 8 0 0 0 1.7-1l2.5 1 2-3.4L19.4 13z"/></svg></div><div class="label">Aset Jentera:</div><div class="val" id="out-asetJentera">1x FRT, 1x HICOM, 1x Utiliti</div></div>
             <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.6"/><path d="M15 14.2c2.3.6 4 2.6 4 5.8"/></svg></div><div class="label">Kekuatan Anggota:</div><div class="val" id="out-kekuatan">7 Anggota BBP Pagoh</div></div>
-
             <div class="info-row toggle-field" id="row-keanggotaanUnit">
               <div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="4" y="3" width="12" height="18" rx="1"/><line x1="8" y1="7" x2="8" y2="7.01"/><line x1="12" y1="7" x2="12" y2="7.01"/><line x1="8" y1="11" x2="8" y2="11.01"/><line x1="12" y1="11" x2="12" y2="11.01"/><line x1="8" y1="15" x2="8" y2="15.01"/><line x1="12" y1="15" x2="12" y2="15.01"/><path d="M16 21v-6h4v6"/></svg></div>
               <div class="label">Keanggotaan:</div>
               <div class="val" id="out-keanggotaanUnit">BBP Pagoh</div>
             </div>
-
             <div class="badge-row">
               <div class="badge operasi"><span class="dot"></span><span id="out-statusOperasi">MASIH BEROPERASI</span></div>
               <div class="badge mangsa"><span><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="9" width="20" height="6" rx="3"/><line x1="9" y1="9" x2="9" y2="15"/><line x1="15" y1="9" x2="15" y2="15"/></svg></span><span id="out-statusMangsa">TIADA MANGSA</span></div>
             </div>
-
             <p class="pill follow"><span class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 2 6a2 2 0 0 1 2-2z"/></svg></span> HUBUNGI KOMANDER OPERASI</p>
             <div class="komander">
               <div><div class="nama" id="out-k1nama">PBK I Jafry Bin Hashim</div><div class="peranan" id="out-k1peranan">Komander Operasi</div></div>
@@ -1159,7 +1147,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
               <div><div class="nama" id="out-k2nama">PKPgB Mohd Fadli Bin Ismail</div><div class="peranan" id="out-k2peranan">Komander Operasi Kanan</div></div>
               <div class="tel" id="out-k2tel">019-777 9876</div>
             </div>
-
             <div class="catatan-block toggle-field" id="row-catatan">
               <div class="catatan-label"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg> Catatan Operasi</div>
               <div class="catatan-teks" id="out-catatan">23.08.2026 (operasi sambungan 22.08.2026)
@@ -1178,11 +1165,10 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
             </div>
           </div>
         </div>
-
         <div class="footer" id="out-tagline1">“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia</div>
       </div>
 
-      <!-- ===== PAGE 2 (GAMBAR 1–4) ===== -->
+      <!-- ===== PAGE 2 (GAMBAR 1-4) ===== -->
       <div class="card" id="page2">
         <div class="card-bg" id="cardBg2"></div>
         <div class="header">
@@ -1237,7 +1223,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
         <div class="footer" id="out2-tagline">“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia</div>
       </div>
 
-      <!-- ===== PAGE 3 (GAMBAR 5–8) ===== -->
+      <!-- ===== PAGE 3 (GAMBAR 5-8) ===== -->
       <div class="card" id="page3">
         <div class="card-bg" id="cardBg3"></div>
         <div class="header">
@@ -1303,20 +1289,15 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
 
   const uploadedImages = [null, null, null, null, null, null, null, null];
 
-  // Output page1
   const fieldIdsPage1 = [
     "headline","subline","lokasiTag","tarikhLaporan","tarikhMasa","masaTiba","lokasiPenuh",
     "tindakan","asetJentera","kekuatan","statusMangsa","tagline",
     "k1nama","k1peranan","k1tel","k2nama","k2peranan","k2tel"
   ];
-  // Output page2 (awalan out2-)
   const fieldIdsPage2 = ["headline","subline","lokasiTag","tarikhLaporan","tagline"];
-  // Output page3 (awalan out3-)
   const fieldIdsPage3 = ["headline","subline","lokasiTag","tarikhLaporan","tagline"];
 
-  const toggleFieldIds = [
-    "masaOperasiTerkawal","masaOperasiTamat","keanggotaanUnit","catatan"
-  ];
+  const toggleFieldIds = ["masaOperasiTerkawal","masaOperasiTamat","keanggotaanUnit","catatan"];
   const numIds = ["jumlahKeluasan","keluasanDipadam"];
   const selectIds = ["statusOperasi"];
 
@@ -1327,7 +1308,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     { nama: "sektor4_nama", maklumat: "sektor4_maklumat", row: "sektor4-row", show: "showSektor4" }
   ];
 
-  // Gambar 1–8
   const gambarTajukIds = [
     "gambarTajuk1","gambarTajuk2","gambarTajuk3","gambarTajuk4",
     "gambarTajuk5","gambarTajuk6","gambarTajuk7","gambarTajuk8"
@@ -1449,7 +1429,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       if(el && out) out.textContent = el.value;
     });
 
-    // Togol medan tambahan
     toggleFieldIds.forEach(id => {
       const el = document.getElementById(id);
       const out = document.getElementById("out-"+id);
@@ -1462,7 +1441,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       }
     });
 
-    // Sektor
     sektorFields.forEach((sf, idx) => {
       const namaEl = document.getElementById(sf.nama);
       const maklumatEl = document.getElementById(sf.maklumat);
@@ -1485,7 +1463,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       else sektorBlockEl.classList.add("hidden-field");
     }
 
-    // Togol halaman 2 & 3
     const showPage2 = document.getElementById("showGambarPage2");
     const page2 = document.getElementById("page2");
     if (showPage2 && page2) {
@@ -1499,7 +1476,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       else page3.classList.add("hidden-page");
     }
 
-    // Gambar 1–8
     for (let i = 0; i < 8; i++) {
       const tajukInput = document.getElementById(gambarTajukIds[i]);
       const outTajuk = document.getElementById(outTajukIds[i]);
@@ -1523,7 +1499,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       }
     }
 
-    // Latar belakang
     const bgCb = document.getElementById("showBackground");
     [1,2,3].forEach(num => {
       const bgEl = document.getElementById("cardBg"+num);
@@ -1533,7 +1508,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       }
     });
 
-    // Keluasan
     const jumlah = parseFloat(document.getElementById("jumlahKeluasan").value) || 0;
     const dipadam = parseFloat(document.getElementById("keluasanDipadam").value) || 0;
     const baki = Math.max(jumlah - dipadam, 0);
@@ -1548,7 +1522,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     saveToLocalStorage();
   }
 
-  // Setup file upload untuk 8 slot
   function setupFileUpload(index) {
     const fileInput = document.getElementById(fileInputIds[index]);
     const fileNameDisplay = document.getElementById(fileNameIds[index]);
@@ -1575,7 +1548,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
   }
   for (let i = 0; i < 8; i++) setupFileUpload(i);
 
-  // Event listener
   allInputIds.forEach(id => {
     const el = document.getElementById(id);
     if(el) el.addEventListener("input", render);
@@ -1585,7 +1557,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     if(el) el.addEventListener("change", render);
   });
 
-  // Auto-parse (sama seperti sebelumnya, dipendekkan)
+  // Auto-parse (ringkas)
   const BULAN = ["JANUARI","FEBRUARI","MAC","APRIL","MEI","JUN","JULAI","OGOS","SEPTEMBER","OKTOBER","NOVEMBER","DISEMBER"];
   function formatTarikh(ddmmyyyy){
     const m = ddmmyyyy.match(/(\d{1,2})[.\/\-](\d{1,2})[.\/\-](\d{4})/);
