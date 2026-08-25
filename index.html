@@ -94,6 +94,19 @@
   .btn-download:hover{ background:#237a35; }
   .btn-print{ background:var(--biru-gelap); color:#fff; }
   .btn-print:hover{ background:#081f4d; }
+  .btn-padam-gambar{
+    background:#c8102e;
+    color:#fff;
+    border:none;
+    border-radius:4px;
+    padding:2px 8px;
+    font-size:11px;
+    font-weight:700;
+    cursor:pointer;
+    margin-left:6px;
+    flex-shrink:0;
+  }
+  .btn-padam-gambar:hover{ background:#a00d24; }
   .hint{
     font-size:11px;
     color:#8992a0;
@@ -164,6 +177,7 @@
     align-items:center;
     gap:8px;
     margin-top:2px;
+    flex-wrap:wrap;
   }
   .file-input-wrap input[type="file"] {
     flex:1;
@@ -172,6 +186,7 @@
     border-radius:6px;
     font-size:12px;
     background:#fbfcfe;
+    min-width:120px;
   }
   .file-input-wrap .file-name {
     font-size:11px;
@@ -180,6 +195,11 @@
     overflow:hidden;
     text-overflow:ellipsis;
     max-width:120px;
+  }
+  .file-input-wrap .file-actions {
+    display:flex;
+    align-items:center;
+    gap:4px;
   }
   .gambar-item {
     margin-bottom:8px;
@@ -325,7 +345,7 @@
 
   /* BADAN PAGE 1 (2 lajur SITREP) */
   .body-sitrep{
-    padding:14px 28px 6px;    /* padding-bottom sederhana */
+    padding:14px 28px 6px;    /* padding-bottom 6px memberi ruang ke footer */
     flex:1;
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -482,7 +502,7 @@
   .komander .tel{ font-weight:800; letter-spacing:.02em; }
 
   .catatan-block{
-    flex:0 1 auto;          /* jangan paksa isi ruang */
+    flex:1;
     min-height:0;
     margin-top:4px;
     background:rgba(250,251,253,0.6);
@@ -493,7 +513,7 @@
     line-height:1.5;
     color:#1c1c1c;
     max-height:110px;
-    overflow-y:auto;          /* scroll jika teks panjang */
+    overflow-y:auto;          /* skrol jika panjang */
   }
   .catatan-block .catatan-label{
     font-weight:800;
@@ -651,22 +671,14 @@
       background: linear-gradient(135deg, rgba(255,255,255,0.65) 55%, rgba(244,246,250,0.65) 55%) !important;
     }
 
-    /* --- Catatan: jangan paksa isi ruang, beri jarak dari footer --- */
+    /* Print: catatan tanpa had ketinggian, tapi kekal margin bawah */
     .catatan-block {
       max-height: none !important;
       overflow-y: visible !important;
-      flex: 0 1 auto !important;
+      flex: 1 !important;
       margin-top: 2px !important;
-      margin-bottom: 12px !important;  /* jarak dari footer */
+      margin-bottom: 4px !important;  /* ruang ke footer */
     }
-    .body-sitrep {
-      padding-bottom: 12px !important;  /* ruang bawah tambahan */
-      overflow: hidden !important;      /* elak kandungan terkeluar */
-    }
-    .col-right {
-      justify-content: flex-start !important; /* elak regangan */
-    }
-
     .sektor-row { border-bottom:1px solid rgba(240,241,244,0.3) !important; }
     .info-row { border-bottom:1px solid rgba(240,241,244,0.4) !important; }
     .bar-track { background:rgba(228,231,238,0.5) !important; }
@@ -922,6 +934,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
           <div class="file-input-wrap">
             <input type="file" id="gambarFile1" accept=".jpg,.jpeg,image/jpeg">
             <span class="file-name" id="fileName1">Tiada fail</span>
+            <button class="btn-padam-gambar" id="padamBtn1" style="display:none;" onclick="padamGambar(0)">✕ Padam</button>
           </div>
         </div>
 
@@ -933,6 +946,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
           <div class="file-input-wrap">
             <input type="file" id="gambarFile2" accept=".jpg,.jpeg,image/jpeg">
             <span class="file-name" id="fileName2">Tiada fail</span>
+            <button class="btn-padam-gambar" id="padamBtn2" style="display:none;" onclick="padamGambar(1)">✕ Padam</button>
           </div>
         </div>
 
@@ -944,6 +958,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
           <div class="file-input-wrap">
             <input type="file" id="gambarFile3" accept=".jpg,.jpeg,image/jpeg">
             <span class="file-name" id="fileName3">Tiada fail</span>
+            <button class="btn-padam-gambar" id="padamBtn3" style="display:none;" onclick="padamGambar(2)">✕ Padam</button>
           </div>
         </div>
 
@@ -955,6 +970,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
           <div class="file-input-wrap">
             <input type="file" id="gambarFile4" accept=".jpg,.jpeg,image/jpeg">
             <span class="file-name" id="fileName4">Tiada fail</span>
+            <button class="btn-padam-gambar" id="padamBtn4" style="display:none;" onclick="padamGambar(3)">✕ Padam</button>
           </div>
         </div>
       </div>
@@ -1176,10 +1192,10 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
 
 <script>
   // ============================================================
-  //  SKRIP UTAMA — 2 halaman + sektor + localStorage
+  //  SKRIP UTAMA — 2 halaman + sektor + localStorage + padam gambar
   // ============================================================
 
-  // Simpan data gambar (sehingga 4) — tidak disimpan di localStorage (fail besar)
+  // Simpan data gambar (sehingga 4)
   const uploadedImages = [null, null, null, null];
 
   // Senarai ID untuk page 1 (output utama)
@@ -1217,6 +1233,9 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
   const outTajukIds = ["out-gambarTajuk1","out-gambarTajuk2","out-gambarTajuk3","out-gambarTajuk4"];
   const imgIds = ["gambarImg1","gambarImg2","gambarImg3","gambarImg4"];
   const placeholderIds = ["gambarPlaceholder1","gambarPlaceholder2","gambarPlaceholder3","gambarPlaceholder4"];
+  const fileInputIds = ["gambarFile1","gambarFile2","gambarFile3","gambarFile4"];
+  const fileNameIds = ["fileName1","fileName2","fileName3","fileName4"];
+  const padamBtnIds = ["padamBtn1","padamBtn2","padamBtn3","padamBtn4"];
 
   // Semua ID checkbox yang perlu disimpan
   const checkboxIds = [
@@ -1252,7 +1271,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
           localStorage.setItem('checkbox_' + id, el.checked ? 'true' : 'false');
         }
       });
-    } catch (e) {}
+    } catch (e) { /* abaikan */ }
   }
 
   // --- Fungsi muat dari localStorage ---
@@ -1262,17 +1281,36 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
         const el = document.getElementById(id);
         if (el) {
           const val = localStorage.getItem('input_' + id);
-          if (val !== null) el.value = val;
+          if (val !== null) {
+            el.value = val;
+          }
         }
       });
       checkboxIds.forEach(id => {
         const el = document.getElementById(id);
         if (el) {
           const val = localStorage.getItem('checkbox_' + id);
-          if (val !== null) el.checked = (val === 'true');
+          if (val !== null) {
+            el.checked = (val === 'true');
+          }
         }
       });
-    } catch (e) {}
+    } catch (e) { /* abaikan */ }
+  }
+
+  // --- Fungsi padam gambar mengikut index ---
+  function padamGambar(index) {
+    uploadedImages[index] = null;
+    // Reset input file
+    const fileInput = document.getElementById(fileInputIds[index]);
+    if (fileInput) fileInput.value = '';
+    // Reset nama fail
+    const fileNameSpan = document.getElementById(fileNameIds[index]);
+    if (fileNameSpan) fileNameSpan.textContent = 'Tiada fail';
+    // Sembunyikan butang padam
+    const padamBtn = document.getElementById(padamBtnIds[index]);
+    if (padamBtn) padamBtn.style.display = 'none';
+    render();
   }
 
   function fmtHa(n){
@@ -1281,28 +1319,28 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
   }
 
   function render(){
-    // --- Page 1 ---
+    // --- Page 1 (output tanpa awalan) ---
     fieldIdsPage1.forEach(id => {
       const el = document.getElementById(id);
       const out = document.getElementById("out-"+id);
       if(el && out) out.textContent = el.value;
     });
 
-    // --- Page 2 ---
+    // --- Page 2 (output dengan awalan "out2-") ---
     fieldIdsPage2.forEach(id => {
       const el = document.getElementById(id);
       const out = document.getElementById("out2-"+id);
       if(el && out) out.textContent = el.value;
     });
 
-    // --- Select & Num ---
+    // --- Select & Num untuk Page 1 ---
     selectIds.forEach(id => {
       const el = document.getElementById(id);
       const out = document.getElementById("out-"+id);
       if(el && out) out.textContent = el.value;
     });
 
-    // --- Togol medan tambahan ---
+    // --- Togol medan tambahan (Page 1) ---
     toggleFieldIds.forEach(id => {
       const el = document.getElementById(id);
       const out = document.getElementById("out-"+id);
@@ -1332,7 +1370,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       }
     });
 
-    // Togol blok Sektor Operasi
+    // Togol keseluruhan blok Sektor Operasi
     const showSektorBlockCb = document.getElementById("showSektorBlock");
     const sektorBlockEl = document.getElementById("row-sektorBlock");
     if (showSektorBlockCb && sektorBlockEl){
@@ -1357,19 +1395,22 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       }
       const imgEl = document.getElementById(imgIds[i]);
       const placeholder = document.getElementById(placeholderIds[i]);
+      const padamBtn = document.getElementById(padamBtnIds[i]);
       if (imgEl && placeholder) {
         if (uploadedImages[i]) {
           imgEl.src = uploadedImages[i];
           imgEl.style.display = "block";
           placeholder.style.display = "none";
+          if (padamBtn) padamBtn.style.display = 'inline-block';
         } else {
           imgEl.style.display = "none";
           placeholder.style.display = "block";
+          if (padamBtn) padamBtn.style.display = 'none';
         }
       }
     }
 
-    // --- Togol latar belakang ---
+    // --- Togol latar belakang (kedua-dua halaman) ---
     const bgCb = document.getElementById("showBackground");
     const bgEl1 = document.getElementById("cardBg1");
     const bgEl2 = document.getElementById("cardBg2");
@@ -1383,7 +1424,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       }
     }
 
-    // --- Pengiraan keluasan ---
+    // --- Pengiraan keluasan (Page 1) ---
     const jumlah = parseFloat(document.getElementById("jumlahKeluasan").value) || 0;
     const dipadam = parseFloat(document.getElementById("keluasanDipadam").value) || 0;
     const baki = Math.max(jumlah - dipadam, 0);
@@ -1395,13 +1436,15 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     document.getElementById("out-pct").textContent = pct.toFixed(1) + "%";
     document.getElementById("out-bar").style.width = pct.toFixed(1) + "%";
 
+    // Simpan ke localStorage
     saveToLocalStorage();
   }
 
-  // Fungsi muat naik gambar
+  // Fungsi untuk mengendalikan muat naik fail bagi setiap slot
   function setupFileUpload(index) {
-    const fileInput = document.getElementById("gambarFile" + (index+1));
-    const fileNameDisplay = document.getElementById("fileName" + (index+1));
+    const fileInput = document.getElementById(fileInputIds[index]);
+    const fileNameDisplay = document.getElementById(fileNameIds[index]);
+    const padamBtn = document.getElementById(padamBtnIds[index]);
     if (!fileInput) return;
     fileInput.addEventListener("change", function(e) {
       const file = e.target.files[0];
@@ -1410,18 +1453,23 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
         const reader = new FileReader();
         reader.onload = function(event) {
           uploadedImages[index] = event.target.result;
+          if (padamBtn) padamBtn.style.display = 'inline-block';
           render();
         };
         reader.readAsDataURL(file);
       } else {
         fileNameDisplay.textContent = "Tiada fail";
         uploadedImages[index] = null;
+        if (padamBtn) padamBtn.style.display = 'none';
         render();
       }
     });
   }
 
-  for (let i = 0; i < 4; i++) setupFileUpload(i);
+  // Sediakan 4 muat naik
+  for (let i = 0; i < 4; i++) {
+    setupFileUpload(i);
+  }
 
   // Event listener untuk semua input
   allInputIds.forEach(id => {
@@ -1429,6 +1477,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     if(el) el.addEventListener("input", render);
   });
 
+  // Event listener untuk checkbox
   checkboxIds.forEach(id => {
     const el = document.getElementById(id);
     if(el) el.addEventListener("change", render);
@@ -1581,7 +1630,10 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     });
   }
 
+  // --- Muat data dari localStorage pada permulaan ---
   loadFromLocalStorage();
+
+  // --- Render pertama ---
   render();
 </script>
 
