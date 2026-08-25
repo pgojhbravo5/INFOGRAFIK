@@ -726,25 +726,60 @@
     <!-- ===== SEKTOR OPERASI ===== -->
     <div class="blok">
       <p class="section-title"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg> Sektor Operasi (Halaman 1)</p>
-      <div class="sektor-item">
+
+      <div class="toggle-item">
+        <div class="toggle-row">
+          <input type="checkbox" id="showSektorBlock" checked>
+          <label for="showSektorBlock">Tunjukkan Maklumat Sektor</label>
+        </div>
+        <p class="hint" style="margin:2px 0 0;">Nyahtanda jika insiden ini tidak memerlukan pecahan sektor.</p>
+      </div>
+
+      <div class="toggle-item">
+        <div class="toggle-row">
+          <input type="checkbox" id="showSektor1" checked>
+          <label for="showSektor1">Sektor 1</label>
+        </div>
         <label>Nama Sektor 1</label>
         <input id="sektor1_nama" value="SEKTOR 1">
         <label>Maklumat Sektor 1</label>
         <input id="sektor1_maklumat" value="Tiada pemadaman dilakukan">
       </div>
-      <div class="sektor-item">
+
+      <div class="toggle-item">
+        <div class="toggle-row">
+          <input type="checkbox" id="showSektor2" checked>
+          <label for="showSektor2">Sektor 2</label>
+        </div>
         <label>Nama Sektor 2</label>
         <input id="sektor2_nama" value="SEKTOR 2">
         <label>Maklumat Sektor 2</label>
         <input id="sektor2_maklumat" value="1 pam GP 10/10, 1 breaching, 3 pancutan dan 700 kaki salur dari sumber air terbuka">
       </div>
-      <div class="sektor-item">
+
+      <div class="toggle-item">
+        <div class="toggle-row">
+          <input type="checkbox" id="showSektor3" checked>
+          <label for="showSektor3">Sektor 3</label>
+        </div>
         <label>Nama Sektor 3</label>
         <input id="sektor3_nama" value="SEKTOR 3">
         <label>Maklumat Sektor 3</label>
         <input id="sektor3_maklumat" value="Tiada pemadaman dilakukan">
       </div>
-      <p class="hint">Masukkan nama dan maklumat untuk setiap sektor. Kosongkan jika tidak perlu.</p>
+
+      <div class="toggle-item">
+        <div class="toggle-row">
+          <input type="checkbox" id="showSektor4">
+          <label for="showSektor4">Sektor 4</label>
+        </div>
+        <label>Nama Sektor 4</label>
+        <input id="sektor4_nama" value="SEKTOR 4">
+        <label>Maklumat Sektor 4</label>
+        <input id="sektor4_maklumat" value="">
+      </div>
+
+      <p class="hint">Tandakan sektor yang berkaitan sahaja — jika hanya 1 sektor terlibat, nyahtanda sektor lain. "Tunjukkan Maklumat Sektor" mengawal keseluruhan bahagian ini.</p>
     </div>
 
     <div class="blok">
@@ -964,19 +999,23 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
             </div>
 
             <!-- ===== SEKTOR OPERASI ===== -->
-            <div class="sektor-block">
+            <div class="sektor-block toggle-field" id="row-sektorBlock">
               <p class="pill" style="margin-top:8px;"><span class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span> SEKTOR OPERASI</p>
-              <div class="sektor-row" id="sektor1-row">
+              <div class="sektor-row toggle-field" id="sektor1-row">
                 <span class="sektor-nama" id="out-sektor1_nama">SEKTOR 1</span>
                 <span class="sektor-maklumat" id="out-sektor1_maklumat">Tiada pemadaman dilakukan</span>
               </div>
-              <div class="sektor-row" id="sektor2-row">
+              <div class="sektor-row toggle-field" id="sektor2-row">
                 <span class="sektor-nama" id="out-sektor2_nama">SEKTOR 2</span>
                 <span class="sektor-maklumat" id="out-sektor2_maklumat">1 pam GP 10/10, 1 breaching, 3 pancutan dan 700 kaki salur dari sumber air terbuka</span>
               </div>
-              <div class="sektor-row" id="sektor3-row">
+              <div class="sektor-row toggle-field" id="sektor3-row">
                 <span class="sektor-nama" id="out-sektor3_nama">SEKTOR 3</span>
                 <span class="sektor-maklumat" id="out-sektor3_maklumat">Tiada pemadaman dilakukan</span>
+              </div>
+              <div class="sektor-row toggle-field" id="sektor4-row">
+                <span class="sektor-nama" id="out-sektor4_nama">SEKTOR 4</span>
+                <span class="sektor-maklumat" id="out-sektor4_maklumat"></span>
               </div>
             </div>
 
@@ -1129,11 +1168,12 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
   const numIds = ["jumlahKeluasan","keluasanDipadam"];
   const selectIds = ["statusOperasi"];
 
-  // ID untuk sektor
+  // ID untuk sektor (4 sektor, setiap satu ada tickbox tunjuk/sembunyi)
   const sektorFields = [
-    { nama: "sektor1_nama", maklumat: "sektor1_maklumat" },
-    { nama: "sektor2_nama", maklumat: "sektor2_maklumat" },
-    { nama: "sektor3_nama", maklumat: "sektor3_maklumat" }
+    { nama: "sektor1_nama", maklumat: "sektor1_maklumat", row: "sektor1-row", show: "showSektor1" },
+    { nama: "sektor2_nama", maklumat: "sektor2_maklumat", row: "sektor2-row", show: "showSektor2" },
+    { nama: "sektor3_nama", maklumat: "sektor3_maklumat", row: "sektor3-row", show: "showSektor3" },
+    { nama: "sektor4_nama", maklumat: "sektor4_maklumat", row: "sektor4-row", show: "showSektor4" }
   ];
 
   // Tajuk gambar
@@ -1190,7 +1230,22 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       const outMaklumat = document.getElementById("out-"+sf.maklumat);
       if (namaEl && outNama) outNama.textContent = namaEl.value || "SEKTOR "+(idx+1);
       if (maklumatEl && outMaklumat) outMaklumat.textContent = maklumatEl.value || "-";
+
+      const showCb = document.getElementById(sf.show);
+      const row = document.getElementById(sf.row);
+      if (showCb && row){
+        if (showCb.checked) row.classList.remove("hidden-field");
+        else row.classList.add("hidden-field");
+      }
     });
+
+    // Togol keseluruhan blok Sektor Operasi
+    const showSektorBlockCb = document.getElementById("showSektorBlock");
+    const sektorBlockEl = document.getElementById("row-sektorBlock");
+    if (showSektorBlockCb && sektorBlockEl){
+      if (showSektorBlockCb.checked) sektorBlockEl.classList.remove("hidden-field");
+      else sektorBlockEl.classList.add("hidden-field");
+    }
 
     // --- Gambar (Page 2) ---
     const showGambarCb = document.getElementById("showGambar");
@@ -1295,6 +1350,11 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
 
   document.getElementById("showBackground")?.addEventListener("change", render);
   document.getElementById("showGambar")?.addEventListener("change", render);
+  document.getElementById("showSektorBlock")?.addEventListener("change", render);
+  sektorFields.forEach(sf => {
+    const cb = document.getElementById(sf.show);
+    if (cb) cb.addEventListener("change", render);
+  });
 
   toggleFieldIds.forEach(id => {
     const cb = document.getElementById("show"+id.charAt(0).toUpperCase()+id.slice(1));
