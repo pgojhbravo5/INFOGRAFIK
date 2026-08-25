@@ -16,7 +16,7 @@
     --abu: #b9c0c9;
     --teks: #1c1c1c;
     --bg-app: #eef1f6;
-    --padding-umum: 12px;      /* untuk halaman 1 */
+    --padding-umum: 12px;
     --padding-header: 14px;
   }
   *{box-sizing:border-box;}
@@ -30,7 +30,6 @@
     display:flex;
     min-height:100vh;
   }
-  /* ---------- PANEL INPUT ---------- */
   .panel-input{
     width:420px;
     flex-shrink:0;
@@ -115,7 +114,6 @@
     margin:-4px 0 8px;
     line-height:1.4;
   }
-  /* ---------- IKON ---------- */
   .icon-svg{
     display:inline-block;
     width:14px;
@@ -216,7 +214,6 @@
   }
   .sektor-item:last-child{border-bottom:none;}
 
-  /* ---------- PREVIEW (3 halaman) ---------- */
   .preview-wrap{
     flex:1;
     display:flex;
@@ -233,7 +230,6 @@
     width:1122px;
     flex-shrink:0;
   }
-  /* ===== CARD ===== */
   .card{
     width:100%;
     background:#fff;
@@ -263,7 +259,6 @@
   .card-bg.hidden { display: none; }
   .card > *:not(.card-bg) { position: relative; z-index: 1; }
 
-  /* HEADER - padding kiri/kanan kekal 26px */
   .header{
     position:relative;
     padding:var(--padding-header) 26px 8px;
@@ -345,7 +340,7 @@
     border-radius:3px;
   }
 
-  /* ===== BADAN PAGE 1 (SITREP) - MARGIN DIKECILKAN ===== */
+  /* --- PAGE 1 (SITREP) --- */
   .body-sitrep{
     padding:var(--padding-umum) 26px 4px;
     flex:1;
@@ -529,9 +524,9 @@
     word-break:break-word;
   }
 
-  /* ===== BADAN PAGE 2 & 3 (GAMBAR) - KEKAL MARGIN LAMA ===== */
+  /* --- PAGE 2 & 3 (GAMBAR) --- */
   .body-gambar{
-    padding:13px 26px 6px;   /* padding asal (tidak dikecilkan) */
+    padding:13px 26px 6px;
     flex:1 1 auto;
     display:flex;
     flex-direction:column;
@@ -544,7 +539,7 @@
     display:grid;
     grid-template-columns:1fr 1fr;
     grid-template-rows:1fr 1fr;
-    gap:10px 16px;           /* gap asal (tidak dikecilkan) */
+    gap:10px 16px;
     flex:1 1 auto;
     min-height:0;
   }
@@ -552,12 +547,12 @@
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:3px;                 /* gap asal */
+    gap:3px;
     min-height:0;
     height:auto;
   }
   .gambar-item-card .gambar-tajuk {
-    font-size:12px;           /* saiz asal */
+    font-size:12px;
     font-weight:700;
     color:var(--biru-gelap);
     text-transform:uppercase;
@@ -609,7 +604,6 @@
   .hidden-field{ display:none !important; }
   .hidden-page{ display:none !important; }
 
-  /* ========== RESPONSIVE ========== */
   @media (max-width: 1250px){
     .app{flex-direction:column;}
     .panel-input{width:100%; max-height:none; border-right:none; border-bottom:1px solid #dbe0e8;}
@@ -618,7 +612,7 @@
     .card{width:100%; max-width:100%;}
   }
 
-  /* ========== CETAK / PDF - LANDSCAPE ========== */
+  /* ========== CETAK / PDF - DIPERBAIKI ========== */
   @page{
     size: landscape;
     margin: 0mm;
@@ -630,37 +624,49 @@
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
       color-adjust: exact !important;
+      box-sizing: border-box !important;
     }
-    body{ 
-      background:#fff; 
-      margin:0; 
-      padding:0;
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
       transform: rotate(0deg) !important;
     }
     .panel-input{ display:none !important; }
-    .preview-wrap{ 
-      padding:0 !important; 
-      align-items:stretch !important;
+    .preview-wrap{
+      padding:0 !important;
+      margin:0 !important;
       display:block !important;
-    }
-    .pages-container{
-      gap:0;
-      width:100% !important;
-      max-width:100% !important;
-      margin:0 auto;
-      display:block !important;
-    }
-    .card{
       width:100% !important;
       height:100% !important;
-      min-height:100% !important;
-      box-shadow:none !important;
+    }
+    .pages-container{
+      display:block !important;
+      width:100% !important;
+      max-width:100% !important;
+      margin:0 !important;
+      padding:0 !important;
+      gap:0 !important;
+    }
+    .card{
+      display:flex !important;
+      flex-direction:column !important;
+      width:100% !important;
+      height:100vh !important;
+      max-height:100vh !important;
+      min-height:100vh !important;
+      margin:0 !important;
+      padding:0 !important;
       border-radius:0 !important;
+      box-shadow:none !important;
       aspect-ratio:auto !important;
-      page-break-after:always;
-      page-break-inside:avoid;
-      background: #fff !important;
-      transform: scale(1) rotate(0deg) !important;
+      page-break-after:always !important;
+      page-break-inside:avoid !important;
+      overflow:hidden !important;  /* PENTING: elak limpahan */
+      background:#fff !important;
+      transform:scale(1) rotate(0deg) !important;
     }
     .card:last-child{ page-break-after:auto; }
 
@@ -672,48 +678,46 @@
       opacity: 0.45 !important;
       display: block !important;
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 0;
-      pointer-events: none;
+      top:0; left:0;
+      width:100%; height:100%;
+      z-index:0;
+      pointer-events:none;
     }
-    .card-bg.hidden { display: none !important; }
+    .card-bg.hidden { display:none !important; }
 
-    .body-sitrep, .body-gambar {
+    .header {
+      background: linear-gradient(135deg, rgba(255,255,255,0.65) 55%, rgba(244,246,250,0.65) 55%) !important;
+      flex-shrink:0 !important;
+      padding: 12px 26px 6px !important;
+    }
+    .body-sitrep {
+      flex: 1 1 auto !important;
+      min-height: 0 !important;
+      overflow: hidden !important;  /* elak scroll */
+      padding: 10px 26px 4px !important;
       background: rgba(255,255,255,0.35) !important;
       backdrop-filter: blur(1px) !important;
     }
-    .header {
-      background: linear-gradient(135deg, rgba(255,255,255,0.65) 55%, rgba(244,246,250,0.65) 55%) !important;
-    }
-
-    .catatan-block {
-      max-height: none !important;
-      overflow-y: visible !important;
-      flex: 1 !important;
-      margin-top: 2px !important;
-      margin-bottom: 4px !important;
-    }
-    .sektor-row { border-bottom:1px solid rgba(240,241,244,0.3) !important; }
-    .info-row { border-bottom:1px solid rgba(240,241,244,0.4) !important; }
-    .bar-track { background:rgba(228,231,238,0.5) !important; }
-    .stat-box { background:rgba(246,248,251,0.5) !important; }
-    .badge.operasi { background:rgba(255,244,224,0.7) !important; }
-    .badge.mangsa { background:rgba(233,241,255,0.7) !important; }
-    .komander { background:var(--biru-gelap) !important; }
-    .footer { background:linear-gradient(90deg, var(--biru-gelap), var(--merah) 60%, var(--kuning) 100%) !important; }
-
-    .grid-gambar {
-      flex: 1 !important;
-      height: 100% !important;
+    .body-gambar {
+      flex: 1 1 auto !important;
       min-height: 0 !important;
+      overflow: hidden !important;
+      padding: 10px 26px 4px !important;
+      background: rgba(255,255,255,0.35) !important;
+      backdrop-filter: blur(1px) !important;
+    }
+    .grid-gambar {
+      flex: 1 1 auto !important;
+      min-height: 0 !important;
+      height: 100% !important;
+      gap: 8px 12px !important;
     }
     .gambar-item-card {
       height: 100% !important;
       min-height: 0 !important;
     }
     .gambar-item-card .gambar-wadah {
-      flex: 1 !important;
+      flex: 1 1 auto !important;
       min-height: 0 !important;
       height: 100% !important;
     }
@@ -721,6 +725,104 @@
       width: 100% !important;
       height: 100% !important;
       object-fit: contain !important;
+    }
+    .gambar-item-card .gambar-tajuk {
+      font-size: 11px !important;
+    }
+    .gambar-item-card .gambar-kosong {
+      font-size: 8px !important;
+      padding: 4px !important;
+    }
+
+    /* Catatan: hadkan ketinggian dan elak limpahan */
+    .catatan-block {
+      max-height: 80px !important;
+      overflow: hidden !important;  /* potong jika terlalu panjang */
+      flex-shrink: 0 !important;
+      margin-top: 2px !important;
+      margin-bottom: 2px !important;
+      padding: 4px 8px !important;
+      font-size: 9px !important;
+      line-height: 1.3 !important;
+    }
+    .catatan-block .catatan-teks {
+      white-space: pre-wrap !important;
+      word-break: break-word !important;
+      max-height: 70px !important;
+      overflow: hidden !important;
+    }
+
+    .footer {
+      flex-shrink: 0 !important;
+      padding: 4px !important;
+      font-size: 8px !important;
+      background: linear-gradient(90deg, var(--biru-gelap), var(--merah) 60%, var(--kuning) 100%) !important;
+    }
+
+    /* Sembunyikan elemen yang tidak perlu dalam print */
+    .info-row, .sektor-row, .badge, .komander, .stat-box, .bar-track, .status-hero {
+      /* semua tetap kelihatan, cuma pastikan tiada overflow */
+    }
+    .pill {
+      font-size: 9px !important;
+      padding: 2px 6px !important;
+      margin: 0 0 3px !important;
+    }
+    .info-row {
+      font-size: 9px !important;
+      padding: 1px 0 !important;
+      gap: 4px !important;
+    }
+    .info-row .label {
+      min-width: 100px !important;
+    }
+    .sektor-row {
+      font-size: 9px !important;
+      padding: 1px 0 !important;
+    }
+    .sektor-row .sektor-nama {
+      min-width: 50px !important;
+    }
+    .status-hero .pct {
+      font-size: 22px !important;
+    }
+    .stat-box .num {
+      font-size: 11px !important;
+    }
+    .komander {
+      font-size: 8px !important;
+      padding: 2px 6px !important;
+      margin-bottom: 1px !important;
+    }
+    .badge {
+      font-size: 8px !important;
+      padding: 2px 6px !important;
+    }
+    .badge-row {
+      gap: 2px !important;
+      margin: 2px 0 !important;
+    }
+    .headline {
+      font-size: 17px !important;
+    }
+    .subline {
+      font-size: 9px !important;
+      padding: 1px 6px !important;
+    }
+    .logo-text {
+      font-size: 15px !important;
+    }
+    .logo img {
+      height: 36px !important;
+    }
+    .kicker {
+      font-size: 9px !important;
+    }
+    .lokasi-tag {
+      font-size: 8px !important;
+    }
+    .lokasi-tag .tarikh-laporan-val {
+      font-size: 8px !important;
     }
   }
 </style>
@@ -932,7 +1034,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       <input id="k2tel" value="019-777 9876">
     </div>
 
-    <!-- ===== GAMBAR HALAMAN 2 (4 gambar) ===== -->
+    <!-- ===== GAMBAR HALAMAN 2 ===== -->
     <div class="blok">
       <p class="section-title"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.7" fill="currentColor" stroke="none"/><path d="M21 16l-5.5-5.5a2 2 0 0 0-2.8 0L4 19"/></svg> Gambar Halaman 2</p>
       <div class="toggle-item">
@@ -941,44 +1043,37 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
           <label for="showGambarPage2">Tunjukkan Halaman 2 (Gambar 1–4)</label>
         </div>
         <p class="hint" style="margin:2px 0 6px;">Muat naik gambar 1–4.</p>
-
+        <!-- Gambar 1-4 (sama seperti sebelumnya, dipendekkan untuk penjimatan ruang) -->
         <div class="gambar-item">
-          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Tajuk Gambar 1</label>
-          <input id="gambarTajuk1" placeholder="Tajuk 1" value="GAMBAR 1">
-          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Fail 1</label>
+          <label>Tajuk Gambar 1</label>
+          <input id="gambarTajuk1" value="GAMBAR 1">
           <div class="file-input-wrap">
             <input type="file" id="gambarFile1" accept=".jpg,.jpeg,image/jpeg">
             <span class="file-name" id="fileName1">Tiada fail</span>
             <button class="btn-padam-gambar" id="padamBtn1" style="display:none;" onclick="padamGambar(0)">✕ Padam</button>
           </div>
         </div>
-
         <div class="gambar-item">
-          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Tajuk Gambar 2</label>
-          <input id="gambarTajuk2" placeholder="Tajuk 2" value="GAMBAR 2">
-          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Fail 2</label>
+          <label>Tajuk Gambar 2</label>
+          <input id="gambarTajuk2" value="GAMBAR 2">
           <div class="file-input-wrap">
             <input type="file" id="gambarFile2" accept=".jpg,.jpeg,image/jpeg">
             <span class="file-name" id="fileName2">Tiada fail</span>
             <button class="btn-padam-gambar" id="padamBtn2" style="display:none;" onclick="padamGambar(1)">✕ Padam</button>
           </div>
         </div>
-
         <div class="gambar-item">
-          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Tajuk Gambar 3</label>
-          <input id="gambarTajuk3" placeholder="Tajuk 3" value="GAMBAR 3">
-          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Fail 3</label>
+          <label>Tajuk Gambar 3</label>
+          <input id="gambarTajuk3" value="GAMBAR 3">
           <div class="file-input-wrap">
             <input type="file" id="gambarFile3" accept=".jpg,.jpeg,image/jpeg">
             <span class="file-name" id="fileName3">Tiada fail</span>
             <button class="btn-padam-gambar" id="padamBtn3" style="display:none;" onclick="padamGambar(2)">✕ Padam</button>
           </div>
         </div>
-
         <div class="gambar-item">
-          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Tajuk Gambar 4</label>
-          <input id="gambarTajuk4" placeholder="Tajuk 4" value="GAMBAR 4">
-          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Fail 4</label>
+          <label>Tajuk Gambar 4</label>
+          <input id="gambarTajuk4" value="GAMBAR 4">
           <div class="file-input-wrap">
             <input type="file" id="gambarFile4" accept=".jpg,.jpeg,image/jpeg">
             <span class="file-name" id="fileName4">Tiada fail</span>
@@ -988,7 +1083,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       </div>
     </div>
 
-    <!-- ===== GAMBAR HALAMAN 3 (4 gambar tambahan) ===== -->
+    <!-- ===== GAMBAR HALAMAN 3 ===== -->
     <div class="blok">
       <p class="section-title"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.7" fill="currentColor" stroke="none"/><path d="M21 16l-5.5-5.5a2 2 0 0 0-2.8 0L4 19"/></svg> Gambar Halaman 3</p>
       <div class="toggle-item">
@@ -997,44 +1092,37 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
           <label for="showGambarPage3">Tunjukkan Halaman 3 (Gambar 5–8)</label>
         </div>
         <p class="hint" style="margin:2px 0 6px;">Muat naik gambar 5–8.</p>
-
+        <!-- Gambar 5-8 -->
         <div class="gambar-item">
-          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Tajuk Gambar 5</label>
-          <input id="gambarTajuk5" placeholder="Tajuk 5" value="GAMBAR 5">
-          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Fail 5</label>
+          <label>Tajuk Gambar 5</label>
+          <input id="gambarTajuk5" value="GAMBAR 5">
           <div class="file-input-wrap">
             <input type="file" id="gambarFile5" accept=".jpg,.jpeg,image/jpeg">
             <span class="file-name" id="fileName5">Tiada fail</span>
             <button class="btn-padam-gambar" id="padamBtn5" style="display:none;" onclick="padamGambar(4)">✕ Padam</button>
           </div>
         </div>
-
         <div class="gambar-item">
-          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Tajuk Gambar 6</label>
-          <input id="gambarTajuk6" placeholder="Tajuk 6" value="GAMBAR 6">
-          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Fail 6</label>
+          <label>Tajuk Gambar 6</label>
+          <input id="gambarTajuk6" value="GAMBAR 6">
           <div class="file-input-wrap">
             <input type="file" id="gambarFile6" accept=".jpg,.jpeg,image/jpeg">
             <span class="file-name" id="fileName6">Tiada fail</span>
             <button class="btn-padam-gambar" id="padamBtn6" style="display:none;" onclick="padamGambar(5)">✕ Padam</button>
           </div>
         </div>
-
         <div class="gambar-item">
-          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Tajuk Gambar 7</label>
-          <input id="gambarTajuk7" placeholder="Tajuk 7" value="GAMBAR 7">
-          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Fail 7</label>
+          <label>Tajuk Gambar 7</label>
+          <input id="gambarTajuk7" value="GAMBAR 7">
           <div class="file-input-wrap">
             <input type="file" id="gambarFile7" accept=".jpg,.jpeg,image/jpeg">
             <span class="file-name" id="fileName7">Tiada fail</span>
             <button class="btn-padam-gambar" id="padamBtn7" style="display:none;" onclick="padamGambar(6)">✕ Padam</button>
           </div>
         </div>
-
         <div class="gambar-item">
-          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Tajuk Gambar 8</label>
-          <input id="gambarTajuk8" placeholder="Tajuk 8" value="GAMBAR 8">
-          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Fail 8</label>
+          <label>Tajuk Gambar 8</label>
+          <input id="gambarTajuk8" value="GAMBAR 8">
           <div class="file-input-wrap">
             <input type="file" id="gambarFile8" accept=".jpg,.jpeg,image/jpeg">
             <span class="file-name" id="fileName8">Tiada fail</span>
@@ -1045,7 +1133,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     </div>
 
     <div class="blok" style="border-bottom:none;">
-      <label>Tagline Footer (untuk semua halaman)</label>
+      <label>Tagline Footer</label>
       <input id="tagline" value="“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia">
     </div>
 
@@ -1057,7 +1145,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
   <main class="preview-wrap">
     <div class="pages-container" id="pagesContainer">
 
-      <!-- ===== PAGE 1 ===== -->
+      <!-- PAGE 1 -->
       <div class="card" id="page1">
         <div class="card-bg" id="cardBg1"></div>
         <div class="header">
@@ -1079,75 +1167,36 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
         </div>
         <div class="body-sitrep">
           <div class="col-left">
-            <p class="pill"><span class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 22s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span> MAKLUMAT INSIDEN</p>
+            <p class="pill">MAKLUMAT INSIDEN</p>
             <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></div><div class="label">Tarikh / Masa Penggilan:</div><div class="val" id="out-tarikhMasa">17 OGOS 2026 | 09:12:00 HRS</div></div>
             <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v6H8V7a4 4 0 0 1 4-4z"/><line x1="12" y1="1" x2="12" y2="3"/><rect x="4" y="13" width="16" height="3" rx="1"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg></div><div class="label">Masa Tiba &amp; Jarak:</div><div class="val" id="out-masaTiba">09:42:00 HRS (JARAK: 20 KM)</div></div>
             <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 22s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div class="label">Lokasi:</div><div class="val" id="out-lokasiPenuh">LOT 15060 KG PAYA KOPI, PAGOH (BIOTECH)</div></div>
-            <div class="info-row toggle-field" id="row-masaOperasiTerkawal">
-              <div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><line x1="12" y1="13" x2="12" y2="9"/><line x1="9" y1="2" x2="15" y2="2"/><line x1="12" y1="2" x2="12" y2="5"/></svg></div>
-              <div class="label">Masa Operasi Terkawal:</div>
-              <div class="val" id="out-masaOperasiTerkawal">Tiada</div>
-            </div>
-            <div class="info-row toggle-field" id="row-masaOperasiTamat">
-              <div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><line x1="12" y1="13" x2="12" y2="9"/><line x1="9" y1="2" x2="15" y2="2"/><line x1="12" y1="2" x2="12" y2="5"/></svg></div>
-              <div class="label">Masa Operasi Tamat:</div>
-              <div class="val" id="out-masaOperasiTamat">Operasi Tangguh</div>
-            </div>
-            <p class="pill follow"><span class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2c1 4-4 5-4 9a4 4 0 0 0 8 0c0-1.5-1-2.5-1-2.5s2 1 2 4.5a6 6 0 1 1-12 0C5 8 9 6 12 2z"/></svg></span> STATUS PEMADAMAN (PROGRESS)</p>
-            <div class="status-hero">
-              <div><div class="pct" id="out-pct">95.6%</div><div class="pct-label">Completed</div></div>
-              <div class="terjejas">"Jumlah Keluasan Terjejas"<b id="out-jumlahKeluasan">3.64 Hektar</b></div>
-            </div>
+            <div class="info-row toggle-field" id="row-masaOperasiTerkawal"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><line x1="12" y1="13" x2="12" y2="9"/><line x1="9" y1="2" x2="15" y2="2"/><line x1="12" y1="2" x2="12" y2="5"/></svg></div><div class="label">Masa Operasi Terkawal:</div><div class="val" id="out-masaOperasiTerkawal">Tiada</div></div>
+            <div class="info-row toggle-field" id="row-masaOperasiTamat"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><line x1="12" y1="13" x2="12" y2="9"/><line x1="9" y1="2" x2="15" y2="2"/><line x1="12" y1="2" x2="12" y2="5"/></svg></div><div class="label">Masa Operasi Tamat:</div><div class="val" id="out-masaOperasiTamat">Operasi Tangguh</div></div>
+            <p class="pill follow">STATUS PEMADAMAN (PROGRESS)</p>
+            <div class="status-hero"><div><div class="pct" id="out-pct">95.6%</div><div class="pct-label">Completed</div></div><div class="terjejas">"Jumlah Keluasan Terjejas"<b id="out-jumlahKeluasan">3.64 Hektar</b></div></div>
             <div class="bar-track"><div class="bar-fill" id="out-bar" style="width:95.6%;"></div></div>
-            <div class="stat-2col">
-              <div class="stat-box"><div class="lbl">Keluasan Berhasil Dipadam</div><div class="num" id="out-keluasanDipadam">3.48 Hektar</div></div>
-              <div class="stat-box"><div class="lbl">Baki Belum Dipadam</div><div class="num" id="out-baki">0.16 Hektar</div></div>
-            </div>
+            <div class="stat-2col"><div class="stat-box"><div class="lbl">Keluasan Berhasil Dipadam</div><div class="num" id="out-keluasanDipadam">3.48 Hektar</div></div><div class="stat-box"><div class="lbl">Baki Belum Dipadam</div><div class="num" id="out-baki">0.16 Hektar</div></div></div>
             <div class="sektor-block toggle-field" id="row-sektorBlock">
-              <p class="pill" style="margin-top:4px;"><span class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span> SEKTOR OPERASI</p>
-              <div class="sektor-row toggle-field" id="sektor1-row">
-                <span class="sektor-nama" id="out-sektor1_nama">SEKTOR 1</span>
-                <span class="sektor-maklumat" id="out-sektor1_maklumat">Tiada pemadaman dilakukan</span>
-              </div>
-              <div class="sektor-row toggle-field" id="sektor2-row">
-                <span class="sektor-nama" id="out-sektor2_nama">SEKTOR 2</span>
-                <span class="sektor-maklumat" id="out-sektor2_maklumat">1 pam GP 10/10, 1 breaching, 3 pancutan dan 700 kaki salur dari sumber air terbuka</span>
-              </div>
-              <div class="sektor-row toggle-field" id="sektor3-row">
-                <span class="sektor-nama" id="out-sektor3_nama">SEKTOR 3</span>
-                <span class="sektor-maklumat" id="out-sektor3_maklumat">Tiada pemadaman dilakukan</span>
-              </div>
-              <div class="sektor-row toggle-field" id="sektor4-row">
-                <span class="sektor-nama" id="out-sektor4_nama">SEKTOR 4</span>
-                <span class="sektor-maklumat" id="out-sektor4_maklumat"></span>
-              </div>
+              <p class="pill" style="margin-top:4px;">SEKTOR OPERASI</p>
+              <div class="sektor-row toggle-field" id="sektor1-row"><span class="sektor-nama" id="out-sektor1_nama">SEKTOR 1</span><span class="sektor-maklumat" id="out-sektor1_maklumat">Tiada pemadaman dilakukan</span></div>
+              <div class="sektor-row toggle-field" id="sektor2-row"><span class="sektor-nama" id="out-sektor2_nama">SEKTOR 2</span><span class="sektor-maklumat" id="out-sektor2_maklumat">1 pam GP 10/10, 1 breaching, 3 pancutan dan 700 kaki salur dari sumber air terbuka</span></div>
+              <div class="sektor-row toggle-field" id="sektor3-row"><span class="sektor-nama" id="out-sektor3_nama">SEKTOR 3</span><span class="sektor-maklumat" id="out-sektor3_maklumat">Tiada pemadaman dilakukan</span></div>
+              <div class="sektor-row toggle-field" id="sektor4-row"><span class="sektor-nama" id="out-sektor4_nama">SEKTOR 4</span><span class="sektor-maklumat" id="out-sektor4_maklumat"></span></div>
             </div>
           </div>
           <div class="col-right">
-            <p class="pill"><span class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg></span> TACTICAL OPERASI &amp; LOGISTIK</p>
+            <p class="pill">TACTICAL OPERASI &amp; LOGISTIK</p>
             <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v6H8V7a4 4 0 0 1 4-4z"/><line x1="12" y1="1" x2="12" y2="3"/><rect x="4" y="13" width="16" height="3" rx="1"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg></div><div class="label">Tindakan Pemadaman:</div><div class="val" id="out-tindakan">Operasi menggunakan 3 unit Pam GP 10/10</div></div>
             <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 13a7.97 7.97 0 0 0 0-2l2.1-1.6-2-3.4-2.5 1a8 8 0 0 0-1.7-1L14.9 3h-4l-.4 2.9a8 8 0 0 0-1.7 1l-2.5-1-2 3.4L6.4 11a7.97 7.97 0 0 0 0 2l-2.1 1.6 2 3.4 2.5-1a8 8 0 0 0 1.7 1l.4 2.9h4l.4-2.9a8 8 0 0 0 1.7-1l2.5 1 2-3.4L19.4 13z"/></svg></div><div class="label">Aset Jentera:</div><div class="val" id="out-asetJentera">1x FRT, 1x HICOM, 1x Utiliti</div></div>
             <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.6"/><path d="M15 14.2c2.3.6 4 2.6 4 5.8"/></svg></div><div class="label">Kekuatan Anggota:</div><div class="val" id="out-kekuatan">7 Anggota BBP Pagoh</div></div>
-            <div class="info-row toggle-field" id="row-keanggotaanUnit">
-              <div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="4" y="3" width="12" height="18" rx="1"/><line x1="8" y1="7" x2="8" y2="7.01"/><line x1="12" y1="7" x2="12" y2="7.01"/><line x1="8" y1="11" x2="8" y2="11.01"/><line x1="12" y1="11" x2="12" y2="11.01"/><line x1="8" y1="15" x2="8" y2="15.01"/><line x1="12" y1="15" x2="12" y2="15.01"/><path d="M16 21v-6h4v6"/></svg></div>
-              <div class="label">Keanggotaan:</div>
-              <div class="val" id="out-keanggotaanUnit">BBP Pagoh</div>
-            </div>
-            <div class="badge-row">
-              <div class="badge operasi"><span class="dot"></span><span id="out-statusOperasi">MASIH BEROPERASI</span></div>
-              <div class="badge mangsa"><span><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="9" width="20" height="6" rx="3"/><line x1="9" y1="9" x2="9" y2="15"/><line x1="15" y1="9" x2="15" y2="15"/></svg></span><span id="out-statusMangsa">TIADA MANGSA</span></div>
-            </div>
-            <p class="pill follow"><span class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 2 6a2 2 0 0 1 2-2z"/></svg></span> HUBUNGI KOMANDER OPERASI</p>
-            <div class="komander">
-              <div><div class="nama" id="out-k1nama">PBK I Jafry Bin Hashim</div><div class="peranan" id="out-k1peranan">Komander Operasi</div></div>
-              <div class="tel" id="out-k1tel">013-555 1234</div>
-            </div>
-            <div class="komander">
-              <div><div class="nama" id="out-k2nama">PKPgB Mohd Fadli Bin Ismail</div><div class="peranan" id="out-k2peranan">Komander Operasi Kanan</div></div>
-              <div class="tel" id="out-k2tel">019-777 9876</div>
-            </div>
+            <div class="info-row toggle-field" id="row-keanggotaanUnit"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="4" y="3" width="12" height="18" rx="1"/><line x1="8" y1="7" x2="8" y2="7.01"/><line x1="12" y1="7" x2="12" y2="7.01"/><line x1="8" y1="11" x2="8" y2="11.01"/><line x1="12" y1="11" x2="12" y2="11.01"/><line x1="8" y1="15" x2="8" y2="15.01"/><line x1="12" y1="15" x2="12" y2="15.01"/><path d="M16 21v-6h4v6"/></svg></div><div class="label">Keanggotaan:</div><div class="val" id="out-keanggotaanUnit">BBP Pagoh</div></div>
+            <div class="badge-row"><div class="badge operasi"><span class="dot"></span><span id="out-statusOperasi">MASIH BEROPERASI</span></div><div class="badge mangsa"><span><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="9" width="20" height="6" rx="3"/><line x1="9" y1="9" x2="9" y2="15"/><line x1="15" y1="9" x2="15" y2="15"/></svg></span><span id="out-statusMangsa">TIADA MANGSA</span></div></div>
+            <p class="pill follow">HUBUNGI KOMANDER OPERASI</p>
+            <div class="komander"><div><div class="nama" id="out-k1nama">PBK I Jafry Bin Hashim</div><div class="peranan" id="out-k1peranan">Komander Operasi</div></div><div class="tel" id="out-k1tel">013-555 1234</div></div>
+            <div class="komander"><div><div class="nama" id="out-k2nama">PKPgB Mohd Fadli Bin Ismail</div><div class="peranan" id="out-k2peranan">Komander Operasi Kanan</div></div><div class="tel" id="out-k2tel">019-777 9876</div></div>
             <div class="catatan-block toggle-field" id="row-catatan">
-              <div class="catatan-label"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg> Catatan Operasi</div>
+              <div class="catatan-label">Catatan Operasi</div>
               <div class="catatan-teks" id="out-catatan">23.08.2026 (operasi sambungan 22.08.2026)
 Setibanya PKO ke lokasi pada jam 09:30:00, didapati kebakaran kebun gambut di Kampung Paya Kopi Pagoh masih berlaku dengan baki keluasan 2.2 ekar yang masih terbakar dan berasap. PKO bertindak menjalankan operasi pemadaman menggunakan 3 pam GP 10/10.
 Sektor 1: Tiada pemadaman dilakukan
@@ -1167,21 +1216,13 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
         <div class="footer" id="out-tagline1">“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia</div>
       </div>
 
-      <!-- ===== PAGE 2 (GAMBAR 1-4) ===== -->
+      <!-- PAGE 2 (GAMBAR 1-4) -->
       <div class="card" id="page2">
         <div class="card-bg" id="cardBg2"></div>
         <div class="header">
           <div class="header-top">
-            <div class="logo">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Logo_of_the_Malaysian_Fire_and_Rescue_Department.svg" alt="Logo JBPM">
-              <span class="logo-text">JABATAN BOMBA DAN PENYELAMAT MALAYSIA NEGERI JOHOR</span>
-            </div>
-            <div class="lokasi-tag">
-              <span>Lokasi</span>
-              <span id="out2-lokasiTag" style="color:var(--merah); font-size:10px;">KAMPUNG PAYA KOPI</span>
-              <span class="tarikh-laporan">Tarikh Laporan</span>
-              <span class="tarikh-laporan-val" id="out2-tarikhLaporan">25 OGOS 2026 (SELASA)</span>
-            </div>
+            <div class="logo"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Logo_of_the_Malaysian_Fire_and_Rescue_Department.svg" alt="Logo"><span class="logo-text">JABATAN BOMBA DAN PENYELAMAT MALAYSIA NEGERI JOHOR</span></div>
+            <div class="lokasi-tag"><span>Lokasi</span><span id="out2-lokasiTag" style="color:var(--merah); font-size:10px;">KAMPUNG PAYA KOPI</span><span class="tarikh-laporan">Tarikh Laporan</span><span class="tarikh-laporan-val" id="out2-tarikhLaporan">25 OGOS 2026 (SELASA)</span></div>
           </div>
           <p class="kicker">LAPORAN SITUASI OPERASI (SITREP)</p>
           <h1 class="headline" id="out2-headline">INSIDEN KEBAKARAN KEBUN TANAH GAMBUT</h1>
@@ -1189,54 +1230,22 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
         </div>
         <div class="body-gambar">
           <div class="grid-gambar">
-            <div class="gambar-item-card">
-              <div class="gambar-tajuk" id="out-gambarTajuk1">GAMBAR 1</div>
-              <div class="gambar-wadah">
-                <img id="gambarImg1" src="" alt="Gambar 1" style="display:none;">
-                <div class="gambar-kosong" id="gambarPlaceholder1">Tiada gambar</div>
-              </div>
-            </div>
-            <div class="gambar-item-card">
-              <div class="gambar-tajuk" id="out-gambarTajuk2">GAMBAR 2</div>
-              <div class="gambar-wadah">
-                <img id="gambarImg2" src="" alt="Gambar 2" style="display:none;">
-                <div class="gambar-kosong" id="gambarPlaceholder2">Tiada gambar</div>
-              </div>
-            </div>
-            <div class="gambar-item-card">
-              <div class="gambar-tajuk" id="out-gambarTajuk3">GAMBAR 3</div>
-              <div class="gambar-wadah">
-                <img id="gambarImg3" src="" alt="Gambar 3" style="display:none;">
-                <div class="gambar-kosong" id="gambarPlaceholder3">Tiada gambar</div>
-              </div>
-            </div>
-            <div class="gambar-item-card">
-              <div class="gambar-tajuk" id="out-gambarTajuk4">GAMBAR 4</div>
-              <div class="gambar-wadah">
-                <img id="gambarImg4" src="" alt="Gambar 4" style="display:none;">
-                <div class="gambar-kosong" id="gambarPlaceholder4">Tiada gambar</div>
-              </div>
-            </div>
+            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk1">GAMBAR 1</div><div class="gambar-wadah"><img id="gambarImg1" src="" alt="Gambar 1" style="display:none;"><div class="gambar-kosong" id="gambarPlaceholder1">Tiada gambar</div></div></div>
+            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk2">GAMBAR 2</div><div class="gambar-wadah"><img id="gambarImg2" src="" alt="Gambar 2" style="display:none;"><div class="gambar-kosong" id="gambarPlaceholder2">Tiada gambar</div></div></div>
+            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk3">GAMBAR 3</div><div class="gambar-wadah"><img id="gambarImg3" src="" alt="Gambar 3" style="display:none;"><div class="gambar-kosong" id="gambarPlaceholder3">Tiada gambar</div></div></div>
+            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk4">GAMBAR 4</div><div class="gambar-wadah"><img id="gambarImg4" src="" alt="Gambar 4" style="display:none;"><div class="gambar-kosong" id="gambarPlaceholder4">Tiada gambar</div></div></div>
           </div>
         </div>
         <div class="footer" id="out2-tagline">“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia</div>
       </div>
 
-      <!-- ===== PAGE 3 (GAMBAR 5-8) ===== -->
+      <!-- PAGE 3 (GAMBAR 5-8) -->
       <div class="card" id="page3">
         <div class="card-bg" id="cardBg3"></div>
         <div class="header">
           <div class="header-top">
-            <div class="logo">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Logo_of_the_Malaysian_Fire_and_Rescue_Department.svg" alt="Logo JBPM">
-              <span class="logo-text">JABATAN BOMBA DAN PENYELAMAT MALAYSIA NEGERI JOHOR</span>
-            </div>
-            <div class="lokasi-tag">
-              <span>Lokasi</span>
-              <span id="out3-lokasiTag" style="color:var(--merah); font-size:10px;">KAMPUNG PAYA KOPI</span>
-              <span class="tarikh-laporan">Tarikh Laporan</span>
-              <span class="tarikh-laporan-val" id="out3-tarikhLaporan">25 OGOS 2026 (SELASA)</span>
-            </div>
+            <div class="logo"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Logo_of_the_Malaysian_Fire_and_Rescue_Department.svg" alt="Logo"><span class="logo-text">JABATAN BOMBA DAN PENYELAMAT MALAYSIA NEGERI JOHOR</span></div>
+            <div class="lokasi-tag"><span>Lokasi</span><span id="out3-lokasiTag" style="color:var(--merah); font-size:10px;">KAMPUNG PAYA KOPI</span><span class="tarikh-laporan">Tarikh Laporan</span><span class="tarikh-laporan-val" id="out3-tarikhLaporan">25 OGOS 2026 (SELASA)</span></div>
           </div>
           <p class="kicker">LAPORAN SITUASI OPERASI (SITREP)</p>
           <h1 class="headline" id="out3-headline">INSIDEN KEBAKARAN KEBUN TANAH GAMBUT</h1>
@@ -1244,34 +1253,10 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
         </div>
         <div class="body-gambar">
           <div class="grid-gambar">
-            <div class="gambar-item-card">
-              <div class="gambar-tajuk" id="out-gambarTajuk5">GAMBAR 5</div>
-              <div class="gambar-wadah">
-                <img id="gambarImg5" src="" alt="Gambar 5" style="display:none;">
-                <div class="gambar-kosong" id="gambarPlaceholder5">Tiada gambar</div>
-              </div>
-            </div>
-            <div class="gambar-item-card">
-              <div class="gambar-tajuk" id="out-gambarTajuk6">GAMBAR 6</div>
-              <div class="gambar-wadah">
-                <img id="gambarImg6" src="" alt="Gambar 6" style="display:none;">
-                <div class="gambar-kosong" id="gambarPlaceholder6">Tiada gambar</div>
-              </div>
-            </div>
-            <div class="gambar-item-card">
-              <div class="gambar-tajuk" id="out-gambarTajuk7">GAMBAR 7</div>
-              <div class="gambar-wadah">
-                <img id="gambarImg7" src="" alt="Gambar 7" style="display:none;">
-                <div class="gambar-kosong" id="gambarPlaceholder7">Tiada gambar</div>
-              </div>
-            </div>
-            <div class="gambar-item-card">
-              <div class="gambar-tajuk" id="out-gambarTajuk8">GAMBAR 8</div>
-              <div class="gambar-wadah">
-                <img id="gambarImg8" src="" alt="Gambar 8" style="display:none;">
-                <div class="gambar-kosong" id="gambarPlaceholder8">Tiada gambar</div>
-              </div>
-            </div>
+            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk5">GAMBAR 5</div><div class="gambar-wadah"><img id="gambarImg5" src="" alt="Gambar 5" style="display:none;"><div class="gambar-kosong" id="gambarPlaceholder5">Tiada gambar</div></div></div>
+            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk6">GAMBAR 6</div><div class="gambar-wadah"><img id="gambarImg6" src="" alt="Gambar 6" style="display:none;"><div class="gambar-kosong" id="gambarPlaceholder6">Tiada gambar</div></div></div>
+            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk7">GAMBAR 7</div><div class="gambar-wadah"><img id="gambarImg7" src="" alt="Gambar 7" style="display:none;"><div class="gambar-kosong" id="gambarPlaceholder7">Tiada gambar</div></div></div>
+            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk8">GAMBAR 8</div><div class="gambar-wadah"><img id="gambarImg8" src="" alt="Gambar 8" style="display:none;"><div class="gambar-kosong" id="gambarPlaceholder8">Tiada gambar</div></div></div>
           </div>
         </div>
         <div class="footer" id="out3-tagline">“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia</div>
@@ -1283,7 +1268,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
 
 <script>
   // ============================================================
-  //  SKRIP UTAMA — 3 halaman + localStorage + padam gambar
+  //  SKRIP UTAMA (sama seperti sebelumnya, disimpan ringkas)
   // ============================================================
 
   const uploadedImages = [null, null, null, null, null, null, null, null];
@@ -1353,7 +1338,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     ...sektorFields.map(sf => sf.maklumat)
   ];
 
-  // localStorage
   function saveToLocalStorage() {
     try {
       allInputIds.forEach(id => {
@@ -1403,19 +1387,16 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
   }
 
   function render(){
-    // Page 1
     fieldIdsPage1.forEach(id => {
       const el = document.getElementById(id);
       const out = document.getElementById("out-"+id);
       if(el && out) out.textContent = el.value;
     });
-    // Page 2
     fieldIdsPage2.forEach(id => {
       const el = document.getElementById(id);
       const out = document.getElementById("out2-"+id);
       if(el && out) out.textContent = el.value;
     });
-    // Page 3
     fieldIdsPage3.forEach(id => {
       const el = document.getElementById(id);
       const out = document.getElementById("out3-"+id);
