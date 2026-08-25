@@ -465,61 +465,67 @@
     word-break:break-word;
   }
 
-  /* BADAN PAGE 2 (grid 2x2 gambar) */
+  /* ===== BADAN PAGE 2 (grid 2x2 gambar) - DIPERBESARKAN ===== */
   .body-gambar{
-    padding:14px 28px 6px;
+    padding:10px 28px 6px;
     flex:1;
     display:flex;
     flex-direction:column;
     background: rgba(255,255,255,0.35);
     backdrop-filter: blur(1px);
+    min-height:0; /* penting untuk flex anak */
   }
   .grid-gambar{
     display:grid;
     grid-template-columns:1fr 1fr;
+    grid-template-rows:1fr 1fr;  /* dua baris sama tinggi */
     gap:12px 20px;
-    flex:1;
-    align-content:start;
+    flex:1;  /* isi ruang kosong */
+    height:100%;
+    align-content:stretch;
   }
   .gambar-item-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
+    height:100%;
+    justify-content:flex-start;
   }
   .gambar-item-card .gambar-tajuk {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--biru-gelap);
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    text-align: center;
-    line-height: 1.2;
+    font-size:13px;
+    font-weight:700;
+    color:var(--biru-gelap);
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+    text-align:center;
+    line-height:1.2;
+    flex-shrink:0;
   }
   .gambar-item-card .gambar-wadah {
-    width: 100%;
-    max-height: 110px;
-    overflow: hidden;
-    border-radius: 6px;
-    border: 1px solid rgba(0,0,0,0.08);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(255,255,255,0.4);
+    width:100%;
+    flex:1;  /* ambil baki ruang */
+    min-height:0;
+    overflow:hidden;
+    border-radius:6px;
+    border:1px solid rgba(0,0,0,0.08);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:rgba(255,255,255,0.4);
   }
   .gambar-item-card .gambar-wadah img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    max-height: 110px;
-    display: block;
+    width:100%;
+    height:100%;
+    object-fit:contain; /* pastikan gambar nampak penuh tanpa potong */
+    display:block;
   }
   .gambar-item-card .gambar-kosong {
-    padding: 10px;
-    color: #8992a0;
-    font-size: 10px;
-    font-weight: 600;
-    text-align: center;
+    padding:10px;
+    color:#8992a0;
+    font-size:10px;
+    font-weight:600;
+    text-align:center;
   }
 
   .footer{
@@ -554,7 +560,6 @@
     margin: 0mm;
   }
   @media print{
-    /* Penting: paksa browser cetak warna & background */
     * {
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
@@ -576,11 +581,10 @@
       aspect-ratio:auto !important;
       page-break-after:always;
       page-break-inside:avoid;
-      background: #fff !important; /* fallback */
+      background: #fff !important;
     }
     .card:last-child{ page-break-after:auto; }
 
-    /* Paksa background image untuk setiap halaman */
     .card-bg {
       background-image: url('https://raw.githubusercontent.com/pgojhbravo5/INFOGRAFIK/main/KEBAKARAN-TERBUKA.jpg') !important;
       background-size: 100% 100% !important;
@@ -603,32 +607,30 @@
     .header {
       background: linear-gradient(135deg, rgba(255,255,255,0.65) 55%, rgba(244,246,250,0.65) 55%) !important;
     }
-    .catatan-block {
-      max-height: none !important;
-      overflow-y: visible !important;
+    .catatan-block { max-height:none !important; overflow-y:visible !important; }
+    .sektor-row { border-bottom:1px solid rgba(240,241,244,0.3) !important; }
+    .info-row { border-bottom:1px solid rgba(240,241,244,0.4) !important; }
+    .bar-track { background:rgba(228,231,238,0.5) !important; }
+    .stat-box { background:rgba(246,248,251,0.5) !important; }
+    .badge.operasi { background:rgba(255,244,224,0.7) !important; }
+    .badge.mangsa { background:rgba(233,241,255,0.7) !important; }
+    .komander { background:var(--biru-gelap) !important; }
+    .footer { background:linear-gradient(90deg, var(--biru-gelap), var(--merah) 60%, var(--kuning) 100%) !important; }
+
+    /* Pastikan gambar pada page 2 juga menggunakan saiz penuh */
+    .grid-gambar {
+      grid-template-rows: 1fr 1fr !important;
+      gap: 12px 20px !important;
     }
     .gambar-item-card .gambar-wadah {
-      max-height: 110px !important;
+      flex: 1 !important;
+      min-height: 0 !important;
     }
     .gambar-item-card .gambar-wadah img {
-      max-height: 110px !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: contain !important;
     }
-    .sektor-row {
-      border-bottom: 1px solid rgba(240,241,244,0.3) !important;
-    }
-    .info-row {
-      border-bottom: 1px solid rgba(240,241,244,0.4) !important;
-    }
-    .bar-track {
-      background: rgba(228,231,238,0.5) !important;
-    }
-    .stat-box {
-      background: rgba(246,248,251,0.5) !important;
-    }
-    .badge.operasi { background: rgba(255,244,224,0.7) !important; }
-    .badge.mangsa { background: rgba(233,241,255,0.7) !important; }
-    .komander { background: var(--biru-gelap) !important; }
-    .footer { background: linear-gradient(90deg, var(--biru-gelap), var(--merah) 60%, var(--kuning) 100%) !important; }
   }
 </style>
 </head>
@@ -996,11 +998,11 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
         <div class="footer" id="out-tagline1">“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia</div>
       </div>
 
-      <!-- ===== PAGE 2 ===== -->
+      <!-- ===== PAGE 2 (GAMBAR DENGAN SAIZ DIPERBESARKAN) ===== -->
       <div class="card" id="page2">
         <div class="card-bg" id="cardBg2"></div>
 
-        <!-- HEADER PAGE 2 (sama dengan page 1) -->
+        <!-- HEADER PAGE 2 -->
         <div class="header">
           <div class="header-top">
             <div class="logo">
@@ -1017,7 +1019,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
           <span class="subline" id="out2-subline">NEGERI JOHOR | BBP PAGOH</span>
         </div>
 
-        <!-- BODY PAGE 2 (Gambar grid 2x2) -->
+        <!-- BODY PAGE 2 (Gambar grid 2x2) - saiz diperbesar -->
         <div class="body-gambar">
           <div class="grid-gambar">
             <!-- Item 1 -->
