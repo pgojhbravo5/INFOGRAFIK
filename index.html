@@ -632,19 +632,20 @@
             letter-spacing: .02em;
         }
 
+        /* CATATAN – auto expand berdasarkan teks */
         .catatan-block {
-            flex: 1 1 auto;
-            min-height: 40px;
-            margin-top: 2px;
-            margin-bottom: 0;
+            flex: 0 0 auto;          /* tidak memaksa baki ruang, ikut saiz kandungan */
+            width: 100%;
+            margin-top: 4px;
+            margin-bottom: 2px;
             background: rgba(250, 251, 253, 0.6);
             border-radius: 4px;
-            padding: 5px 8px;
+            padding: 6px 10px;
             border-left: 3px solid var(--biru);
             font-size: 10px;
-            line-height: 1.4;
+            line-height: 1.5;
             color: #1c1c1c;
-            overflow-y: auto;
+            overflow: visible;        /* tiada scroll, kembang ikut teks */
         }
         .catatan-block .catatan-label {
             font-weight: 800;
@@ -652,7 +653,7 @@
             text-transform: uppercase;
             color: var(--biru);
             letter-spacing: .04em;
-            margin-bottom: 1px;
+            margin-bottom: 2px;
         }
         .catatan-block .catatan-teks {
             white-space: pre-wrap;
@@ -722,7 +723,7 @@
             text-align: center;
         }
 
-        /* ===== FOOTER BARU ===== */
+        /* FOOTER */
         .footer {
             display: flex;
             justify-content: space-between;
@@ -922,15 +923,15 @@
             }
 
             .catatan-block {
-                flex: 1 1 auto !important;
-                min-height: 40px !important;
-                overflow-y: auto !important;
-                max-height: 100% !important;
-                margin-top: 2px !important;
+                flex: 0 0 auto !important;  /* kekal ikut teks */
+                width: 100% !important;
+                margin-top: 4px !important;
                 margin-bottom: 2px !important;
                 padding: 4px 8px !important;
                 font-size: 9px !important;
-                line-height: 1.3 !important;
+                line-height: 1.4 !important;
+                overflow: visible !important;
+                max-height: none !important;
             }
             .catatan-block .catatan-teks {
                 white-space: pre-wrap !important;
@@ -1191,16 +1192,16 @@
                         <label for="showCatatan">Tunjukkan Catatan Operasi</label>
                     </div>
                     <textarea id="catatan" placeholder="Tampal catatan operasi di sini..." rows="3">23.08.2026 (operasi sambungan 22.08.2026)
-                        Setibanya PKO ke lokasi pada jam 09:30:00, didapati kebakaran kebun gambut di Kampung Paya Kopi Pagoh masih berlaku dengan baki keluasan 2.2 ekar yang masih terbakar dan berasap. PKO bertindak menjalankan operasi pemadaman menggunakan 3 pam GP 10/10.
-                        Sektor 1: Tiada pemadaman dilakukan
+                        Setibanya PKO ke lokasi pada jam 09:30:00, didapati kebakaran kebun gambut di Kampung Paya Kopi Pagoh masih berlaku dengan baki keluasan 2.2 ekar yang masih terbakar dan berasap. PKO bertindak menjalankan operasi pemadamannya menggunakan 3 pam GP 10/10.
+                        Sektor 1: Tiada pemadamannya dilakukan
                         Sektor 2: 1 pam GP 10/10, 1 breaching, 3 pancutan dan 700 kaki salur dari sumber air terbuka.
-                        Sektor 3: Tiada pemadaman dilakukan
+                        Sektor 3: Tiada pemadamannya dilakukan
 
-                    Pko hanya melakukan pemadaman di sektor 2 kerana tidak ada bantuan dari pekerja pada hari ini. Operasi ditangguhkan pada jam 19:00:00 kerana faktor cuaca mulai gelap dan keselamatan anggota bertugas. Operasi akan diteruskan pada keesokan hari.
+                    Pko hanya melakukan pemadamannya di sektor 2 kerana tidak ada bantuan dari pekerja pada hari ini. Operasi ditangguhkan pada jam 19:00:00 kerana faktor cuaca mulai gelap dan keselamatan anggota bertugas. Operasi akan diteruskan pada keesokan hari.
 
                 24.08.2026 (operasi sambungan 23.08.2026)
 
-                Setibanya pasukan keluaran operasi (pko) di tempat kejadian didapati benar berlaku kebakaran kebun gambut berbaki seluas 0.4 ekar. PKO bertindak menjalankan operasi pemadaman menggunakan 1 pam angkut GP 10/10, 1 breaching, 3 pancutan dan salur bantu mula sepanjang 600 kaki sumber air terbuka.
+                Setibanya pasukan keluaran operasi (pko) di tempat kejadian didapati benar berlaku kebakaran kebun gambut berbaiki seluas 0.4 ekar. PKO bertindak menjalankan operasi pemadamannya menggunakan 1 pam angkut GP 10/10, 1 breaching, 3 pancutan dan salur bantu mula sepanjang 600 kaki sumber air terbuka.
 
             Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), iaitu 99.9%, manakala baki keluasan yang belum dipadamkan adalah 0.1 ekar (0.04 hektar).</textarea>
         </div>
@@ -1390,19 +1391,20 @@
                     <p class="pill follow">HUBUNGI KOMANDER OPERASI</p>
                     <div class="komander"><div><div class="nama" id="out-k1nama">PBK I Jafry Bin Hashim</div><div class="peranan" id="out-k1peranan">Komander Operasi</div></div><div class="tel" id="out-k1tel">013-555 1234</div></div>
                     <div class="komander"><div><div class="nama" id="out-k2nama">PKPgB Mohd Fadli Bin Ismail</div><div class="peranan" id="out-k2peranan">Komander Operasi Kanan</div></div><div class="tel" id="out-k2tel">019-777 9876</div></div>
+                    <!-- CATATAN OPERASI – auto expand -->
                     <div class="catatan-block toggle-field" id="row-catatan">
                         <div class="catatan-label">Catatan Operasi</div>
                         <div class="catatan-teks" id="out-catatan">23.08.2026 (operasi sambungan 22.08.2026)
-                            Setibanya PKO ke lokasi pada jam 09:30:00, didapati kebakaran kebun gambut di Kampung Paya Kopi Pagoh masih berlaku dengan baki keluasan 2.2 ekar yang masih terbakar dan berasap. PKO bertindak menjalankan operasi pemadaman menggunakan 3 pam GP 10/10.
-                            Sektor 1: Tiada pemadaman dilakukan
+                            Setibanya PKO ke lokasi pada jam 09:30:00, didapati kebakaran kebun gambut di Kampung Paya Kopi Pagoh masih berlaku dengan baki keluasan 2.2 ekar yang masih terbakar dan berasap. PKO bertindak menjalankan operasi pemadamannya menggunakan 3 pam GP 10/10.
+                            Sektor 1: Tiada pemadamannya dilakukan
                             Sektor 2: 1 pam GP 10/10, 1 breaching, 3 pancutan dan 700 kaki salur dari sumber air terbuka.
-                            Sektor 3: Tiada pemadaman dilakukan
+                            Sektor 3: Tiada pemadamannya dilakukan
 
-                        Pko hanya melakukan pemadaman di sektor 2 kerana tidak ada bantuan dari pekerja pada hari ini. Operasi ditangguhkan pada jam 19:00:00 kerana faktor cuaca mulai gelap dan keselamatan anggota bertugas. Operasi akan diteruskan pada keesokan hari.
+                        Pko hanya melakukan pemadamannya di sektor 2 kerana tidak ada bantuan dari pekerja pada hari ini. Operasi ditangguhkan pada jam 19:00:00 kerana faktor cuaca mulai gelap dan keselamatan anggota bertugas. Operasi akan diteruskan pada keesokan hari.
 
                     24.08.2026 (operasi sambungan 23.08.2026)
 
-                    Setibanya pasukan keluaran operasi (pko) di tempat kejadian didapati benar berlaku kebakaran kebun gambut berbaki seluas 0.4 ekar. PKO bertindak menjalankan operasi pemadaman menggunakan 1 pam angkut GP 10/10, 1 breaching, 3 pancutan dan salur bantu mula sepanjang 600 kaki sumber air terbuka.
+                    Setibanya pasukan keluaran operasi (pko) di tempat kejadian didapati benar berlaku kebakaran kebun gambut berbaiki seluas 0.4 ekar. PKO bertindak menjalankan operasi pemadamannya menggunakan 1 pam angkut GP 10/10, 1 breaching, 3 pancutan dan salur bantu mula sepanjang 600 kaki sumber air terbuka.
 
                 Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), iaitu 99.9%, manakala baki keluasan yang belum dipadamkan adalah 0.1 ekar (0.04 hektar).</div>
             </div>
@@ -1532,7 +1534,7 @@
         "showSektorBlock", "showSektor1", "showSektor2", "showSektor3", "showSektor4",
         "showBackground", "showMasaOperasiTerkawal", "showMasaOperasiTamat",
         "showKeanggotaanUnit", "showCatatan", "showGambarPage2", "showGambarPage3",
-        "showFooterRight" // baru
+        "showFooterRight"
     ];
 
     const allInputIds = [
@@ -1544,7 +1546,7 @@
         ...gambarTajukIds,
         ...sektorFields.map(sf => sf.nama),
         ...sektorFields.map(sf => sf.maklumat),
-        "footerRightText" // baru
+        "footerRightText"
     ];
 
     function saveToLocalStorage() {
@@ -1869,7 +1871,6 @@
             document.getElementById("catatan").value = catatan.trim();
         }
 
-        // Cubaan auto-isi footer right — jika ada "Disediakan Oleh" dalam teks
         const disediakan = text.match(/Disediakan\s*Oleh\s*:\s*(.+?)(?:\n|$)/i);
         if (disediakan) {
             document.getElementById("footerRightText").value = "Disediakan Oleh : " + disediakan[1].trim();
