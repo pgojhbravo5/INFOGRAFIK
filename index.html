@@ -539,6 +539,7 @@
   .hidden-field{ display:none !important; }
   .hidden-page{ display:none !important; }
 
+  /* ========== RESPONSIVE ========== */
   @media (max-width: 1250px){
     .app{flex-direction:column;}
     .panel-input{width:100%; max-height:none; border-right:none; border-bottom:1px solid #dbe0e8;}
@@ -547,15 +548,26 @@
     .card{width:100%; max-width:100%;}
   }
 
+  /* ========== CETAK / PDF ========== */
   @page{
     size: A4 landscape;
-    margin: 8mm;
+    margin: 0mm;  /* tiada margin agar muat penuh */
   }
   @media print{
+    /* Penting: cetak warna dan latar belakang sepenuhnya */
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
     body{ background:#fff; }
     .panel-input{ display:none !important; }
     .preview-wrap{ padding:0 !important; align-items:stretch !important; }
-    .pages-container{ gap:0; width:100%; }
+    .pages-container{
+      gap:0;
+      width:100%;
+      margin:0 auto;
+    }
     .card{
       width:100% !important;
       height:100% !important;
@@ -566,11 +578,47 @@
       page-break-inside:avoid;
     }
     .card:last-child{ page-break-after:auto; }
-    .catatan-block{ max-height:none !important; overflow-y:visible !important; }
-    .card-bg { opacity: 0.3 !important; }
-    .body-sitrep, .body-gambar { background: rgba(255,255,255,0.5) !important; }
-    .gambar-item-card .gambar-wadah { max-height: 120px !important; }
-    .gambar-item-card .gambar-wadah img { max-height: 120px !important; }
+
+    /* Pastikan semua elemen kekal seperti asal – tiada perubahan opacity, background, dsb. */
+    .card-bg {
+      opacity: 0.45 !important;  /* kekal sama seperti skrin */
+      display: block !important;
+    }
+    .card-bg.hidden { display: none !important; }
+
+    .body-sitrep, .body-gambar {
+      background: rgba(255,255,255,0.35) !important;
+      backdrop-filter: blur(1px) !important;
+    }
+    .header {
+      background: linear-gradient(135deg, rgba(255,255,255,0.65) 55%, rgba(244,246,250,0.65) 55%) !important;
+    }
+    .catatan-block {
+      max-height: none !important;
+      overflow-y: visible !important;
+    }
+    .gambar-item-card .gambar-wadah {
+      max-height: 110px !important;
+    }
+    .gambar-item-card .gambar-wadah img {
+      max-height: 110px !important;
+    }
+    .sektor-row {
+      border-bottom: 1px solid rgba(240,241,244,0.3) !important;
+    }
+    .info-row {
+      border-bottom: 1px solid rgba(240,241,244,0.4) !important;
+    }
+    .bar-track {
+      background: rgba(228,231,238,0.5) !important;
+    }
+    .stat-box {
+      background: rgba(246,248,251,0.5) !important;
+    }
+    .badge.operasi { background: rgba(255,244,224,0.7) !important; }
+    .badge.mangsa { background: rgba(233,241,255,0.7) !important; }
+    .komander { background: var(--biru-gelap) !important; }
+    .footer { background: linear-gradient(90deg, var(--biru-gelap), var(--merah) 60%, var(--kuning) 100%) !important; }
   }
 </style>
 </head>
@@ -1325,9 +1373,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     } else if(/masih\s*beroperasi/i.test(text)) {
       document.getElementById("statusOperasi").value = "MASIH BEROPERASI";
     }
-
-    // Auto-isi sektor? (contoh: dari teks "Sektor 1: ...")
-    // Kita boleh cuba parse, tetapi kita biarkan manual sahaja.
 
     const catatanMatch = text.match(/Catatan\s*:\s*([\s\S]*?)(?=\n\s*Sekian,|\n\s*"CEPAT DAN MESRA"|\n\s*PKPgB|\s*$)/i);
     if(catatanMatch){
