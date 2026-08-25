@@ -342,20 +342,27 @@
 
   /* --- PAGE 1 (SITREP) --- */
   .body-sitrep{
-    padding:var(--padding-umum) 26px 4px;
+    padding:var(--padding-umum) 26px 0;   /* padding-bottom = 0 supaya footer rapat */
     flex:1;
     display:grid;
     grid-template-columns:1fr 1fr;
+    grid-template-rows:1fr;              /* penting: tinggi penuh */
     column-gap:20px;
-    align-content:start;
     background: rgba(255,255,255,0.35);
     backdrop-filter: blur(1px);
-    overflow-y:auto;
+    overflow:hidden;                     /* elak limpahan */
   }
   .col-left, .col-right{
-    min-width:0;
     display:flex;
     flex-direction:column;
+    min-height:0;                        /* penting untuk flex */
+    overflow:hidden;
+  }
+  .col-left{
+    padding-bottom:4px;                  /* ruang kecil ke footer */
+  }
+  .col-right{
+    padding-bottom:2px;
   }
 
   .pill{
@@ -370,6 +377,7 @@
     border-radius:4px;
     margin:0 0 4px;
     box-shadow:0 1px 0 var(--merah);
+    flex-shrink:0;
   }
   .pill.follow{ margin-top:8px; }
   .pill .ic{font-size:11px;}
@@ -380,6 +388,7 @@
     padding:2px 0;
     border-bottom:1px solid rgba(240,241,244,0.4);
     font-size:10.5px;
+    flex-shrink:0;
   }
   .info-row:last-child{border-bottom:none;}
   .info-row .ic{width:16px; flex-shrink:0; text-align:center; color:var(--biru);}
@@ -391,6 +400,7 @@
     align-items:center;
     gap:10px;
     padding:2px 0 4px;
+    flex-shrink:0;
   }
   .status-hero .pct{
     font-size:28px;
@@ -417,6 +427,7 @@
     background:rgba(228,231,238,0.5);
     overflow:hidden;
     margin:2px 0 6px;
+    flex-shrink:0;
   }
   .bar-fill{
     height:100%;
@@ -428,6 +439,7 @@
     display:flex;
     gap:8px;
     margin-bottom:2px;
+    flex-shrink:0;
   }
   .stat-box{
     flex:1;
@@ -440,6 +452,7 @@
 
   .sektor-block {
     margin-top: 4px;
+    flex-shrink:0;
   }
   .sektor-row {
     display: flex;
@@ -464,6 +477,7 @@
     flex-direction:column;
     gap:4px;
     margin:4px 0 3px;
+    flex-shrink:0;
   }
   .badge{
     display:flex;
@@ -492,24 +506,27 @@
     padding:4px 8px;
     margin-bottom:2px;
     font-size:9.5px;
+    flex-shrink:0;
   }
   .komander .nama{ font-weight:700; }
   .komander .peranan{ font-size:8px; opacity:.75; }
   .komander .tel{ font-weight:800; letter-spacing:.02em; }
 
+  /* --- CATATAN OPERASI: auto mengikut panjang, tapi tidak melebihi footer --- */
   .catatan-block{
-    flex:1;
-    min-height:0;
-    margin-top:2px;
-    background:rgba(250,251,253,0.6);
-    border-radius:4px;
-    padding:5px 8px;
-    border-left:3px solid var(--biru);
-    font-size:10px;
-    line-height:1.4;
-    color:#1c1c1c;
-    max-height:110px;
-    overflow-y:auto;
+    flex: 1 1 auto;           /* isi baki ruang */
+    min-height: 40px;         /* tinggi minimum, supaya kelihatan */
+    margin-top: 2px;
+    margin-bottom: 0;
+    background: rgba(250,251,253,0.6);
+    border-radius: 4px;
+    padding: 5px 8px;
+    border-left: 3px solid var(--biru);
+    font-size: 10px;
+    line-height: 1.4;
+    color: #1c1c1c;
+    overflow-y: auto;         /* scroll jika teks panjang */
+    /* tiada max-height – ia akan mengikut ruang yang ada dalam .col-right */
   }
   .catatan-block .catatan-label{
     font-weight:800;
@@ -612,7 +629,7 @@
     .card{width:100%; max-width:100%;}
   }
 
-  /* ========== CETAK / PDF - DIPERBAIKI ========== */
+  /* ========== CETAK / PDF ========== */
   @page{
     size: landscape;
     margin: 0mm;
@@ -664,7 +681,7 @@
       aspect-ratio:auto !important;
       page-break-after:always !important;
       page-break-inside:avoid !important;
-      overflow:hidden !important;  /* PENTING: elak limpahan */
+      overflow:hidden !important;
       background:#fff !important;
       transform:scale(1) rotate(0deg) !important;
     }
@@ -693,7 +710,7 @@
     .body-sitrep {
       flex: 1 1 auto !important;
       min-height: 0 !important;
-      overflow: hidden !important;  /* elak scroll */
+      overflow: hidden !important;
       padding: 10px 26px 4px !important;
       background: rgba(255,255,255,0.35) !important;
       backdrop-filter: blur(1px) !important;
@@ -734,11 +751,11 @@
       padding: 4px !important;
     }
 
-    /* Catatan: hadkan ketinggian dan elak limpahan */
     .catatan-block {
-      max-height: 80px !important;
-      overflow: hidden !important;  /* potong jika terlalu panjang */
-      flex-shrink: 0 !important;
+      flex: 1 1 auto !important;
+      min-height: 40px !important;
+      overflow-y: auto !important;
+      max-height: 100% !important;   /* dalam print, biarkan ia mengisi */
       margin-top: 2px !important;
       margin-bottom: 2px !important;
       padding: 4px 8px !important;
@@ -748,8 +765,6 @@
     .catatan-block .catatan-teks {
       white-space: pre-wrap !important;
       word-break: break-word !important;
-      max-height: 70px !important;
-      overflow: hidden !important;
     }
 
     .footer {
@@ -759,10 +774,6 @@
       background: linear-gradient(90deg, var(--biru-gelap), var(--merah) 60%, var(--kuning) 100%) !important;
     }
 
-    /* Sembunyikan elemen yang tidak perlu dalam print */
-    .info-row, .sektor-row, .badge, .komander, .stat-box, .bar-track, .status-hero {
-      /* semua tetap kelihatan, cuma pastikan tiada overflow */
-    }
     .pill {
       font-size: 9px !important;
       padding: 2px 6px !important;
@@ -1043,7 +1054,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
           <label for="showGambarPage2">Tunjukkan Halaman 2 (Gambar 1–4)</label>
         </div>
         <p class="hint" style="margin:2px 0 6px;">Muat naik gambar 1–4.</p>
-        <!-- Gambar 1-4 (sama seperti sebelumnya, dipendekkan untuk penjimatan ruang) -->
         <div class="gambar-item">
           <label>Tajuk Gambar 1</label>
           <input id="gambarTajuk1" value="GAMBAR 1">
@@ -1092,7 +1102,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
           <label for="showGambarPage3">Tunjukkan Halaman 3 (Gambar 5–8)</label>
         </div>
         <p class="hint" style="margin:2px 0 6px;">Muat naik gambar 5–8.</p>
-        <!-- Gambar 5-8 -->
         <div class="gambar-item">
           <label>Tajuk Gambar 5</label>
           <input id="gambarTajuk5" value="GAMBAR 5">
@@ -1195,6 +1204,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
             <p class="pill follow">HUBUNGI KOMANDER OPERASI</p>
             <div class="komander"><div><div class="nama" id="out-k1nama">PBK I Jafry Bin Hashim</div><div class="peranan" id="out-k1peranan">Komander Operasi</div></div><div class="tel" id="out-k1tel">013-555 1234</div></div>
             <div class="komander"><div><div class="nama" id="out-k2nama">PKPgB Mohd Fadli Bin Ismail</div><div class="peranan" id="out-k2peranan">Komander Operasi Kanan</div></div><div class="tel" id="out-k2tel">019-777 9876</div></div>
+            <!-- CATATAN OPERASI -->
             <div class="catatan-block toggle-field" id="row-catatan">
               <div class="catatan-label">Catatan Operasi</div>
               <div class="catatan-teks" id="out-catatan">23.08.2026 (operasi sambungan 22.08.2026)
@@ -1268,7 +1278,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
 
 <script>
   // ============================================================
-  //  SKRIP UTAMA (sama seperti sebelumnya, disimpan ringkas)
+  //  SKRIP UTAMA (sama seperti sebelumnya, dipendekkan)
   // ============================================================
 
   const uploadedImages = [null, null, null, null, null, null, null, null];
@@ -1537,7 +1547,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     if(el) el.addEventListener("change", render);
   });
 
-  // Auto-parse (ringkas)
+  // Auto-parse ringkas (sama)
   const BULAN = ["JANUARI","FEBRUARI","MAC","APRIL","MEI","JUN","JULAI","OGOS","SEPTEMBER","OKTOBER","NOVEMBER","DISEMBER"];
   function formatTarikh(ddmmyyyy){
     const m = ddmmyyyy.match(/(\d{1,2})[.\/\-](\d{1,2})[.\/\-](\d{4})/);
