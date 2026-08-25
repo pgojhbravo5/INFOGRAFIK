@@ -182,6 +182,7 @@
     justify-content:center;
     align-items:flex-start;
     padding:32px 20px;
+    overflow-x:auto;
     overflow-y:auto;
   }
   .pages-container{
@@ -189,7 +190,7 @@
     flex-direction:column;
     gap:30px;
     width:1122px;
-    max-width:100%;
+    flex-shrink:0;
   }
   /* ===== CARD ===== */
   .card{
@@ -201,8 +202,11 @@
     display:flex;
     flex-direction:column;
     position:relative;
-    /* Kekalkan nisbah A4 landskap tanpa aspect-ratio */
+    /* Kekalkan nisbah A4 landskap. min-height ialah fallback (297:210 pada
+       lebar 1122px = ~794px) supaya .card tetap ada tinggi pasti walaupun
+       aspect-ratio lambat resolve semasa first paint di sesetengah browser. */
     aspect-ratio: 297 / 210;
+    min-height: 794px;
   }
   .card-bg {
     position: absolute;
@@ -471,7 +475,7 @@
   /* ===== BADAN PAGE 2 (grid 2x2) - VERSI PALING STABIL ===== */
   .body-gambar{
     padding:10px 28px 6px;
-    flex:1;                      /* isi ruang kosong dalam card */
+    flex:1 1 auto;                /* isi ruang kosong dalam card */
     display:flex;
     flex-direction:column;
     background: rgba(255,255,255,0.35);
@@ -484,9 +488,10 @@
     grid-template-columns:1fr 1fr;
     grid-template-rows:1fr 1fr;
     gap:12px 20px;
-    flex:1;                      /* isi ruang dalam body-gambar */
+    flex:1 1 auto;                /* isi ruang dalam body-gambar - tak perlu
+                                      ibu bapa "resolve" tinggi dahulu,
+                                      berbeza dengan height:100% yang rapuh */
     min-height:0;
-    height:100%;                 /* paksa isi penuh */
   }
   .gambar-item-card {
     display:flex;
@@ -494,7 +499,7 @@
     align-items:center;
     gap:4px;
     min-height:0;
-    height:100%;                 /* isi sel grid */
+    height:auto;                  /* sel grid sendiri sudah tentukan tinggi */
   }
   .gambar-item-card .gambar-tajuk {
     font-size:13px;
