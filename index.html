@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jana Infografik SITREP - JBPM Johor</title>
+<title>Jana Infografik SITREP - JBPM Johor (2 Halaman)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -169,7 +169,7 @@
   }
   .gambar-item:last-child{border-bottom:none;}
 
-  /* ---------- PREVIEW ---------- */
+  /* ---------- PREVIEW (2 halaman) ---------- */
   .preview-wrap{
     flex:1;
     display:flex;
@@ -178,8 +178,15 @@
     padding:32px 20px;
     overflow-y:auto;
   }
-  .card{
+  .pages-container{
+    display:flex;
+    flex-direction:column;
+    gap:30px;
     width:1122px;
+    max-width:100%;
+  }
+  .card{
+    width:100%;
     aspect-ratio:297 / 210;
     background:#fff;
     border-radius:6px;
@@ -189,7 +196,7 @@
     flex-direction:column;
     position:relative;
   }
-  /* ----- Latar Belakang Gambar ----- */
+  /* ----- Latar Belakang Gambar (sama untuk kedua-dua halaman) ----- */
   .card-bg {
     position: absolute;
     top: 0;
@@ -207,7 +214,7 @@
   .card-bg.hidden { display: none; }
   .card > *:not(.card-bg) { position: relative; z-index: 1; }
 
-  /* HEADER (kekal untuk seluruh infografik) */
+  /* HEADER (sama untuk kedua-dua halaman) */
   .header{
     position:relative;
     padding:16px 28px 12px;
@@ -275,8 +282,8 @@
     border-radius:4px;
   }
 
-  /* BADAN – mengandungi 2 lajur + slot gambar 2x2 */
-  .body{
+  /* BADAN PAGE 1 (2 lajur SITREP) */
+  .body-sitrep{
     padding:14px 28px 6px;
     flex:1;
     display:grid;
@@ -431,17 +438,22 @@
     word-break:break-word;
   }
 
-  /* ----- SLOT GAMBAR (grid 2x2) ----- */
-  .gambar-slot {
-    grid-column: 1 / -1;
-    margin-top: 10px;
-    padding: 8px 0 4px;
-    border-top: 2px solid rgba(23, 70, 162, 0.3);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px 20px;
+  /* BADAN PAGE 2 (grid 2x2 gambar) */
+  .body-gambar{
+    padding:14px 28px 6px;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    background: rgba(255,255,255,0.35);
+    backdrop-filter: blur(1px);
   }
-  .gambar-slot.hidden { display: none; }
+  .grid-gambar{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px 20px;
+    flex:1;
+    align-content:start;
+  }
   .gambar-item-card {
     display: flex;
     flex-direction: column;
@@ -483,7 +495,7 @@
     text-align: center;
   }
 
-  /* FOOTER */
+  /* FOOTER (sama untuk kedua-dua halaman) */
   .footer{
     display:flex;
     align-items:center;
@@ -499,12 +511,14 @@
   }
 
   .hidden-field{ display:none !important; }
+  .hidden-page{ display:none !important; }
 
   @media (max-width: 1250px){
     .app{flex-direction:column;}
     .panel-input{width:100%; max-height:none; border-right:none; border-bottom:1px solid #dbe0e8;}
     .preview-wrap{padding:20px 10px;}
-    .card{width:100%; max-width:1122px;}
+    .pages-container{width:100%;}
+    .card{width:100%; max-width:100%;}
   }
 
   @page{
@@ -515,17 +529,20 @@
     body{ background:#fff; }
     .panel-input{ display:none !important; }
     .preview-wrap{ padding:0 !important; align-items:stretch !important; }
+    .pages-container{ gap:0; width:100%; }
     .card{
       width:100% !important;
       height:100% !important;
       box-shadow:none !important;
       border-radius:0 !important;
       aspect-ratio:auto !important;
-      page-break-inside:avoid !important;
+      page-break-after:always;
+      page-break-inside:avoid;
     }
+    .card:last-child{ page-break-after:auto; }
     .catatan-block{ max-height:none !important; overflow-y:visible !important; }
     .card-bg { opacity: 0.3 !important; }
-    .body { background: rgba(255,255,255,0.5) !important; }
+    .body-sitrep, .body-gambar { background: rgba(255,255,255,0.5) !important; }
     .gambar-item-card .gambar-wadah { max-height: 120px !important; }
     .gambar-item-card .gambar-wadah img { max-height: 120px !important; }
   }
@@ -537,7 +554,7 @@
   <!-- ================= PANEL INPUT ================= -->
   <aside class="panel-input">
     <h1>Jana Infografik SITREP</h1>
-    <p class="sub">JBPM Johor — Infoblast ke Infografik</p>
+    <p class="sub">JBPM Johor — 2 Halaman (SITREP + Gambar)</p>
 
     <div class="blok">
       <label>Tampal Teks Infoblast (auto-isi)</label>
@@ -547,7 +564,7 @@
     </div>
 
     <div class="blok">
-      <p class="section-title">Tajuk Insiden</p>
+      <p class="section-title">Tajuk Insiden (untuk kedua-dua halaman)</p>
       <label>Jenis Insiden (headline)</label>
       <input id="headline" value="INSIDEN KEBAKARAN KEBUN TANAH GAMBUT">
       <label>Negeri / Unit</label>
@@ -557,7 +574,7 @@
     </div>
 
     <div class="blok">
-      <p class="section-title">📍 Maklumat Insiden</p>
+      <p class="section-title">📍 Maklumat Insiden (Halaman 1)</p>
       <label>Tarikh / Masa Penggilan</label>
       <input id="tarikhMasa" value="17 OGOS 2026 | 09:12:00 HRS">
       <label>Masa Tiba &amp; Jarak</label>
@@ -567,7 +584,7 @@
     </div>
 
     <div class="blok">
-      <p class="section-title">🔥 Status Pemadaman</p>
+      <p class="section-title">🔥 Status Pemadaman (Halaman 1)</p>
       <label>Unit Keluasan</label>
       <select id="unitLuas">
         <option value="Ekar">Ekar</option>
@@ -587,7 +604,7 @@
     </div>
 
     <div class="blok">
-      <p class="section-title">🛠 Tactical Operasi &amp; Logistik</p>
+      <p class="section-title">🛠 Tactical Operasi &amp; Logistik (Halaman 1)</p>
       <label>Tindakan Pemadaman</label>
       <input id="tindakan" value="Operasi menggunakan 3 unit Pam GP 10/10">
       <label>Aset Jentera</label>
@@ -597,7 +614,7 @@
     </div>
 
     <div class="blok">
-      <p class="section-title">🚦 Status Operasi</p>
+      <p class="section-title">🚦 Status Operasi (Halaman 1)</p>
       <label>Status Operasi</label>
       <select id="statusOperasi">
         <option>MASIH BEROPERASI</option>
@@ -610,7 +627,7 @@
     </div>
 
     <div class="blok">
-      <p class="section-title">📋 Maklumat Tambahan (Togol)</p>
+      <p class="section-title">📋 Maklumat Tambahan (Halaman 1)</p>
 
       <div class="toggle-item">
         <div class="toggle-row">
@@ -663,12 +680,26 @@ Setibanya pasukan keluaran operasi (pko) di tempat kejadian didapati benar berla
 
 Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), iaitu 99.9%, manakala baki keluasan yang belum dipadamkan adalah 0.1 ekar (0.04 hektar).</textarea>
       </div>
+    </div>
 
-      <!-- ===== SLOT 4 GAMBAR (UPLOAD JPG) ===== -->
+    <div class="blok">
+      <p class="section-title">☎ Hubungi Komander Operasi (Halaman 1)</p>
+      <label>Nama &amp; Peranan Komander 1</label>
+      <input id="k1nama" value="PBK I Jafry Bin Hashim">
+      <input id="k1peranan" value="Komander Operasi">
+      <input id="k1tel" value="013-555 1234">
+      <label style="margin-top:6px;">Nama &amp; Peranan Komander 2</label>
+      <input id="k2nama" value="PKPgB Mohd Fadli Bin Ismail">
+      <input id="k2peranan" value="Komander Operasi Kanan">
+      <input id="k2tel" value="019-777 9876">
+    </div>
+
+    <div class="blok">
+      <p class="section-title">🖼️ Gambar (Halaman 2) — Muat naik sehingga 4 JPG</p>
       <div class="toggle-item">
         <div class="toggle-row">
           <input type="checkbox" id="showGambar" checked>
-          <label for="showGambar">Tunjukkan 4 Slot Gambar</label>
+          <label for="showGambar">Tunjukkan Halaman 2 (Gambar)</label>
         </div>
         <p class="hint" style="margin:2px 0 6px;">Muat naik sehingga 4 gambar (JPG) dengan tajuk masing-masing.</p>
 
@@ -718,20 +749,8 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       </div>
     </div>
 
-    <div class="blok">
-      <p class="section-title">☎ Hubungi Komander Operasi</p>
-      <label>Nama &amp; Peranan Komander 1</label>
-      <input id="k1nama" value="PBK I Jafry Bin Hashim">
-      <input id="k1peranan" value="Komander Operasi">
-      <input id="k1tel" value="013-555 1234">
-      <label style="margin-top:6px;">Nama &amp; Peranan Komander 2</label>
-      <input id="k2nama" value="PKPgB Mohd Fadli Bin Ismail">
-      <input id="k2peranan" value="Komander Operasi Kanan">
-      <input id="k2tel" value="019-777 9876">
-    </div>
-
     <div class="blok" style="border-bottom:none;">
-      <label>Tagline Footer</label>
+      <label>Tagline Footer (untuk kedua-dua halaman)</label>
       <input id="tagline" value="“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia">
     </div>
 
@@ -741,96 +760,96 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
 
   <!-- ================= PREVIEW ================= -->
   <main class="preview-wrap">
-    <div class="card" id="infografik">
-      <!-- Latar belakang -->
-      <div class="card-bg" id="cardBg"></div>
+    <div class="pages-container" id="pagesContainer">
 
-      <!-- HEADER -->
-      <div class="header">
-        <div class="header-top">
-          <div class="logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Logo_of_the_Malaysian_Fire_and_Rescue_Department.svg" alt="Logo JBPM">
-            <span class="logo-text">JBPM</span>
-          </div>
-          <div class="lokasi-tag">
-            <span>Lokasi</span>
-            <span id="out-lokasiTag" style="color:var(--merah); font-size:12px;">KAMPUNG PAYA KOPI</span>
-          </div>
-        </div>
-        <p class="kicker">LAPORAN KEMAJUAN OPERASI (SITREP)</p>
-        <h1 class="headline" id="out-headline">INSIDEN KEBAKARAN KEBUN TANAH GAMBUT</h1>
-        <span class="subline" id="out-subline">NEGERI JOHOR | BBP PAGOH</span>
-      </div>
+      <!-- ===== PAGE 1 ===== -->
+      <div class="card" id="page1">
+        <div class="card-bg" id="cardBg1"></div>
 
-      <!-- BADAN -->
-      <div class="body">
-        <!-- KOLOM KIRI -->
-        <div class="col-left">
-          <p class="pill"><span class="ic">📍</span> MAKLUMAT INSIDEN</p>
-          <div class="info-row"><div class="ic">🕐</div><div class="label">Tarikh / Masa Penggilan:</div><div class="val" id="out-tarikhMasa">17 OGOS 2026 | 09:12:00 HRS</div></div>
-          <div class="info-row"><div class="ic">🚒</div><div class="label">Masa Tiba &amp; Jarak:</div><div class="val" id="out-masaTiba">09:42:00 HRS (JARAK: 20 KM)</div></div>
-          <div class="info-row"><div class="ic">📌</div><div class="label">Lokasi:</div><div class="val" id="out-lokasiPenuh">LOT 15060 KG PAYA KOPI, PAGOH (BIOTECH)</div></div>
-
-          <div class="info-row toggle-field" id="row-masaOperasiTerkawal">
-            <div class="ic">⏱️</div>
-            <div class="label">Masa Operasi Terkawal:</div>
-            <div class="val" id="out-masaOperasiTerkawal">Tiada</div>
-          </div>
-          <div class="info-row toggle-field" id="row-masaOperasiTamat">
-            <div class="ic">⏱️</div>
-            <div class="label">Masa Operasi Tamat:</div>
-            <div class="val" id="out-masaOperasiTamat">Operasi Tangguh</div>
-          </div>
-
-          <p class="pill follow"><span class="ic">🔥</span> STATUS PEMADAMAN (PROGRESS)</p>
-          <div class="status-hero">
-            <div>
-              <div class="pct" id="out-pct">95.6%</div>
-              <div class="pct-label">Completed</div>
+        <!-- HEADER PAGE 1 -->
+        <div class="header">
+          <div class="header-top">
+            <div class="logo">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Logo_of_the_Malaysian_Fire_and_Rescue_Department.svg" alt="Logo JBPM">
+              <span class="logo-text">JBPM</span>
             </div>
-            <div class="terjejas">
-              "Jumlah Keluasan Terjejas"
-              <b id="out-jumlahKeluasan">3.64 Hektar</b>
+            <div class="lokasi-tag">
+              <span>Lokasi</span>
+              <span id="out-lokasiTag" style="color:var(--merah); font-size:12px;">KAMPUNG PAYA KOPI</span>
             </div>
           </div>
-          <div class="bar-track"><div class="bar-fill" id="out-bar" style="width:95.6%;"></div></div>
-          <div class="stat-2col">
-            <div class="stat-box"><div class="lbl">Keluasan Berhasil Dipadam</div><div class="num" id="out-keluasanDipadam">3.48 Hektar</div></div>
-            <div class="stat-box"><div class="lbl">Baki Belum Dipadam</div><div class="num" id="out-baki">0.16 Hektar</div></div>
-          </div>
+          <p class="kicker">LAPORAN KEMAJUAN OPERASI (SITREP)</p>
+          <h1 class="headline" id="out-headline">INSIDEN KEBAKARAN KEBUN TANAH GAMBUT</h1>
+          <span class="subline" id="out-subline">NEGERI JOHOR | BBP PAGOH</span>
         </div>
 
-        <!-- KOLOM KANAN -->
-        <div class="col-right">
-          <p class="pill"><span class="ic">🛠</span> TACTICAL OPERASI &amp; LOGISTIK</p>
-          <div class="info-row"><div class="ic">🚒</div><div class="label">Tindakan Pemadaman:</div><div class="val" id="out-tindakan">Operasi menggunakan 3 unit Pam GP 10/10</div></div>
-          <div class="info-row"><div class="ic">🔧</div><div class="label">Aset Jentera:</div><div class="val" id="out-asetJentera">1x FRT, 1x HICOM, 1x Utiliti</div></div>
-          <div class="info-row"><div class="ic">👥</div><div class="label">Kekuatan Anggota:</div><div class="val" id="out-kekuatan">7 Anggota BBP Pagoh</div></div>
+        <!-- BODY PAGE 1 (SITREP) -->
+        <div class="body-sitrep">
+          <div class="col-left">
+            <p class="pill"><span class="ic">📍</span> MAKLUMAT INSIDEN</p>
+            <div class="info-row"><div class="ic">🕐</div><div class="label">Tarikh / Masa Penggilan:</div><div class="val" id="out-tarikhMasa">17 OGOS 2026 | 09:12:00 HRS</div></div>
+            <div class="info-row"><div class="ic">🚒</div><div class="label">Masa Tiba &amp; Jarak:</div><div class="val" id="out-masaTiba">09:42:00 HRS (JARAK: 20 KM)</div></div>
+            <div class="info-row"><div class="ic">📌</div><div class="label">Lokasi:</div><div class="val" id="out-lokasiPenuh">LOT 15060 KG PAYA KOPI, PAGOH (BIOTECH)</div></div>
 
-          <div class="info-row toggle-field" id="row-keanggotaanUnit">
-            <div class="ic">🏢</div>
-            <div class="label">Keanggotaan:</div>
-            <div class="val" id="out-keanggotaanUnit">BBP Pagoh</div>
+            <div class="info-row toggle-field" id="row-masaOperasiTerkawal">
+              <div class="ic">⏱️</div>
+              <div class="label">Masa Operasi Terkawal:</div>
+              <div class="val" id="out-masaOperasiTerkawal">Tiada</div>
+            </div>
+            <div class="info-row toggle-field" id="row-masaOperasiTamat">
+              <div class="ic">⏱️</div>
+              <div class="label">Masa Operasi Tamat:</div>
+              <div class="val" id="out-masaOperasiTamat">Operasi Tangguh</div>
+            </div>
+
+            <p class="pill follow"><span class="ic">🔥</span> STATUS PEMADAMAN (PROGRESS)</p>
+            <div class="status-hero">
+              <div>
+                <div class="pct" id="out-pct">95.6%</div>
+                <div class="pct-label">Completed</div>
+              </div>
+              <div class="terjejas">
+                "Jumlah Keluasan Terjejas"
+                <b id="out-jumlahKeluasan">3.64 Hektar</b>
+              </div>
+            </div>
+            <div class="bar-track"><div class="bar-fill" id="out-bar" style="width:95.6%;"></div></div>
+            <div class="stat-2col">
+              <div class="stat-box"><div class="lbl">Keluasan Berhasil Dipadam</div><div class="num" id="out-keluasanDipadam">3.48 Hektar</div></div>
+              <div class="stat-box"><div class="lbl">Baki Belum Dipadam</div><div class="num" id="out-baki">0.16 Hektar</div></div>
+            </div>
           </div>
 
-          <div class="badge-row">
-            <div class="badge operasi"><span class="dot"></span><span id="out-statusOperasi">MASIH BEROPERASI</span></div>
-            <div class="badge mangsa"><span>🩹</span><span id="out-statusMangsa">TIADA MANGSA</span></div>
-          </div>
+          <div class="col-right">
+            <p class="pill"><span class="ic">🛠</span> TACTICAL OPERASI &amp; LOGISTIK</p>
+            <div class="info-row"><div class="ic">🚒</div><div class="label">Tindakan Pemadaman:</div><div class="val" id="out-tindakan">Operasi menggunakan 3 unit Pam GP 10/10</div></div>
+            <div class="info-row"><div class="ic">🔧</div><div class="label">Aset Jentera:</div><div class="val" id="out-asetJentera">1x FRT, 1x HICOM, 1x Utiliti</div></div>
+            <div class="info-row"><div class="ic">👥</div><div class="label">Kekuatan Anggota:</div><div class="val" id="out-kekuatan">7 Anggota BBP Pagoh</div></div>
 
-          <p class="pill follow"><span class="ic">☎</span> HUBUNGI KOMANDER OPERASI</p>
-          <div class="komander">
-            <div><div class="nama" id="out-k1nama">PBK I Jafry Bin Hashim</div><div class="peranan" id="out-k1peranan">Komander Operasi</div></div>
-            <div class="tel" id="out-k1tel">013-555 1234</div>
-          </div>
-          <div class="komander">
-            <div><div class="nama" id="out-k2nama">PKPgB Mohd Fadli Bin Ismail</div><div class="peranan" id="out-k2peranan">Komander Operasi Kanan</div></div>
-            <div class="tel" id="out-k2tel">019-777 9876</div>
-          </div>
+            <div class="info-row toggle-field" id="row-keanggotaanUnit">
+              <div class="ic">🏢</div>
+              <div class="label">Keanggotaan:</div>
+              <div class="val" id="out-keanggotaanUnit">BBP Pagoh</div>
+            </div>
 
-          <div class="catatan-block toggle-field" id="row-catatan">
-            <div class="catatan-label">📝 Catatan Operasi</div>
-            <div class="catatan-teks" id="out-catatan">23.08.2026 (operasi sambungan 22.08.2026)
+            <div class="badge-row">
+              <div class="badge operasi"><span class="dot"></span><span id="out-statusOperasi">MASIH BEROPERASI</span></div>
+              <div class="badge mangsa"><span>🩹</span><span id="out-statusMangsa">TIADA MANGSA</span></div>
+            </div>
+
+            <p class="pill follow"><span class="ic">☎</span> HUBUNGI KOMANDER OPERASI</p>
+            <div class="komander">
+              <div><div class="nama" id="out-k1nama">PBK I Jafry Bin Hashim</div><div class="peranan" id="out-k1peranan">Komander Operasi</div></div>
+              <div class="tel" id="out-k1tel">013-555 1234</div>
+            </div>
+            <div class="komander">
+              <div><div class="nama" id="out-k2nama">PKPgB Mohd Fadli Bin Ismail</div><div class="peranan" id="out-k2peranan">Komander Operasi Kanan</div></div>
+              <div class="tel" id="out-k2tel">019-777 9876</div>
+            </div>
+
+            <div class="catatan-block toggle-field" id="row-catatan">
+              <div class="catatan-label">📝 Catatan Operasi</div>
+              <div class="catatan-teks" id="out-catatan">23.08.2026 (operasi sambungan 22.08.2026)
 Setibanya PKO ke lokasi pada jam 09:30:00, didapati kebakaran kebun gambut di Kampung Paya Kopi Pagoh masih berlaku dengan baki keluasan 2.2 ekar yang masih terbakar dan berasap. PKO bertindak menjalankan operasi pemadaman menggunakan 3 pam GP 10/10.
 Sektor 1: Tiada pemadaman dilakukan
 Sektor 2: 1 pam GP 10/10, 1 breaching, 3 pancutan dan 700 kaki salur dari sumber air terbuka.
@@ -843,64 +862,99 @@ Pko hanya melakukan pemadaman di sektor 2 kerana tidak ada bantuan dari pekerja 
 Setibanya pasukan keluaran operasi (pko) di tempat kejadian didapati benar berlaku kebakaran kebun gambut berbaki seluas 0.4 ekar. PKO bertindak menjalankan operasi pemadaman menggunakan 1 pam angkut GP 10/10, 1 breaching, 3 pancutan dan salur bantu mula sepanjang 600 kaki sumber air terbuka.
 
 Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), iaitu 99.9%, manakala baki keluasan yang belum dipadamkan adalah 0.1 ekar (0.04 hektar).</div>
+            </div>
           </div>
         </div>
 
-        <!-- ===== SLOT 4 GAMBAR (grid 2x2) ===== -->
-        <div class="gambar-slot" id="gambarSlot">
-          <!-- Item 1 -->
-          <div class="gambar-item-card" id="gambarItem1">
-            <div class="gambar-tajuk" id="out-gambarTajuk1">GAMBAR 1</div>
-            <div class="gambar-wadah">
-              <img id="gambarImg1" src="" alt="Gambar 1" style="display:none;">
-              <div class="gambar-kosong" id="gambarPlaceholder1">Tiada gambar</div>
-            </div>
-          </div>
-          <!-- Item 2 -->
-          <div class="gambar-item-card" id="gambarItem2">
-            <div class="gambar-tajuk" id="out-gambarTajuk2">GAMBAR 2</div>
-            <div class="gambar-wadah">
-              <img id="gambarImg2" src="" alt="Gambar 2" style="display:none;">
-              <div class="gambar-kosong" id="gambarPlaceholder2">Tiada gambar</div>
-            </div>
-          </div>
-          <!-- Item 3 -->
-          <div class="gambar-item-card" id="gambarItem3">
-            <div class="gambar-tajuk" id="out-gambarTajuk3">GAMBAR 3</div>
-            <div class="gambar-wadah">
-              <img id="gambarImg3" src="" alt="Gambar 3" style="display:none;">
-              <div class="gambar-kosong" id="gambarPlaceholder3">Tiada gambar</div>
-            </div>
-          </div>
-          <!-- Item 4 -->
-          <div class="gambar-item-card" id="gambarItem4">
-            <div class="gambar-tajuk" id="out-gambarTajuk4">GAMBAR 4</div>
-            <div class="gambar-wadah">
-              <img id="gambarImg4" src="" alt="Gambar 4" style="display:none;">
-              <div class="gambar-kosong" id="gambarPlaceholder4">Tiada gambar</div>
-            </div>
-          </div>
-        </div>
+        <!-- FOOTER PAGE 1 -->
+        <div class="footer" id="out-tagline1">“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia</div>
       </div>
 
-      <!-- FOOTER -->
-      <div class="footer" id="out-tagline">“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia</div>
+      <!-- ===== PAGE 2 ===== -->
+      <div class="card" id="page2">
+        <div class="card-bg" id="cardBg2"></div>
+
+        <!-- HEADER PAGE 2 (sama dengan page 1) -->
+        <div class="header">
+          <div class="header-top">
+            <div class="logo">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Logo_of_the_Malaysian_Fire_and_Rescue_Department.svg" alt="Logo JBPM">
+              <span class="logo-text">JBPM</span>
+            </div>
+            <div class="lokasi-tag">
+              <span>Lokasi</span>
+              <span id="out2-lokasiTag" style="color:var(--merah); font-size:12px;">KAMPUNG PAYA KOPI</span>
+            </div>
+          </div>
+          <p class="kicker">LAPORAN KEMAJUAN OPERASI (SITREP)</p>
+          <h1 class="headline" id="out2-headline">INSIDEN KEBAKARAN KEBUN TANAH GAMBUT</h1>
+          <span class="subline" id="out2-subline">NEGERI JOHOR | BBP PAGOH</span>
+        </div>
+
+        <!-- BODY PAGE 2 (Gambar grid 2x2) -->
+        <div class="body-gambar">
+          <div class="grid-gambar">
+            <!-- Item 1 -->
+            <div class="gambar-item-card">
+              <div class="gambar-tajuk" id="out-gambarTajuk1">GAMBAR 1</div>
+              <div class="gambar-wadah">
+                <img id="gambarImg1" src="" alt="Gambar 1" style="display:none;">
+                <div class="gambar-kosong" id="gambarPlaceholder1">Tiada gambar</div>
+              </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="gambar-item-card">
+              <div class="gambar-tajuk" id="out-gambarTajuk2">GAMBAR 2</div>
+              <div class="gambar-wadah">
+                <img id="gambarImg2" src="" alt="Gambar 2" style="display:none;">
+                <div class="gambar-kosong" id="gambarPlaceholder2">Tiada gambar</div>
+              </div>
+            </div>
+            <!-- Item 3 -->
+            <div class="gambar-item-card">
+              <div class="gambar-tajuk" id="out-gambarTajuk3">GAMBAR 3</div>
+              <div class="gambar-wadah">
+                <img id="gambarImg3" src="" alt="Gambar 3" style="display:none;">
+                <div class="gambar-kosong" id="gambarPlaceholder3">Tiada gambar</div>
+              </div>
+            </div>
+            <!-- Item 4 -->
+            <div class="gambar-item-card">
+              <div class="gambar-tajuk" id="out-gambarTajuk4">GAMBAR 4</div>
+              <div class="gambar-wadah">
+                <img id="gambarImg4" src="" alt="Gambar 4" style="display:none;">
+                <div class="gambar-kosong" id="gambarPlaceholder4">Tiada gambar</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FOOTER PAGE 2 (sama dengan page 1) -->
+        <div class="footer" id="out2-tagline">“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia</div>
+      </div>
+
     </div>
   </main>
 </div>
 
 <script>
   // ============================================================
-  //  SKRIP UTAMA — 4 gambar muat naik
+  //  SKRIP UTAMA — 2 halaman dengan header/footer berasingan
   // ============================================================
 
   // Simpan data gambar (sehingga 4)
   const uploadedImages = [null, null, null, null];
 
-  const fieldIds = [
+  // Senarai ID untuk page 1 (output utama)
+  const fieldIdsPage1 = [
     "headline","subline","lokasiTag","tarikhMasa","masaTiba","lokasiPenuh",
     "tindakan","asetJentera","kekuatan","statusMangsa","tagline",
     "k1nama","k1peranan","k1tel","k2nama","k2peranan","k2tel"
+  ];
+
+  // Senarai ID untuk page 2 (output dengan awalan "out2-")
+  const fieldIdsPage2 = [
+    "headline","subline","lokasiTag","tagline"
   ];
 
   const toggleFieldIds = [
@@ -915,9 +969,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
 
   // Tajuk gambar
   const gambarTajukIds = ["gambarTajuk1","gambarTajuk2","gambarTajuk3","gambarTajuk4"];
-  // ID output tajuk
   const outTajukIds = ["out-gambarTajuk1","out-gambarTajuk2","out-gambarTajuk3","out-gambarTajuk4"];
-  // ID img dan placeholder
   const imgIds = ["gambarImg1","gambarImg2","gambarImg3","gambarImg4"];
   const placeholderIds = ["gambarPlaceholder1","gambarPlaceholder2","gambarPlaceholder3","gambarPlaceholder4"];
 
@@ -927,20 +979,28 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
   }
 
   function render(){
-    // Medan teks biasa
-    fieldIds.forEach(id => {
+    // --- Page 1 (output tanpa awalan) ---
+    fieldIdsPage1.forEach(id => {
       const el = document.getElementById(id);
       const out = document.getElementById("out-"+id);
       if(el && out) out.textContent = el.value;
     });
 
+    // --- Page 2 (output dengan awalan "out2-") ---
+    fieldIdsPage2.forEach(id => {
+      const el = document.getElementById(id);
+      const out = document.getElementById("out2-"+id);
+      if(el && out) out.textContent = el.value;
+    });
+
+    // --- Select & Num untuk Page 1 ---
     selectIds.forEach(id => {
       const el = document.getElementById(id);
       const out = document.getElementById("out-"+id);
       if(el && out) out.textContent = el.value;
     });
 
-    // Togol medan tambahan
+    // --- Togol medan tambahan (Page 1) ---
     toggleFieldIds.forEach(id => {
       const el = document.getElementById(id);
       const out = document.getElementById("out-"+id);
@@ -953,12 +1013,12 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       }
     });
 
-    // Slot 4 gambar
+    // --- Gambar (Page 2) ---
     const showGambarCb = document.getElementById("showGambar");
-    const gambarSlot = document.getElementById("gambarSlot");
-    if (showGambarCb && gambarSlot) {
-      if (showGambarCb.checked) gambarSlot.classList.remove("hidden");
-      else gambarSlot.classList.add("hidden");
+    const page2 = document.getElementById("page2");
+    if (showGambarCb && page2) {
+      if (showGambarCb.checked) page2.classList.remove("hidden-page");
+      else page2.classList.add("hidden-page");
     }
 
     // Setiap gambar
@@ -982,15 +1042,21 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       }
     }
 
-    // Togol latar belakang
+    // --- Togol latar belakang (kedua-dua halaman) ---
     const bgCb = document.getElementById("showBackground");
-    const bgEl = document.getElementById("cardBg");
-    if (bgCb && bgEl) {
-      if (bgCb.checked) bgEl.classList.remove("hidden");
-      else bgEl.classList.add("hidden");
+    const bgEl1 = document.getElementById("cardBg1");
+    const bgEl2 = document.getElementById("cardBg2");
+    if (bgCb && bgEl1 && bgEl2) {
+      if (bgCb.checked) {
+        bgEl1.classList.remove("hidden");
+        bgEl2.classList.remove("hidden");
+      } else {
+        bgEl1.classList.add("hidden");
+        bgEl2.classList.add("hidden");
+      }
     }
 
-    // Pengiraan keluasan
+    // --- Pengiraan keluasan (Page 1) ---
     const jumlah = parseFloat(document.getElementById("jumlahKeluasan").value) || 0;
     const dipadam = parseFloat(document.getElementById("keluasanDipadam").value) || 0;
     const baki = Math.max(jumlah - dipadam, 0);
@@ -1032,7 +1098,14 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
   }
 
   // Event listener untuk semua input (kecuali fail yang dikendalikan berasingan)
-  const allInputIds = [...fieldIds, ...numIds, ...selectIds, "unitLuas", ...toggleFieldIds, ...gambarTajukIds];
+  const allInputIds = [
+    ...fieldIdsPage1,
+    ...numIds,
+    ...selectIds,
+    "unitLuas",
+    ...toggleFieldIds,
+    ...gambarTajukIds
+  ];
   allInputIds.forEach(id => {
     const el = document.getElementById(id);
     if(el) el.addEventListener("input", render);
@@ -1182,10 +1255,10 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       alert("Pustaka penjana PNG tidak dapat dimuatkan (kemungkinan rangkaian menyekat akses ke CDN luar).\n\nSila guna butang \"🖨️ Cetak (Lanskap A4)\" sebagai gantinya — anda boleh \"Save as PDF\" atau ambil tangkapan skrin daripada tetingkap cetak.");
       return;
     }
-    const node = document.getElementById("infografik");
-    html2canvas(node, { scale: 2, useCORS: true, backgroundColor: "#ffffff" }).then(canvas => {
+    const container = document.getElementById("pagesContainer");
+    html2canvas(container, { scale: 2, useCORS: true, backgroundColor: "#ffffff" }).then(canvas => {
       const link = document.createElement("a");
-      link.download = "infografik-sitrep-" + Date.now() + ".png";
+      link.download = "infografik-sitrep-2-halaman-" + Date.now() + ".png";
       link.href = canvas.toDataURL("image/png");
       link.click();
     }).catch(err => {
