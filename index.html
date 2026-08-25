@@ -1,732 +1,1135 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jana Infografik SITREP - JBPM Johor</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --biru: #1746a2;
-    --biru-gelap: #0d2f6e;
-    --merah: #c8102e;
-    --kuning: #f5b301;
-    --hijau: #2e9e44;
-    --abu: #b9c0c9;
-    --teks: #1c1c1c;
-    --bg-app: #eef1f6;
-  }
-  *{box-sizing:border-box;}
-  body{
-    margin:0;
-    font-family:'Poppins',Arial,sans-serif;
-    background:var(--bg-app);
-    color:var(--teks);
-  }
-  .app{
-    display:flex;
-    min-height:100vh;
-  }
-  /* ---------- PANEL INPUT ---------- */
-  .panel-input{
-    width:400px;
-    flex-shrink:0;
-    background:#fff;
-    border-right:1px solid #dbe0e8;
-    padding:20px;
-    overflow-y:auto;
-    max-height:100vh;
-  }
-  .panel-input h1{
-    font-size:16px;
-    font-weight:800;
-    color:var(--biru-gelap);
-    margin:0 0 2px;
-  }
-  .panel-input .sub{
-    font-size:12px;
-    color:#6a7280;
-    margin:0 0 16px;
-  }
-  .blok{
-    margin-bottom:16px;
-    padding-bottom:14px;
-    border-bottom:1px dashed #e2e6ec;
-  }
-  .blok label{
-    display:block;
-    font-size:11px;
-    font-weight:700;
-    text-transform:uppercase;
-    letter-spacing:.03em;
-    color:var(--biru-gelap);
-    margin-bottom:4px;
-  }
-  .blok textarea, .blok input, .blok select{
-    width:100%;
-    font-family:'Poppins',Arial,sans-serif;
-    font-size:13px;
-    padding:8px 9px;
-    border:1px solid #cfd6e0;
-    border-radius:6px;
-    margin-bottom:8px;
-    background:#fbfcfe;
-  }
-  .blok textarea{resize:vertical; min-height:90px;}
-  .row2{display:flex; gap:8px;}
-  .row2 > div{flex:1;}
-  .btn{
-    display:inline-block;
-    width:100%;
-    text-align:center;
-    padding:10px 12px;
-    border:none;
-    border-radius:7px;
-    font-weight:700;
-    font-size:13px;
-    cursor:pointer;
-    margin-bottom:8px;
-  }
-  .btn-parse{ background:var(--biru); color:#fff; }
-  .btn-parse:hover{ background:var(--biru-gelap); }
-  .btn-download{ background:var(--hijau); color:#fff; }
-  .btn-download:hover{ background:#237a35; }
-  .hint{
-    font-size:11px;
-    color:#8992a0;
-    margin:-4px 0 8px;
-    line-height:1.4;
-  }
-  .section-title{
-    font-size:12px;
-    font-weight:800;
-    color:#fff;
-    background:var(--biru);
-    padding:5px 9px;
-    border-radius:5px;
-    margin:0 0 10px;
-  }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jana Infografik SITREP - JBPM Johor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== ROOT ===== */
+        :root {
+            --biru: #1746a2;
+            --biru-gelap: #0d2f6e;
+            --merah: #c8102e;
+            --kuning: #f5b301;
+            --hijau: #2e9e44;
+            --abu: #b9c0c9;
+            --teks: #1c1c1c;
+            --bg-app: #eef1f6;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: 'Poppins', Arial, sans-serif;
+            background: var(--bg-app);
+            color: var(--teks);
+        }
 
-  /* ---------- PREVIEW ---------- */
-  .preview-wrap{
-    flex:1;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-    padding:32px 20px;
-    overflow-y:auto;
-  }
-  .card{
-    width:1122px;          /* setara A4 lanskap @96dpi (~297mm) */
-    aspect-ratio: 297 / 210;
-    background:#fff;
-    border-radius:6px;
-    box-shadow:0 10px 30px rgba(20,30,60,.18);
-    overflow:hidden;
-    display:flex;
-    flex-direction:column;
-  }
+        /* ===== APP ===== */
+        .app {
+            display: flex;
+            min-height: 100vh;
+        }
 
-  /* header */
-  .header{
-    position:relative;
-    padding:16px 28px 12px;
-    background:linear-gradient(135deg,#fff 55%, #f4f6fa 55%);
-    border-bottom:5px solid var(--biru);
-    flex-shrink:0;
-  }
-  .header-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    margin-bottom:8px;
-  }
-  .logo{
-    display:flex;
-    align-items:center;
-    gap:8px;
-  }
-  .logo-mark{
-    width:44px;height:44px;border-radius:50%;
-    background:conic-gradient(var(--kuning),var(--merah),var(--biru),var(--kuning));
-    display:flex;align-items:center;justify-content:center;
-    font-size:10px;color:#fff;font-weight:800;
-  }
-  .logo-text{
-    font-weight:900;
-    font-size:20px;
-    color:var(--biru-gelap);
-    letter-spacing:.02em;
-  }
-  .lokasi-tag{
-    text-align:right;
-    font-size:11px;
-    font-weight:700;
-    color:var(--merah);
-    line-height:1.3;
-  }
-  .lokasi-tag span{
-    display:block;
-    font-size:9px;
-    color:#8992a0;
-    font-weight:600;
-    text-transform:uppercase;
-  }
-  .kicker{
-    font-size:12px;
-    font-weight:800;
-    color:var(--biru-gelap);
-    letter-spacing:.05em;
-    margin:0 0 4px;
-  }
-  .headline{
-    font-size:22px;
-    font-weight:900;
-    line-height:1.15;
-    margin:0 0 6px;
-    color:#141414;
-  }
-  .subline{
-    display:inline-block;
-    font-size:12px;
-    font-weight:700;
-    color:#fff;
-    background:var(--biru-gelap);
-    padding:4px 10px;
-    border-radius:4px;
-  }
+        /* ===== PANEL INPUT ===== */
+        .panel-input {
+            width: 420px;
+            flex-shrink: 0;
+            background: #fff;
+            border-right: 1px solid #dbe0e8;
+            padding: 20px 18px;
+            overflow-y: auto;
+            max-height: 100vh;
+        }
+        .panel-input h1 {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--biru-gelap);
+            margin: 0 0 2px;
+        }
+        .panel-input .sub {
+            font-size: 12px;
+            color: #6a7280;
+            margin: 0 0 16px;
+        }
+        .blok {
+            margin-bottom: 16px;
+            padding-bottom: 14px;
+            border-bottom: 1px dashed #e2e6ec;
+        }
+        .blok label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .03em;
+            color: var(--biru-gelap);
+            margin-bottom: 4px;
+        }
+        .blok textarea,
+        .blok input,
+        .blok select {
+            width: 100%;
+            font-family: 'Poppins', Arial, sans-serif;
+            font-size: 13px;
+            padding: 8px 9px;
+            border: 1px solid #cfd6e0;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            background: #fbfcfe;
+        }
+        .blok textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .row2 {
+            display: flex;
+            gap: 8px;
+        }
+        .row2>div {
+            flex: 1;
+        }
+        .btn {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            padding: 10px 12px;
+            border: none;
+            border-radius: 7px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            margin-bottom: 8px;
+        }
+        .btn-parse {
+            background: var(--biru);
+            color: #fff;
+        }
+        .btn-parse:hover {
+            background: var(--biru-gelap);
+        }
+        .btn-download {
+            background: var(--hijau);
+            color: #fff;
+        }
+        .btn-download:hover {
+            background: #237a35;
+        }
+        .btn-print {
+            background: var(--biru-gelap);
+            color: #fff;
+        }
+        .btn-print:hover {
+            background: #081f4d;
+        }
+        .hint {
+            font-size: 11px;
+            color: #8992a0;
+            margin: -4px 0 8px;
+            line-height: 1.4;
+        }
+        .section-title {
+            font-size: 12px;
+            font-weight: 800;
+            color: #fff;
+            background: var(--biru);
+            padding: 5px 9px;
+            border-radius: 5px;
+            margin: 0 0 10px;
+        }
 
-  .body{
-    padding:16px 28px 10px;
-    flex:1;
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap:28px;
-    align-content:start;
-  }
-  .col-left, .col-right{ min-width:0; }
+        /* toggle items */
+        .toggle-item {
+            background: #f7f9fc;
+            border-radius: 6px;
+            padding: 8px 10px 4px;
+            margin-bottom: 10px;
+            border: 1px solid #e8ecf2;
+        }
+        .toggle-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+        .toggle-row input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--biru);
+            margin: 0;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+        .toggle-row label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--biru-gelap);
+            text-transform: none;
+            letter-spacing: 0;
+            margin: 0;
+            cursor: pointer;
+        }
+        .toggle-item input,
+        .toggle-item textarea {
+            margin-top: 2px;
+            margin-bottom: 4px;
+        }
+        .toggle-item textarea {
+            min-height: 60px;
+        }
 
-  .pill{
-    display:flex;
-    align-items:center;
-    gap:6px;
-    font-size:12px;
-    font-weight:800;
-    color:#fff;
-    background:var(--biru);
-    padding:6px 12px;
-    border-radius:6px;
-    margin:0 0 8px;
-    box-shadow:0 2px 0 var(--merah);
-  }
-  .pill.follow{ margin-top:14px; }
-  .pill .ic{font-size:13px;}
+        /* ===== PREVIEW ===== */
+        .preview-wrap {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 32px 20px;
+            overflow-y: auto;
+        }
+        .card {
+            width: 1122px;
+            aspect-ratio: 297 / 210;
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 10px 30px rgba(20, 30, 60, .18);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
 
-  .info-row{
-    display:flex;
-    gap:10px;
-    padding:5px 0;
-    border-bottom:1px solid #f0f1f4;
-    font-size:12.5px;
-  }
-  .info-row:last-child{border-bottom:none;}
-  .info-row .ic{width:20px; flex-shrink:0; text-align:center; color:var(--biru);}
-  .info-row .label{ color:#6a7280; min-width:150px; font-weight:600;}
-  .info-row .val{ font-weight:700; color:#171717; }
+        /* ===== HEADER ===== */
+        .header {
+            position: relative;
+            padding: 16px 28px 12px;
+            background: linear-gradient(135deg, #fff 55%, #f4f6fa 55%);
+            border-bottom: 5px solid var(--biru);
+            flex-shrink: 0;
+        }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo-mark {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: conic-gradient(var(--kuning), var(--merah), var(--biru), var(--kuning));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #fff;
+            font-weight: 800;
+        }
+        .logo-text {
+            font-weight: 900;
+            font-size: 20px;
+            color: var(--biru-gelap);
+            letter-spacing: .02em;
+        }
+        .lokasi-tag {
+            text-align: right;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--merah);
+            line-height: 1.3;
+        }
+        .lokasi-tag span {
+            display: block;
+            font-size: 9px;
+            color: #8992a0;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .kicker {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--biru-gelap);
+            letter-spacing: .05em;
+            margin: 0 0 4px;
+        }
+        .headline {
+            font-size: 22px;
+            font-weight: 900;
+            line-height: 1.15;
+            margin: 0 0 6px;
+            color: #141414;
+        }
+        .subline {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+            background: var(--biru-gelap);
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
 
-  .status-hero{
-    display:flex;
-    align-items:center;
-    gap:16px;
-    padding:4px 0 10px;
-  }
-  .status-hero .pct{
-    font-size:36px;
-    font-weight:900;
-    color:var(--hijau);
-    line-height:1;
-  }
-  .status-hero .pct-label{
-    font-size:11px;
-    font-weight:800;
-    color:#6a7280;
-    text-transform:uppercase;
-  }
-  .status-hero .terjejas{
-    font-size:13px;
-    color:#333;
-  }
-  .status-hero .terjejas b{ font-size:17px; display:block; color:var(--merah);}
+        /* ===== BODY ===== */
+        .body {
+            padding: 14px 28px 6px;
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 28px;
+            align-content: start;
+        }
+        .col-left,
+        .col-right {
+            min-width: 0;
+        }
 
-  .bar-track{
-    height:13px;
-    width:100%;
-    border-radius:10px;
-    background:#e4e7ee;
-    overflow:hidden;
-    margin:4px 0 10px;
-  }
-  .bar-fill{
-    height:100%;
-    border-radius:10px;
-    background:linear-gradient(90deg, var(--hijau), var(--kuning) 88%, var(--abu) 100%);
-  }
+        .pill {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 800;
+            color: #fff;
+            background: var(--biru);
+            padding: 5px 12px;
+            border-radius: 6px;
+            margin: 0 0 6px;
+            box-shadow: 0 2px 0 var(--merah);
+        }
+        .pill.follow {
+            margin-top: 12px;
+        }
+        .pill .ic {
+            font-size: 13px;
+        }
 
-  .stat-2col{
-    display:flex;
-    gap:12px;
-    margin-bottom:4px;
-  }
-  .stat-box{
-    flex:1;
-    background:#f6f8fb;
-    border-radius:8px;
-    padding:8px 10px;
-  }
-  .stat-box .lbl{ font-size:10px; font-weight:700; color:#6a7280; text-transform:uppercase;}
-  .stat-box .num{ font-size:17px; font-weight:900; color:var(--biru-gelap); margin-top:2px;}
+        .info-row {
+            display: flex;
+            gap: 10px;
+            padding: 4px 0;
+            border-bottom: 1px solid #f0f1f4;
+            font-size: 12.5px;
+        }
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        .info-row .ic {
+            width: 20px;
+            flex-shrink: 0;
+            text-align: center;
+            color: var(--biru);
+        }
+        .info-row .label {
+            color: #6a7280;
+            min-width: 150px;
+            font-weight: 600;
+        }
+        .info-row .val {
+            font-weight: 700;
+            color: #171717;
+        }
 
-  .badge-row{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-    margin:10px 0 6px;
-  }
-  .badge{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    padding:8px 12px;
-    border-radius:7px;
-    font-weight:800;
-    font-size:12px;
-  }
-  .badge.operasi{ background:#fff4e0; color:var(--merah); border:1px solid #ffdca3; }
-  .badge.mangsa{ background:#e9f1ff; color:var(--biru-gelap); border:1px solid #c3d6f7; }
-  .badge .dot{
-    width:11px;height:11px;border-radius:50%;
-    background:var(--kuning);
-    box-shadow:0 0 0 3px #fff0cc;
-  }
+        .status-hero {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 4px 0 8px;
+        }
+        .status-hero .pct {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--hijau);
+            line-height: 1;
+        }
+        .status-hero .pct-label {
+            font-size: 11px;
+            font-weight: 800;
+            color: #6a7280;
+            text-transform: uppercase;
+        }
+        .status-hero .terjejas {
+            font-size: 13px;
+            color: #333;
+        }
+        .status-hero .terjejas b {
+            font-size: 17px;
+            display: block;
+            color: var(--merah);
+        }
 
-  .komander{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:var(--biru-gelap);
-    color:#fff;
-    border-radius:8px;
-    padding:7px 12px;
-    margin-bottom:6px;
-    font-size:11.5px;
-  }
-  .komander .nama{ font-weight:700; }
-  .komander .peranan{ font-size:10px; opacity:.75; }
-  .komander .tel{ font-weight:800; letter-spacing:.02em; }
+        .bar-track {
+            height: 13px;
+            width: 100%;
+            border-radius: 10px;
+            background: #e4e7ee;
+            overflow: hidden;
+            margin: 4px 0 10px;
+        }
+        .bar-fill {
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(90deg, var(--hijau), var(--kuning) 88%, var(--abu) 100%);
+        }
 
-  .footer{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:6px;
-    padding:9px;
-    font-size:11px;
-    font-weight:700;
-    font-style:italic;
-    color:#fff;
-    background:linear-gradient(90deg, var(--biru-gelap), var(--merah) 60%, var(--kuning) 100%);
-    flex-shrink:0;
-  }
+        .stat-2col {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 4px;
+        }
+        .stat-box {
+            flex: 1;
+            background: #f6f8fb;
+            border-radius: 8px;
+            padding: 8px 10px;
+        }
+        .stat-box .lbl {
+            font-size: 10px;
+            font-weight: 700;
+            color: #6a7280;
+            text-transform: uppercase;
+        }
+        .stat-box .num {
+            font-size: 17px;
+            font-weight: 900;
+            color: var(--biru-gelap);
+            margin-top: 2px;
+        }
 
-  .btn-print{ background:var(--biru-gelap); color:#fff; }
-  .btn-print:hover{ background:#081f4d; }
+        .badge-row {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin: 8px 0 6px;
+        }
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            border-radius: 7px;
+            font-weight: 800;
+            font-size: 12px;
+        }
+        .badge.operasi {
+            background: #fff4e0;
+            color: var(--merah);
+            border: 1px solid #ffdca3;
+        }
+        .badge.mangsa {
+            background: #e9f1ff;
+            color: var(--biru-gelap);
+            border: 1px solid #c3d6f7;
+        }
+        .badge .dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: var(--kuning);
+            box-shadow: 0 0 0 3px #fff0cc;
+        }
 
-  @media (max-width: 1250px){
-    .app{flex-direction:column;}
-    .panel-input{width:100%; max-height:none; border-right:none; border-bottom:1px solid #dbe0e8;}
-    .preview-wrap{padding:20px 10px;}
-    .card{width:100%; max-width:1122px;}
-  }
+        .komander {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--biru-gelap);
+            color: #fff;
+            border-radius: 8px;
+            padding: 6px 12px;
+            margin-bottom: 4px;
+            font-size: 11.5px;
+        }
+        .komander .nama {
+            font-weight: 700;
+        }
+        .komander .peranan {
+            font-size: 10px;
+            opacity: .75;
+        }
+        .komander .tel {
+            font-weight: 800;
+            letter-spacing: .02em;
+        }
 
-  /* ---------- CETAK / PRINT ---------- */
-  @page{
-    size: A4 landscape;
-    margin: 8mm;
-  }
-  @media print{
-    body{ background:#fff; }
-    .panel-input{ display:none; }
-    .preview-wrap{ padding:0; align-items:stretch; }
-    .card{
-      width:100%;
-      height:100%;
-      box-shadow:none;
-      border-radius:0;
-      aspect-ratio:auto;
-      page-break-inside:avoid;
-    }
-  }
-</style>
+        /* catatan block */
+        .catatan-block {
+            margin-top: 10px;
+            background: #fafbfd;
+            border-radius: 6px;
+            padding: 8px 12px;
+            border-left: 4px solid var(--biru);
+            font-size: 11.5px;
+            line-height: 1.5;
+            color: #1c1c1c;
+            max-height: 110px;
+            overflow-y: auto;
+        }
+        .catatan-block .catatan-label {
+            font-weight: 800;
+            font-size: 10px;
+            text-transform: uppercase;
+            color: var(--biru);
+            letter-spacing: .04em;
+            margin-bottom: 2px;
+        }
+        .catatan-block .catatan-teks {
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 9px;
+            font-size: 11px;
+            font-weight: 700;
+            font-style: italic;
+            color: #fff;
+            background: linear-gradient(90deg, var(--biru-gelap), var(--merah) 60%, var(--kuning) 100%);
+            flex-shrink: 0;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1250px) {
+            .app {
+                flex-direction: column;
+            }
+            .panel-input {
+                width: 100%;
+                max-height: none;
+                border-right: none;
+                border-bottom: 1px solid #dbe0e8;
+            }
+            .preview-wrap {
+                padding: 20px 10px;
+            }
+            .card {
+                width: 100%;
+                max-width: 1122px;
+            }
+        }
+
+        /* ===== PRINT ===== */
+        @page {
+            size: A4 landscape;
+            margin: 8mm;
+        }
+        @media print {
+            body {
+                background: #fff;
+            }
+            .panel-input {
+                display: none !important;
+            }
+            .preview-wrap {
+                padding: 0 !important;
+                align-items: stretch !important;
+            }
+            .card {
+                width: 100% !important;
+                height: 100% !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                aspect-ratio: auto !important;
+                page-break-inside: avoid !important;
+            }
+            .catatan-block {
+                max-height: none !important;
+                overflow-y: visible !important;
+            }
+        }
+
+        /* utility */
+        .hidden-field {
+            display: none !important;
+        }
+        .toggle-item .hint {
+            font-size: 10px;
+            color: #8992a0;
+            margin: 0 0 4px;
+        }
+    </style>
 </head>
 <body>
-<div class="app">
+    <div class="app">
 
-  <!-- ================= PANEL INPUT ================= -->
-  <aside class="panel-input">
-    <h1>Jana Infografik SITREP</h1>
-    <p class="sub">JBPM Johor — Infoblast ke Infografik</p>
+        <!-- ================= PANEL INPUT ================= -->
+        <aside class="panel-input">
+            <h1>Jana Infografik SITREP</h1>
+            <p class="sub">JBPM Johor — Infoblast ke Infografik</p>
 
-    <div class="blok">
-      <label>Tampal Teks Infoblast (auto-isi)</label>
-      <textarea id="rawText" placeholder="Tampal keseluruhan teks Infoblast di sini, contoh:&#10;Tarikh/Masa Penggilan: 17 Ogos 2026 | 09:12:00 HRS&#10;Masa Tiba & Jarak: 09:42:00 HRS (Jarak: 20 KM)&#10;Lokasi: LOT 15060 KG PAYA KOPI, PAGOH..."></textarea>
-      <button class="btn btn-parse" onclick="parseRawText()">🔍 Cuba Auto-Isi Daripada Teks</button>
-      <p class="hint">Auto-isi ini padankan kata kunci biasa (Tarikh, Lokasi, Keluasan, dsb). Sentiasa semak &amp; betulkan medan di bawah selepas auto-isi.</p>
-    </div>
-
-    <div class="blok">
-      <p class="section-title">Tajuk Insiden</p>
-      <label>Jenis Insiden (headline)</label>
-      <input id="headline" value="INSIDEN KEBAKARAN KEBUN TANAH GAMBUT">
-      <label>Negeri / Unit</label>
-      <input id="subline" value="NEGERI JOHOR | BBP PAGOH">
-      <label>Lokasi Pendek (kanan atas)</label>
-      <input id="lokasiTag" value="KAMPUNG PAYA KOPI">
-    </div>
-
-    <div class="blok">
-      <p class="section-title">📍 Maklumat Insiden</p>
-      <label>Tarikh / Masa Penggilan</label>
-      <input id="tarikhMasa" value="17 OGOS 2026 | 09:12:00 HRS">
-      <label>Masa Tiba &amp; Jarak</label>
-      <input id="masaTiba" value="09:42:00 HRS (JARAK: 20 KM)">
-      <label>Lokasi Penuh</label>
-      <input id="lokasiPenuh" value="LOT 15060 KG PAYA KOPI, PAGOH (BIOTECH)">
-    </div>
-
-    <div class="blok">
-      <p class="section-title">🔥 Status Pemadaman</p>
-      <label>Unit Keluasan</label>
-      <select id="unitLuas">
-        <option value="Ekar">Ekar</option>
-        <option value="Hektar">Hektar</option>
-      </select>
-      <div class="row2">
-        <div>
-          <label>Jumlah Keluasan Terjejas</label>
-          <input id="jumlahKeluasan" type="number" step="0.01" value="9">
-        </div>
-        <div>
-          <label>Keluasan Berhasil Dipadam</label>
-          <input id="keluasanDipadam" type="number" step="0.01" value="8.9">
-        </div>
-      </div>
-      <p class="hint">Peratus selesai &amp; baki belum dipadam dikira automatik.</p>
-    </div>
-
-    <div class="blok">
-      <p class="section-title">🛠 Tactical Operasi &amp; Logistik</p>
-      <label>Tindakan Pemadaman</label>
-      <input id="tindakan" value="Operasi menggunakan 3 unit Pam GP 10/10">
-      <label>Aset Jentera</label>
-      <input id="asetJentera" value="1x FRT, 1x HICOM, 1x Utiliti">
-      <label>Kekuatan Anggota</label>
-      <input id="kekuatan" value="7 Anggota BBP Pagoh">
-    </div>
-
-    <div class="blok">
-      <p class="section-title">🚦 Status Operasi</p>
-      <label>Status Operasi</label>
-      <select id="statusOperasi">
-        <option>MASIH BEROPERASI</option>
-        <option>OPERASI DITANGGUHKAN</option>
-        <option>OPERASI SELESAI</option>
-        <option>DALAM KAWALAN</option>
-      </select>
-      <label>Status Mangsa</label>
-      <input id="statusMangsa" value="TIADA MANGSA">
-    </div>
-
-    <div class="blok">
-      <p class="section-title">☎ Hubungi Komander Operasi</p>
-      <label>Nama &amp; Peranan Komander 1</label>
-      <input id="k1nama" value="PBK I Jafry Bin Hashim">
-      <input id="k1peranan" value="Komander Operasi">
-      <input id="k1tel" value="013-555 1234">
-      <label style="margin-top:6px;">Nama &amp; Peranan Komander 2</label>
-      <input id="k2nama" value="PKPgB Mohd Fadli Bin Ismail">
-      <input id="k2peranan" value="Komander Operasi Kanan">
-      <input id="k2tel" value="019-777 9876">
-    </div>
-
-    <div class="blok" style="border-bottom:none;">
-      <label>Tagline Footer</label>
-      <input id="tagline" value="\u201cCepat Dan Mesra\u201d — Jabatan Bomba dan Penyelamat Malaysia">
-    </div>
-
-    <button class="btn btn-download" onclick="downloadPNG()">⬇ Muat Turun Infografik (PNG)</button>
-    <button class="btn btn-print" onclick="window.print()">🖨️ Cetak (Lanskap A4)</button>
-  </aside>
-
-  <!-- ================= PREVIEW ================= -->
-  <main class="preview-wrap">
-    <div class="card" id="infografik">
-      <div class="header">
-        <div class="header-top">
-          <div class="logo">
-            <div class="logo-mark">JBPM</div>
-            <div class="logo-text">JBPM</div>
-          </div>
-          <div class="lokasi-tag">
-            <span>Lokasi</span>
-            <span id="out-lokasiTag" style="color:var(--merah); font-size:12px;">KAMPUNG PAYA KOPI</span>
-          </div>
-        </div>
-        <p class="kicker">LAPORAN KEMAJUAN OPERASI (SITREP)</p>
-        <h1 class="headline" id="out-headline">INSIDEN KEBAKARAN KEBUN TANAH GAMBUT</h1>
-        <span class="subline" id="out-subline">NEGERI JOHOR | BBP PAGOH</span>
-      </div>
-
-      <div class="body">
-        <div class="col-left">
-          <p class="pill"><span class="ic">📍</span> MAKLUMAT INSIDEN</p>
-          <div class="info-row"><div class="ic">🕐</div><div class="label">Tarikh / Masa Penggilan:</div><div class="val" id="out-tarikhMasa">17 OGOS 2026 | 09:12:00 HRS</div></div>
-          <div class="info-row"><div class="ic">🚒</div><div class="label">Masa Tiba &amp; Jarak:</div><div class="val" id="out-masaTiba">09:42:00 HRS (JARAK: 20 KM)</div></div>
-          <div class="info-row"><div class="ic">📌</div><div class="label">Lokasi:</div><div class="val" id="out-lokasiPenuh">LOT 15060 KG PAYA KOPI, PAGOH (BIOTECH)</div></div>
-
-          <p class="pill follow"><span class="ic">🔥</span> STATUS PEMADAMAN (PROGRESS)</p>
-          <div class="status-hero">
-            <div>
-              <div class="pct" id="out-pct">95.6%</div>
-              <div class="pct-label">Completed</div>
+            <!-- TAMPAL TEKS -->
+            <div class="blok">
+                <label>Tampal Teks Infoblast (auto-isi)</label>
+                <textarea id="rawText" placeholder="Tampal keseluruhan teks Infoblast di sini, contoh:&#10;Tarikh/Masa Penggilan: 17 Ogos 2026 | 09:12:00 HRS&#10;Masa Tiba &amp; Jarak: 09:42:00 HRS (JARAK: 20 KM)&#10;Lokasi: LOT 15060 KG PAYA KOPI, PAGOH..."></textarea>
+                <button class="btn btn-parse" onclick="parseRawText()">🔍 Cuba Auto-Isi Daripada Teks</button>
+                <p class="hint">Auto-isi padankan kata kunci biasa. Sentiasa semak &amp; betulkan medan di bawah selepas auto-isi.</p>
             </div>
-            <div class="terjejas">
-              "Jumlah Keluasan Terjejas"
-              <b id="out-jumlahKeluasan">3.64 Hektar</b>
+
+            <!-- TAJUK INSIDEN -->
+            <div class="blok">
+                <p class="section-title">Tajuk Insiden</p>
+                <label>Jenis Insiden (headline)</label>
+                <input id="headline" value="INSIDEN KEBAKARAN KEBUN TANAH GAMBUT" />
+                <label>Negeri / Unit</label>
+                <input id="subline" value="NEGERI JOHOR | BBP PAGOH" />
+                <label>Lokasi Pendek (kanan atas)</label>
+                <input id="lokasiTag" value="KAMPUNG PAYA KOPI" />
             </div>
-          </div>
-          <div class="bar-track"><div class="bar-fill" id="out-bar" style="width:95.6%;"></div></div>
-          <div class="stat-2col">
-            <div class="stat-box">
-              <div class="lbl">Keluasan Berhasil Dipadam</div>
-              <div class="num" id="out-keluasanDipadam">3.48 Hektar</div>
+
+            <!-- MAKLUMAT INSIDEN -->
+            <div class="blok">
+                <p class="section-title">📍 Maklumat Insiden</p>
+                <label>Tarikh / Masa Penggilan</label>
+                <input id="tarikhMasa" value="17 OGOS 2026 | 09:12:00 HRS" />
+                <label>Masa Tiba &amp; Jarak</label>
+                <input id="masaTiba" value="09:42:00 HRS (JARAK: 20 KM)" />
+                <label>Lokasi Penuh</label>
+                <input id="lokasiPenuh" value="LOT 15060 KG PAYA KOPI, PAGOH (BIOTECH)" />
             </div>
-            <div class="stat-box">
-              <div class="lbl">Baki Belum Dipadam</div>
-              <div class="num" id="out-baki">0.16 Hektar</div>
+
+            <!-- STATUS PEMADAMAN -->
+            <div class="blok">
+                <p class="section-title">🔥 Status Pemadaman</p>
+                <label>Unit Keluasan</label>
+                <select id="unitLuas">
+                    <option value="Ekar">Ekar</option>
+                    <option value="Hektar">Hektar</option>
+                </select>
+                <div class="row2">
+                    <div>
+                        <label>Jumlah Keluasan Terjejas</label>
+                        <input id="jumlahKeluasan" type="number" step="0.01" value="9" />
+                    </div>
+                    <div>
+                        <label>Keluasan Berhasil Dipadam</label>
+                        <input id="keluasanDipadam" type="number" step="0.01" value="8.9" />
+                    </div>
+                </div>
+                <p class="hint">Peratus selesai &amp; baki belum dipadam dikira automatik.</p>
             </div>
-          </div>
-        </div>
 
-        <div class="col-right">
-          <p class="pill"><span class="ic">🛠</span> TACTICAL OPERASI &amp; LOGISTIK</p>
-          <div class="info-row"><div class="ic">🚒</div><div class="label">Tindakan Pemadaman:</div><div class="val" id="out-tindakan">Operasi menggunakan 3 unit Pam GP 10/10</div></div>
-          <div class="info-row"><div class="ic">🔧</div><div class="label">Aset Jentera:</div><div class="val" id="out-asetJentera">1x FRT, 1x HICOM, 1x Utiliti</div></div>
-          <div class="info-row"><div class="ic">👥</div><div class="label">Kekuatan Anggota:</div><div class="val" id="out-kekuatan">7 Anggota BBP Pagoh</div></div>
+            <!-- TACTICAL -->
+            <div class="blok">
+                <p class="section-title">🛠 Tactical Operasi &amp; Logistik</p>
+                <label>Tindakan Pemadaman</label>
+                <input id="tindakan" value="Operasi menggunakan 3 unit Pam GP 10/10" />
+                <label>Aset Jentera</label>
+                <input id="asetJentera" value="1x FRT, 1x HICOM, 1x Utiliti" />
+                <label>Kekuatan Anggota</label>
+                <input id="kekuatan" value="7 Anggota BBP Pagoh" />
+            </div>
 
-          <div class="badge-row">
-            <div class="badge operasi"><span class="dot"></span><span id="out-statusOperasi">MASIH BEROPERASI</span></div>
-            <div class="badge mangsa"><span>🩹</span><span id="out-statusMangsa">TIADA MANGSA</span></div>
-          </div>
+            <!-- STATUS OPERASI -->
+            <div class="blok">
+                <p class="section-title">🚦 Status Operasi</p>
+                <label>Status Operasi</label>
+                <select id="statusOperasi">
+                    <option>MASIH BEROPERASI</option>
+                    <option>OPERASI DITANGGUHKAN</option>
+                    <option>OPERASI SELESAI</option>
+                    <option>DALAM KAWALAN</option>
+                </select>
+                <label>Status Mangsa</label>
+                <input id="statusMangsa" value="TIADA MANGSA" />
+            </div>
 
-          <p class="pill follow"><span class="ic">☎</span> HUBUNGI KOMANDER OPERASI</p>
-          <div class="komander">
-            <div><div class="nama" id="out-k1nama">PBK I Jafry Bin Hashim</div><div class="peranan" id="out-k1peranan">Komander Operasi</div></div>
-            <div class="tel" id="out-k1tel">013-555 1234</div>
-          </div>
-          <div class="komander">
-            <div><div class="nama" id="out-k2nama">PKPgB Mohd Fadli Bin Ismail</div><div class="peranan" id="out-k2peranan">Komander Operasi Kanan</div></div>
-            <div class="tel" id="out-k2tel">019-777 9876</div>
-          </div>
-        </div>
-      </div>
+            <!-- ===== MAKLUMAT TAMBAHAN (TOGOL) ===== -->
+            <div class="blok">
+                <p class="section-title">📋 Maklumat Tambahan (Togol)</p>
 
-      <div class="footer" id="out-tagline">"Cepat Dan Mesra" — Jabatan Bomba dan Penyelamat Malaysia</div>
+                <!-- Masa Operasi Terkawal -->
+                <div class="toggle-item">
+                    <div class="toggle-row">
+                        <input type="checkbox" id="showMasaOperasiTerkawal" checked />
+                        <label for="showMasaOperasiTerkawal">Tunjukkan Masa Operasi Terkawal</label>
+                    </div>
+                    <input id="masaOperasiTerkawal" placeholder="Contoh: 10:30:00 / Tiada" value="Tiada" />
+                </div>
+
+                <!-- Masa Operasi Tamat -->
+                <div class="toggle-item">
+                    <div class="toggle-row">
+                        <input type="checkbox" id="showMasaOperasiTamat" checked />
+                        <label for="showMasaOperasiTamat">Tunjukkan Masa Operasi Tamat</label>
+                    </div>
+                    <input id="masaOperasiTamat" placeholder="Contoh: 19:00:00 / Operasi Tangguh" value="Operasi Tangguh" />
+                </div>
+
+                <!-- Keanggotaan -->
+                <div class="toggle-item">
+                    <div class="toggle-row">
+                        <input type="checkbox" id="showKeanggotaanUnit" checked />
+                        <label for="showKeanggotaanUnit">Tunjukkan Keanggotaan</label>
+                    </div>
+                    <input id="keanggotaanUnit" placeholder="Contoh: BBP Pagoh" value="BBP Pagoh" />
+                </div>
+
+                <!-- Catatan -->
+                <div class="toggle-item">
+                    <div class="toggle-row">
+                        <input type="checkbox" id="showCatatan" checked />
+                        <label for="showCatatan">Tunjukkan Catatan Operasi</label>
+                    </div>
+                    <textarea id="catatan" placeholder="Tampal catatan operasi di sini..." rows="3">23.08.2026 (operasi sambungan 22.08.2026)
+                        Setibanya PKO ke lokasi pada jam 09:30:00, didapati kebakaran kebun gambut di Kampung Paya Kopi Pagoh masih berlaku dengan baki keluasan 2.2 ekar yang masih terbakar dan berasap. PKO bertindak menjalankan operasi pemadaman menggunakan 3 pam GP 10/10.
+                    Sektor 1: Tiada pemadaman dilakukan
+                    Sektor 2: 1 pam GP 10/10, 1 breaching, 3 pancutan dan 700 kaki salur dari sumber air terbuka.
+                    Sektor 3: Tiada pemadaman dilakukan
+
+                    Pko hanya melakukan pemadaman di sektor 2 kerana tidak ada bantuan dari pekerja pada hari ini. Operasi ditangguhkan pada jam 19:00:00 kerana faktor cuaca mulai gelap dan keselamatan anggota bertugas. Operasi akan diteruskan pada keesokan hari.
+
+                    24.08.2026 (operasi sambungan 23.08.2026)
+
+                    Setibanya pasukan keluaran operasi (pko) di tempat kejadian didapati benar berlaku kebakaran kebun gambut berbaki seluas 0.4 ekar. PKO bertindak menjalankan operasi pemadaman menggunakan 1 pam angkut GP 10/10, 1 breaching, 3 pancutan dan salur bantu mula sepanjang 600 kaki sumber air terbuka.
+
+                    Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), iaitu 99.9%, manakala baki keluasan yang belum dipadamkan adalah 0.1 ekar (0.04 hektar).</textarea>
+                </div>
+            </div>
+
+            <!-- KOMANDER -->
+            <div class="blok">
+                <p class="section-title">☎ Hubungi Komander Operasi</p>
+                <label>Nama &amp; Peranan Komander 1</label>
+                <input id="k1nama" value="PBK I Jafry Bin Hashim" />
+                <input id="k1peranan" value="Komander Operasi" />
+                <input id="k1tel" value="013-555 1234" />
+                <label style="margin-top:6px;">Nama &amp; Peranan Komander 2</label>
+                <input id="k2nama" value="PKPgB Mohd Fadli Bin Ismail" />
+                <input id="k2peranan" value="Komander Operasi Kanan" />
+                <input id="k2tel" value="019-777 9876" />
+            </div>
+
+            <!-- TAGLINE -->
+            <div class="blok" style="border-bottom:none;">
+                <label>Tagline Footer</label>
+                <input id="tagline" value="“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia" />
+            </div>
+
+            <!-- BUTANG -->
+            <button class="btn btn-download" onclick="downloadPNG()">⬇ Muat Turun Infografik (PNG)</button>
+            <button class="btn btn-print" onclick="window.print()">🖨️ Cetak (Lanskap A4)</button>
+        </aside>
+
+        <!-- ================= PREVIEW ================= -->
+        <main class="preview-wrap">
+            <div class="card" id="infografik">
+
+                <!-- HEADER -->
+                <div class="header">
+                    <div class="header-top">
+                        <div class="logo">
+                            <div class="logo-mark">JBPM</div>
+                            <div class="logo-text">JBPM</div>
+                        </div>
+                        <div class="lokasi-tag">
+                            <span>Lokasi</span>
+                            <span id="out-lokasiTag" style="color:var(--merah); font-size:12px;">KAMPUNG PAYA KOPI</span>
+                        </div>
+                    </div>
+                    <p class="kicker">LAPORAN KEMAJUAN OPERASI (SITREP)</p>
+                    <h1 class="headline" id="out-headline">INSIDEN KEBAKARAN KEBUN TANAH GAMBUT</h1>
+                    <span class="subline" id="out-subline">NEGERI JOHOR | BBP PAGOH</span>
+                </div>
+
+                <!-- BODY -->
+                <div class="body">
+
+                    <!-- ===== KOLOM KIRI ===== -->
+                    <div class="col-left">
+
+                        <!-- MAKLUMAT INSIDEN -->
+                        <p class="pill"><span class="ic">📍</span> MAKLUMAT INSIDEN</p>
+                        <div class="info-row"><div class="ic">🕐</div><div class="label">Tarikh / Masa Penggilan:</div><div class="val" id="out-tarikhMasa">17 OGOS 2026 | 09:12:00 HRS</div></div>
+                        <div class="info-row"><div class="ic">🚒</div><div class="label">Masa Tiba &amp; Jarak:</div><div class="val" id="out-masaTiba">09:42:00 HRS (JARAK: 20 KM)</div></div>
+                        <div class="info-row"><div class="ic">📌</div><div class="label">Lokasi:</div><div class="val" id="out-lokasiPenuh">LOT 15060 KG PAYA KOPI, PAGOH (BIOTECH)</div></div>
+
+                        <!-- Masa Operasi Terkawal (togol) -->
+                        <div class="info-row toggle-field" id="row-masaOperasiTerkawal">
+                            <div class="ic">⏱️</div>
+                            <div class="label">Masa Operasi Terkawal:</div>
+                            <div class="val" id="out-masaOperasiTerkawal">Tiada</div>
+                        </div>
+
+                        <!-- Masa Operasi Tamat (togol) -->
+                        <div class="info-row toggle-field" id="row-masaOperasiTamat">
+                            <div class="ic">⏱️</div>
+                            <div class="label">Masa Operasi Tamat:</div>
+                            <div class="val" id="out-masaOperasiTamat">Operasi Tangguh</div>
+                        </div>
+
+                        <!-- STATUS PEMADAMAN -->
+                        <p class="pill follow"><span class="ic">🔥</span> STATUS PEMADAMAN (PROGRESS)</p>
+                        <div class="status-hero">
+                            <div>
+                                <div class="pct" id="out-pct">95.6%</div>
+                                <div class="pct-label">Completed</div>
+                            </div>
+                            <div class="terjejas">
+                                "Jumlah Keluasan Terjejas"
+                                <b id="out-jumlahKeluasan">3.64 Hektar</b>
+                            </div>
+                        </div>
+                        <div class="bar-track"><div class="bar-fill" id="out-bar" style="width:95.6%;"></div></div>
+                        <div class="stat-2col">
+                            <div class="stat-box">
+                                <div class="lbl">Keluasan Berhasil Dipadam</div>
+                                <div class="num" id="out-keluasanDipadam">3.48 Hektar</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="lbl">Baki Belum Dipadam</div>
+                                <div class="num" id="out-baki">0.16 Hektar</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===== KOLOM KANAN ===== -->
+                    <div class="col-right">
+
+                        <!-- TACTICAL -->
+                        <p class="pill"><span class="ic">🛠</span> TACTICAL OPERASI &amp; LOGISTIK</p>
+                        <div class="info-row"><div class="ic">🚒</div><div class="label">Tindakan Pemadaman:</div><div class="val" id="out-tindakan">Operasi menggunakan 3 unit Pam GP 10/10</div></div>
+                        <div class="info-row"><div class="ic">🔧</div><div class="label">Aset Jentera:</div><div class="val" id="out-asetJentera">1x FRT, 1x HICOM, 1x Utiliti</div></div>
+                        <div class="info-row"><div class="ic">👥</div><div class="label">Kekuatan Anggota:</div><div class="val" id="out-kekuatan">7 Anggota BBP Pagoh</div></div>
+
+                        <!-- Keanggotaan (togol) -->
+                        <div class="info-row toggle-field" id="row-keanggotaanUnit">
+                            <div class="ic">🏢</div>
+                            <div class="label">Keanggotaan:</div>
+                            <div class="val" id="out-keanggotaanUnit">BBP Pagoh</div>
+                        </div>
+
+                        <!-- STATUS BADGE -->
+                        <div class="badge-row">
+                            <div class="badge operasi"><span class="dot"></span><span id="out-statusOperasi">MASIH BEROPERASI</span></div>
+                            <div class="badge mangsa"><span>🩹</span><span id="out-statusMangsa">TIADA MANGSA</span></div>
+                        </div>
+
+                        <!-- KOMANDER -->
+                        <p class="pill follow"><span class="ic">☎</span> HUBUNGI KOMANDER OPERASI</p>
+                        <div class="komander">
+                            <div><div class="nama" id="out-k1nama">PBK I Jafry Bin Hashim</div><div class="peranan" id="out-k1peranan">Komander Operasi</div></div>
+                            <div class="tel" id="out-k1tel">013-555 1234</div>
+                        </div>
+                        <div class="komander">
+                            <div><div class="nama" id="out-k2nama">PKPgB Mohd Fadli Bin Ismail</div><div class="peranan" id="out-k2peranan">Komander Operasi Kanan</div></div>
+                            <div class="tel" id="out-k2tel">019-777 9876</div>
+                        </div>
+
+                        <!-- Catatan (togol) -->
+                        <div class="catatan-block toggle-field" id="row-catatan">
+                            <div class="catatan-label">📝 Catatan Operasi</div>
+                            <div class="catatan-teks" id="out-catatan">23.08.2026 (operasi sambungan 22.08.2026)
+                                Setibanya PKO ke lokasi pada jam 09:30:00, didapati kebakaran kebun gambut di Kampung Paya Kopi Pagoh masih berlaku dengan baki keluasan 2.2 ekar yang masih terbakar dan berasap. PKO bertindak menjalankan operasi pemadaman menggunakan 3 pam GP 10/10.
+                            Sektor 1: Tiada pemadaman dilakukan
+                            Sektor 2: 1 pam GP 10/10, 1 breaching, 3 pancutan dan 700 kaki salur dari sumber air terbuka.
+                            Sektor 3: Tiada pemadaman dilakukan
+
+                            Pko hanya melakukan pemadaman di sektor 2 kerana tidak ada bantuan dari pekerja pada hari ini. Operasi ditangguhkan pada jam 19:00:00 kerana faktor cuaca mulai gelap dan keselamatan anggota bertugas. Operasi akan diteruskan pada keesokan hari.
+
+                            24.08.2026 (operasi sambungan 23.08.2026)
+
+                        Setibanya pasukan keluaran operasi (pko) di tempat kejadian didapati benar berlaku kebakaran kebun gambut berbaki seluas 0.4 ekar. PKO bertindak menjalankan operasi pemadaman menggunakan 1 pam angkut GP 10/10, 1 breaching, 3 pancutan dan salur bantu mula sepanjang 600 kaki sumber air terbuka.
+
+                    Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), iaitu 99.9%, manakala baki keluasan yang belum dipadamkan adalah 0.1 ekar (0.04 hektar).</div>
+                        </div>
+
+                    </div>
+                    <!-- end col-right -->
+                </div>
+                <!-- end body -->
+
+                <!-- FOOTER -->
+                <div class="footer" id="out-tagline">“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia</div>
+            </div>
+            <!-- end card -->
+        </main>
     </div>
-  </main>
-</div>
 
-<script>
-  // Skrip aplikasi utama dimuatkan DAHULU dan TIDAK bergantung pada mana-mana
-  // pustaka luar/CDN — supaya borang, ruang tampal teks, dan pratonton tetap
-  // berfungsi sepenuhnya walaupun rangkaian menyekat akses CDN luar.
-  const fieldIds = [
-    "headline","subline","lokasiTag","tarikhMasa","masaTiba","lokasiPenuh",
-    "tindakan","asetJentera","kekuatan","statusMangsa","tagline",
-    "k1nama","k1peranan","k1tel","k2nama","k2peranan","k2tel"
-  ];
-  const numIds = ["jumlahKeluasan","keluasanDipadam"];
-  const selectIds = ["statusOperasi"];
+    <script>
+        // ============================================================
+        //  SKRIP UTAMA — Tiada kebergantungan pada CDN luar
+        // ============================================================
 
-  function fmtHa(n){
-    const unit = document.getElementById("unitLuas") ? document.getElementById("unitLuas").value : "Hektar";
-    return (Math.round(n*100)/100).toString() + " " + unit;
-  }
+        // ---- medan sedia ada ----
+        const fieldIds = [
+            "headline", "subline", "lokasiTag", "tarikhMasa", "masaTiba", "lokasiPenuh",
+            "tindakan", "asetJentera", "kekuatan", "statusMangsa", "tagline",
+            "k1nama", "k1peranan", "k1tel", "k2nama", "k2peranan", "k2tel"
+        ];
 
-  function render(){
-    fieldIds.forEach(id => {
-      const el = document.getElementById(id);
-      const out = document.getElementById("out-"+id);
-      if(el && out) out.textContent = el.value;
-    });
-    selectIds.forEach(id => {
-      const el = document.getElementById(id);
-      const out = document.getElementById("out-"+id);
-      if(el && out) out.textContent = el.value;
-    });
+        // ---- medan tambahan (togol) ----
+        const toggleFieldIds = [
+            "masaOperasiTerkawal",
+            "masaOperasiTamat",
+            "keanggotaanUnit",
+            "catatan"
+        ];
 
-    const jumlah = parseFloat(document.getElementById("jumlahKeluasan").value) || 0;
-    const dipadam = parseFloat(document.getElementById("keluasanDipadam").value) || 0;
-    const baki = Math.max(jumlah - dipadam, 0);
-    const pct = jumlah > 0 ? Math.min((dipadam/jumlah)*100, 100) : 0;
+        const numIds = ["jumlahKeluasan", "keluasanDipadam"];
+        const selectIds = ["statusOperasi"];
 
-    document.getElementById("out-jumlahKeluasan").textContent = fmtHa(jumlah);
-    document.getElementById("out-keluasanDipadam").textContent = fmtHa(dipadam);
-    document.getElementById("out-baki").textContent = fmtHa(baki);
-    document.getElementById("out-pct").textContent = pct.toFixed(1) + "%";
-    document.getElementById("out-bar").style.width = pct.toFixed(1) + "%";
-  }
+        // ---- pemetaan ID output ----
+        const outMap = {};
+        fieldIds.forEach(id => { outMap[id] = "out-" + id; });
+        toggleFieldIds.forEach(id => { outMap[id] = "out-" + id; });
 
-  [...fieldIds, ...numIds, ...selectIds, "unitLuas"].forEach(id => {
-    const el = document.getElementById(id);
-    if(el) el.addEventListener("input", render);
-  });
+        // ---- helper format ----
+        function fmtHa(n) {
+            const unit = document.getElementById("unitLuas") ? document.getElementById("unitLuas").value : "Hektar";
+            return (Math.round(n * 100) / 100).toString() + " " + unit;
+        }
 
-  // ---------- AUTO-PARSE TEKS INFOBLAST (format sebenar JBPM Johor) ----------
-  function grab(text, patterns){
-    for(const p of patterns){
-      const m = text.match(p);
-      if(m && m[1]) return m[1].trim();
-    }
-    return null;
-  }
-  function grabAll(text, pattern){
-    const out = [];
-    let m;
-    const re = new RegExp(pattern.source, pattern.flags.includes("g") ? pattern.flags : pattern.flags + "g");
-    while((m = re.exec(text)) !== null){
-      out.push(m);
-      if(m.index === re.lastIndex) re.lastIndex++;
-    }
-    return out;
-  }
-  const BULAN = ["JANUARI","FEBRUARI","MAC","APRIL","MEI","JUN","JULAI","OGOS","SEPTEMBER","OKTOBER","NOVEMBER","DISEMBER"];
-  function formatTarikh(ddmmyyyy){
-    const m = ddmmyyyy.match(/(\d{1,2})[.\/\-](\d{1,2})[.\/\-](\d{4})/);
-    if(!m) return ddmmyyyy;
-    const d = parseInt(m[1],10), mo = parseInt(m[2],10), y = m[3];
-    if(mo < 1 || mo > 12) return ddmmyyyy;
-    return d + " " + BULAN[mo-1] + " " + y;
-  }
+        // ---- render utama ----
+        function render() {
+            // medan biasa
+            fieldIds.forEach(id => {
+                const el = document.getElementById(id);
+                const out = document.getElementById("out-" + id);
+                if (el && out) out.textContent = el.value;
+            });
 
-  function parseRawText(){
-    const text = document.getElementById("rawText").value;
-    if(!text.trim()){ alert("Sila tampal teks Infoblast dahulu."); return; }
+            // medan pilihan (select)
+            selectIds.forEach(id => {
+                const el = document.getElementById(id);
+                const out = document.getElementById("out-" + id);
+                if (el && out) out.textContent = el.value;
+            });
 
-    // ---- Jenis Insiden ----
-    const jenisInsiden = grab(text, [/^Jenis Insiden\s*:\s*(.+)$/im]);
-    if(jenisInsiden) document.getElementById("headline").value = jenisInsiden.toUpperCase();
+            // medan tambahan (togol) — value + visibility
+            toggleFieldIds.forEach(id => {
+                const el = document.getElementById(id);
+                const out = document.getElementById("out-" + id);
+                if (el && out) {
+                    out.textContent = el.value;
+                }
+                // toggle visibility
+                const showCb = document.getElementById("show" + id.charAt(0).toUpperCase() + id.slice(1));
+                const row = document.getElementById("row-" + id);
+                if (showCb && row) {
+                    if (showCb.checked) {
+                        row.classList.remove("hidden-field");
+                    } else {
+                        row.classList.add("hidden-field");
+                    }
+                }
+            });
 
-    // ---- Tarikh / Masa Panggilan ----
-    const tarikhMasaM = text.match(/Tarikh\s*\/\s*Masa\s*Pa[nñ]?ggilan\s*:\s*([\d.\/\-]+)\s*Jam\s*([\d:]+)/i);
-    if(tarikhMasaM){
-      document.getElementById("tarikhMasa").value = formatTarikh(tarikhMasaM[1]) + " | " + tarikhMasaM[2] + " HRS";
-    }
+            // ---- pengiraan keluasan ----
+            const jumlah = parseFloat(document.getElementById("jumlahKeluasan").value) || 0;
+            const dipadam = parseFloat(document.getElementById("keluasanDipadam").value) || 0;
+            const baki = Math.max(jumlah - dipadam, 0);
+            const pct = jumlah > 0 ? Math.min((dipadam / jumlah) * 100, 100) : 0;
 
-    // ---- Alamat -> Lokasi Penuh + Lokasi Tag (nama kampung) ----
-    const alamat = grab(text, [/^Alamat\s*:\s*(.+)$/im]);
-    if(alamat) document.getElementById("lokasiPenuh").value = alamat.toUpperCase();
-    const kgM = text.match(/Kg\.?\s+([A-Za-z\s]+?)(?:,|\s+Pagoh|\s*\()/i) || text.match(/Kampung\s+([A-Za-z\s]+?)(?:,|\s*\()/i);
-    if(kgM) document.getElementById("lokasiTag").value = "KAMPUNG " + kgM[1].trim().toUpperCase();
+            document.getElementById("out-jumlahKeluasan").textContent = fmtHa(jumlah);
+            document.getElementById("out-keluasanDipadam").textContent = fmtHa(dipadam);
+            document.getElementById("out-baki").textContent = fmtHa(baki);
+            document.getElementById("out-pct").textContent = pct.toFixed(1) + "%";
+            document.getElementById("out-bar").style.width = pct.toFixed(1) + "%";
+        }
 
-    // ---- Masa Jentera Sampai + Jarak -> Masa Tiba & Jarak ----
-    const masaSampai = grab(text, [/^Masa Jentera Sampai\s*:\s*([\d:]+)/im]);
-    const jarak = grab(text, [/^Jarak ke Tempat Kejadian\s*:\s*(.+)$/im]);
-    if(masaSampai || jarak){
-      let val = masaSampai ? masaSampai + " HRS" : "";
-      if(jarak) val += (val ? " " : "") + "(JARAK: " + jarak.toUpperCase() + ")";
-      document.getElementById("masaTiba").value = val;
-    }
+        // ---- pasang event listener pada semua input ----
+        const allInputIds = [...fieldIds, ...numIds, ...selectIds, "unitLuas", ...toggleFieldIds];
+        allInputIds.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.addEventListener("input", render);
+        });
 
-    // ---- Mangsa ----
-    const mangsa = grab(text, [/^Mangsa\s*:\s*(.+)$/im]);
-    if(mangsa){
-      document.getElementById("statusMangsa").value = /tiada/i.test(mangsa) ? "TIADA MANGSA" : mangsa.toUpperCase();
-    }
+        // ---- toggle checkboxes ----
+        toggleFieldIds.forEach(id => {
+            const cb = document.getElementById("show" + id.charAt(0).toUpperCase() + id.slice(1));
+            if (cb) cb.addEventListener("change", render);
+        });
 
-    // ---- Keanggotaan (unit) -> subline ----
-    const keanggotaanUnit = grab(text, [/^Keanggotaan\s*:\s*(.+)$/im]);
-    const negeriM = text.match(/JBPM\s*Negeri\s+(\w+)/i);
-    if(keanggotaanUnit || negeriM){
-      const negeri = negeriM ? negeriM[1].toUpperCase() : "JOHOR";
-      document.getElementById("subline").value = "NEGERI " + negeri + (keanggotaanUnit ? " | " + keanggotaanUnit.replace(/\s+/g," ").toUpperCase() : "");
-    }
+        // ---- AUTO-PARSE TEKS INFOBLAST ----
+        const BULAN = ["JANUARI", "FEBRUARI", "MAC", "APRIL", "MEI", "JUN", "JULAI", "OGOS", "SEPTEMBER", "OKTOBER", "NOVEMBER",
+            "DISEMBER"
+        ];
 
-    // ---- Komander Operasi & Komander Operasi Kanan ----
-    const k1 = text.match(/^Komander Operasi\s*:\s*(.+?)\s*\(([\d\-\s]+)\)/im);
-    if(k1){ document.getElementById("k1nama").value = k1[1].trim(); document.getElementById("k1tel").value = k1[2].trim(); document.getElementById("k1peranan").value = "Komander Operasi"; }
-    const k2 = text.match(/^Komander Operasi Kanan\s*:\s*(.+?)\s*\(([\d\-\s]+)\)/im);
-    if(k2){ document.getElementById("k2nama").value = k2[1].trim(); document.getElementById("k2tel").value = k2[2].trim(); document.getElementById("k2peranan").value = "Komander Operasi Kanan"; }
+        function formatTarikh(ddmmyyyy) {
+            const m = ddmmyyyy.match(/(\d{1,2})[.\/\-](\d{1,2})[.\/\-](\d{4})/);
+            if (!m) return ddmmyyyy;
+            const d = parseInt(m[1], 10),
+                mo = parseInt(m[2], 10),
+                y = m[3];
+            if (mo < 1 || mo > 12) return ddmmyyyy;
+            return d + " " + BULAN[mo - 1] + " " + y;
+        }
 
-    // ---- Keluasan (Ekar, dalam bahagian Catatan) ----
-    const jumlahEkar = grab(text, [/Keluasan\s*kebakaran\s*:\s*([\d.]+)\s*ekar/i]);
-    const dipadamEkar = grab(text, [/Jumlah\s*keluasan\s*telah\s*dipadam\s*:\s*([\d.]+)\s*ekar/i]);
-    if(jumlahEkar || dipadamEkar){
-      document.getElementById("unitLuas").value = "Ekar";
-      if(jumlahEkar) document.getElementById("jumlahKeluasan").value = jumlahEkar;
-      if(dipadamEkar) document.getElementById("keluasanDipadam").value = dipadamEkar;
-    }
+        function grab(text, patterns) {
+            for (const p of patterns) {
+                const m = text.match(p);
+                if (m && m[1]) return m[1].trim();
+            }
+            return null;
+        }
 
-    // ---- Jumlah Keanggotaan (bilangan) -> Kekuatan Anggota ----
-    const bilAnggota = grab(text, [/Jumlah\s*Keanggotaan\s*:\s*(\d+)\s*Anggota/i]);
-    if(bilAnggota){
-      document.getElementById("kekuatan").value = bilAnggota + " Anggota" + (keanggotaanUnit ? " " + keanggotaanUnit.replace(/\s+/g," ").trim() : "");
-    }
+        function grabAll(text, pattern) {
+            const out = [];
+            let m;
+            const re = new RegExp(pattern.source, pattern.flags.includes("g") ? pattern.flags : pattern.flags + "g");
+            while ((m = re.exec(text)) !== null) {
+                out.push(m);
+                if (m.index === re.lastIndex) re.lastIndex++;
+            }
+            return out;
+        }
 
-    // ---- Jentera -> Aset Jentera ----
-    const jentera = grab(text, [/^Jentera\s*:\s*(.+)$/im]);
-    if(jentera) document.getElementById("asetJentera").value = jentera.replace(/\s+/g," ").trim();
+        function parseRawText() {
+            const text = document.getElementById("rawText").value;
+            if (!text.trim()) { alert("Sila tampal teks Infoblast dahulu."); return; }
 
-    // ---- Tindakan Pemadaman: ambil ayat terakhir "...pemadaman menggunakan ..." dalam Catatan ----
-    const tindakanMatches = grabAll(text, /pemadaman menggunakan\s+(.+?)\./gi);
-    if(tindakanMatches.length){
-      const last = tindakanMatches[tindakanMatches.length-1];
-      document.getElementById("tindakan").value = "Operasi menggunakan " + last[1].trim();
-    }
+            // ---- Jenis Insiden ----
+            const jenis = grab(text, [/^Jenis Insiden\s*:\s*(.+)$/im]);
+            if (jenis) document.getElementById("headline").value = jenis.toUpperCase();
 
-    // ---- Status Operasi (daripada Masa Operasi Tamat) ----
-    const tamat = grab(text, [/^Masa Operasi Tamat\s*:\s*(.+)$/im]);
-    if(tamat){
-      if(/tangguh/i.test(tamat)) document.getElementById("statusOperasi").value = "OPERASI DITANGGUHKAN";
-      else if(/tiada/i.test(tamat)) document.getElementById("statusOperasi").value = "MASIH BEROPERASI";
-      else document.getElementById("statusOperasi").value = "OPERASI SELESAI";
-    } else if(/masih\s*beroperasi/i.test(text)) document.getElementById("statusOperasi").value = "MASIH BEROPERASI";
+            // ---- Tarikh / Masa Panggilan ----
+            const tm = text.match(/Tarikh\s*\/\s*Masa\s*Pa[nñ]?ggilan\s*:\s*([\d.\/\-]+)\s*Jam\s*([\d:]+)/i);
+            if (tm) {
+                document.getElementById("tarikhMasa").value = formatTarikh(tm[1]) + " | " + tm[2] + " HRS";
+            }
 
-    render();
-  }
+            // ---- Alamat -> lokasiPenuh ----
+            const alamat = grab(text, [/^Alamat\s*:\s*(.+)$/im]);
+            if (alamat) document.getElementById("lokasiPenuh").value = alamat.toUpperCase();
 
-  function downloadPNG(){
-    if(typeof html2canvas === "undefined"){
-      alert("Pustaka penjana PNG tidak dapat dimuatkan (kemungkinan rangkaian menyekat akses ke CDN luar).\n\nSila guna butang \"🖨️ Cetak (Lanskap A4)\" sebagai gantinya — anda boleh \"Save as PDF\" atau ambil tangkapan skrin daripada tetingkap cetak.");
-      return;
-    }
-    const node = document.getElementById("infografik");
-    html2canvas(node, { scale: 2, useCORS: true, backgroundColor: "#ffffff" }).then(canvas => {
-      const link = document.createElement("a");
-      link.download = "infografik-sitrep-" + Date.now() + ".png";
-      link.href = canvas.toDataURL("image/png");
-      link.click();
-    }).catch(err => {
-      alert("Gagal jana PNG: " + err.message);
-    });
-  }
+            // ---- Lokasi Tag (kampung) ----
+            const kgM = text.match(/Kg\.?\s+([A-Za-z\s]+?)(?:,|\s+Pagoh|\s*\()/i) ||
+                text.match(/Kampung\s+([A-Za-z\s]+?)(?:,|\s*\()/i);
+            if (kgM) document.getElementById("lokasiTag").value = "KAMPUNG " + kgM[1].trim().toUpperCase();
 
-  render();
-</script>
+            // ---- Masa Jentera Sampai + Jarak ----
+            const masaSampai = grab(text, [/^Masa Jentera Sampai\s*:\s*([\d:]+)/im]);
+            const jarak = grab(text, [/^Jarak ke Tempat Kejadian\s*:\s*(.+)$/im]);
+            if (masaSampai || jarak) {
+                let val = masaSampai ? masaSampai + " HRS" : "";
+                if (jarak) val += (val ? " " : "") + "(JARAK: " + jarak.toUpperCase() + ")";
+                document.getElementById("masaTiba").value = val;
+            }
 
-<!-- Pustaka pilihan untuk muat turun PNG. Dimuatkan SELEPAS aplikasi utama
-     dan dengan "defer" supaya ia tidak menyekat borang/ruang tampal teks
-     walaupun CDN ini gagal/lambat dimuatkan pada rangkaian tertentu. -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+            // ---- Mangsa ----
+            const mangsa = grab(text, [/^Mangsa\s*:\s*(.+)$/im]);
+            if (mangsa) {
+                document.getElementById("statusMangsa").value = /tiada/i.test(mangsa) ? "TIADA MANGSA" : mangsa.toUpperCase();
+            }
+
+            // ---- Keanggotaan (unit) ----
+            const keanggotaan = grab(text, [/^Keanggotaan\s*:\s*(.+)$/im]);
+            if (keanggotaan) {
+                document.getElementById("keanggotaanUnit").value = keanggotaan.toUpperCase();
+                // juga set subline
+                const negeriM = text.match(/JBPM\s*Negeri\s+(\w+)/i);
+                const negeri = negeriM ? negeriM[1].toUpperCase() : "JOHOR";
+                document.getElementById("subline").value = "NEGERI " + negeri + " | " + keanggotaan.toUpperCase();
+            }
+
+            // ---- Komander Operasi ----
+            const k1 = text.match(/^Komander Operasi\s*:\s*(.+?)\s*\(([\d\-\s]+)\)/im);
+            if (k1) {
+                document.getElementById("k1nama").value = k1[1].trim();
+                document.getElementById("k1tel").value = k1[2].trim();
+                document.getElementById("k1peranan").value = "Komander Operasi";
+            }
+
+            // ---- Komander Operasi Kanan ----
+            const k2 = text.match(/^Komander Operasi Kanan\s*:\s*(.+?)\s*\(([\d\-\s]+)\)/im);
+            if (k2) {
+                document.getElementById("k2nama").value = k2[1].trim();
+                document.getElementById("k2tel").value = k2[2].trim();
+                document.getElementById("k2peranan").value = "Komander Operasi Kanan";
+            }
+
+            // ---- Keluasan (Ekar) ----
+            const jumlahEkar = grab(text, [/Keluasan\s*kebakaran\s*:\s*([\d.]+)\s*ekar/i]);
+            const dipadamEkar = grab(text, [/Jumlah\s*keluasan\s*telah\s*dipadam\s*:\s*([\d.]+)\s*ekar/i]);
+            if (jumlahEkar || dipadamEkar) {
+                document.getElementById("unitLuas").value = "Ekar";
+                if (jumlahEkar) document.getElementById("jumlahKeluasan").value = jumlahEkar;
+                if (dipadamEkar) document.getElementById("keluasanDipadam").value = dipadamEkar;
+            }
+
+            // ---- Jumlah Keanggotaan -> kekuatan ----
+            const bilAnggota = grab(text, [/Jumlah\s*Keanggotaan\s*:\s*(\d+)\s*Anggota/i]);
+            if (bilAnggota) {
+                const unit = document.getElementById("keanggotaanUnit").value || "";
+                document.getElementById("kekuatan").value = bilAnggota + " Anggota" + (unit ? " " + unit : "");
+            }
+
+            // ---- Jentera -> asetJentera ----
+            const jentera = grab(text, [/^Jentera\s*:\s*(.+)$/im]);
+            if (jentera) document.getElementById("asetJentera").value = jentera.replace(/\s+/g, " ").trim();
+
+            // ---- Tindakan Pemadaman ----
+            const tindakanMatches = grabAll(text, /pemadaman menggunakan\s+(.+?)\./gi);
+            if (tindakanMatches.length) {
+                const last = tindakanMatches[tindakanMatches.length - 1];
+                document.getElementById("tindakan").value = "Operasi menggunakan " + last[1].trim();
+            }
+
+            // ---- Masa Operasi Terkawal ----
+            const terkawal = grab(text, [/^Masa Operasi Terkawal\s*:\s*(.+)$/im]);
+            if (terkawal) document.getElementById("masaOperasiTerkawal").value = terkawal;
+
+            // ---- Masa Operasi Tamat ----
+            const tamat = grab(text, [/^Masa Operasi Tamat\s*:\s*(.+)$/im]);
+            if (tamat) {
+                document.getElementById("masaOperasiTamat").value = tamat;
+                // set status operasi
+                if (/tangguh/i.test(tamat)) document.getElementById("statusOperasi").value = "OPERASI DITANGGUHKAN";
+                else if (/tiada|masih/i.test(tamat)) document.getElementById("statusOperasi").value = "MASIH BEROPERASI";
+                else document.getElementById("statusOperasi").value = "OPERASI SELESAI";
+            } else if (/masih\s*beroperasi/i.test(text)) {
+                document.getElementById("statusOperasi").value = "MASIH BEROPERASI";
+            }
+
+            // ---- Catatan ----
+            const catatanMatch = text.match(/Catatan\s*:\s*([\s\S]*?)(?=\n\s*Sekian,|\n\s*"CEPAT DAN MESRA"|\n\s*PKPgB|\s*$)/i);
+            if (catatanMatch) {
+                let catatan = catatanMatch[1].trim();
+                // remove trailing "Sekian, Terima Kasih." etc
+                catatan = catatan.replace(/\s*Sekian,?\s*Terima\s*Kasih\.?\s*/i, "");
+                catatan = catatan.replace(/\s*"CEPAT\s*DAN\s*MESRA"\s*/i, "");
+                catatan = catatan.replace(/\s*PKPgB\s+[\w\s]+\s*$/i, "");
+                document.getElementById("catatan").value = catatan.trim();
+            }
+
+            render();
+        }
+
+        // ---- MUAT TURUN PNG (dengan html2canvas jika ada) ----
+        function downloadPNG() {
+            if (typeof html2canvas === "undefined") {
+                alert(
+                    "Pustaka penjana PNG tidak dapat dimuatkan (kemungkinan rangkaian menyekat akses ke CDN luar).\n\nSila guna butang \"🖨️ Cetak (Lanskap A4)\" sebagai gantinya — anda boleh \"Save as PDF\" atau ambil tangkapan skrin daripada tetingkap cetak."
+                    );
+                return;
+            }
+            const node = document.getElementById("infografik");
+            html2canvas(node, { scale: 2, useCORS: true, backgroundColor: "#ffffff" }).then(canvas => {
+                const link = document.createElement("a");
+                link.download = "infografik-sitrep-" + Date.now() + ".png";
+                link.href = canvas.toDataURL("image/png");
+                link.click();
+            }).catch(err => {
+                alert("Gagal jana PNG: " + err.message);
+            });
+        }
+
+        // ---- render awal ----
+        render();
+    </script>
+
+    <!-- html2canvas (di luar, tidak menyekat) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer>
+    </script>
 </body>
 </html>
