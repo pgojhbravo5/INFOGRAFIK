@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jana Infografik SITREP - JBPM Johor (2 Halaman)</title>
+<title>Jana Infografik SITREP - JBPM Johor (3 Halaman)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -16,6 +16,8 @@
     --abu: #b9c0c9;
     --teks: #1c1c1c;
     --bg-app: #eef1f6;
+    --padding-umum: 13px;   /* dikurangkan 5% daripada 14px → ~13px */
+    --padding-header: 15px; /* dikurangkan daripada 16px */
   }
   *{box-sizing:border-box;}
   body{
@@ -214,7 +216,7 @@
   }
   .sektor-item:last-child{border-bottom:none;}
 
-  /* ---------- PREVIEW (2 halaman) ---------- */
+  /* ---------- PREVIEW (3 halaman) ---------- */
   .preview-wrap{
     flex:1;
     display:flex;
@@ -261,10 +263,10 @@
   .card-bg.hidden { display: none; }
   .card > *:not(.card-bg) { position: relative; z-index: 1; }
 
-  /* HEADER (sama untuk kedua-dua halaman) */
+  /* HEADER (sama untuk ketiga-tiga halaman) - margin dikurangkan 5% */
   .header{
     position:relative;
-    padding:16px 28px 12px;
+    padding:var(--padding-header) 26px 10px;  /* padding dikurangkan */
     background:linear-gradient(135deg, rgba(255,255,255,0.65) 55%, rgba(244,246,250,0.65) 55%);
     border-bottom:5px solid var(--biru);
     flex-shrink:0;
@@ -273,7 +275,7 @@
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
-    margin-bottom:8px;
+    margin-bottom:6px;
   }
   .logo{
     display:flex;
@@ -281,75 +283,75 @@
     gap:10px;
   }
   .logo img{
-    height:50px;
+    height:46px;  /* dikurangkan sedikit */
     width:auto;
     display:block;
   }
   .logo-text{
     font-weight:900;
-    font-size:20px;
+    font-size:18px;  /* dikurangkan */
     color:var(--biru-gelap);
     letter-spacing:.02em;
   }
   .lokasi-tag{
     text-align:right;
-    font-size:11px;
+    font-size:10px;
     font-weight:700;
     color:var(--merah);
     line-height:1.3;
   }
   .lokasi-tag span{
     display:block;
-    font-size:9px;
+    font-size:8px;
     color:#8992a0;
     font-weight:600;
     text-transform:uppercase;
   }
   .lokasi-tag .tarikh-laporan {
     display:block;
-    font-size:9px;
+    font-size:8px;
     color:#6a7280;
     font-weight:600;
     text-transform:uppercase;
-    margin-top:4px;
+    margin-top:3px;
   }
   .lokasi-tag .tarikh-laporan-val {
     display:block;
     color:var(--biru-gelap);
-    font-size:11px;
+    font-size:10px;
     font-weight:700;
   }
   .kicker{
-    font-size:12px;
+    font-size:11px;
     font-weight:800;
     color:var(--biru-gelap);
     letter-spacing:.05em;
-    margin:0 0 4px;
+    margin:0 0 3px;
   }
   .headline{
-    font-size:22px;
+    font-size:20px;  /* dikurangkan sedikit */
     font-weight:900;
     line-height:1.15;
-    margin:0 0 6px;
+    margin:0 0 4px;
     color:#141414;
   }
   .subline{
     display:inline-block;
-    font-size:12px;
+    font-size:11px;
     font-weight:700;
     color:#fff;
     background:var(--biru-gelap);
-    padding:4px 10px;
+    padding:3px 9px;
     border-radius:4px;
   }
 
-  /* BADAN PAGE 1 (2 lajur SITREP) */
+  /* BADAN PAGE 1 (2 lajur SITREP) - margin dikurangkan */
   .body-sitrep{
-    padding:14px 28px 6px;    /* padding-bottom 6px memberi ruang ke footer */
+    padding:var(--padding-umum) 26px 6px;
     flex:1;
     display:grid;
     grid-template-columns:1fr 1fr;
-    column-gap:28px;
+    column-gap:24px;
     align-content:start;
     background: rgba(255,255,255,0.35);
     backdrop-filter: blur(1px);
@@ -364,62 +366,62 @@
   .pill{
     display:flex;
     align-items:center;
-    gap:6px;
-    font-size:12px;
+    gap:5px;
+    font-size:11px;
     font-weight:800;
     color:#fff;
     background:var(--biru);
-    padding:5px 12px;
-    border-radius:6px;
-    margin:0 0 6px;
+    padding:4px 10px;
+    border-radius:5px;
+    margin:0 0 5px;
     box-shadow:0 2px 0 var(--merah);
   }
-  .pill.follow{ margin-top:12px; }
-  .pill .ic{font-size:13px;}
+  .pill.follow{ margin-top:10px; }
+  .pill .ic{font-size:12px;}
 
   .info-row{
     display:flex;
-    gap:10px;
-    padding:4px 0;
+    gap:8px;
+    padding:3px 0;
     border-bottom:1px solid rgba(240,241,244,0.4);
-    font-size:12.5px;
+    font-size:11.5px;
   }
   .info-row:last-child{border-bottom:none;}
-  .info-row .ic{width:20px; flex-shrink:0; text-align:center; color:var(--biru);}
-  .info-row .label{ color:#6a7280; min-width:150px; font-weight:600;}
+  .info-row .ic{width:18px; flex-shrink:0; text-align:center; color:var(--biru);}
+  .info-row .label{ color:#6a7280; min-width:130px; font-weight:600;}
   .info-row .val{ font-weight:700; color:#171717; }
 
   .status-hero{
     display:flex;
     align-items:center;
-    gap:16px;
-    padding:4px 0 8px;
+    gap:12px;
+    padding:3px 0 6px;
   }
   .status-hero .pct{
-    font-size:36px;
+    font-size:32px;
     font-weight:900;
     color:var(--hijau);
     line-height:1;
   }
   .status-hero .pct-label{
-    font-size:11px;
+    font-size:10px;
     font-weight:800;
     color:#6a7280;
     text-transform:uppercase;
   }
   .status-hero .terjejas{
-    font-size:13px;
+    font-size:12px;
     color:#333;
   }
-  .status-hero .terjejas b{ font-size:17px; display:block; color:var(--merah);}
+  .status-hero .terjejas b{ font-size:15px; display:block; color:var(--merah);}
 
   .bar-track{
-    height:13px;
+    height:11px;
     width:100%;
     border-radius:10px;
     background:rgba(228,231,238,0.5);
     overflow:hidden;
-    margin:4px 0 10px;
+    margin:3px 0 8px;
   }
   .bar-fill{
     height:100%;
@@ -429,34 +431,34 @@
 
   .stat-2col{
     display:flex;
-    gap:12px;
-    margin-bottom:4px;
+    gap:10px;
+    margin-bottom:3px;
   }
   .stat-box{
     flex:1;
     background:rgba(246,248,251,0.5);
-    border-radius:8px;
-    padding:8px 10px;
+    border-radius:6px;
+    padding:6px 8px;
   }
-  .stat-box .lbl{ font-size:10px; font-weight:700; color:#6a7280; text-transform:uppercase;}
-  .stat-box .num{ font-size:17px; font-weight:900; color:var(--biru-gelap); margin-top:2px;}
+  .stat-box .lbl{ font-size:9px; font-weight:700; color:#6a7280; text-transform:uppercase;}
+  .stat-box .num{ font-size:15px; font-weight:900; color:var(--biru-gelap); margin-top:1px;}
 
   /* Sektor info */
   .sektor-block {
-    margin-top: 8px;
+    margin-top: 6px;
   }
   .sektor-row {
     display: flex;
-    gap: 10px;
-    padding: 3px 0;
-    font-size: 12px;
-    border-bottom: 1px solid rgba(240,241,244,0.3);
+    gap:8px;
+    padding:2px 0;
+    font-size:11px;
+    border-bottom:1px solid rgba(240,241,244,0.3);
   }
   .sektor-row:last-child { border-bottom: none; }
   .sektor-row .sektor-nama {
     font-weight: 700;
     color: var(--biru-gelap);
-    min-width: 80px;
+    min-width: 70px;
   }
   .sektor-row .sektor-maklumat {
     font-weight: 500;
@@ -466,22 +468,22 @@
   .badge-row{
     display:flex;
     flex-direction:column;
-    gap:6px;
-    margin:8px 0 6px;
+    gap:5px;
+    margin:6px 0 4px;
   }
   .badge{
     display:flex;
     align-items:center;
-    gap:8px;
-    padding:7px 12px;
-    border-radius:7px;
+    gap:6px;
+    padding:5px 10px;
+    border-radius:6px;
     font-weight:800;
-    font-size:12px;
+    font-size:11px;
   }
   .badge.operasi{ background:rgba(255,244,224,0.7); color:var(--merah); border:1px solid #ffdca3; }
   .badge.mangsa{ background:rgba(233,241,255,0.7); color:var(--biru-gelap); border:1px solid #c3d6f7; }
   .badge .dot{
-    width:11px;height:11px;border-radius:50%;
+    width:10px;height:10px;border-radius:50%;
     background:var(--kuning);
     box-shadow:0 0 0 3px #fff0cc;
   }
@@ -492,32 +494,32 @@
     align-items:center;
     background:var(--biru-gelap);
     color:#fff;
-    border-radius:8px;
-    padding:6px 12px;
-    margin-bottom:4px;
-    font-size:11.5px;
+    border-radius:6px;
+    padding:5px 10px;
+    margin-bottom:3px;
+    font-size:10.5px;
   }
   .komander .nama{ font-weight:700; }
-  .komander .peranan{ font-size:10px; opacity:.75; }
+  .komander .peranan{ font-size:9px; opacity:.75; }
   .komander .tel{ font-weight:800; letter-spacing:.02em; }
 
   .catatan-block{
     flex:1;
     min-height:0;
-    margin-top:4px;
+    margin-top:3px;
     background:rgba(250,251,253,0.6);
-    border-radius:6px;
-    padding:8px 12px;
+    border-radius:5px;
+    padding:6px 10px;
     border-left:4px solid var(--biru);
-    font-size:11.5px;
+    font-size:11px;
     line-height:1.5;
     color:#1c1c1c;
     max-height:110px;
-    overflow-y:auto;          /* skrol jika panjang */
+    overflow-y:auto;
   }
   .catatan-block .catatan-label{
     font-weight:800;
-    font-size:10px;
+    font-size:9px;
     text-transform:uppercase;
     color:var(--biru);
     letter-spacing:.04em;
@@ -528,9 +530,9 @@
     word-break:break-word;
   }
 
-  /* ===== BADAN PAGE 2 (grid 2x2) ===== */
+  /* ===== BADAN PAGE 2 & 3 (grid 2x2) - margin dikurangkan ===== */
   .body-gambar{
-    padding:10px 28px 6px;
+    padding:var(--padding-umum) 26px 6px;
     flex:1 1 auto;
     display:flex;
     flex-direction:column;
@@ -543,7 +545,7 @@
     display:grid;
     grid-template-columns:1fr 1fr;
     grid-template-rows:1fr 1fr;
-    gap:12px 20px;
+    gap:10px 16px;
     flex:1 1 auto;
     min-height:0;
   }
@@ -551,12 +553,12 @@
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:4px;
+    gap:3px;
     min-height:0;
     height:auto;
   }
   .gambar-item-card .gambar-tajuk {
-    font-size:13px;
+    font-size:12px;
     font-weight:700;
     color:var(--biru-gelap);
     text-transform:uppercase;
@@ -570,7 +572,7 @@
     flex:1;
     min-height:0;
     overflow:hidden;
-    border-radius:6px;
+    border-radius:5px;
     border:1px solid rgba(0,0,0,0.08);
     display:flex;
     justify-content:center;
@@ -584,9 +586,9 @@
     display:block;
   }
   .gambar-item-card .gambar-kosong {
-    padding:10px;
+    padding:8px;
     color:#8992a0;
-    font-size:10px;
+    font-size:9px;
     font-weight:600;
     text-align:center;
   }
@@ -596,8 +598,8 @@
     align-items:center;
     justify-content:center;
     gap:6px;
-    padding:9px;
-    font-size:11px;
+    padding:8px;
+    font-size:10px;
     font-weight:700;
     font-style:italic;
     color:#fff;
@@ -677,7 +679,7 @@
       overflow-y: visible !important;
       flex: 1 !important;
       margin-top: 2px !important;
-      margin-bottom: 4px !important;  /* ruang ke footer */
+      margin-bottom: 4px !important;
     }
     .sektor-row { border-bottom:1px solid rgba(240,241,244,0.3) !important; }
     .info-row { border-bottom:1px solid rgba(240,241,244,0.4) !important; }
@@ -716,17 +718,17 @@
   <!-- ================= PANEL INPUT ================= -->
   <aside class="panel-input">
     <h1>Jana Infografik SITREP</h1>
-    <p class="sub">JBPM Johor — 2 Halaman (SITREP + Gambar)</p>
+    <p class="sub">JBPM Johor — 3 Halaman (SITREP + 2 halaman gambar)</p>
 
     <div class="blok">
       <label>Tampal Teks Infoblast (auto-isi)</label>
-      <textarea id="rawText" placeholder="Tampal keseluruhan teks Infoblast di sini, contoh:&#10;Tarikh/Masa Penggilan: 17 Ogos 2026 | 09:12:00 HRS&#10;Masa Tiba &amp; Jarak: 09:42:00 HRS (JARAK: 20 KM)&#10;Lokasi: LOT 15060 KG PAYA KOPI, PAGOH..."></textarea>
+      <textarea id="rawText" placeholder="Tampal keseluruhan teks Infoblast di sini..."></textarea>
       <button class="btn btn-parse" onclick="parseRawText()"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Cuba Auto-Isi Daripada Teks</button>
-      <p class="hint">Auto-isi padankan kata kunci biasa. Sentiasa semak &amp; betulkan medan di bawah selepas auto-isi.</p>
+      <p class="hint">Auto-isi padankan kata kunci biasa. Sentiasa semak &amp; betulkan medan di bawah.</p>
     </div>
 
     <div class="blok">
-      <p class="section-title">Tajuk Insiden (untuk kedua-dua halaman)</p>
+      <p class="section-title">Tajuk Insiden (untuk semua halaman)</p>
       <label>Jenis Insiden (headline)</label>
       <input id="headline" value="INSIDEN KEBAKARAN KEBUN TANAH GAMBUT">
       <label>Negeri / Unit</label>
@@ -823,7 +825,7 @@
         <input id="sektor4_maklumat" value="">
       </div>
 
-      <p class="hint">Tandakan sektor yang berkaitan sahaja — jika hanya 1 sektor terlibat, nyahtanda sektor lain. "Tunjukkan Maklumat Sektor" mengawal keseluruhan bahagian ini.</p>
+      <p class="hint">Tandakan sektor yang berkaitan sahaja.</p>
     </div>
 
     <div class="blok">
@@ -857,7 +859,7 @@
           <input type="checkbox" id="showBackground" checked>
           <label for="showBackground">Tunjukkan Gambar Latar Belakang</label>
         </div>
-        <p class="hint" style="margin:2px 0 0;">Gambar: KEBAKARAN-TERBUKA.jpg (dari GitHub)</p>
+        <p class="hint" style="margin:2px 0 0;">Gambar: KEBAKARAN-TERBUKA.jpg</p>
       </div>
 
       <div class="toggle-item">
@@ -917,14 +919,15 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       <input id="k2tel" value="019-777 9876">
     </div>
 
+    <!-- ===== GAMBAR HALAMAN 2 (4 gambar) ===== -->
     <div class="blok">
-      <p class="section-title"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.7" fill="currentColor" stroke="none"/><path d="M21 16l-5.5-5.5a2 2 0 0 0-2.8 0L4 19"/></svg> Gambar (Halaman 2) — Muat naik sehingga 4 JPG</p>
+      <p class="section-title"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.7" fill="currentColor" stroke="none"/><path d="M21 16l-5.5-5.5a2 2 0 0 0-2.8 0L4 19"/></svg> Gambar Halaman 2</p>
       <div class="toggle-item">
         <div class="toggle-row">
-          <input type="checkbox" id="showGambar" checked>
-          <label for="showGambar">Tunjukkan Halaman 2 (Gambar)</label>
+          <input type="checkbox" id="showGambarPage2" checked>
+          <label for="showGambarPage2">Tunjukkan Halaman 2 (Gambar 1–4)</label>
         </div>
-        <p class="hint" style="margin:2px 0 6px;">Muat naik sehingga 4 gambar (JPG) dengan tajuk masing-masing.</p>
+        <p class="hint" style="margin:2px 0 6px;">Muat naik gambar 1–4.</p>
 
         <!-- Gambar 1 -->
         <div class="gambar-item">
@@ -976,8 +979,68 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       </div>
     </div>
 
+    <!-- ===== GAMBAR HALAMAN 3 (4 gambar tambahan) ===== -->
+    <div class="blok">
+      <p class="section-title"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.7" fill="currentColor" stroke="none"/><path d="M21 16l-5.5-5.5a2 2 0 0 0-2.8 0L4 19"/></svg> Gambar Halaman 3</p>
+      <div class="toggle-item">
+        <div class="toggle-row">
+          <input type="checkbox" id="showGambarPage3" checked>
+          <label for="showGambarPage3">Tunjukkan Halaman 3 (Gambar 5–8)</label>
+        </div>
+        <p class="hint" style="margin:2px 0 6px;">Muat naik gambar 5–8.</p>
+
+        <!-- Gambar 5 -->
+        <div class="gambar-item">
+          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Tajuk Gambar 5</label>
+          <input id="gambarTajuk5" placeholder="Tajuk 5" value="GAMBAR 5">
+          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Fail 5</label>
+          <div class="file-input-wrap">
+            <input type="file" id="gambarFile5" accept=".jpg,.jpeg,image/jpeg">
+            <span class="file-name" id="fileName5">Tiada fail</span>
+            <button class="btn-padam-gambar" id="padamBtn5" style="display:none;" onclick="padamGambar(4)">✕ Padam</button>
+          </div>
+        </div>
+
+        <!-- Gambar 6 -->
+        <div class="gambar-item">
+          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Tajuk Gambar 6</label>
+          <input id="gambarTajuk6" placeholder="Tajuk 6" value="GAMBAR 6">
+          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Fail 6</label>
+          <div class="file-input-wrap">
+            <input type="file" id="gambarFile6" accept=".jpg,.jpeg,image/jpeg">
+            <span class="file-name" id="fileName6">Tiada fail</span>
+            <button class="btn-padam-gambar" id="padamBtn6" style="display:none;" onclick="padamGambar(5)">✕ Padam</button>
+          </div>
+        </div>
+
+        <!-- Gambar 7 -->
+        <div class="gambar-item">
+          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Tajuk Gambar 7</label>
+          <input id="gambarTajuk7" placeholder="Tajuk 7" value="GAMBAR 7">
+          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Fail 7</label>
+          <div class="file-input-wrap">
+            <input type="file" id="gambarFile7" accept=".jpg,.jpeg,image/jpeg">
+            <span class="file-name" id="fileName7">Tiada fail</span>
+            <button class="btn-padam-gambar" id="padamBtn7" style="display:none;" onclick="padamGambar(6)">✕ Padam</button>
+          </div>
+        </div>
+
+        <!-- Gambar 8 -->
+        <div class="gambar-item">
+          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Tajuk Gambar 8</label>
+          <input id="gambarTajuk8" placeholder="Tajuk 8" value="GAMBAR 8">
+          <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap);">Fail 8</label>
+          <div class="file-input-wrap">
+            <input type="file" id="gambarFile8" accept=".jpg,.jpeg,image/jpeg">
+            <span class="file-name" id="fileName8">Tiada fail</span>
+            <button class="btn-padam-gambar" id="padamBtn8" style="display:none;" onclick="padamGambar(7)">✕ Padam</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="blok" style="border-bottom:none;">
-      <label>Tagline Footer (untuk kedua-dua halaman)</label>
+      <label>Tagline Footer (untuk semua halaman)</label>
       <input id="tagline" value="“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia">
     </div>
 
@@ -1002,7 +1065,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
             </div>
             <div class="lokasi-tag">
               <span>Lokasi</span>
-              <span id="out-lokasiTag" style="color:var(--merah); font-size:12px;">KAMPUNG PAYA KOPI</span>
+              <span id="out-lokasiTag" style="color:var(--merah); font-size:11px;">KAMPUNG PAYA KOPI</span>
               <span class="tarikh-laporan">Tarikh Laporan</span>
               <span class="tarikh-laporan-val" id="out-tarikhLaporan">25 OGOS 2026 (SELASA)</span>
             </div>
@@ -1012,7 +1075,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
           <span class="subline" id="out-subline">NEGERI JOHOR | BBP PAGOH</span>
         </div>
 
-        <!-- BODY PAGE 1 (SITREP) -->
+        <!-- BODY PAGE 1 -->
         <div class="body-sitrep">
           <div class="col-left">
             <p class="pill"><span class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 22s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span> MAKLUMAT INSIDEN</p>
@@ -1048,9 +1111,9 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
               <div class="stat-box"><div class="lbl">Baki Belum Dipadam</div><div class="num" id="out-baki">0.16 Hektar</div></div>
             </div>
 
-            <!-- ===== SEKTOR OPERASI ===== -->
+            <!-- SEKTOR OPERASI -->
             <div class="sektor-block toggle-field" id="row-sektorBlock">
-              <p class="pill" style="margin-top:8px;"><span class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span> SEKTOR OPERASI</p>
+              <p class="pill" style="margin-top:6px;"><span class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span> SEKTOR OPERASI</p>
               <div class="sektor-row toggle-field" id="sektor1-row">
                 <span class="sektor-nama" id="out-sektor1_nama">SEKTOR 1</span>
                 <span class="sektor-maklumat" id="out-sektor1_maklumat">Tiada pemadaman dilakukan</span>
@@ -1068,7 +1131,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
                 <span class="sektor-maklumat" id="out-sektor4_maklumat"></span>
               </div>
             </div>
-
           </div>
 
           <div class="col-right">
@@ -1117,15 +1179,12 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
           </div>
         </div>
 
-        <!-- FOOTER PAGE 1 -->
         <div class="footer" id="out-tagline1">“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia</div>
       </div>
 
-      <!-- ===== PAGE 2 (GAMBAR) ===== -->
+      <!-- ===== PAGE 2 (GAMBAR 1–4) ===== -->
       <div class="card" id="page2">
         <div class="card-bg" id="cardBg2"></div>
-
-        <!-- HEADER PAGE 2 -->
         <div class="header">
           <div class="header-top">
             <div class="logo">
@@ -1134,7 +1193,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
             </div>
             <div class="lokasi-tag">
               <span>Lokasi</span>
-              <span id="out2-lokasiTag" style="color:var(--merah); font-size:12px;">KAMPUNG PAYA KOPI</span>
+              <span id="out2-lokasiTag" style="color:var(--merah); font-size:11px;">KAMPUNG PAYA KOPI</span>
               <span class="tarikh-laporan">Tarikh Laporan</span>
               <span class="tarikh-laporan-val" id="out2-tarikhLaporan">25 OGOS 2026 (SELASA)</span>
             </div>
@@ -1143,11 +1202,8 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
           <h1 class="headline" id="out2-headline">INSIDEN KEBAKARAN KEBUN TANAH GAMBUT</h1>
           <span class="subline" id="out2-subline">NEGERI JOHOR | BBP PAGOH</span>
         </div>
-
-        <!-- BODY PAGE 2 -->
         <div class="body-gambar">
           <div class="grid-gambar">
-            <!-- Item 1 -->
             <div class="gambar-item-card">
               <div class="gambar-tajuk" id="out-gambarTajuk1">GAMBAR 1</div>
               <div class="gambar-wadah">
@@ -1155,7 +1211,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
                 <div class="gambar-kosong" id="gambarPlaceholder1">Tiada gambar</div>
               </div>
             </div>
-            <!-- Item 2 -->
             <div class="gambar-item-card">
               <div class="gambar-tajuk" id="out-gambarTajuk2">GAMBAR 2</div>
               <div class="gambar-wadah">
@@ -1163,7 +1218,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
                 <div class="gambar-kosong" id="gambarPlaceholder2">Tiada gambar</div>
               </div>
             </div>
-            <!-- Item 3 -->
             <div class="gambar-item-card">
               <div class="gambar-tajuk" id="out-gambarTajuk3">GAMBAR 3</div>
               <div class="gambar-wadah">
@@ -1171,7 +1225,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
                 <div class="gambar-kosong" id="gambarPlaceholder3">Tiada gambar</div>
               </div>
             </div>
-            <!-- Item 4 -->
             <div class="gambar-item-card">
               <div class="gambar-tajuk" id="out-gambarTajuk4">GAMBAR 4</div>
               <div class="gambar-wadah">
@@ -1181,9 +1234,62 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
             </div>
           </div>
         </div>
-
-        <!-- FOOTER PAGE 2 -->
         <div class="footer" id="out2-tagline">“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia</div>
+      </div>
+
+      <!-- ===== PAGE 3 (GAMBAR 5–8) ===== -->
+      <div class="card" id="page3">
+        <div class="card-bg" id="cardBg3"></div>
+        <div class="header">
+          <div class="header-top">
+            <div class="logo">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Logo_of_the_Malaysian_Fire_and_Rescue_Department.svg" alt="Logo JBPM">
+              <span class="logo-text">JABATAN BOMBA DAN PENYELAMAT MALAYSIA NEGERI JOHOR</span>
+            </div>
+            <div class="lokasi-tag">
+              <span>Lokasi</span>
+              <span id="out3-lokasiTag" style="color:var(--merah); font-size:11px;">KAMPUNG PAYA KOPI</span>
+              <span class="tarikh-laporan">Tarikh Laporan</span>
+              <span class="tarikh-laporan-val" id="out3-tarikhLaporan">25 OGOS 2026 (SELASA)</span>
+            </div>
+          </div>
+          <p class="kicker">LAPORAN SITUASI OPERASI (SITREP)</p>
+          <h1 class="headline" id="out3-headline">INSIDEN KEBAKARAN KEBUN TANAH GAMBUT</h1>
+          <span class="subline" id="out3-subline">NEGERI JOHOR | BBP PAGOH</span>
+        </div>
+        <div class="body-gambar">
+          <div class="grid-gambar">
+            <div class="gambar-item-card">
+              <div class="gambar-tajuk" id="out-gambarTajuk5">GAMBAR 5</div>
+              <div class="gambar-wadah">
+                <img id="gambarImg5" src="" alt="Gambar 5" style="display:none;">
+                <div class="gambar-kosong" id="gambarPlaceholder5">Tiada gambar</div>
+              </div>
+            </div>
+            <div class="gambar-item-card">
+              <div class="gambar-tajuk" id="out-gambarTajuk6">GAMBAR 6</div>
+              <div class="gambar-wadah">
+                <img id="gambarImg6" src="" alt="Gambar 6" style="display:none;">
+                <div class="gambar-kosong" id="gambarPlaceholder6">Tiada gambar</div>
+              </div>
+            </div>
+            <div class="gambar-item-card">
+              <div class="gambar-tajuk" id="out-gambarTajuk7">GAMBAR 7</div>
+              <div class="gambar-wadah">
+                <img id="gambarImg7" src="" alt="Gambar 7" style="display:none;">
+                <div class="gambar-kosong" id="gambarPlaceholder7">Tiada gambar</div>
+              </div>
+            </div>
+            <div class="gambar-item-card">
+              <div class="gambar-tajuk" id="out-gambarTajuk8">GAMBAR 8</div>
+              <div class="gambar-wadah">
+                <img id="gambarImg8" src="" alt="Gambar 8" style="display:none;">
+                <div class="gambar-kosong" id="gambarPlaceholder8">Tiada gambar</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer" id="out3-tagline">“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia</div>
       </div>
 
     </div>
@@ -1192,35 +1298,28 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
 
 <script>
   // ============================================================
-  //  SKRIP UTAMA — 2 halaman + sektor + localStorage + padam gambar
+  //  SKRIP UTAMA — 3 halaman + localStorage + padam gambar
   // ============================================================
 
-  // Simpan data gambar (sehingga 4)
-  const uploadedImages = [null, null, null, null];
+  const uploadedImages = [null, null, null, null, null, null, null, null];
 
-  // Senarai ID untuk page 1 (output utama)
+  // Output page1
   const fieldIdsPage1 = [
     "headline","subline","lokasiTag","tarikhLaporan","tarikhMasa","masaTiba","lokasiPenuh",
     "tindakan","asetJentera","kekuatan","statusMangsa","tagline",
     "k1nama","k1peranan","k1tel","k2nama","k2peranan","k2tel"
   ];
-
-  // Senarai ID untuk page 2 (output dengan awalan "out2-")
-  const fieldIdsPage2 = [
-    "headline","subline","lokasiTag","tarikhLaporan","tagline"
-  ];
+  // Output page2 (awalan out2-)
+  const fieldIdsPage2 = ["headline","subline","lokasiTag","tarikhLaporan","tagline"];
+  // Output page3 (awalan out3-)
+  const fieldIdsPage3 = ["headline","subline","lokasiTag","tarikhLaporan","tagline"];
 
   const toggleFieldIds = [
-    "masaOperasiTerkawal",
-    "masaOperasiTamat",
-    "keanggotaanUnit",
-    "catatan"
+    "masaOperasiTerkawal","masaOperasiTamat","keanggotaanUnit","catatan"
   ];
-
   const numIds = ["jumlahKeluasan","keluasanDipadam"];
   const selectIds = ["statusOperasi"];
 
-  // ID untuk sektor (4 sektor)
   const sektorFields = [
     { nama: "sektor1_nama", maklumat: "sektor1_maklumat", row: "sektor1-row", show: "showSektor1" },
     { nama: "sektor2_nama", maklumat: "sektor2_maklumat", row: "sektor2-row", show: "showSektor2" },
@@ -1228,23 +1327,42 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     { nama: "sektor4_nama", maklumat: "sektor4_maklumat", row: "sektor4-row", show: "showSektor4" }
   ];
 
-  // Tajuk gambar
-  const gambarTajukIds = ["gambarTajuk1","gambarTajuk2","gambarTajuk3","gambarTajuk4"];
-  const outTajukIds = ["out-gambarTajuk1","out-gambarTajuk2","out-gambarTajuk3","out-gambarTajuk4"];
-  const imgIds = ["gambarImg1","gambarImg2","gambarImg3","gambarImg4"];
-  const placeholderIds = ["gambarPlaceholder1","gambarPlaceholder2","gambarPlaceholder3","gambarPlaceholder4"];
-  const fileInputIds = ["gambarFile1","gambarFile2","gambarFile3","gambarFile4"];
-  const fileNameIds = ["fileName1","fileName2","fileName3","fileName4"];
-  const padamBtnIds = ["padamBtn1","padamBtn2","padamBtn3","padamBtn4"];
+  // Gambar 1–8
+  const gambarTajukIds = [
+    "gambarTajuk1","gambarTajuk2","gambarTajuk3","gambarTajuk4",
+    "gambarTajuk5","gambarTajuk6","gambarTajuk7","gambarTajuk8"
+  ];
+  const outTajukIds = [
+    "out-gambarTajuk1","out-gambarTajuk2","out-gambarTajuk3","out-gambarTajuk4",
+    "out-gambarTajuk5","out-gambarTajuk6","out-gambarTajuk7","out-gambarTajuk8"
+  ];
+  const imgIds = [
+    "gambarImg1","gambarImg2","gambarImg3","gambarImg4",
+    "gambarImg5","gambarImg6","gambarImg7","gambarImg8"
+  ];
+  const placeholderIds = [
+    "gambarPlaceholder1","gambarPlaceholder2","gambarPlaceholder3","gambarPlaceholder4",
+    "gambarPlaceholder5","gambarPlaceholder6","gambarPlaceholder7","gambarPlaceholder8"
+  ];
+  const fileInputIds = [
+    "gambarFile1","gambarFile2","gambarFile3","gambarFile4",
+    "gambarFile5","gambarFile6","gambarFile7","gambarFile8"
+  ];
+  const fileNameIds = [
+    "fileName1","fileName2","fileName3","fileName4",
+    "fileName5","fileName6","fileName7","fileName8"
+  ];
+  const padamBtnIds = [
+    "padamBtn1","padamBtn2","padamBtn3","padamBtn4",
+    "padamBtn5","padamBtn6","padamBtn7","padamBtn8"
+  ];
 
-  // Semua ID checkbox yang perlu disimpan
   const checkboxIds = [
     "showSektorBlock","showSektor1","showSektor2","showSektor3","showSektor4",
     "showBackground","showMasaOperasiTerkawal","showMasaOperasiTamat",
-    "showKeanggotaanUnit","showCatatan","showGambar"
+    "showKeanggotaanUnit","showCatatan","showGambarPage2","showGambarPage3"
   ];
 
-  // Semua ID input (text, textarea, select) untuk disimpan
   const allInputIds = [
     ...fieldIdsPage1,
     ...numIds,
@@ -1256,58 +1374,45 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     ...sektorFields.map(sf => sf.maklumat)
   ];
 
-  // --- Fungsi simpan ke localStorage ---
+  // localStorage
   function saveToLocalStorage() {
     try {
       allInputIds.forEach(id => {
         const el = document.getElementById(id);
-        if (el) {
-          localStorage.setItem('input_' + id, el.value);
-        }
+        if (el) localStorage.setItem('input_' + id, el.value);
       });
       checkboxIds.forEach(id => {
         const el = document.getElementById(id);
-        if (el) {
-          localStorage.setItem('checkbox_' + id, el.checked ? 'true' : 'false');
-        }
+        if (el) localStorage.setItem('checkbox_' + id, el.checked ? 'true' : 'false');
       });
-    } catch (e) { /* abaikan */ }
+    } catch(e) {}
   }
 
-  // --- Fungsi muat dari localStorage ---
   function loadFromLocalStorage() {
     try {
       allInputIds.forEach(id => {
         const el = document.getElementById(id);
         if (el) {
           const val = localStorage.getItem('input_' + id);
-          if (val !== null) {
-            el.value = val;
-          }
+          if (val !== null) el.value = val;
         }
       });
       checkboxIds.forEach(id => {
         const el = document.getElementById(id);
         if (el) {
           const val = localStorage.getItem('checkbox_' + id);
-          if (val !== null) {
-            el.checked = (val === 'true');
-          }
+          if (val !== null) el.checked = (val === 'true');
         }
       });
-    } catch (e) { /* abaikan */ }
+    } catch(e) {}
   }
 
-  // --- Fungsi padam gambar mengikut index ---
   function padamGambar(index) {
     uploadedImages[index] = null;
-    // Reset input file
     const fileInput = document.getElementById(fileInputIds[index]);
     if (fileInput) fileInput.value = '';
-    // Reset nama fail
     const fileNameSpan = document.getElementById(fileNameIds[index]);
     if (fileNameSpan) fileNameSpan.textContent = 'Tiada fail';
-    // Sembunyikan butang padam
     const padamBtn = document.getElementById(padamBtnIds[index]);
     if (padamBtn) padamBtn.style.display = 'none';
     render();
@@ -1319,28 +1424,32 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
   }
 
   function render(){
-    // --- Page 1 (output tanpa awalan) ---
+    // Page 1
     fieldIdsPage1.forEach(id => {
       const el = document.getElementById(id);
       const out = document.getElementById("out-"+id);
       if(el && out) out.textContent = el.value;
     });
-
-    // --- Page 2 (output dengan awalan "out2-") ---
+    // Page 2
     fieldIdsPage2.forEach(id => {
       const el = document.getElementById(id);
       const out = document.getElementById("out2-"+id);
       if(el && out) out.textContent = el.value;
     });
+    // Page 3
+    fieldIdsPage3.forEach(id => {
+      const el = document.getElementById(id);
+      const out = document.getElementById("out3-"+id);
+      if(el && out) out.textContent = el.value;
+    });
 
-    // --- Select & Num untuk Page 1 ---
     selectIds.forEach(id => {
       const el = document.getElementById(id);
       const out = document.getElementById("out-"+id);
       if(el && out) out.textContent = el.value;
     });
 
-    // --- Togol medan tambahan (Page 1) ---
+    // Togol medan tambahan
     toggleFieldIds.forEach(id => {
       const el = document.getElementById(id);
       const out = document.getElementById("out-"+id);
@@ -1353,7 +1462,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       }
     });
 
-    // --- Sektor ---
+    // Sektor
     sektorFields.forEach((sf, idx) => {
       const namaEl = document.getElementById(sf.nama);
       const maklumatEl = document.getElementById(sf.maklumat);
@@ -1361,7 +1470,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       const outMaklumat = document.getElementById("out-"+sf.maklumat);
       if (namaEl && outNama) outNama.textContent = namaEl.value || "SEKTOR "+(idx+1);
       if (maklumatEl && outMaklumat) outMaklumat.textContent = maklumatEl.value || "-";
-
       const showCb = document.getElementById(sf.show);
       const row = document.getElementById(sf.row);
       if (showCb && row){
@@ -1370,7 +1478,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       }
     });
 
-    // Togol keseluruhan blok Sektor Operasi
     const showSektorBlockCb = document.getElementById("showSektorBlock");
     const sektorBlockEl = document.getElementById("row-sektorBlock");
     if (showSektorBlockCb && sektorBlockEl){
@@ -1378,16 +1485,22 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       else sektorBlockEl.classList.add("hidden-field");
     }
 
-    // --- Gambar (Page 2) ---
-    const showGambarCb = document.getElementById("showGambar");
+    // Togol halaman 2 & 3
+    const showPage2 = document.getElementById("showGambarPage2");
     const page2 = document.getElementById("page2");
-    if (showGambarCb && page2) {
-      if (showGambarCb.checked) page2.classList.remove("hidden-page");
+    if (showPage2 && page2) {
+      if (showPage2.checked) page2.classList.remove("hidden-page");
       else page2.classList.add("hidden-page");
     }
+    const showPage3 = document.getElementById("showGambarPage3");
+    const page3 = document.getElementById("page3");
+    if (showPage3 && page3) {
+      if (showPage3.checked) page3.classList.remove("hidden-page");
+      else page3.classList.add("hidden-page");
+    }
 
-    // Setiap gambar
-    for (let i = 0; i < 4; i++) {
+    // Gambar 1–8
+    for (let i = 0; i < 8; i++) {
       const tajukInput = document.getElementById(gambarTajukIds[i]);
       const outTajuk = document.getElementById(outTajukIds[i]);
       if (tajukInput && outTajuk) {
@@ -1410,21 +1523,17 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       }
     }
 
-    // --- Togol latar belakang (kedua-dua halaman) ---
+    // Latar belakang
     const bgCb = document.getElementById("showBackground");
-    const bgEl1 = document.getElementById("cardBg1");
-    const bgEl2 = document.getElementById("cardBg2");
-    if (bgCb && bgEl1 && bgEl2) {
-      if (bgCb.checked) {
-        bgEl1.classList.remove("hidden");
-        bgEl2.classList.remove("hidden");
-      } else {
-        bgEl1.classList.add("hidden");
-        bgEl2.classList.add("hidden");
+    [1,2,3].forEach(num => {
+      const bgEl = document.getElementById("cardBg"+num);
+      if (bgCb && bgEl) {
+        if (bgCb.checked) bgEl.classList.remove("hidden");
+        else bgEl.classList.add("hidden");
       }
-    }
+    });
 
-    // --- Pengiraan keluasan (Page 1) ---
+    // Keluasan
     const jumlah = parseFloat(document.getElementById("jumlahKeluasan").value) || 0;
     const dipadam = parseFloat(document.getElementById("keluasanDipadam").value) || 0;
     const baki = Math.max(jumlah - dipadam, 0);
@@ -1436,11 +1545,10 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     document.getElementById("out-pct").textContent = pct.toFixed(1) + "%";
     document.getElementById("out-bar").style.width = pct.toFixed(1) + "%";
 
-    // Simpan ke localStorage
     saveToLocalStorage();
   }
 
-  // Fungsi untuk mengendalikan muat naik fail bagi setiap slot
+  // Setup file upload untuk 8 slot
   function setupFileUpload(index) {
     const fileInput = document.getElementById(fileInputIds[index]);
     const fileNameDisplay = document.getElementById(fileNameIds[index]);
@@ -1465,27 +1573,20 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       }
     });
   }
+  for (let i = 0; i < 8; i++) setupFileUpload(i);
 
-  // Sediakan 4 muat naik
-  for (let i = 0; i < 4; i++) {
-    setupFileUpload(i);
-  }
-
-  // Event listener untuk semua input
+  // Event listener
   allInputIds.forEach(id => {
     const el = document.getElementById(id);
     if(el) el.addEventListener("input", render);
   });
-
-  // Event listener untuk checkbox
   checkboxIds.forEach(id => {
     const el = document.getElementById(id);
     if(el) el.addEventListener("change", render);
   });
 
-  // ---- Auto-parse ----
+  // Auto-parse (sama seperti sebelumnya, dipendekkan)
   const BULAN = ["JANUARI","FEBRUARI","MAC","APRIL","MEI","JUN","JULAI","OGOS","SEPTEMBER","OKTOBER","NOVEMBER","DISEMBER"];
-
   function formatTarikh(ddmmyyyy){
     const m = ddmmyyyy.match(/(\d{1,2})[.\/\-](\d{1,2})[.\/\-](\d{4})/);
     if(!m) return ddmmyyyy;
@@ -1493,44 +1594,29 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     if(mo < 1 || mo > 12) return ddmmyyyy;
     return d + " " + BULAN[mo-1] + " " + y;
   }
-
   function grab(text, patterns){
-    for(const p of patterns){
-      const m = text.match(p);
-      if(m && m[1]) return m[1].trim();
-    }
+    for(const p of patterns){ const m = text.match(p); if(m && m[1]) return m[1].trim(); }
     return null;
   }
-
   function grabAll(text, pattern){
     const out = [];
     let m;
     const re = new RegExp(pattern.source, pattern.flags.includes("g") ? pattern.flags : pattern.flags + "g");
-    while((m = re.exec(text)) !== null){
-      out.push(m);
-      if(m.index === re.lastIndex) re.lastIndex++;
-    }
+    while((m = re.exec(text)) !== null){ out.push(m); if(m.index === re.lastIndex) re.lastIndex++; }
     return out;
   }
 
   function parseRawText(){
     const text = document.getElementById("rawText").value;
     if(!text.trim()){ alert("Sila tampal teks Infoblast dahulu."); return; }
-
     const jenis = grab(text, [/^Jenis Insiden\s*:\s*(.+)$/im]);
     if(jenis) document.getElementById("headline").value = jenis.toUpperCase();
-
     const tm = text.match(/Tarikh\s*\/\s*Masa\s*Pa[nñ]?ggilan\s*:\s*([\d.\/\-]+)\s*Jam\s*([\d:]+)/i);
-    if(tm){
-      document.getElementById("tarikhMasa").value = formatTarikh(tm[1]) + " | " + tm[2] + " HRS";
-    }
-
+    if(tm){ document.getElementById("tarikhMasa").value = formatTarikh(tm[1]) + " | " + tm[2] + " HRS"; }
     const alamat = grab(text, [/^Alamat\s*:\s*(.+)$/im]);
     if(alamat) document.getElementById("lokasiPenuh").value = alamat.toUpperCase();
-
     const kgM = text.match(/Kg\.?\s+([A-Za-z\s]+?)(?:,|\s+Pagoh|\s*\()/i) || text.match(/Kampung\s+([A-Za-z\s]+?)(?:,|\s*\()/i);
     if(kgM) document.getElementById("lokasiTag").value = "KAMPUNG " + kgM[1].trim().toUpperCase();
-
     const masaSampai = grab(text, [/^Masa Jentera Sampai\s*:\s*([\d:]+)/im]);
     const jarak = grab(text, [/^Jarak ke Tempat Kejadian\s*:\s*(.+)$/im]);
     if(masaSampai || jarak){
@@ -1538,12 +1624,8 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       if(jarak) val += (val ? " " : "") + "(JARAK: " + jarak.toUpperCase() + ")";
       document.getElementById("masaTiba").value = val;
     }
-
     const mangsa = grab(text, [/^Mangsa\s*:\s*(.+)$/im]);
-    if(mangsa){
-      document.getElementById("statusMangsa").value = /tiada/i.test(mangsa) ? "TIADA MANGSA" : mangsa.toUpperCase();
-    }
-
+    if(mangsa){ document.getElementById("statusMangsa").value = /tiada/i.test(mangsa) ? "TIADA MANGSA" : mangsa.toUpperCase(); }
     const keanggotaan = grab(text, [/^Keanggotaan\s*:\s*(.+)$/im]);
     if(keanggotaan){
       document.getElementById("keanggotaanUnit").value = keanggotaan.toUpperCase();
@@ -1551,21 +1633,18 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       const negeri = negeriM ? negeriM[1].toUpperCase() : "JOHOR";
       document.getElementById("subline").value = "NEGERI " + negeri + " | " + keanggotaan.toUpperCase();
     }
-
     const k1 = text.match(/^Komander Operasi\s*:\s*(.+?)\s*\(([\d\-\s]+)\)/im);
     if(k1){
       document.getElementById("k1nama").value = k1[1].trim();
       document.getElementById("k1tel").value = k1[2].trim();
       document.getElementById("k1peranan").value = "Komander Operasi";
     }
-
     const k2 = text.match(/^Komander Operasi Kanan\s*:\s*(.+?)\s*\(([\d\-\s]+)\)/im);
     if(k2){
       document.getElementById("k2nama").value = k2[1].trim();
       document.getElementById("k2tel").value = k2[2].trim();
       document.getElementById("k2peranan").value = "Komander Operasi Kanan";
     }
-
     const jumlahEkar = grab(text, [/Keluasan\s*kebakaran\s*:\s*([\d.]+)\s*ekar/i]);
     const dipadamEkar = grab(text, [/Jumlah\s*keluasan\s*telah\s*dipadam\s*:\s*([\d.]+)\s*ekar/i]);
     if(jumlahEkar || dipadamEkar){
@@ -1573,25 +1652,20 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       if(jumlahEkar) document.getElementById("jumlahKeluasan").value = jumlahEkar;
       if(dipadamEkar) document.getElementById("keluasanDipadam").value = dipadamEkar;
     }
-
     const bilAnggota = grab(text, [/Jumlah\s*Keanggotaan\s*:\s*(\d+)\s*Anggota/i]);
     if(bilAnggota){
       const unit = document.getElementById("keanggotaanUnit").value || "";
       document.getElementById("kekuatan").value = bilAnggota + " Anggota" + (unit ? " " + unit : "");
     }
-
     const jentera = grab(text, [/^Jentera\s*:\s*(.+)$/im]);
     if(jentera) document.getElementById("asetJentera").value = jentera.replace(/\s+/g," ").trim();
-
     const tindakanMatches = grabAll(text, /pemadaman menggunakan\s+(.+?)\./gi);
     if(tindakanMatches.length){
       const last = tindakanMatches[tindakanMatches.length-1];
       document.getElementById("tindakan").value = "Operasi menggunakan " + last[1].trim();
     }
-
     const terkawal = grab(text, [/^Masa Operasi Terkawal\s*:\s*(.+)$/im]);
     if(terkawal) document.getElementById("masaOperasiTerkawal").value = terkawal;
-
     const tamat = grab(text, [/^Masa Operasi Tamat\s*:\s*(.+)$/im]);
     if(tamat){
       document.getElementById("masaOperasiTamat").value = tamat;
@@ -1601,7 +1675,6 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     } else if(/masih\s*beroperasi/i.test(text)) {
       document.getElementById("statusOperasi").value = "MASIH BEROPERASI";
     }
-
     const catatanMatch = text.match(/Catatan\s*:\s*([\s\S]*?)(?=\n\s*Sekian,|\n\s*"CEPAT DAN MESRA"|\n\s*PKPgB|\s*$)/i);
     if(catatanMatch){
       let catatan = catatanMatch[1].trim();
@@ -1610,19 +1683,18 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       catatan = catatan.replace(/\s*PKPgB\s+[\w\s]+\s*$/i, "");
       document.getElementById("catatan").value = catatan.trim();
     }
-
     render();
   }
 
   function downloadPNG(){
     if(typeof html2canvas === "undefined"){
-      alert("Pustaka penjana PNG tidak dapat dimuatkan (kemungkinan rangkaian menyekat akses ke CDN luar).\n\nSila guna butang \"Cetak (Lanskap A4)\" sebagai gantinya — anda boleh \"Save as PDF\" atau ambil tangkapan skrin daripada tetingkap cetak.");
+      alert("Pustaka penjana PNG tidak dapat dimuatkan.\n\nSila guna butang \"Cetak (Lanskap A4)\" sebagai gantinya.");
       return;
     }
     const container = document.getElementById("pagesContainer");
     html2canvas(container, { scale: 2, useCORS: true, backgroundColor: "#ffffff" }).then(canvas => {
       const link = document.createElement("a");
-      link.download = "infografik-sitrep-2-halaman-" + Date.now() + ".png";
+      link.download = "infografik-sitrep-3-halaman-" + Date.now() + ".png";
       link.href = canvas.toDataURL("image/png");
       link.click();
     }).catch(err => {
@@ -1630,13 +1702,9 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     });
   }
 
-  // --- Muat data dari localStorage pada permulaan ---
   loadFromLocalStorage();
-
-  // --- Render pertama ---
   render();
 </script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
 </body>
 </html>
