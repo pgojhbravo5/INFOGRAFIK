@@ -191,9 +191,9 @@
     width:1122px;
     max-width:100%;
   }
+  /* ===== CARD ===== */
   .card{
     width:100%;
-    aspect-ratio:297 / 210;
     background:#fff;
     border-radius:6px;
     box-shadow:0 10px 30px rgba(20,30,60,.18);
@@ -201,6 +201,8 @@
     display:flex;
     flex-direction:column;
     position:relative;
+    /* Kekalkan nisbah A4 landskap tanpa aspect-ratio */
+    aspect-ratio: 297 / 210;
   }
   .card-bg {
     position: absolute;
@@ -297,6 +299,7 @@
     align-content:start;
     background: rgba(255,255,255,0.35);
     backdrop-filter: blur(1px);
+    overflow-y:auto;
   }
   .col-left, .col-right{ min-width:0; }
 
@@ -465,32 +468,33 @@
     word-break:break-word;
   }
 
-  /* ===== BADAN PAGE 2 (grid 2x2 gambar) - VERSI STABIL ===== */
+  /* ===== BADAN PAGE 2 (grid 2x2) - VERSI PALING STABIL ===== */
   .body-gambar{
     padding:10px 28px 6px;
-    flex:1;
+    flex:1;                      /* isi ruang kosong dalam card */
     display:flex;
     flex-direction:column;
     background: rgba(255,255,255,0.35);
     backdrop-filter: blur(1px);
-    min-height:0;  /* penting untuk flex containment */
+    min-height:0;                /* penting untuk flex containment */
+    overflow:hidden;             /* elakkan scroll */
   }
   .grid-gambar{
     display:grid;
     grid-template-columns:1fr 1fr;
     grid-template-rows:1fr 1fr;
     gap:12px 20px;
-    flex:1;
-    height:100%;  /* paksa isi ruang */
+    flex:1;                      /* isi ruang dalam body-gambar */
     min-height:0;
+    height:100%;                 /* paksa isi penuh */
   }
   .gambar-item-card {
     display:flex;
     flex-direction:column;
     align-items:center;
     gap:4px;
-    height:100%;
     min-height:0;
+    height:100%;                 /* isi sel grid */
   }
   .gambar-item-card .gambar-tajuk {
     font-size:13px;
@@ -504,7 +508,7 @@
   }
   .gambar-item-card .gambar-wadah {
     width:100%;
-    flex:1;
+    flex:1;                      /* ambil baki ruang dalam item */
     min-height:0;
     overflow:hidden;
     border-radius:6px;
@@ -517,7 +521,7 @@
   .gambar-item-card .gambar-wadah img {
     width:100%;
     height:100%;
-    object-fit:contain;
+    object-fit:contain;          /* pastikan gambar kelihatan penuh */
     display:block;
   }
   .gambar-item-card .gambar-kosong {
@@ -575,7 +579,7 @@
     }
     .card{
       width:100% !important;
-      height:100% !important;
+      height:100vh !important;   /* dalam cetakan, gunakan 100vh agar penuh */
       box-shadow:none !important;
       border-radius:0 !important;
       aspect-ratio:auto !important;
@@ -617,9 +621,9 @@
     .komander { background:var(--biru-gelap) !important; }
     .footer { background:linear-gradient(90deg, var(--biru-gelap), var(--merah) 60%, var(--kuning) 100%) !important; }
 
-    /* Pastikan grid page 2 konsisten dalam cetakan */
+    /* paksa grid page 2 penuh */
     .grid-gambar {
-      grid-template-rows: 1fr 1fr !important;
+      flex: 1 !important;
       height: 100% !important;
       min-height: 0 !important;
     }
@@ -1025,7 +1029,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
           <span class="subline" id="out2-subline">NEGERI JOHOR | BBP PAGOH</span>
         </div>
 
-        <!-- BODY PAGE 2 (Gambar grid 2x2) - VERSI STABIL -->
+        <!-- BODY PAGE 2 (Gambar grid 2x2) - VERSI PALING STABIL -->
         <div class="body-gambar">
           <div class="grid-gambar">
             <!-- Item 1 -->
