@@ -172,7 +172,7 @@
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.45; /* dinaikkan dari 0.35 */
+    opacity: 0.45;
     pointer-events: none;
     z-index: 0;
   }
@@ -260,7 +260,7 @@
     grid-template-columns:1fr 1fr;
     column-gap:28px;
     align-content:start;
-    background: rgba(255,255,255,0.35); /* diturunkan dari 0.55 */
+    background: rgba(255,255,255,0.35);
     backdrop-filter: blur(1px);
   }
   .col-left, .col-right{ min-width:0; }
@@ -408,6 +408,54 @@
     word-break:break-word;
   }
 
+  /* ----- SLOT GAMBAR (halaman kedua) ----- */
+  .gambar-slot {
+    grid-column: 1 / -1;
+    margin-top: 10px;
+    padding: 8px 0 4px;
+    border-top: 2px solid rgba(23, 70, 162, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .gambar-slot .gambar-tajuk {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--biru-gelap);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .gambar-slot .gambar-wadah {
+    width: 100%;
+    max-height: 130px;
+    overflow: hidden;
+    border-radius: 6px;
+    border: 1px solid rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255,255,255,0.4);
+  }
+  .gambar-slot .gambar-wadah img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-height: 130px;
+    display: block;
+  }
+  .gambar-slot .gambar-kosong {
+    padding: 16px;
+    color: #8992a0;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .gambar-slot.hidden {
+    display: none;
+  }
+
   .footer{
     display:flex;
     align-items:center;
@@ -450,6 +498,8 @@
     .catatan-block{ max-height:none !important; overflow-y:visible !important; }
     .card-bg { opacity: 0.3 !important; }
     .body { background: rgba(255,255,255,0.5) !important; }
+    .gambar-slot .gambar-wadah { max-height: 150px !important; }
+    .gambar-slot .gambar-wadah img { max-height: 150px !important; }
   }
 </style>
 </head>
@@ -586,6 +636,19 @@ Setibanya pasukan keluaran operasi (pko) di tempat kejadian didapati benar berla
 
 Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), iaitu 99.9%, manakala baki keluasan yang belum dipadamkan adalah 0.1 ekar (0.04 hektar).</textarea>
       </div>
+
+      <!-- ===== PAGE 2: GAMBAR ===== -->
+      <div class="toggle-item">
+        <div class="toggle-row">
+          <input type="checkbox" id="showGambar" checked>
+          <label for="showGambar">Tunjukkan Slot Gambar (Halaman 2)</label>
+        </div>
+        <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap); margin-top:4px;">Tajuk Gambar</label>
+        <input id="gambarTajuk" placeholder="Contoh: OPERASI PADAMAN DI TAPAK" value="KEBAKARAN KEBUN GAMBUT - TINDAKAN PEMADAMAN">
+        <label style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--biru-gelap); margin-top:2px;">URL Gambar</label>
+        <input id="gambarURL" placeholder="https://... atau kosongkan untuk tiada gambar" value="https://raw.githubusercontent.com/pgojhbravo5/INFOGRAFIK/main/KEBAKARAN-TERBUKA.jpg">
+        <p class="hint" style="margin:2px 0 0;">Masukkan URL gambar (contoh dari GitHub). Kosongkan untuk menyembunyikan slot.</p>
+      </div>
     </div>
 
     <div class="blok">
@@ -719,6 +782,15 @@ Setibanya pasukan keluaran operasi (pko) di tempat kejadian didapati benar berla
 Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), iaitu 99.9%, manakala baki keluasan yang belum dipadamkan adalah 0.1 ekar (0.04 hektar).</div>
           </div>
         </div>
+
+        <!-- ===== SLOT GAMBAR (HALAMAN KEDUA) ===== -->
+        <div class="gambar-slot" id="gambarSlot">
+          <div class="gambar-tajuk" id="out-gambarTajuk">KEBAKARAN KEBUN GAMBUT - TINDAKAN PEMADAMAN</div>
+          <div class="gambar-wadah" id="gambarWadah">
+            <img id="gambarImg" src="https://raw.githubusercontent.com/pgojhbravo5/INFOGRAFIK/main/KEBAKARAN-TERBUKA.jpg" alt="Gambar operasi">
+          </div>
+        </div>
+
       </div>
 
       <div class="footer" id="out-tagline">“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia</div>
@@ -747,12 +819,16 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
   const numIds = ["jumlahKeluasan","keluasanDipadam"];
   const selectIds = ["statusOperasi"];
 
+  // medan untuk halaman 2 (gambar)
+  const gambarFieldIds = ["gambarTajuk", "gambarURL"];
+
   function fmtHa(n){
     const unit = document.getElementById("unitLuas") ? document.getElementById("unitLuas").value : "Hektar";
     return (Math.round(n*100)/100).toString() + " " + unit;
   }
 
   function render(){
+    // medan biasa
     fieldIds.forEach(id => {
       const el = document.getElementById(id);
       const out = document.getElementById("out-"+id);
@@ -765,6 +841,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       if(el && out) out.textContent = el.value;
     });
 
+    // medan togol (maklumat tambahan)
     toggleFieldIds.forEach(id => {
       const el = document.getElementById(id);
       const out = document.getElementById("out-"+id);
@@ -777,6 +854,58 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       }
     });
 
+    // ----- Halaman 2: Gambar -----
+    const showGambarCb = document.getElementById("showGambar");
+    const gambarSlot = document.getElementById("gambarSlot");
+    const gambarTajuk = document.getElementById("gambarTajuk");
+    const gambarURL = document.getElementById("gambarURL");
+    const outTajuk = document.getElementById("out-gambarTajuk");
+    const imgEl = document.getElementById("gambarImg");
+
+    // Togol visibility slot gambar
+    if (showGambarCb && gambarSlot) {
+      if (showGambarCb.checked) {
+        gambarSlot.classList.remove("hidden");
+      } else {
+        gambarSlot.classList.add("hidden");
+      }
+    }
+
+    // Set tajuk
+    if (gambarTajuk && outTajuk) {
+      outTajuk.textContent = gambarTajuk.value || "Gambar Operasi";
+    }
+
+    // Set gambar
+    if (gambarURL && imgEl) {
+      const url = gambarURL.value.trim();
+      if (url) {
+        imgEl.src = url;
+        imgEl.alt = "Gambar operasi";
+        imgEl.style.display = "block";
+        // Sembunyikan placeholder kosong (jika ada)
+        const wadah = document.getElementById("gambarWadah");
+        if (wadah) {
+          // Pastikan tiada teks kosong yang tersisa
+          const existing = wadah.querySelector(".gambar-kosong");
+          if (existing) existing.remove();
+        }
+      } else {
+        // Tiada URL – sembunyikan gambar dan tunjuk mesej kosong
+        imgEl.style.display = "none";
+        const wadah = document.getElementById("gambarWadah");
+        if (wadah) {
+          let kosong = wadah.querySelector(".gambar-kosong");
+          if (!kosong) {
+            kosong = document.createElement("div");
+            kosong.className = "gambar-kosong";
+            kosong.textContent = "Tiada gambar dimuatkan. Masukkan URL di panel input.";
+            wadah.appendChild(kosong);
+          }
+        }
+      }
+    }
+
     // Togol latar belakang
     const bgCb = document.getElementById("showBackground");
     const bgEl = document.getElementById("cardBg");
@@ -785,6 +914,7 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
       else bgEl.classList.add("hidden");
     }
 
+    // Pengiraan keluasan
     const jumlah = parseFloat(document.getElementById("jumlahKeluasan").value) || 0;
     const dipadam = parseFloat(document.getElementById("keluasanDipadam").value) || 0;
     const baki = Math.max(jumlah - dipadam, 0);
@@ -797,13 +927,16 @@ Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), i
     document.getElementById("out-bar").style.width = pct.toFixed(1) + "%";
   }
 
-  const allInputIds = [...fieldIds, ...numIds, ...selectIds, "unitLuas", ...toggleFieldIds];
+  // Pasang event listener pada semua input
+  const allInputIds = [...fieldIds, ...numIds, ...selectIds, "unitLuas", ...toggleFieldIds, ...gambarFieldIds];
   allInputIds.forEach(id => {
     const el = document.getElementById(id);
     if(el) el.addEventListener("input", render);
   });
 
+  // Togol khas
   document.getElementById("showBackground")?.addEventListener("change", render);
+  document.getElementById("showGambar")?.addEventListener("change", render);
 
   toggleFieldIds.forEach(id => {
     const cb = document.getElementById("show"+id.charAt(0).toUpperCase()+id.slice(1));
