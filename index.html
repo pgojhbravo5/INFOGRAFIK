@@ -325,7 +325,7 @@
 
   /* BADAN PAGE 1 (2 lajur SITREP) */
   .body-sitrep{
-    padding:14px 28px 8px;    /* padding-bottom = 8px (sederhana, tidak terlalu rapat) */
+    padding:14px 28px 4px;    /* padding-bottom dikurangkan kepada 4px */
     flex:1;
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -484,7 +484,7 @@
   .catatan-block{
     flex:1;
     min-height:0;
-    margin-top:6px;
+    margin-top:4px;          /* dikurangkan sedikit */
     background:rgba(250,251,253,0.6);
     border-radius:6px;
     padding:8px 12px;
@@ -650,7 +650,14 @@
     .header {
       background: linear-gradient(135deg, rgba(255,255,255,0.65) 55%, rgba(244,246,250,0.65) 55%) !important;
     }
-    .catatan-block { max-height:none !important; overflow-y:visible !important; }
+
+    /* --- PENTING: Catatan isi penuh dan tiada had ketinggian --- */
+    .catatan-block {
+      max-height: none !important;
+      overflow-y: visible !important;
+      flex: 1 !important;
+      margin-top: 2px !important;
+    }
     .sektor-row { border-bottom:1px solid rgba(240,241,244,0.3) !important; }
     .info-row { border-bottom:1px solid rgba(240,241,244,0.4) !important; }
     .bar-track { background:rgba(228,231,238,0.5) !important; }
