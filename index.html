@@ -546,8 +546,10 @@
   </main>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
+  // Skrip aplikasi utama dimuatkan DAHULU dan TIDAK bergantung pada mana-mana
+  // pustaka luar/CDN — supaya borang, ruang tampal teks, dan pratonton tetap
+  // berfungsi sepenuhnya walaupun rangkaian menyekat akses CDN luar.
   const fieldIds = [
     "headline","subline","lokasiTag","tarikhMasa","masaTiba","lokasiPenuh",
     "tindakan","asetJentera","kekuatan","statusMangsa","tagline",
@@ -704,6 +706,10 @@
   }
 
   function downloadPNG(){
+    if(typeof html2canvas === "undefined"){
+      alert("Pustaka penjana PNG tidak dapat dimuatkan (kemungkinan rangkaian menyekat akses ke CDN luar).\n\nSila guna butang \"🖨️ Cetak (Lanskap A4)\" sebagai gantinya — anda boleh \"Save as PDF\" atau ambil tangkapan skrin daripada tetingkap cetak.");
+      return;
+    }
     const node = document.getElementById("infografik");
     html2canvas(node, { scale: 2, useCORS: true, backgroundColor: "#ffffff" }).then(canvas => {
       const link = document.createElement("a");
@@ -717,5 +723,10 @@
 
   render();
 </script>
+
+<!-- Pustaka pilihan untuk muat turun PNG. Dimuatkan SELEPAS aplikasi utama
+     dan dengan "defer" supaya ia tidak menyekat borang/ruang tampal teks
+     walaupun CDN ini gagal/lambat dimuatkan pada rangkaian tertentu. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
 </body>
 </html>
