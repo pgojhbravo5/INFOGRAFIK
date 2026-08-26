@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jana Infografik SITREP - JBPM Johor (3 Halaman)</title>
+    <title>Jana Infografik - JBPM Johor</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
@@ -19,998 +19,132 @@
             --padding-umum: 12px;
             --padding-header: 14px;
         }
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            margin: 0;
-            font-family: 'Poppins', Arial, sans-serif;
-            background: var(--bg-app);
-            color: var(--teks);
-        }
-        .app {
-            display: flex;
-            min-height: 100vh;
-        }
-        .panel-input {
-            width: 420px;
-            flex-shrink: 0;
-            background: #fff;
-            border-right: 1px solid #dbe0e8;
-            padding: 20px 18px;
-            overflow-y: auto;
-            max-height: 100vh;
-        }
-        .panel-input h1 {
-            font-size: 16px;
-            font-weight: 800;
-            color: var(--biru-gelap);
-            margin: 0 0 2px;
-        }
-        .panel-input .sub {
-            font-size: 12px;
-            color: #6a7280;
-            margin: 0 0 16px;
-        }
-        .blok {
-            margin-bottom: 16px;
-            padding-bottom: 14px;
-            border-bottom: 1px dashed #e2e6ec;
-        }
-        .blok label {
-            display: block;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: .03em;
-            color: var(--biru-gelap);
-            margin-bottom: 4px;
-        }
-        .blok textarea,
-        .blok input,
-        .blok select {
-            width: 100%;
-            font-family: 'Poppins', Arial, sans-serif;
-            font-size: 13px;
-            padding: 8px 9px;
-            border: 1px solid #cfd6e0;
-            border-radius: 6px;
-            margin-bottom: 8px;
-            background: #fbfcfe;
-        }
-        .blok textarea {
-            resize: vertical;
-            min-height: 60px;
-        }
-        .row2 {
-            display: flex;
-            gap: 8px;
-        }
-        .row2>div {
-            flex: 1;
-        }
-        .btn {
-            display: inline-block;
-            width: 100%;
-            text-align: center;
-            padding: 10px 12px;
-            border: none;
-            border-radius: 7px;
-            font-weight: 700;
-            font-size: 13px;
-            cursor: pointer;
-            margin-bottom: 8px;
-        }
-        .btn-parse {
-            background: var(--biru);
-            color: #fff;
-        }
-        .btn-parse:hover {
-            background: var(--biru-gelap);
-        }
-        .btn-download {
-            background: var(--hijau);
-            color: #fff;
-        }
-        .btn-download:hover {
-            background: #237a35;
-        }
-        .btn-print {
-            background: var(--biru-gelap);
-            color: #fff;
-        }
-        .btn-print:hover {
-            background: #081f4d;
-        }
-        .btn-padam-gambar {
-            background: #c8102e;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            padding: 2px 8px;
-            font-size: 11px;
-            font-weight: 700;
-            cursor: pointer;
-            margin-left: 6px;
-            flex-shrink: 0;
-        }
-        .btn-padam-gambar:hover {
-            background: #a00d24;
-        }
-        .hint {
-            font-size: 11px;
-            color: #8992a0;
-            margin: -4px 0 8px;
-            line-height: 1.4;
-        }
-        .icon-svg {
-            display: inline-block;
-            width: 14px;
-            height: 14px;
-            vertical-align: -2px;
-            flex-shrink: 0;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-        .info-row .ic .icon-svg {
-            width: 16px;
-            height: 16px;
-        }
-        .pill .ic .icon-svg {
-            width: 13px;
-            height: 13px;
-        }
-        .badge .icon-svg {
-            width: 12px;
-            height: 12px;
-            margin-right: 2px;
-        }
-        .catatan-label .icon-svg {
-            width: 12px;
-            height: 12px;
-            margin-right: 2px;
-        }
-        .section-title .icon-svg {
-            width: 13px;
-            height: 13px;
-            margin-right: 3px;
-        }
-        .btn .icon-svg {
-            width: 14px;
-            height: 14px;
-            margin-right: 4px;
-        }
-        .section-title {
-            font-size: 12px;
-            font-weight: 800;
-            color: #fff;
-            background: var(--biru);
-            padding: 5px 9px;
-            border-radius: 5px;
-            margin: 0 0 10px;
-        }
-        .toggle-item {
-            background: #f7f9fc;
-            border-radius: 6px;
-            padding: 8px 10px 4px;
-            margin-bottom: 10px;
-            border: 1px solid #e8ecf2;
-        }
-        .toggle-row {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 4px;
-        }
-        .toggle-row input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--biru);
-            margin: 0;
-            flex-shrink: 0;
-            cursor: pointer;
-        }
-        .toggle-row label {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--biru-gelap);
-            text-transform: none;
-            letter-spacing: 0;
-            margin: 0;
-            cursor: pointer;
-        }
-        .toggle-item input,
-        .toggle-item textarea {
-            margin-top: 2px;
-            margin-bottom: 4px;
-        }
-        .toggle-item textarea {
-            min-height: 60px;
-        }
-        .file-input-wrap {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 2px;
-            flex-wrap: wrap;
-        }
-        .file-input-wrap input[type="file"] {
-            flex: 1;
-            padding: 6px 4px;
-            border: 1px solid #cfd6e0;
-            border-radius: 6px;
-            font-size: 12px;
-            background: #fbfcfe;
-            min-width: 120px;
-        }
-        .file-input-wrap .file-name {
-            font-size: 11px;
-            color: #6a7280;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 120px;
-        }
-        .file-input-wrap .file-actions {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .gambar-item {
-            margin-bottom: 8px;
-            padding-bottom: 8px;
-            border-bottom: 1px dashed #e2e6ec;
-        }
-        .gambar-item:last-child {
-            border-bottom: none;
-        }
-        .sektor-item {
-            margin-bottom: 8px;
-            padding-bottom: 8px;
-            border-bottom: 1px dashed #e2e6ec;
-        }
-        .sektor-item:last-child {
-            border-bottom: none;
-        }
-
-        .preview-wrap {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 32px 20px;
-            overflow-x: auto;
-            overflow-y: auto;
-        }
-        .pages-container {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            width: 1122px;
-            flex-shrink: 0;
-        }
-        .card {
-            width: 100%;
-            background: #fff;
-            border-radius: 6px;
-            box-shadow: 0 10px 30px rgba(20, 30, 60, .18);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            aspect-ratio: 297 / 210;
-            min-height: 794px;
-        }
-        .card-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://raw.githubusercontent.com/pgojhbravo5/INFOGRAFIK/main/KEBAKARAN-TERBUKA.jpg');
-            background-size: 100% 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.45;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .card-bg.hidden {
-            display: none;
-        }
-        .card>*:not(.card-bg) {
-            position: relative;
-            z-index: 1;
-        }
-
-        .header {
-            position: relative;
-            padding: var(--padding-header) 26px 8px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.65) 55%, rgba(244, 246, 250, 0.65) 55%);
-            border-bottom: 4px solid var(--biru);
-            flex-shrink: 0;
-        }
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 4px;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .logo img {
-            height: 42px;
-            width: auto;
-            display: block;
-        }
-        .logo-text {
-            font-weight: 900;
-            font-size: 17px;
-            color: var(--biru-gelap);
-            letter-spacing: .02em;
-        }
-        .lokasi-tag {
-            text-align: right;
-            font-size: 9px;
-            font-weight: 700;
-            color: var(--merah);
-            line-height: 1.2;
-        }
-        .lokasi-tag span {
-            display: block;
-            font-size: 7px;
-            color: #8992a0;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-        .lokasi-tag .tarikh-laporan {
-            display: block;
-            font-size: 7px;
-            color: #6a7280;
-            font-weight: 600;
-            text-transform: uppercase;
-            margin-top: 2px;
-        }
-        .lokasi-tag .tarikh-laporan-val {
-            display: block;
-            color: var(--biru-gelap);
-            font-size: 9px;
-            font-weight: 700;
-        }
-        .kicker {
-            font-size: 10px;
-            font-weight: 800;
-            color: var(--biru-gelap);
-            letter-spacing: .05em;
-            margin: 0 0 2px;
-        }
-        .headline {
-            font-size: 19px;
-            font-weight: 900;
-            line-height: 1.1;
-            margin: 0 0 3px;
-            color: #141414;
-        }
-        .subline {
-            display: inline-block;
-            font-size: 10px;
-            font-weight: 700;
-            color: #fff;
-            background: var(--biru-gelap);
-            padding: 2px 8px;
-            border-radius: 3px;
-        }
-
-        /* --- PAGE 1 (SITREP) --- */
-        .body-sitrep {
-            padding: var(--padding-umum) 26px 0;
-            flex: 1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr;
-            column-gap: 20px;
-            background: rgba(255, 255, 255, 0.35);
-            backdrop-filter: blur(1px);
-            overflow: hidden;
-        }
-        .col-left,
-        .col-right {
-            display: flex;
-            flex-direction: column;
-            min-height: 0;
-            overflow: hidden;
-        }
-        .col-left {
-            padding-bottom: 4px;
-        }
-        .col-right {
-            padding-bottom: 2px;
-        }
-
-        .pill {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 10px;
-            font-weight: 800;
-            color: #fff;
-            background: var(--biru);
-            padding: 3px 8px;
-            border-radius: 4px;
-            margin: 0 0 4px;
-            box-shadow: 0 1px 0 var(--merah);
-            flex-shrink: 0;
-        }
-        .pill.follow {
-            margin-top: 8px;
-        }
-        .pill .ic {
-            font-size: 11px;
-        }
-
-        .info-row {
-            display: flex;
-            gap: 6px;
-            padding: 2px 0;
-            border-bottom: 1px solid rgba(240, 241, 244, 0.4);
-            font-size: 10.5px;
-            flex-shrink: 0;
-        }
-        .info-row:last-child {
-            border-bottom: none;
-        }
-        .info-row .ic {
-            width: 16px;
-            flex-shrink: 0;
-            text-align: center;
-            color: var(--biru);
-        }
-        .info-row .label {
-            color: #6a7280;
-            min-width: 120px;
-            font-weight: 600;
-        }
-        .info-row .val {
-            font-weight: 700;
-            color: #171717;
-        }
-
-        .status-hero {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 2px 0 4px;
-            flex-shrink: 0;
-        }
-        .status-hero .pct {
-            font-size: 28px;
-            font-weight: 900;
-            color: var(--hijau);
-            line-height: 1;
-        }
-        .status-hero .pct-label {
-            font-size: 9px;
-            font-weight: 800;
-            color: #6a7280;
-            text-transform: uppercase;
-        }
-        .status-hero .terjejas {
-            font-size: 11px;
-            color: #333;
-        }
-        .status-hero .terjejas b {
-            font-size: 13px;
-            display: block;
-            color: var(--merah);
-        }
-
-        .bar-track {
-            height: 10px;
-            width: 100%;
-            border-radius: 10px;
-            background: rgba(228, 231, 238, 0.5);
-            overflow: hidden;
-            margin: 2px 0 6px;
-            flex-shrink: 0;
-        }
-        .bar-fill {
-            height: 100%;
-            border-radius: 10px;
-            background: linear-gradient(90deg, var(--hijau), var(--kuning) 88%, var(--abu) 100%);
-        }
-
-        .stat-2col {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 2px;
-            flex-shrink: 0;
-        }
-        .stat-box {
-            flex: 1;
-            background: rgba(246, 248, 251, 0.5);
-            border-radius: 5px;
-            padding: 4px 6px;
-        }
-        .stat-box .lbl {
-            font-size: 8px;
-            font-weight: 700;
-            color: #6a7280;
-            text-transform: uppercase;
-        }
-        .stat-box .num {
-            font-size: 13px;
-            font-weight: 900;
-            color: var(--biru-gelap);
-            margin-top: 1px;
-        }
-
-        .sektor-block {
-            margin-top: 4px;
-            flex-shrink: 0;
-        }
-        .sektor-row {
-            display: flex;
-            gap: 6px;
-            padding: 1px 0;
-            font-size: 10px;
-            border-bottom: 1px solid rgba(240, 241, 244, 0.3);
-        }
-        .sektor-row:last-child {
-            border-bottom: none;
-        }
-        .sektor-row .sektor-nama {
-            font-weight: 700;
-            color: var(--biru-gelap);
-            min-width: 60px;
-        }
-        .sektor-row .sektor-maklumat {
-            font-weight: 500;
-            color: #2c2c2c;
-        }
-
-        .badge-row {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            margin: 4px 0 3px;
-            flex-shrink: 0;
-        }
-        .badge {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            padding: 4px 8px;
-            border-radius: 5px;
-            font-weight: 800;
-            font-size: 10px;
-        }
-        .badge.operasi {
-            background: rgba(255, 244, 224, 0.7);
-            color: var(--merah);
-            border: 1px solid #ffdca3;
-        }
-        .badge.mangsa {
-            background: rgba(233, 241, 255, 0.7);
-            color: var(--biru-gelap);
-            border: 1px solid #c3d6f7;
-        }
-        .badge .dot {
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: var(--kuning);
-            box-shadow: 0 0 0 2px #fff0cc;
-        }
-
-        .komander {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--biru-gelap);
-            color: #fff;
-            border-radius: 5px;
-            padding: 4px 8px;
-            margin-bottom: 2px;
-            font-size: 9.5px;
-            flex-shrink: 0;
-        }
-        .komander .nama {
-            font-weight: 700;
-        }
-        .komander .peranan {
-            font-size: 8px;
-            opacity: .75;
-        }
-        .komander .tel {
-            font-weight: 800;
-            letter-spacing: .02em;
-        }
-
-        /* CATATAN – auto expand berdasarkan teks */
-        .catatan-block {
-            flex: 0 0 auto;          /* tidak memaksa baki ruang, ikut saiz kandungan */
-            width: 100%;
-            margin-top: 4px;
-            margin-bottom: 2px;
-            background: rgba(250, 251, 253, 0.6);
-            border-radius: 4px;
-            padding: 6px 10px;
-            border-left: 3px solid var(--biru);
-            font-size: 10px;
-            line-height: 1.5;
-            color: #1c1c1c;
-            overflow: visible;        /* tiada scroll, kembang ikut teks */
-        }
-        .catatan-block .catatan-label {
-            font-weight: 800;
-            font-size: 8px;
-            text-transform: uppercase;
-            color: var(--biru);
-            letter-spacing: .04em;
-            margin-bottom: 2px;
-        }
-        .catatan-block .catatan-teks {
-            white-space: pre-wrap;
-            word-break: break-word;
-        }
-
-        /* --- PAGE 2 & 3 (GAMBAR) --- */
-        .body-gambar {
-            padding: 13px 26px 6px;
-            flex: 1 1 auto;
-            display: flex;
-            flex-direction: column;
-            background: rgba(255, 255, 255, 0.35);
-            backdrop-filter: blur(1px);
-            min-height: 0;
-            overflow: hidden;
-        }
-        .grid-gambar {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
-            gap: 10px 16px;
-            flex: 1 1 auto;
-            min-height: 0;
-        }
-        .gambar-item-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 3px;
-            min-height: 0;
-            height: auto;
-        }
-        .gambar-item-card .gambar-tajuk {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--biru-gelap);
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-            text-align: center;
-            line-height: 1.2;
-            flex-shrink: 0;
-        }
-        .gambar-item-card .gambar-wadah {
-            width: 100%;
-            flex: 1;
-            min-height: 0;
-            overflow: hidden;
-            border-radius: 5px;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.4);
-        }
-        .gambar-item-card .gambar-wadah img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-        }
-        .gambar-item-card .gambar-kosong {
-            padding: 8px;
-            color: #8992a0;
-            font-size: 9px;
-            font-weight: 600;
-            text-align: center;
-        }
-
-        /* FOOTER */
-        .footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 6px 20px;
-            font-size: 9px;
-            font-weight: 700;
-            font-style: italic;
-            color: #fff;
-            background: linear-gradient(90deg, var(--biru-gelap), var(--merah) 60%, var(--kuning) 100%);
-            flex-shrink: 0;
-            min-height: 32px;
-        }
-        .footer .footer-left {
-            flex: 1;
-            text-align: left;
-            min-width: 0;
-        }
-        .footer .footer-center {
-            flex: 2;
-            text-align: center;
-            min-width: 0;
-            padding: 0 8px;
-        }
-        .footer .footer-right {
-            flex: 1;
-            text-align: right;
-            min-width: 0;
-            font-style: normal;
-            font-weight: 700;
-            font-size: 8.5px;
-            letter-spacing: 0.02em;
-            white-space: nowrap;
-        }
-        .footer .footer-right.hidden-field {
-            display: none !important;
-        }
-
-        .hidden-field {
-            display: none !important;
-        }
-        .hidden-page {
-            display: none !important;
-        }
-
-        @media (max-width: 1250px) {
-            .app {
-                flex-direction: column;
-            }
-            .panel-input {
-                width: 100%;
-                max-height: none;
-                border-right: none;
-                border-bottom: 1px solid #dbe0e8;
-            }
-            .preview-wrap {
-                padding: 20px 10px;
-            }
-            .pages-container {
-                width: 100%;
-            }
-            .card {
-                width: 100%;
-                max-width: 100%;
-            }
-        }
-
-        /* ========== CETAK / PDF ========== */
-        @page {
-            size: landscape;
-            margin: 0mm;
-            size: 297mm 210mm;
-        }
-
-        @media print {
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                color-adjust: exact !important;
-                box-sizing: border-box !important;
-            }
-            html,
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                height: 100%;
-                background: #fff;
-                transform: rotate(0deg) !important;
-            }
-            .panel-input {
-                display: none !important;
-            }
-            .preview-wrap {
-                padding: 0 !important;
-                margin: 0 !important;
-                display: block !important;
-                width: 100% !important;
-                height: 100% !important;
-            }
-            .pages-container {
-                display: block !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                gap: 0 !important;
-            }
-            .card {
-                display: flex !important;
-                flex-direction: column !important;
-                width: 100% !important;
-                height: 100vh !important;
-                max-height: 100vh !important;
-                min-height: 100vh !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                border-radius: 0 !important;
-                box-shadow: none !important;
-                aspect-ratio: auto !important;
-                page-break-after: always !important;
-                page-break-inside: avoid !important;
-                overflow: hidden !important;
-                background: #fff !important;
-                transform: scale(1) rotate(0deg) !important;
-            }
-            .card:last-child {
-                page-break-after: auto;
-            }
-
-            .card-bg {
-                background-image: url('https://raw.githubusercontent.com/pgojhbravo5/INFOGRAFIK/main/KEBAKARAN-TERBUKA.jpg') !important;
-                background-size: 100% 100% !important;
-                background-position: center !important;
-                background-repeat: no-repeat !important;
-                opacity: 0.45 !important;
-                display: block !important;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 0;
-                pointer-events: none;
-            }
-            .card-bg.hidden {
-                display: none !important;
-            }
-
-            .header {
-                background: linear-gradient(135deg, rgba(255, 255, 255, 0.65) 55%, rgba(244, 246, 250, 0.65) 55%) !important;
-                flex-shrink: 0 !important;
-                padding: 12px 26px 6px !important;
-            }
-            .body-sitrep {
-                flex: 1 1 auto !important;
-                min-height: 0 !important;
-                overflow: hidden !important;
-                padding: 10px 26px 4px !important;
-                background: rgba(255, 255, 255, 0.35) !important;
-                backdrop-filter: blur(1px) !important;
-            }
-            .body-gambar {
-                flex: 1 1 auto !important;
-                min-height: 0 !important;
-                overflow: hidden !important;
-                padding: 10px 26px 4px !important;
-                background: rgba(255, 255, 255, 0.35) !important;
-                backdrop-filter: blur(1px) !important;
-            }
-            .grid-gambar {
-                flex: 1 1 auto !important;
-                min-height: 0 !important;
-                height: 100% !important;
-                gap: 8px 12px !important;
-            }
-            .gambar-item-card {
-                height: 100% !important;
-                min-height: 0 !important;
-            }
-            .gambar-item-card .gambar-wadah {
-                flex: 1 1 auto !important;
-                min-height: 0 !important;
-                height: 100% !important;
-            }
-            .gambar-item-card .gambar-wadah img {
-                width: 100% !important;
-                height: 100% !important;
-                object-fit: contain !important;
-            }
-            .gambar-item-card .gambar-tajuk {
-                font-size: 11px !important;
-            }
-            .gambar-item-card .gambar-kosong {
-                font-size: 8px !important;
-                padding: 4px !important;
-            }
-
-            .catatan-block {
-                flex: 0 0 auto !important;  /* kekal ikut teks */
-                width: 100% !important;
-                margin-top: 4px !important;
-                margin-bottom: 2px !important;
-                padding: 4px 8px !important;
-                font-size: 9px !important;
-                line-height: 1.4 !important;
-                overflow: visible !important;
-                max-height: none !important;
-            }
-            .catatan-block .catatan-teks {
-                white-space: pre-wrap !important;
-                word-break: break-word !important;
-            }
-
-            .footer {
-                flex-shrink: 0 !important;
-                padding: 4px 16px !important;
-                font-size: 8px !important;
-                min-height: 28px !important;
-                background: linear-gradient(90deg, var(--biru-gelap), var(--merah) 60%, var(--kuning) 100%) !important;
-            }
-            .footer .footer-right {
-                font-size: 7.5px !important;
-            }
-
-            .pill {
-                font-size: 9px !important;
-                padding: 2px 6px !important;
-                margin: 0 0 3px !important;
-            }
-            .info-row {
-                font-size: 9px !important;
-                padding: 1px 0 !important;
-                gap: 4px !important;
-            }
-            .info-row .label {
-                min-width: 100px !important;
-            }
-            .sektor-row {
-                font-size: 9px !important;
-                padding: 1px 0 !important;
-            }
-            .sektor-row .sektor-nama {
-                min-width: 50px !important;
-            }
-            .status-hero .pct {
-                font-size: 22px !important;
-            }
-            .stat-box .num {
-                font-size: 11px !important;
-            }
-            .komander {
-                font-size: 8px !important;
-                padding: 2px 6px !important;
-                margin-bottom: 1px !important;
-            }
-            .badge {
-                font-size: 8px !important;
-                padding: 2px 6px !important;
-            }
-            .badge-row {
-                gap: 2px !important;
-                margin: 2px 0 !important;
-            }
-            .headline {
-                font-size: 17px !important;
-            }
-            .subline {
-                font-size: 9px !important;
-                padding: 1px 6px !important;
-            }
-            .logo-text {
-                font-size: 15px !important;
-            }
-            .logo img {
-                height: 36px !important;
-            }
-            .kicker {
-                font-size: 9px !important;
-            }
-            .lokasi-tag {
-                font-size: 8px !important;
-            }
-            .lokasi-tag .tarikh-laporan-val {
-                font-size: 8px !important;
-            }
-        }
+        * { box-sizing: border-box; }
+        body { margin:0; font-family:'Poppins',Arial,sans-serif; background:var(--bg-app); color:var(--teks); }
+        .app { display:flex; min-height:100vh; }
+        .panel-input { width:420px; flex-shrink:0; background:#fff; border-right:1px solid #dbe0e8; padding:20px 18px; overflow-y:auto; max-height:100vh; }
+        .btn-kembali { display:inline-flex; align-items:center; gap:6px; font-family:'Poppins',Arial,sans-serif; font-size:12px; font-weight:700; color:#fff; background:linear-gradient(120deg,#1746a2,#0d2f6e); border:none; border-radius:7px; padding:8px 12px; cursor:pointer; text-decoration:none; margin-bottom:14px; box-shadow:0 2px 8px rgba(13,47,110,.25); }
+        .btn-kembali:hover { background:linear-gradient(120deg,#0d2f6e,#081f4d); }
+        .btn-kembali svg { width:14px; height:14px; flex-shrink:0; }
+        .panel-input h1 { font-size:16px; font-weight:800; color:var(--biru-gelap); margin:0 0 2px; }
+        .panel-input .sub { font-size:12px; color:#6a7280; margin:0 0 16px; }
+        .blok { margin-bottom:16px; padding-bottom:14px; border-bottom:1px dashed #e2e6ec; }
+        .blok label { display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.03em; color:var(--biru-gelap); margin-bottom:4px; }
+        .blok textarea, .blok input, .blok select { width:100%; font-family:'Poppins',Arial,sans-serif; font-size:13px; padding:8px 9px; border:1px solid #cfd6e0; border-radius:6px; margin-bottom:8px; background:#fbfcfe; }
+        .blok textarea { resize:vertical; min-height:60px; }
+        .row2 { display:flex; gap:8px; }
+        .row2>div { flex:1; }
+        .btn { display:inline-block; width:100%; text-align:center; padding:10px 12px; border:none; border-radius:7px; font-weight:700; font-size:13px; cursor:pointer; margin-bottom:8px; }
+        .btn-print { background:var(--biru-gelap); color:#fff; }
+        .btn-print:hover { background:#081f4d; }
+        .btn-padam-gambar { background:#c8102e; color:#fff; border:none; border-radius:4px; padding:2px 8px; font-size:11px; font-weight:700; cursor:pointer; margin-left:6px; flex-shrink:0; }
+        .btn-padam-gambar:hover { background:#a00d24; }
+        .hint { font-size:11px; color:#8992a0; margin:-4px 0 8px; line-height:1.4; }
+        .icon-svg { display:inline-block; width:14px; height:14px; vertical-align:-2px; flex-shrink:0; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+        .info-row .ic .icon-svg { width:16px; height:16px; }
+        .pill .ic .icon-svg { width:13px; height:13px; }
+        .badge .icon-svg { width:12px; height:12px; margin-right:2px; }
+        .catatan-label .icon-svg { width:12px; height:12px; margin-right:2px; }
+        .section-title .icon-svg { width:13px; height:13px; margin-right:3px; }
+        .btn .icon-svg { width:14px; height:14px; margin-right:4px; }
+        .section-title { font-size:12px; font-weight:800; color:#fff; background:var(--biru); padding:5px 9px; border-radius:5px; margin:0 0 10px; }
+        .toggle-item { background:#f7f9fc; border-radius:6px; padding:8px 10px 4px; margin-bottom:10px; border:1px solid #e8ecf2; }
+        .toggle-row { display:flex; align-items:center; gap:8px; margin-bottom:4px; }
+        .toggle-row input[type="checkbox"] { width:18px; height:18px; accent-color:var(--biru); margin:0; flex-shrink:0; cursor:pointer; }
+        .toggle-row label { font-size:12px; font-weight:700; color:var(--biru-gelap); text-transform:none; letter-spacing:0; margin:0; cursor:pointer; }
+        .toggle-item input, .toggle-item textarea { margin-top:2px; margin-bottom:4px; }
+        .toggle-item textarea { min-height:60px; }
+        .file-input-wrap { display:flex; align-items:center; gap:8px; margin-top:2px; flex-wrap:wrap; }
+        .file-input-wrap input[type="file"] { flex:1; padding:6px 4px; border:1px solid #cfd6e0; border-radius:6px; font-size:12px; background:#fbfcfe; min-width:120px; }
+        .file-input-wrap .file-name { font-size:11px; color:#6a7280; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:120px; }
+        .gambar-item { margin-bottom:8px; padding-bottom:8px; border-bottom:1px dashed #e2e6ec; }
+        .gambar-item:last-child { border-bottom:none; }
+        .gambar-status { font-size:10px; font-weight:600; color:#8992a0; display:block; margin-top:2px; }
+        .gambar-status.simpan { color:#2e9e44; }
+        .sektor-item { margin-bottom:8px; padding-bottom:8px; border-bottom:1px dashed #e2e6ec; }
+        .sektor-item:last-child { border-bottom:none; }
+        .subsektor-item { margin-top:6px; padding-left:12px; border-left:2px solid #cfd6e0; }
+        .subsektor-item .toggle-row { margin-bottom:2px; }
+        .subsektor-item label { font-size:10px; text-transform:uppercase; color:var(--biru-gelap); margin-bottom:2px; display:block; }
+        .subsektor-item input { font-size:12px; padding:5px 8px; margin-bottom:4px; }
+        .preview-wrap { flex:1; display:flex; justify-content:center; align-items:flex-start; padding:32px 20px; overflow-x:auto; overflow-y:auto; }
+        .pages-container { display:flex; flex-direction:column; gap:30px; width:1122px; flex-shrink:0; }
+        .card { width:100%; background:#fff; border-radius:6px; box-shadow:0 10px 30px rgba(20,30,60,.18); overflow:hidden; display:flex; flex-direction:column; position:relative; aspect-ratio:297/210; min-height:794px; }
+        .card-bg { position:absolute; top:0; left:0; width:100%; height:100%; background-image:url('https://raw.githubusercontent.com/pgojhbravo5/INFOGRAFIK/main/KEBAKARAN-TERBUKA.jpg'); background-size:100% 100%; background-position:center; background-repeat:no-repeat; opacity:0.45; pointer-events:none; z-index:0; }
+        .card-bg.hidden { display:none; }
+        .card>*:not(.card-bg) { position:relative; z-index:1; }
+        .header { position:relative; padding:var(--padding-header) 26px 8px; background:linear-gradient(135deg,rgba(255,255,255,0.65) 55%,rgba(244,246,250,0.65) 55%); border-bottom:4px solid var(--biru); flex-shrink:0; }
+        .header-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:4px; }
+        .logo { display:flex; align-items:center; gap:8px; }
+        .logo img { height:42px; width:auto; display:block; }
+        .logo-text { font-weight:900; font-size:17px; color:var(--biru-gelap); letter-spacing:.02em; }
+        .lokasi-tag { text-align:right; font-size:9px; font-weight:700; color:var(--merah); line-height:1.2; }
+        .lokasi-tag span { display:block; font-size:7px; color:#8992a0; font-weight:600; text-transform:uppercase; }
+        .lokasi-tag .tarikh-laporan { display:block; font-size:7px; color:#6a7280; font-weight:600; text-transform:uppercase; margin-top:2px; }
+        .lokasi-tag .tarikh-laporan-val { display:block; color:var(--biru-gelap); font-size:9px; font-weight:700; }
+        .kicker { font-size:10px; font-weight:800; color:var(--biru-gelap); letter-spacing:.05em; margin:0 0 2px; }
+        .headline { font-size:19px; font-weight:900; line-height:1.1; margin:0 0 3px; color:#141414; }
+        .subline { display:inline-block; font-size:10px; font-weight:700; color:#fff; background:var(--biru-gelap); padding:2px 8px; border-radius:3px; }
+        .body-sitrep { padding:var(--padding-umum) 26px 0; flex:1; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr; column-gap:20px; background:rgba(255,255,255,0.35); backdrop-filter:blur(1px); overflow:hidden; }
+        .col-left, .col-right { display:flex; flex-direction:column; min-height:0; overflow:hidden; }
+        .col-left { padding-bottom:4px; }
+        .col-right { padding-bottom:2px; }
+        .pill { display:flex; align-items:center; gap:4px; font-size:10px; font-weight:800; color:#fff; background:var(--biru); padding:3px 8px; border-radius:4px; margin:0 0 4px; box-shadow:0 1px 0 var(--merah); flex-shrink:0; }
+        .pill.follow { margin-top:8px; }
+        .pill .ic { font-size:11px; }
+        .info-row { display:flex; gap:6px; padding:2px 0; border-bottom:1px solid rgba(240,241,244,0.4); font-size:10.5px; flex-shrink:0; }
+        .info-row:last-child { border-bottom:none; }
+        .info-row .ic { width:16px; flex-shrink:0; text-align:center; color:var(--biru); }
+        .info-row .label { color:#6a7280; min-width:120px; font-weight:600; }
+        .info-row .val { font-weight:700; color:#171717; }
+        .status-hero { display:flex; align-items:center; gap:10px; padding:2px 0 4px; flex-shrink:0; }
+        .status-hero .pct { font-size:28px; font-weight:900; color:var(--hijau); line-height:1; }
+        .status-hero .pct-label { font-size:9px; font-weight:800; color:#6a7280; text-transform:uppercase; }
+        .status-hero .terjejas { font-size:11px; color:#333; }
+        .status-hero .terjejas b { font-size:13px; display:block; color:var(--merah); }
+        .bar-track { height:10px; width:100%; border-radius:10px; background:rgba(228,231,238,0.5); overflow:hidden; margin:2px 0 6px; flex-shrink:0; }
+        .bar-fill { height:100%; border-radius:10px; background:linear-gradient(90deg,var(--hijau),var(--kuning) 88%,var(--abu) 100%); }
+        .stat-2col { display:flex; gap:8px; margin-bottom:2px; flex-shrink:0; }
+        .stat-box { flex:1; background:rgba(246,248,251,0.5); border-radius:5px; padding:4px 6px; }
+        .stat-box .lbl { font-size:8px; font-weight:700; color:#6a7280; text-transform:uppercase; }
+        .stat-box .num { font-size:13px; font-weight:900; color:var(--biru-gelap); margin-top:1px; }
+        .sektor-block { margin-top:4px; flex-shrink:0; }
+        .sektor-row { display:flex; gap:6px; padding:1px 0; font-size:10px; border-bottom:1px solid rgba(240,241,244,0.3); }
+        .sektor-row:last-child { border-bottom:none; }
+        .sektor-row .sektor-nama { font-weight:700; color:var(--biru-gelap); min-width:60px; }
+        .sektor-row .sektor-maklumat { font-weight:500; color:#2c2c2c; }
+        .subsektor-preview { padding-left:20px; font-size:9px; margin-bottom:2px; display:none; }
+        .subsektor-preview .item { display:none; }
+        .badge-row { display:flex; flex-direction:column; gap:4px; margin:4px 0 3px; flex-shrink:0; }
+        .badge { display:flex; align-items:center; gap:5px; padding:4px 8px; border-radius:5px; font-weight:800; font-size:10px; }
+        .badge.operasi { background:rgba(255,244,224,0.7); color:var(--merah); border:1px solid #ffdca3; }
+        .badge.mangsa { background:rgba(233,241,255,0.7); color:var(--biru-gelap); border:1px solid #c3d6f7; }
+        .badge .dot { width:9px; height:9px; border-radius:50%; background:var(--kuning); box-shadow:0 0 0 2px #fff0cc; }
+        .komander { display:flex; justify-content:space-between; align-items:center; background:var(--biru-gelap); color:#fff; border-radius:5px; padding:4px 8px; margin-bottom:2px; font-size:9.5px; flex-shrink:0; }
+        .komander .nama { font-weight:700; }
+        .komander .peranan { font-size:8px; opacity:.75; }
+        .komander .tel { font-weight:800; letter-spacing:.02em; }
+        .komander.kosong { display:none !important; }
+        .catatan-block { flex:0 0 auto; width:100%; margin-top:4px; margin-bottom:2px; background:rgba(250,251,253,0.6); border-radius:4px; padding:6px 10px; border-left:3px solid var(--biru); font-size:10px; line-height:1.5; color:#1c1c1c; overflow:visible; }
+        .catatan-block .catatan-label { font-weight:800; font-size:8px; text-transform:uppercase; color:var(--biru); letter-spacing:.04em; margin-bottom:2px; }
+        .catatan-block .catatan-teks { white-space:pre-wrap; word-break:break-word; }
+        .body-gambar { padding:13px 26px 6px; flex:1 1 auto; display:flex; flex-direction:column; background:rgba(255,255,255,0.35); backdrop-filter:blur(1px); min-height:0; overflow:hidden; }
+        .grid-gambar { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:10px 16px; flex:1 1 auto; min-height:0; }
+        .gambar-item-card { display:flex; flex-direction:column; align-items:center; gap:3px; min-height:0; height:auto; }
+        .gambar-item-card .gambar-tajuk { font-size:12px; font-weight:700; color:var(--biru-gelap); text-transform:uppercase; letter-spacing:0.02em; text-align:center; line-height:1.2; flex-shrink:0; }
+        .gambar-item-card .gambar-wadah { width:100%; flex:1; min-height:0; overflow:hidden; border-radius:5px; border:1px solid rgba(0,0,0,0.08); display:flex; justify-content:center; align-items:center; background:rgba(255,255,255,0.4); }
+        .gambar-item-card .gambar-wadah img { width:100%; height:100%; object-fit:contain; display:block; }
+        .gambar-item-card .gambar-kosong { padding:8px; color:#8992a0; font-size:9px; font-weight:600; text-align:center; }
+        .footer { display:flex; justify-content:space-between; align-items:center; padding:6px 20px; font-size:9px; font-weight:700; font-style:italic; color:#fff; background:linear-gradient(90deg,var(--biru-gelap),var(--merah) 60%,var(--kuning) 100%); flex-shrink:0; min-height:32px; }
+        .footer .footer-left { flex:1; text-align:left; min-width:0; }
+        .footer .footer-center { flex:2; text-align:center; min-width:0; padding:0 8px; }
+        .footer .footer-right { flex:1; text-align:right; min-width:0; font-style:normal; font-weight:700; font-size:8.5px; letter-spacing:0.02em; white-space:nowrap; }
+        .footer .footer-right.hidden-field { display:none !important; }
+        .hidden-field { display:none !important; }
+        .hidden-page { display:none !important; }
+        @media (max-width:1250px) { .app { flex-direction:column; } .panel-input { width:100%; max-height:none; border-right:none; border-bottom:1px solid #dbe0e8; } .preview-wrap { padding:20px 10px; } .pages-container { width:100%; } .card { width:100%; max-width:100%; } }
+        @page { size:landscape; margin:0mm; size:297mm 210mm; }
+        @media print { * { -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; color-adjust:exact !important; box-sizing:border-box !important; } html,body { margin:0; padding:0; width:100%; height:100%; background:#fff; transform:rotate(0deg) !important; } .panel-input { display:none !important; } .preview-wrap { padding:0 !important; margin:0 !important; display:block !important; width:100% !important; height:100% !important; } .pages-container { display:block !important; width:100% !important; max-width:100% !important; margin:0 !important; padding:0 !important; gap:0 !important; } .card { display:flex !important; flex-direction:column !important; width:100% !important; height:100vh !important; max-height:100vh !important; min-height:100vh !important; margin:0 !important; padding:0 !important; border-radius:0 !important; box-shadow:none !important; aspect-ratio:auto !important; page-break-after:always !important; page-break-inside:avoid !important; overflow:hidden !important; background:#fff !important; transform:scale(1) rotate(0deg) !important; } .card:last-child { page-break-after:auto; } .card-bg { background-image:url('https://raw.githubusercontent.com/pgojhbravo5/INFOGRAFIK/main/KEBAKARAN-TERBUKA.jpg') !important; background-size:100% 100% !important; background-position:center !important; background-repeat:no-repeat !important; opacity:0.45 !important; display:block !important; position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; } .card-bg.hidden { display:none !important; } .header { background:linear-gradient(135deg,rgba(255,255,255,0.65) 55%,rgba(244,246,250,0.65) 55%) !important; flex-shrink:0 !important; padding:12px 26px 6px !important; } .body-sitrep { flex:1 1 auto !important; min-height:0 !important; overflow:hidden !important; padding:10px 26px 4px !important; background:rgba(255,255,255,0.35) !important; backdrop-filter:blur(1px) !important; } .body-gambar { flex:1 1 auto !important; min-height:0 !important; overflow:hidden !important; padding:10px 26px 4px !important; background:rgba(255,255,255,0.35) !important; backdrop-filter:blur(1px) !important; } .grid-gambar { flex:1 1 auto !important; min-height:0 !important; height:100% !important; gap:8px 12px !important; } .gambar-item-card { height:100% !important; min-height:0 !important; } .gambar-item-card .gambar-wadah { flex:1 1 auto !important; min-height:0 !important; height:100% !important; } .gambar-item-card .gambar-wadah img { width:100% !important; height:100% !important; object-fit:contain !important; } .gambar-item-card .gambar-tajuk { font-size:11px !important; } .gambar-item-card .gambar-kosong { font-size:8px !important; padding:4px !important; } .catatan-block { flex:0 0 auto !important; width:100% !important; margin-top:4px !important; margin-bottom:2px !important; padding:4px 8px !important; font-size:9px !important; line-height:1.4 !important; overflow:visible !important; max-height:none !important; } .catatan-block .catatan-teks { white-space:pre-wrap !important; word-break:break-word !important; } .footer { flex-shrink:0 !important; padding:4px 16px !important; font-size:8px !important; min-height:28px !important; background:linear-gradient(90deg,var(--biru-gelap),var(--merah) 60%,var(--kuning) 100%) !important; } .footer .footer-right { font-size:7.5px !important; } .pill { font-size:9px !important; padding:2px 6px !important; margin:0 0 3px !important; } .info-row { font-size:9px !important; padding:1px 0 !important; gap:4px !important; } .info-row .label { min-width:100px !important; } .sektor-row { font-size:9px !important; padding:1px 0 !important; } .sektor-row .sektor-nama { min-width:50px !important; } .status-hero .pct { font-size:22px !important; } .stat-box .num { font-size:11px !important; } .komander { font-size:8px !important; padding:2px 6px !important; margin-bottom:1px !important; } .badge { font-size:8px !important; padding:2px 6px !important; } .badge-row { gap:2px !important; margin:2px 0 !important; } .headline { font-size:17px !important; } .subline { font-size:9px !important; padding:1px 6px !important; } .logo-text { font-size:15px !important; } .logo img { height:36px !important; } .kicker { font-size:9px !important; } .lokasi-tag { font-size:8px !important; } .lokasi-tag .tarikh-laporan-val { font-size:8px !important; } }
     </style>
 </head>
 <body>
@@ -1018,15 +152,9 @@
 
         <!-- ================= PANEL INPUT ================= -->
         <aside class="panel-input">
+            <a class="btn-kembali" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Kembali ke Dashboard</a>
             <h1>Jana Infografik SITREP</h1>
             <p class="sub">JBPM Johor — 3 Halaman (SITREP + 2 halaman gambar)</p>
-
-            <div class="blok">
-                <label>Tampal Teks Infoblast (auto-isi)</label>
-                <textarea id="rawText" placeholder="Tampal keseluruhan teks Infoblast di sini..."></textarea>
-                <button class="btn btn-parse" onclick="parseRawText()"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Cuba Auto-Isi Daripada Teks</button>
-                <p class="hint">Auto-isi padankan kata kunci biasa. Sentiasa semak &amp; betulkan medan di bawah.</p>
-            </div>
 
             <div class="blok">
                 <p class="section-title">Tajuk Insiden (untuk semua halaman)</p>
@@ -1058,84 +186,121 @@
                     <option value="Hektar">Hektar</option>
                 </select>
                 <div class="row2">
-                    <div>
-                        <label>Jumlah Keluasan Terjejas</label>
-                        <input id="jumlahKeluasan" type="number" step="0.01" value="9" />
-                    </div>
-                    <div>
-                        <label>Keluasan Berhasil Dipadam</label>
-                        <input id="keluasanDipadam" type="number" step="0.01" value="8.9" />
-                    </div>
+                    <div><label>Jumlah Keluasan Terjejas</label><input id="jumlahKeluasan" type="number" step="0.01" value="9" /></div>
+                    <div><label>Keluasan Berhasil Dipadam</label><input id="keluasanDipadam" type="number" step="0.01" value="8.9" /></div>
                 </div>
                 <p class="hint">Peratus selesai &amp; baki belum dipadam dikira automatik.</p>
             </div>
 
-            <!-- ===== SEKTOR OPERASI ===== -->
+            <!-- ===== SEKTOR OPERASI + SUBSEKTOR ===== -->
             <div class="blok">
                 <p class="section-title"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg> Sektor Operasi (Halaman 1)</p>
 
                 <div class="toggle-item">
-                    <div class="toggle-row">
-                        <input type="checkbox" id="showSektorBlock" checked />
-                        <label for="showSektorBlock">Tunjukkan Maklumat Sektor</label>
-                    </div>
+                    <div class="toggle-row"><input type="checkbox" id="showSektorBlock" checked /><label for="showSektorBlock">Tunjukkan Maklumat Sektor</label></div>
                     <p class="hint" style="margin:2px 0 0;">Nyahtanda jika insiden ini tidak memerlukan pecahan sektor.</p>
                 </div>
 
+                <!-- SEKTOR 1 -->
                 <div class="toggle-item">
-                    <div class="toggle-row">
-                        <input type="checkbox" id="showSektor1" checked />
-                        <label for="showSektor1">Sektor 1</label>
+                    <div class="toggle-row"><input type="checkbox" id="showSektor1" checked /><label for="showSektor1">Sektor 1</label></div>
+                    <label>Nama Sektor 1</label><input id="sektor1_nama" value="SEKTOR 1" />
+                    <label>Maklumat Sektor 1</label><input id="sektor1_maklumat" value="Tiada pemadaman dilakukan" />
+
+                    <div class="subsektor-item">
+                        <div class="toggle-row"><input type="checkbox" id="sektor1_sub1_check" /><label for="sektor1_sub1_check">Sub Sektor 1.1</label></div>
+                        <label>Nama Sub Sektor</label><input id="sektor1_sub1_nama" placeholder="Nama Sub Sektor 1.1" />
+                        <label>Maklumat Sub Sektor</label><input id="sektor1_sub1_maklumat" placeholder="Maklumat Sub Sektor 1.1" />
                     </div>
-                    <label>Nama Sektor 1</label>
-                    <input id="sektor1_nama" value="SEKTOR 1" />
-                    <label>Maklumat Sektor 1</label>
-                    <input id="sektor1_maklumat" value="Tiada pemadaman dilakukan" />
+                    <div class="subsektor-item">
+                        <div class="toggle-row"><input type="checkbox" id="sektor1_sub2_check" /><label for="sektor1_sub2_check">Sub Sektor 1.2</label></div>
+                        <label>Nama Sub Sektor</label><input id="sektor1_sub2_nama" placeholder="Nama Sub Sektor 1.2" />
+                        <label>Maklumat Sub Sektor</label><input id="sektor1_sub2_maklumat" placeholder="Maklumat Sub Sektor 1.2" />
+                    </div>
+                    <div class="subsektor-item">
+                        <div class="toggle-row"><input type="checkbox" id="sektor1_sub3_check" /><label for="sektor1_sub3_check">Sub Sektor 1.3</label></div>
+                        <label>Nama Sub Sektor</label><input id="sektor1_sub3_nama" placeholder="Nama Sub Sektor 1.3" />
+                        <label>Maklumat Sub Sektor</label><input id="sektor1_sub3_maklumat" placeholder="Maklumat Sub Sektor 1.3" />
+                    </div>
                 </div>
 
+                <!-- SEKTOR 2 -->
                 <div class="toggle-item">
-                    <div class="toggle-row">
-                        <input type="checkbox" id="showSektor2" checked />
-                        <label for="showSektor2">Sektor 2</label>
+                    <div class="toggle-row"><input type="checkbox" id="showSektor2" checked /><label for="showSektor2">Sektor 2</label></div>
+                    <label>Nama Sektor 2</label><input id="sektor2_nama" value="SEKTOR 2" />
+                    <label>Maklumat Sektor 2</label><input id="sektor2_maklumat" value="1 pam GP 10/10, 1 breaching, 3 pancutan dan 700 kaki salur dari sumber air terbuka" />
+
+                    <div class="subsektor-item">
+                        <div class="toggle-row"><input type="checkbox" id="sektor2_sub1_check" /><label for="sektor2_sub1_check">Sub Sektor 2.1</label></div>
+                        <label>Nama Sub Sektor</label><input id="sektor2_sub1_nama" placeholder="Nama Sub Sektor 2.1" />
+                        <label>Maklumat Sub Sektor</label><input id="sektor2_sub1_maklumat" placeholder="Maklumat Sub Sektor 2.1" />
                     </div>
-                    <label>Nama Sektor 2</label>
-                    <input id="sektor2_nama" value="SEKTOR 2" />
-                    <label>Maklumat Sektor 2</label>
-                    <input id="sektor2_maklumat" value="1 pam GP 10/10, 1 breaching, 3 pancutan dan 700 kaki salur dari sumber air terbuka" />
+                    <div class="subsektor-item">
+                        <div class="toggle-row"><input type="checkbox" id="sektor2_sub2_check" /><label for="sektor2_sub2_check">Sub Sektor 2.2</label></div>
+                        <label>Nama Sub Sektor</label><input id="sektor2_sub2_nama" placeholder="Nama Sub Sektor 2.2" />
+                        <label>Maklumat Sub Sektor</label><input id="sektor2_sub2_maklumat" placeholder="Maklumat Sub Sektor 2.2" />
+                    </div>
+                    <div class="subsektor-item">
+                        <div class="toggle-row"><input type="checkbox" id="sektor2_sub3_check" /><label for="sektor2_sub3_check">Sub Sektor 2.3</label></div>
+                        <label>Nama Sub Sektor</label><input id="sektor2_sub3_nama" placeholder="Nama Sub Sektor 2.3" />
+                        <label>Maklumat Sub Sektor</label><input id="sektor2_sub3_maklumat" placeholder="Maklumat Sub Sektor 2.3" />
+                    </div>
                 </div>
 
+                <!-- SEKTOR 3 -->
                 <div class="toggle-item">
-                    <div class="toggle-row">
-                        <input type="checkbox" id="showSektor3" checked />
-                        <label for="showSektor3">Sektor 3</label>
+                    <div class="toggle-row"><input type="checkbox" id="showSektor3" checked /><label for="showSektor3">Sektor 3</label></div>
+                    <label>Nama Sektor 3</label><input id="sektor3_nama" value="SEKTOR 3" />
+                    <label>Maklumat Sektor 3</label><input id="sektor3_maklumat" value="Tiada pemadaman dilakukan" />
+
+                    <div class="subsektor-item">
+                        <div class="toggle-row"><input type="checkbox" id="sektor3_sub1_check" /><label for="sektor3_sub1_check">Sub Sektor 3.1</label></div>
+                        <label>Nama Sub Sektor</label><input id="sektor3_sub1_nama" placeholder="Nama Sub Sektor 3.1" />
+                        <label>Maklumat Sub Sektor</label><input id="sektor3_sub1_maklumat" placeholder="Maklumat Sub Sektor 3.1" />
                     </div>
-                    <label>Nama Sektor 3</label>
-                    <input id="sektor3_nama" value="SEKTOR 3" />
-                    <label>Maklumat Sektor 3</label>
-                    <input id="sektor3_maklumat" value="Tiada pemadaman dilakukan" />
+                    <div class="subsektor-item">
+                        <div class="toggle-row"><input type="checkbox" id="sektor3_sub2_check" /><label for="sektor3_sub2_check">Sub Sektor 3.2</label></div>
+                        <label>Nama Sub Sektor</label><input id="sektor3_sub2_nama" placeholder="Nama Sub Sektor 3.2" />
+                        <label>Maklumat Sub Sektor</label><input id="sektor3_sub2_maklumat" placeholder="Maklumat Sub Sektor 3.2" />
+                    </div>
+                    <div class="subsektor-item">
+                        <div class="toggle-row"><input type="checkbox" id="sektor3_sub3_check" /><label for="sektor3_sub3_check">Sub Sektor 3.3</label></div>
+                        <label>Nama Sub Sektor</label><input id="sektor3_sub3_nama" placeholder="Nama Sub Sektor 3.3" />
+                        <label>Maklumat Sub Sektor</label><input id="sektor3_sub3_maklumat" placeholder="Maklumat Sub Sektor 3.3" />
+                    </div>
                 </div>
 
+                <!-- SEKTOR 4 -->
                 <div class="toggle-item">
-                    <div class="toggle-row">
-                        <input type="checkbox" id="showSektor4" />
-                        <label for="showSektor4">Sektor 4</label>
+                    <div class="toggle-row"><input type="checkbox" id="showSektor4" /><label for="showSektor4">Sektor 4</label></div>
+                    <label>Nama Sektor 4</label><input id="sektor4_nama" value="SEKTOR 4" />
+                    <label>Maklumat Sektor 4</label><input id="sektor4_maklumat" value="" />
+
+                    <div class="subsektor-item">
+                        <div class="toggle-row"><input type="checkbox" id="sektor4_sub1_check" /><label for="sektor4_sub1_check">Sub Sektor 4.1</label></div>
+                        <label>Nama Sub Sektor</label><input id="sektor4_sub1_nama" placeholder="Nama Sub Sektor 4.1" />
+                        <label>Maklumat Sub Sektor</label><input id="sektor4_sub1_maklumat" placeholder="Maklumat Sub Sektor 4.1" />
                     </div>
-                    <label>Nama Sektor 4</label>
-                    <input id="sektor4_nama" value="SEKTOR 4" />
-                    <label>Maklumat Sektor 4</label>
-                    <input id="sektor4_maklumat" value="" />
+                    <div class="subsektor-item">
+                        <div class="toggle-row"><input type="checkbox" id="sektor4_sub2_check" /><label for="sektor4_sub2_check">Sub Sektor 4.2</label></div>
+                        <label>Nama Sub Sektor</label><input id="sektor4_sub2_nama" placeholder="Nama Sub Sektor 4.2" />
+                        <label>Maklumat Sub Sektor</label><input id="sektor4_sub2_maklumat" placeholder="Maklumat Sub Sektor 4.2" />
+                    </div>
+                    <div class="subsektor-item">
+                        <div class="toggle-row"><input type="checkbox" id="sektor4_sub3_check" /><label for="sektor4_sub3_check">Sub Sektor 4.3</label></div>
+                        <label>Nama Sub Sektor</label><input id="sektor4_sub3_nama" placeholder="Nama Sub Sektor 4.3" />
+                        <label>Maklumat Sub Sektor</label><input id="sektor4_sub3_maklumat" placeholder="Maklumat Sub Sektor 4.3" />
+                    </div>
                 </div>
-                <p class="hint">Tandakan sektor yang berkaitan sahaja.</p>
+
+                <p class="hint">Tandakan sektor dan subsektor yang berkaitan sahaja.</p>
             </div>
 
             <div class="blok">
                 <p class="section-title"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg> Taktikal Operasi &amp; Logistik (Halaman 1)</p>
-                <label>Tindakan Pemadaman</label>
-                <input id="tindakan" value="Operasi menggunakan 3 unit Pam GP 10/10" />
-                <label>Aset Jentera</label>
-                <input id="asetJentera" value="1x FRT, 1x HICOM, 1x Utiliti" />
-                <label>Kekuatan Anggota</label>
-                <input id="kekuatan" value="7 Anggota BBP Pagoh" />
+                <label>Tindakan Pemadaman</label><input id="tindakan" value="Operasi menggunakan 3 unit Pam GP 10/10" />
+                <label>Aset Jentera</label><input id="asetJentera" value="1x FRT, 1x HICOM, 1x Utiliti" />
+                <label>Kekuatan Anggota</label><input id="kekuatan" value="7 Anggota BBP Pagoh" />
             </div>
 
             <div class="blok">
@@ -1147,758 +312,791 @@
                     <option>OPERASI SELESAI</option>
                     <option>DALAM KAWALAN</option>
                 </select>
-                <label>Status Mangsa</label>
-                <input id="statusMangsa" value="TIADA MANGSA" />
+                <label>Status Mangsa</label><input id="statusMangsa" value="TIADA MANGSA" />
             </div>
 
             <div class="blok">
                 <p class="section-title"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="14" x2="15" y2="14"/></svg> Maklumat Tambahan (Halaman 1)</p>
 
                 <div class="toggle-item">
-                    <div class="toggle-row">
-                        <input type="checkbox" id="showBackground" checked />
-                        <label for="showBackground">Tunjukkan Gambar Latar Belakang</label>
-                    </div>
+                    <div class="toggle-row"><input type="checkbox" id="showBackground" checked /><label for="showBackground">Tunjukkan Gambar Latar Belakang</label></div>
                     <p class="hint" style="margin:2px 0 0;">Gambar: KEBAKARAN-TERBUKA.jpg</p>
                 </div>
 
                 <div class="toggle-item">
-                    <div class="toggle-row">
-                        <input type="checkbox" id="showMasaOperasiTerkawal" checked />
-                        <label for="showMasaOperasiTerkawal">Tunjukkan Masa Operasi Terkawal</label>
-                    </div>
+                    <div class="toggle-row"><input type="checkbox" id="showMasaOperasiTerkawal" checked /><label for="showMasaOperasiTerkawal">Tunjukkan Masa Operasi Terkawal</label></div>
                     <input id="masaOperasiTerkawal" placeholder="Contoh: 10:30:00 / Tiada" value="Tiada" />
                 </div>
 
                 <div class="toggle-item">
-                    <div class="toggle-row">
-                        <input type="checkbox" id="showMasaOperasiTamat" checked />
-                        <label for="showMasaOperasiTamat">Tunjukkan Masa Operasi Tamat</label>
-                    </div>
+                    <div class="toggle-row"><input type="checkbox" id="showMasaOperasiTamat" checked /><label for="showMasaOperasiTamat">Tunjukkan Masa Operasi Tamat</label></div>
                     <input id="masaOperasiTamat" placeholder="Contoh: 19:00:00 / Operasi Tangguh" value="Operasi Tangguh" />
                 </div>
 
                 <div class="toggle-item">
-                    <div class="toggle-row">
-                        <input type="checkbox" id="showKeanggotaanUnit" checked />
-                        <label for="showKeanggotaanUnit">Tunjukkan Keanggotaan</label>
-                    </div>
+                    <div class="toggle-row"><input type="checkbox" id="showKeanggotaanUnit" checked /><label for="showKeanggotaanUnit">Tunjukkan Keanggotaan</label></div>
                     <input id="keanggotaanUnit" placeholder="Contoh: BBP Pagoh" value="BBP Pagoh" />
                 </div>
 
                 <div class="toggle-item">
-                    <div class="toggle-row">
-                        <input type="checkbox" id="showCatatan" checked />
-                        <label for="showCatatan">Tunjukkan Catatan Operasi</label>
-                    </div>
+                    <div class="toggle-row"><input type="checkbox" id="showCatatan" checked /><label for="showCatatan">Tunjukkan Catatan Operasi</label></div>
                     <textarea id="catatan" placeholder="Tampal catatan operasi di sini..." rows="3">23.08.2026 (operasi sambungan 22.08.2026)
                         Setibanya PKO ke lokasi pada jam 09:30:00, didapati kebakaran kebun gambut di Kampung Paya Kopi Pagoh masih berlaku dengan baki keluasan 2.2 ekar yang masih terbakar dan berasap. PKO bertindak menjalankan operasi pemadamannya menggunakan 3 pam GP 10/10.
                         Sektor 1: Tiada pemadamannya dilakukan
                         Sektor 2: 1 pam GP 10/10, 1 breaching, 3 pancutan dan 700 kaki salur dari sumber air terbuka.
                         Sektor 3: Tiada pemadamannya dilakukan
-
                     Pko hanya melakukan pemadamannya di sektor 2 kerana tidak ada bantuan dari pekerja pada hari ini. Operasi ditangguhkan pada jam 19:00:00 kerana faktor cuaca mulai gelap dan keselamatan anggota bertugas. Operasi akan diteruskan pada keesokan hari.
-
-                24.08.2026 (operasi sambungan 23.08.2026)
-
-                Setibanya pasukan keluaran operasi (pko) di tempat kejadian didapati benar berlaku kebakaran kebun gambut berbaiki seluas 0.4 ekar. PKO bertindak menjalankan operasi pemadamannya menggunakan 1 pam angkut GP 10/10, 1 breaching, 3 pancutan dan salur bantu mula sepanjang 600 kaki sumber air terbuka.
-
-            Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), iaitu 99.9%, manakala baki keluasan yang belum dipadamkan adalah 0.1 ekar (0.04 hektar).</textarea>
-        </div>
-    </div>
-
-    <div class="blok">
-        <p class="section-title"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 2 6a2 2 0 0 1 2-2z"/></svg> Hubungi Komander Operasi (Halaman 1)</p>
-        <label>Nama &amp; Peranan Komander 1</label>
-        <input id="k1nama" value="PBK I Jafry Bin Hashim" />
-        <input id="k1peranan" value="Komander Operasi" />
-        <input id="k1tel" value="013-555 1234" />
-        <label style="margin-top:6px;">Nama &amp; Peranan Komander 2</label>
-        <input id="k2nama" value="PKPgB Mohd Fadli Bin Ismail" />
-        <input id="k2peranan" value="Komander Operasi Kanan" />
-        <input id="k2tel" value="019-777 9876" />
-    </div>
-
-    <!-- ===== GAMBAR HALAMAN 2 ===== -->
-    <div class="blok">
-        <p class="section-title"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.7" fill="currentColor" stroke="none"/><path d="M21 16l-5.5-5.5a2 2 0 0 0-2.8 0L4 19"/></svg> Gambar Halaman 2</p>
-        <div class="toggle-item">
-            <div class="toggle-row">
-                <input type="checkbox" id="showGambarPage2" checked />
-                <label for="showGambarPage2">Tunjukkan Halaman 2 (Gambar 1–4)</label>
-            </div>
-            <p class="hint" style="margin:2px 0 6px;">Muat naik gambar 1–4.</p>
-            <div class="gambar-item">
-                <label>Tajuk Gambar 1</label>
-                <input id="gambarTajuk1" value="GAMBAR 1" />
-                <div class="file-input-wrap">
-                    <input type="file" id="gambarFile1" accept=".jpg,.jpeg,image/jpeg" />
-                    <span class="file-name" id="fileName1">Tiada fail</span>
-                    <button class="btn-padam-gambar" id="padamBtn1" style="display:none;" onclick="padamGambar(0)">✕ Padam</button>
-                </div>
-            </div>
-            <div class="gambar-item">
-                <label>Tajuk Gambar 2</label>
-                <input id="gambarTajuk2" value="GAMBAR 2" />
-                <div class="file-input-wrap">
-                    <input type="file" id="gambarFile2" accept=".jpg,.jpeg,image/jpeg" />
-                    <span class="file-name" id="fileName2">Tiada fail</span>
-                    <button class="btn-padam-gambar" id="padamBtn2" style="display:none;" onclick="padamGambar(1)">✕ Padam</button>
-                </div>
-            </div>
-            <div class="gambar-item">
-                <label>Tajuk Gambar 3</label>
-                <input id="gambarTajuk3" value="GAMBAR 3" />
-                <div class="file-input-wrap">
-                    <input type="file" id="gambarFile3" accept=".jpg,.jpeg,image/jpeg" />
-                    <span class="file-name" id="fileName3">Tiada fail</span>
-                    <button class="btn-padam-gambar" id="padamBtn3" style="display:none;" onclick="padamGambar(2)">✕ Padam</button>
-                </div>
-            </div>
-            <div class="gambar-item">
-                <label>Tajuk Gambar 4</label>
-                <input id="gambarTajuk4" value="GAMBAR 4" />
-                <div class="file-input-wrap">
-                    <input type="file" id="gambarFile4" accept=".jpg,.jpeg,image/jpeg" />
-                    <span class="file-name" id="fileName4">Tiada fail</span>
-                    <button class="btn-padam-gambar" id="padamBtn4" style="display:none;" onclick="padamGambar(3)">✕ Padam</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== GAMBAR HALAMAN 3 ===== -->
-    <div class="blok">
-        <p class="section-title"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.7" fill="currentColor" stroke="none"/><path d="M21 16l-5.5-5.5a2 2 0 0 0-2.8 0L4 19"/></svg> Gambar Halaman 3</p>
-        <div class="toggle-item">
-            <div class="toggle-row">
-                <input type="checkbox" id="showGambarPage3" checked />
-                <label for="showGambarPage3">Tunjukkan Halaman 3 (Gambar 5–8)</label>
-            </div>
-            <p class="hint" style="margin:2px 0 6px;">Muat naik gambar 5–8.</p>
-            <div class="gambar-item">
-                <label>Tajuk Gambar 5</label>
-                <input id="gambarTajuk5" value="GAMBAR 5" />
-                <div class="file-input-wrap">
-                    <input type="file" id="gambarFile5" accept=".jpg,.jpeg,image/jpeg" />
-                    <span class="file-name" id="fileName5">Tiada fail</span>
-                    <button class="btn-padam-gambar" id="padamBtn5" style="display:none;" onclick="padamGambar(4)">✕ Padam</button>
-                </div>
-            </div>
-            <div class="gambar-item">
-                <label>Tajuk Gambar 6</label>
-                <input id="gambarTajuk6" value="GAMBAR 6" />
-                <div class="file-input-wrap">
-                    <input type="file" id="gambarFile6" accept=".jpg,.jpeg,image/jpeg" />
-                    <span class="file-name" id="fileName6">Tiada fail</span>
-                    <button class="btn-padam-gambar" id="padamBtn6" style="display:none;" onclick="padamGambar(5)">✕ Padam</button>
-                </div>
-            </div>
-            <div class="gambar-item">
-                <label>Tajuk Gambar 7</label>
-                <input id="gambarTajuk7" value="GAMBAR 7" />
-                <div class="file-input-wrap">
-                    <input type="file" id="gambarFile7" accept=".jpg,.jpeg,image/jpeg" />
-                    <span class="file-name" id="fileName7">Tiada fail</span>
-                    <button class="btn-padam-gambar" id="padamBtn7" style="display:none;" onclick="padamGambar(6)">✕ Padam</button>
-                </div>
-            </div>
-            <div class="gambar-item">
-                <label>Tajuk Gambar 8</label>
-                <input id="gambarTajuk8" value="GAMBAR 8" />
-                <div class="file-input-wrap">
-                    <input type="file" id="gambarFile8" accept=".jpg,.jpeg,image/jpeg" />
-                    <span class="file-name" id="fileName8">Tiada fail</span>
-                    <button class="btn-padam-gambar" id="padamBtn8" style="display:none;" onclick="padamGambar(7)">✕ Padam</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== FOOTER SETTINGS ===== -->
-    <div class="blok" style="border-bottom:1px dashed #e2e6ec;">
-        <p class="section-title"><svg class="icon-svg" viewBox="0 0 24 24"><line x1="4" y1="4" x2="20" y2="20"/><line x1="4" y1="20" x2="20" y2="4"/></svg> Tetapan Footer</p>
-
-        <label>Tagline Footer (kiri / tengah)</label>
-        <input id="tagline" value="“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia" />
-
-        <div class="toggle-item">
-            <div class="toggle-row">
-                <input type="checkbox" id="showFooterRight" checked />
-                <label for="showFooterRight">Tunjukkan Footer Kanan</label>
-            </div>
-            <p class="hint" style="margin:2px 0 4px;">Nyahtanda untuk menyembunyikan teks di bahagian kanan footer.</p>
-            <label>Teks Footer Kanan</label>
-            <input id="footerRightText" value="Disediakan Oleh : Pusat Gerakan Operasi Negeri Johor" />
-        </div>
-    </div>
-
-    <button class="btn btn-download" onclick="downloadPNG()"><svg class="icon-svg" viewBox="0 0 24 24"><line x1="12" y1="3" x2="12" y2="15"/><polyline points="7 10 12 15 17 10"/><line x1="4" y1="20" x2="20" y2="20"/></svg> Muat Turun Infografik (PNG)</button>
-    <button class="btn btn-print" onclick="window.print()"><svg class="icon-svg" viewBox="0 0 24 24"><polyline points="6 9 6 3 18 3 18 9"/><rect x="4" y="9" width="16" height="8" rx="1"/><rect x="7" y="14" width="10" height="7"/></svg> Cetak (Lanskap A4)</button>
-</aside>
-
-<!-- ================= PREVIEW ================= -->
-<main class="preview-wrap">
-    <div class="pages-container" id="pagesContainer">
-
-        <!-- PAGE 1 -->
-        <div class="card" id="page1">
-            <div class="card-bg" id="cardBg1"></div>
-            <div class="header">
-                <div class="header-top">
-                    <div class="logo">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Logo_of_the_Malaysian_Fire_and_Rescue_Department.svg" alt="Logo JBPM" />
-                        <span class="logo-text">JABATAN BOMBA DAN PENYELAMAT MALAYSIA NEGERI JOHOR</span>
-                    </div>
-                    <div class="lokasi-tag">
-                        <span>Lokasi</span>
-                        <span id="out-lokasiTag" style="color:var(--merah); font-size:10px;">KAMPUNG PAYA KOPI</span>
-                        <span class="tarikh-laporan">Tarikh Laporan</span>
-                        <span class="tarikh-laporan-val" id="out-tarikhLaporan">25 OGOS 2026 (SELASA)</span>
-                    </div>
-                </div>
-                <p class="kicker">LAPORAN SITUASI OPERASI (SITREP)</p>
-                <h1 class="headline" id="out-headline">INSIDEN KEBAKARAN KEBUN TANAH GAMBUT</h1>
-                <span class="subline" id="out-subline">NEGERI JOHOR | BBP PAGOH</span>
-            </div>
-            <div class="body-sitrep">
-                <div class="col-left">
-                    <p class="pill">MAKLUMAT INSIDEN</p>
-                    <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></div><div class="label">Tarikh / Masa Penggilan:</div><div class="val" id="out-tarikhMasa">17 OGOS 2026 | 09:12:00 HRS</div></div>
-                    <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v6H8V7a4 4 0 0 1 4-4z"/><line x1="12" y1="1" x2="12" y2="3"/><rect x="4" y="13" width="16" height="3" rx="1"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg></div><div class="label">Masa Tiba &amp; Jarak:</div><div class="val" id="out-masaTiba">09:42:00 HRS (JARAK: 20 KM)</div></div>
-                    <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 22s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div class="label">Lokasi:</div><div class="val" id="out-lokasiPenuh">LOT 15060 KG PAYA KOPI, PAGOH (BIOTECH)</div></div>
-                    <div class="info-row toggle-field" id="row-masaOperasiTerkawal"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><line x1="12" y1="13" x2="12" y2="9"/><line x1="9" y1="2" x2="15" y2="2"/><line x1="12" y1="2" x2="12" y2="5"/></svg></div><div class="label">Masa Operasi Terkawal:</div><div class="val" id="out-masaOperasiTerkawal">Tiada</div></div>
-                    <div class="info-row toggle-field" id="row-masaOperasiTamat"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><line x1="12" y1="13" x2="12" y2="9"/><line x1="9" y1="2" x2="15" y2="2"/><line x1="12" y1="2" x2="12" y2="5"/></svg></div><div class="label">Masa Operasi Tamat:</div><div class="val" id="out-masaOperasiTamat">Operasi Tangguh</div></div>
-                    <p class="pill follow">STATUS PEMADAMAN (PROGRESS)</p>
-                    <div class="status-hero"><div><div class="pct" id="out-pct">95.6%</div><div class="pct-label">Completed</div></div><div class="terjejas">"Jumlah Keluasan Terjejas"<b id="out-jumlahKeluasan">3.64 Hektar</b></div></div>
-                    <div class="bar-track"><div class="bar-fill" id="out-bar" style="width:95.6%;"></div></div>
-                    <div class="stat-2col"><div class="stat-box"><div class="lbl">Keluasan Berhasil Dipadam</div><div class="num" id="out-keluasanDipadam">3.48 Hektar</div></div><div class="stat-box"><div class="lbl">Baki Belum Dipadam</div><div class="num" id="out-baki">0.16 Hektar</div></div></div>
-                    <div class="sektor-block toggle-field" id="row-sektorBlock">
-                        <p class="pill" style="margin-top:4px;">SEKTOR OPERASI</p>
-                        <div class="sektor-row toggle-field" id="sektor1-row"><span class="sektor-nama" id="out-sektor1_nama">SEKTOR 1</span><span class="sektor-maklumat" id="out-sektor1_maklumat">Tiada pemadaman dilakukan</span></div>
-                        <div class="sektor-row toggle-field" id="sektor2-row"><span class="sektor-nama" id="out-sektor2_nama">SEKTOR 2</span><span class="sektor-maklumat" id="out-sektor2_maklumat">1 pam GP 10/10, 1 breaching, 3 pancutan dan 700 kaki salur dari sumber air terbuka</span></div>
-                        <div class="sektor-row toggle-field" id="sektor3-row"><span class="sektor-nama" id="out-sektor3_nama">SEKTOR 3</span><span class="sektor-maklumat" id="out-sektor3_maklumat">Tiada pemadaman dilakukan</span></div>
-                        <div class="sektor-row toggle-field" id="sektor4-row"><span class="sektor-nama" id="out-sektor4_nama">SEKTOR 4</span><span class="sektor-maklumat" id="out-sektor4_maklumat"></span></div>
-                    </div>
-                </div>
-                <div class="col-right">
-                    <p class="pill">TAKTIKAL OPERASI &amp; LOGISTIK</p>
-                    <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v6H8V7a4 4 0 0 1 4-4z"/><line x1="12" y1="1" x2="12" y2="3"/><rect x="4" y="13" width="16" height="3" rx="1"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg></div><div class="label">Tindakan Pemadaman:</div><div class="val" id="out-tindakan">Operasi menggunakan 3 unit Pam GP 10/10</div></div>
-                    <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 13a7.97 7.97 0 0 0 0-2l2.1-1.6-2-3.4-2.5 1a8 8 0 0 0-1.7-1L14.9 3h-4l-.4 2.9a8 8 0 0 0-1.7 1l-2.5-1-2 3.4L6.4 11a7.97 7.97 0 0 0 0 2l-2.1 1.6 2 3.4 2.5-1a8 8 0 0 0 1.7 1l.4 2.9h4l.4-2.9a8 8 0 0 0 1.7-1l2.5 1 2-3.4L19.4 13z"/></svg></div><div class="label">Aset Jentera:</div><div class="val" id="out-asetJentera">1x FRT, 1x HICOM, 1x Utiliti</div></div>
-                    <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.6"/><path d="M15 14.2c2.3.6 4 2.6 4 5.8"/></svg></div><div class="label">Kekuatan Anggota:</div><div class="val" id="out-kekuatan">7 Anggota BBP Pagoh</div></div>
-                    <div class="info-row toggle-field" id="row-keanggotaanUnit"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="4" y="3" width="12" height="18" rx="1"/><line x1="8" y1="7" x2="8" y2="7.01"/><line x1="12" y1="7" x2="12" y2="7.01"/><line x1="8" y1="11" x2="8" y2="11.01"/><line x1="12" y1="11" x2="12" y2="11.01"/><line x1="8" y1="15" x2="8" y2="15.01"/><line x1="12" y1="15" x2="12" y2="15.01"/><path d="M16 21v-6h4v6"/></svg></div><div class="label">Keanggotaan:</div><div class="val" id="out-keanggotaanUnit">BBP Pagoh</div></div>
-                    <div class="badge-row"><div class="badge operasi"><span class="dot"></span><span id="out-statusOperasi">MASIH BEROPERASI</span></div><div class="badge mangsa"><span><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="9" width="20" height="6" rx="3"/><line x1="9" y1="9" x2="9" y2="15"/><line x1="15" y1="9" x2="15" y2="15"/></svg></span><span id="out-statusMangsa">TIADA MANGSA</span></div></div>
-                    <p class="pill follow">HUBUNGI KOMANDER OPERASI</p>
-                    <div class="komander"><div><div class="nama" id="out-k1nama">PBK I Jafry Bin Hashim</div><div class="peranan" id="out-k1peranan">Komander Operasi</div></div><div class="tel" id="out-k1tel">013-555 1234</div></div>
-                    <div class="komander"><div><div class="nama" id="out-k2nama">PKPgB Mohd Fadli Bin Ismail</div><div class="peranan" id="out-k2peranan">Komander Operasi Kanan</div></div><div class="tel" id="out-k2tel">019-777 9876</div></div>
-                    <!-- CATATAN OPERASI – auto expand -->
-                    <div class="catatan-block toggle-field" id="row-catatan">
-                        <div class="catatan-label">Catatan Operasi</div>
-                        <div class="catatan-teks" id="out-catatan">23.08.2026 (operasi sambungan 22.08.2026)
-                            Setibanya PKO ke lokasi pada jam 09:30:00, didapati kebakaran kebun gambut di Kampung Paya Kopi Pagoh masih berlaku dengan baki keluasan 2.2 ekar yang masih terbakar dan berasap. PKO bertindak menjalankan operasi pemadamannya menggunakan 3 pam GP 10/10.
-                            Sektor 1: Tiada pemadamannya dilakukan
-                            Sektor 2: 1 pam GP 10/10, 1 breaching, 3 pancutan dan 700 kaki salur dari sumber air terbuka.
-                            Sektor 3: Tiada pemadamannya dilakukan
-
-                        Pko hanya melakukan pemadamannya di sektor 2 kerana tidak ada bantuan dari pekerja pada hari ini. Operasi ditangguhkan pada jam 19:00:00 kerana faktor cuaca mulai gelap dan keselamatan anggota bertugas. Operasi akan diteruskan pada keesokan hari.
-
                     24.08.2026 (operasi sambungan 23.08.2026)
-
                     Setibanya pasukan keluaran operasi (pko) di tempat kejadian didapati benar berlaku kebakaran kebun gambut berbaiki seluas 0.4 ekar. PKO bertindak menjalankan operasi pemadamannya menggunakan 1 pam angkut GP 10/10, 1 breaching, 3 pancutan dan salur bantu mula sepanjang 600 kaki sumber air terbuka.
-
-                Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), iaitu 99.9%, manakala baki keluasan yang belum dipadamkan adalah 0.1 ekar (0.04 hektar).</div>
+                    Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), iaitu 99.9%, manakala baki keluasan yang belum dipadamkan adalah 0.1 ekar (0.04 hektar).</textarea>
+                </div>
             </div>
-        </div>
+
+            <!-- ===== HUBUNGI KOMANDER OPERASI (4 KOMANDER) ===== -->
+            <div class="blok">
+                <p class="section-title"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 2 6a2 2 0 0 1 2-2z"/></svg> Hubungi Komander Operasi (Halaman 1)</p>
+
+                <label>Komander 1</label>
+                <input id="k1nama" value="PBK I Jafry Bin Hashim" placeholder="Nama" />
+                <input id="k1peranan" value="Komander Operasi" placeholder="Peranan" />
+                <input id="k1tel" value="013-555 1234" placeholder="Telefon" />
+
+                <label style="margin-top:6px;">Komander 2</label>
+                <input id="k2nama" value="PKPgB Mohd Fadli Bin Ismail" placeholder="Nama" />
+                <input id="k2peranan" value="Komander Operasi Kanan" placeholder="Peranan" />
+                <input id="k2tel" value="019-777 9876" placeholder="Telefon" />
+
+                <label style="margin-top:6px;">Komander 3</label>
+                <input id="k3nama" value="" placeholder="Nama Komander 3" />
+                <input id="k3peranan" value="" placeholder="Peranan Komander 3" />
+                <input id="k3tel" value="" placeholder="Telefon Komander 3" />
+
+                <label style="margin-top:6px;">Komander 4</label>
+                <input id="k4nama" value="" placeholder="Nama Komander 4" />
+                <input id="k4peranan" value="" placeholder="Peranan Komander 4" />
+                <input id="k4tel" value="" placeholder="Telefon Komander 4" />
+            </div>
+
+            <!-- ===== GAMBAR HALAMAN 2 ===== -->
+            <div class="blok">
+                <p class="section-title"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.7" fill="currentColor" stroke="none"/><path d="M21 16l-5.5-5.5a2 2 0 0 0-2.8 0L4 19"/></svg> Gambar Halaman 2</p>
+                <div class="toggle-item">
+                    <div class="toggle-row"><input type="checkbox" id="showGambarPage2" checked /><label for="showGambarPage2">Tunjukkan Halaman 2 (Gambar 1–4)</label></div>
+                    <p class="hint" style="margin:2px 0 6px;">Muat naik gambar 1–4.</p>
+                    <div class="gambar-item">
+                        <label>Tajuk Gambar 1</label>
+                        <input id="gambarTajuk1" value="GAMBAR 1" />
+                        <div class="file-input-wrap">
+                            <input type="file" id="gambarFile1" accept=".jpg,.jpeg,image/jpeg" />
+                            <span class="file-name" id="fileName1">Tiada fail</span>
+                            <button class="btn-padam-gambar" id="padamBtn1" style="display:none;" onclick="padamGambar(0)">✕ Padam</button>
+                        </div>
+                        <span class="gambar-status" id="gambarStatus1">⏳ Belum disimpan</span>
+                    </div>
+                    <div class="gambar-item">
+                        <label>Tajuk Gambar 2</label>
+                        <input id="gambarTajuk2" value="GAMBAR 2" />
+                        <div class="file-input-wrap">
+                            <input type="file" id="gambarFile2" accept=".jpg,.jpeg,image/jpeg" />
+                            <span class="file-name" id="fileName2">Tiada fail</span>
+                            <button class="btn-padam-gambar" id="padamBtn2" style="display:none;" onclick="padamGambar(1)">✕ Padam</button>
+                        </div>
+                        <span class="gambar-status" id="gambarStatus2">⏳ Belum disimpan</span>
+                    </div>
+                    <div class="gambar-item">
+                        <label>Tajuk Gambar 3</label>
+                        <input id="gambarTajuk3" value="GAMBAR 3" />
+                        <div class="file-input-wrap">
+                            <input type="file" id="gambarFile3" accept=".jpg,.jpeg,image/jpeg" />
+                            <span class="file-name" id="fileName3">Tiada fail</span>
+                            <button class="btn-padam-gambar" id="padamBtn3" style="display:none;" onclick="padamGambar(2)">✕ Padam</button>
+                        </div>
+                        <span class="gambar-status" id="gambarStatus3">⏳ Belum disimpan</span>
+                    </div>
+                    <div class="gambar-item">
+                        <label>Tajuk Gambar 4</label>
+                        <input id="gambarTajuk4" value="GAMBAR 4" />
+                        <div class="file-input-wrap">
+                            <input type="file" id="gambarFile4" accept=".jpg,.jpeg,image/jpeg" />
+                            <span class="file-name" id="fileName4">Tiada fail</span>
+                            <button class="btn-padam-gambar" id="padamBtn4" style="display:none;" onclick="padamGambar(3)">✕ Padam</button>
+                        </div>
+                        <span class="gambar-status" id="gambarStatus4">⏳ Belum disimpan</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== GAMBAR HALAMAN 3 ===== -->
+            <div class="blok">
+                <p class="section-title"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.7" fill="currentColor" stroke="none"/><path d="M21 16l-5.5-5.5a2 2 0 0 0-2.8 0L4 19"/></svg> Gambar Halaman 3</p>
+                <div class="toggle-item">
+                    <div class="toggle-row"><input type="checkbox" id="showGambarPage3" checked /><label for="showGambarPage3">Tunjukkan Halaman 3 (Gambar 5–8)</label></div>
+                    <p class="hint" style="margin:2px 0 6px;">Muat naik gambar 5–8.</p>
+                    <div class="gambar-item">
+                        <label>Tajuk Gambar 5</label>
+                        <input id="gambarTajuk5" value="GAMBAR 5" />
+                        <div class="file-input-wrap">
+                            <input type="file" id="gambarFile5" accept=".jpg,.jpeg,image/jpeg" />
+                            <span class="file-name" id="fileName5">Tiada fail</span>
+                            <button class="btn-padam-gambar" id="padamBtn5" style="display:none;" onclick="padamGambar(4)">✕ Padam</button>
+                        </div>
+                        <span class="gambar-status" id="gambarStatus5">⏳ Belum disimpan</span>
+                    </div>
+                    <div class="gambar-item">
+                        <label>Tajuk Gambar 6</label>
+                        <input id="gambarTajuk6" value="GAMBAR 6" />
+                        <div class="file-input-wrap">
+                            <input type="file" id="gambarFile6" accept=".jpg,.jpeg,image/jpeg" />
+                            <span class="file-name" id="fileName6">Tiada fail</span>
+                            <button class="btn-padam-gambar" id="padamBtn6" style="display:none;" onclick="padamGambar(5)">✕ Padam</button>
+                        </div>
+                        <span class="gambar-status" id="gambarStatus6">⏳ Belum disimpan</span>
+                    </div>
+                    <div class="gambar-item">
+                        <label>Tajuk Gambar 7</label>
+                        <input id="gambarTajuk7" value="GAMBAR 7" />
+                        <div class="file-input-wrap">
+                            <input type="file" id="gambarFile7" accept=".jpg,.jpeg,image/jpeg" />
+                            <span class="file-name" id="fileName7">Tiada fail</span>
+                            <button class="btn-padam-gambar" id="padamBtn7" style="display:none;" onclick="padamGambar(6)">✕ Padam</button>
+                        </div>
+                        <span class="gambar-status" id="gambarStatus7">⏳ Belum disimpan</span>
+                    </div>
+                    <div class="gambar-item">
+                        <label>Tajuk Gambar 8</label>
+                        <input id="gambarTajuk8" value="GAMBAR 8" />
+                        <div class="file-input-wrap">
+                            <input type="file" id="gambarFile8" accept=".jpg,.jpeg,image/jpeg" />
+                            <span class="file-name" id="fileName8">Tiada fail</span>
+                            <button class="btn-padam-gambar" id="padamBtn8" style="display:none;" onclick="padamGambar(7)">✕ Padam</button>
+                        </div>
+                        <span class="gambar-status" id="gambarStatus8">⏳ Belum disimpan</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== FOOTER SETTINGS ===== -->
+            <div class="blok" style="border-bottom:1px dashed #e2e6ec;">
+                <p class="section-title"><svg class="icon-svg" viewBox="0 0 24 24"><line x1="4" y1="4" x2="20" y2="20"/><line x1="4" y1="20" x2="20" y2="4"/></svg> Tetapan Footer</p>
+                <label>Tagline Footer (kiri / tengah)</label>
+                <input id="tagline" value="“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia" />
+                <div class="toggle-item">
+                    <div class="toggle-row"><input type="checkbox" id="showFooterRight" checked /><label for="showFooterRight">Tunjukkan Footer Kanan</label></div>
+                    <p class="hint" style="margin:2px 0 4px;">Nyahtanda untuk menyembunyikan teks di bahagian kanan footer.</p>
+                    <label>Teks Footer Kanan</label>
+                    <input id="footerRightText" value="Disediakan Oleh : Pusat Gerakan Operasi Negeri Johor" />
+                </div>
+            </div>
+
+            <button class="btn btn-print" onclick="window.print()"><svg class="icon-svg" viewBox="0 0 24 24"><polyline points="6 9 6 3 18 3 18 9"/><rect x="4" y="9" width="16" height="8" rx="1"/><rect x="7" y="14" width="10" height="7"/></svg> Cetak (Lanskap A4)</button>
+            <!-- Backend buttons removed -->
+
+        </aside>
+
+        <!-- ================= PREVIEW ================= -->
+        <main class="preview-wrap">
+            <div class="pages-container" id="pagesContainer">
+
+                <!-- ================= PAGE 1 ================= -->
+                <div class="card" id="page1">
+                    <div class="card-bg" id="cardBg1"></div>
+                    <div class="header">
+                        <div class="header-top">
+                            <div class="logo">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Logo_of_the_Malaysian_Fire_and_Rescue_Department.svg" alt="Logo JBPM" />
+                                <span class="logo-text">JABATAN BOMBA DAN PENYELAMAT MALAYSIA NEGERI JOHOR</span>
+                            </div>
+                            <div class="lokasi-tag">
+                                <span>Lokasi</span>
+                                <span id="out-lokasiTag" style="color:var(--merah); font-size:10px;">KAMPUNG PAYA KOPI</span>
+                                <span class="tarikh-laporan">Tarikh Laporan</span>
+                                <span class="tarikh-laporan-val" id="out-tarikhLaporan">25 OGOS 2026 (SELASA)</span>
+                            </div>
+                        </div>
+                        <p class="kicker">LAPORAN SITUASI OPERASI (SITREP)</p>
+                        <h1 class="headline" id="out-headline">INSIDEN KEBAKARAN KEBUN TANAH GAMBUT</h1>
+                        <span class="subline" id="out-subline">NEGERI JOHOR | BBP PAGOH</span>
+                    </div>
+                    <div class="body-sitrep">
+                        <div class="col-left">
+                            <p class="pill">MAKLUMAT INSIDEN</p>
+                            <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></div><div class="label">Tarikh / Masa Penggilan:</div><div class="val" id="out-tarikhMasa">17 OGOS 2026 | 09:12:00 HRS</div></div>
+                            <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v6H8V7a4 4 0 0 1 4-4z"/><line x1="12" y1="1" x2="12" y2="3"/><rect x="4" y="13" width="16" height="3" rx="1"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg></div><div class="label">Masa Tiba &amp; Jarak:</div><div class="val" id="out-masaTiba">09:42:00 HRS (JARAK: 20 KM)</div></div>
+                            <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 22s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div class="label">Lokasi:</div><div class="val" id="out-lokasiPenuh">LOT 15060 KG PAYA KOPI, PAGOH (BIOTECH)</div></div>
+                            <div class="info-row toggle-field" id="row-masaOperasiTerkawal"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><line x1="12" y1="13" x2="12" y2="9"/><line x1="9" y1="2" x2="15" y2="2"/><line x1="12" y1="2" x2="12" y2="5"/></svg></div><div class="label">Masa Operasi Terkawal:</div><div class="val" id="out-masaOperasiTerkawal">Tiada</div></div>
+                            <div class="info-row toggle-field" id="row-masaOperasiTamat"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><line x1="12" y1="13" x2="12" y2="9"/><line x1="9" y1="2" x2="15" y2="2"/><line x1="12" y1="2" x2="12" y2="5"/></svg></div><div class="label">Masa Operasi Tamat:</div><div class="val" id="out-masaOperasiTamat">Operasi Tangguh</div></div>
+                            <p class="pill follow">STATUS PEMADAMAN (PROGRESS)</p>
+                            <div class="status-hero"><div><div class="pct" id="out-pct">95.6%</div><div class="pct-label">Completed</div></div><div class="terjejas">"Jumlah Keluasan Terjejas"<b id="out-jumlahKeluasan">3.64 Hektar</b></div></div>
+                            <div class="bar-track"><div class="bar-fill" id="out-bar" style="width:95.6%;"></div></div>
+                            <div class="stat-2col"><div class="stat-box"><div class="lbl">Keluasan Berhasil Dipadam</div><div class="num" id="out-keluasanDipadam">3.48 Hektar</div></div><div class="stat-box"><div class="lbl">Baki Belum Dipadam</div><div class="num" id="out-baki">0.16 Hektar</div></div></div>
+
+                            <!-- ===== SEKTOR + SUBSEKTOR PREVIEW ===== -->
+                            <div class="sektor-block toggle-field" id="row-sektorBlock">
+                                <p class="pill" style="margin-top:4px;">SEKTOR OPERASI</p>
+
+                                <!-- SEKTOR 1 -->
+                                <div class="sektor-row toggle-field" id="sektor1-row">
+                                    <span class="sektor-nama" id="out-sektor1_nama">SEKTOR 1</span>
+                                    <span class="sektor-maklumat" id="out-sektor1_maklumat">Tiada pemadaman dilakukan</span>
+                                </div>
+                                <div class="subsektor-preview" id="sektor1_sub_container">
+                                    <div class="item" id="sektor1_sub1_display">• <span id="out-sektor1_sub1_nama">Sub 1.1</span>: <span id="out-sektor1_sub1_maklumat">-</span></div>
+                                    <div class="item" id="sektor1_sub2_display">• <span id="out-sektor1_sub2_nama">Sub 1.2</span>: <span id="out-sektor1_sub2_maklumat">-</span></div>
+                                    <div class="item" id="sektor1_sub3_display">• <span id="out-sektor1_sub3_nama">Sub 1.3</span>: <span id="out-sektor1_sub3_maklumat">-</span></div>
+                                </div>
+
+                                <!-- SEKTOR 2 -->
+                                <div class="sektor-row toggle-field" id="sektor2-row">
+                                    <span class="sektor-nama" id="out-sektor2_nama">SEKTOR 2</span>
+                                    <span class="sektor-maklumat" id="out-sektor2_maklumat">1 pam GP 10/10, 1 breaching, 3 pancutan dan 700 kaki salur dari sumber air terbuka</span>
+                                </div>
+                                <div class="subsektor-preview" id="sektor2_sub_container">
+                                    <div class="item" id="sektor2_sub1_display">• <span id="out-sektor2_sub1_nama">Sub 2.1</span>: <span id="out-sektor2_sub1_maklumat">-</span></div>
+                                    <div class="item" id="sektor2_sub2_display">• <span id="out-sektor2_sub2_nama">Sub 2.2</span>: <span id="out-sektor2_sub2_maklumat">-</span></div>
+                                    <div class="item" id="sektor2_sub3_display">• <span id="out-sektor2_sub3_nama">Sub 2.3</span>: <span id="out-sektor2_sub3_maklumat">-</span></div>
+                                </div>
+
+                                <!-- SEKTOR 3 -->
+                                <div class="sektor-row toggle-field" id="sektor3-row">
+                                    <span class="sektor-nama" id="out-sektor3_nama">SEKTOR 3</span>
+                                    <span class="sektor-maklumat" id="out-sektor3_maklumat">Tiada pemadaman dilakukan</span>
+                                </div>
+                                <div class="subsektor-preview" id="sektor3_sub_container">
+                                    <div class="item" id="sektor3_sub1_display">• <span id="out-sektor3_sub1_nama">Sub 3.1</span>: <span id="out-sektor3_sub1_maklumat">-</span></div>
+                                    <div class="item" id="sektor3_sub2_display">• <span id="out-sektor3_sub2_nama">Sub 3.2</span>: <span id="out-sektor3_sub2_maklumat">-</span></div>
+                                    <div class="item" id="sektor3_sub3_display">• <span id="out-sektor3_sub3_nama">Sub 3.3</span>: <span id="out-sektor3_sub3_maklumat">-</span></div>
+                                </div>
+
+                                <!-- SEKTOR 4 -->
+                                <div class="sektor-row toggle-field" id="sektor4-row">
+                                    <span class="sektor-nama" id="out-sektor4_nama">SEKTOR 4</span>
+                                    <span class="sektor-maklumat" id="out-sektor4_maklumat"></span>
+                                </div>
+                                <div class="subsektor-preview" id="sektor4_sub_container">
+                                    <div class="item" id="sektor4_sub1_display">• <span id="out-sektor4_sub1_nama">Sub 4.1</span>: <span id="out-sektor4_sub1_maklumat">-</span></div>
+                                    <div class="item" id="sektor4_sub2_display">• <span id="out-sektor4_sub2_nama">Sub 4.2</span>: <span id="out-sektor4_sub2_maklumat">-</span></div>
+                                    <div class="item" id="sektor4_sub3_display">• <span id="out-sektor4_sub3_nama">Sub 4.3</span>: <span id="out-sektor4_sub3_maklumat">-</span></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-right">
+                            <p class="pill">TAKTIKAL OPERASI &amp; LOGISTIK</p>
+                            <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v6H8V7a4 4 0 0 1 4-4z"/><line x1="12" y1="1" x2="12" y2="3"/><rect x="4" y="13" width="16" height="3" rx="1"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg></div><div class="label">Tindakan Pemadaman:</div><div class="val" id="out-tindakan">Operasi menggunakan 3 unit Pam GP 10/10</div></div>
+                            <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 13a7.97 7.97 0 0 0 0-2l2.1-1.6-2-3.4-2.5 1a8 8 0 0 0-1.7-1L14.9 3h-4l-.4 2.9a8 8 0 0 0-1.7 1l-2.5-1-2 3.4L6.4 11a7.97 7.97 0 0 0 0 2l-2.1 1.6 2 3.4 2.5-1a8 8 0 0 0 1.7 1l.4 2.9h4l.4-2.9a8 8 0 0 0 1.7-1l2.5 1 2-3.4L19.4 13z"/></svg></div><div class="label">Aset Jentera:</div><div class="val" id="out-asetJentera">1x FRT, 1x HICOM, 1x Utiliti</div></div>
+                            <div class="info-row"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.6"/><path d="M15 14.2c2.3.6 4 2.6 4 5.8"/></svg></div><div class="label">Kekuatan Anggota:</div><div class="val" id="out-kekuatan">7 Anggota BBP Pagoh</div></div>
+                            <div class="info-row toggle-field" id="row-keanggotaanUnit"><div class="ic"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="4" y="3" width="12" height="18" rx="1"/><line x1="8" y1="7" x2="8" y2="7.01"/><line x1="12" y1="7" x2="12" y2="7.01"/><line x1="8" y1="11" x2="8" y2="11.01"/><line x1="12" y1="11" x2="12" y2="11.01"/><line x1="8" y1="15" x2="8" y2="15.01"/><line x1="12" y1="15" x2="12" y2="15.01"/><path d="M16 21v-6h4v6"/></svg></div><div class="label">Keanggotaan:</div><div class="val" id="out-keanggotaanUnit">BBP Pagoh</div></div>
+                            <div class="badge-row"><div class="badge operasi"><span class="dot"></span><span id="out-statusOperasi">MASIH BEROPERASI</span></div><div class="badge mangsa"><span><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="9" width="20" height="6" rx="3"/><line x1="9" y1="9" x2="9" y2="15"/><line x1="15" y1="9" x2="15" y2="15"/></svg></span><span id="out-statusMangsa">TIADA MANGSA</span></div></div>
+
+                            <!-- ===== 4 KOMANDER (Sembunyi jika kosong) ===== -->
+                            <p class="pill follow">HUBUNGI KOMANDER OPERASI</p>
+
+                            <div class="komander" id="komander1">
+                                <div><div class="nama" id="out-k1nama">PBK I Jafry Bin Hashim</div><div class="peranan" id="out-k1peranan">Komander Operasi</div></div>
+                                <div class="tel" id="out-k1tel">013-555 1234</div>
+                            </div>
+
+                            <div class="komander" id="komander2">
+                                <div><div class="nama" id="out-k2nama">PKPgB Mohd Fadli Bin Ismail</div><div class="peranan" id="out-k2peranan">Komander Operasi Kanan</div></div>
+                                <div class="tel" id="out-k2tel">019-777 9876</div>
+                            </div>
+
+                            <div class="komander" id="komander3">
+                                <div><div class="nama" id="out-k3nama"></div><div class="peranan" id="out-k3peranan"></div></div>
+                                <div class="tel" id="out-k3tel"></div>
+                            </div>
+
+                            <div class="komander" id="komander4">
+                                <div><div class="nama" id="out-k4nama"></div><div class="peranan" id="out-k4peranan"></div></div>
+                                <div class="tel" id="out-k4tel"></div>
+                            </div>
+
+                            <!-- CATATAN -->
+                            <div class="catatan-block toggle-field" id="row-catatan">
+                                <div class="catatan-label">Catatan Operasi</div>
+                                <div class="catatan-teks" id="out-catatan">23.08.2026 (operasi sambungan 22.08.2026) Setibanya PKO ke lokasi pada jam 09:30:00, didapati kebakaran kebun gambut di Kampung Paya Kopi Pagoh masih berlaku dengan baki keluasan 2.2 ekar yang masih terbakar dan berasap. PKO bertindak menjalankan operasi pemadamannya menggunakan 3 pam GP 10/10. Sektor 1: Tiada pemadamannya dilakukan Sektor 2: 1 pam GP 10/10, 1 breaching, 3 pancutan dan 700 kaki salur dari sumber air terbuka. Sektor 3: Tiada pemadamannya dilakukan Pko hanya melakukan pemadamannya di sektor 2 kerana tidak ada bantuan dari pekerja pada hari ini. Operasi ditangguhkan pada jam 19:00:00 kerana faktor cuaca mulai gelap dan keselamatan anggota bertugas. Operasi akan diteruskan pada keesokan hari. 24.08.2026 (operasi sambungan 23.08.2026) Setibanya pasukan keluaran operasi (pko) di tempat kejadian didapati benar berlaku kebakaran kebun gambut berbaiki seluas 0.4 ekar. PKO bertindak menjalankan operasi pemadamannya menggunakan 1 pam angkut GP 10/10, 1 breaching, 3 pancutan dan salur bantu mula sepanjang 600 kaki sumber air terbuka. Setakat ini, kebakaran telah berjaya dipadamkan seluas 8.9 ekar (3.60 hektar), iaitu 99.9%, manakala baki keluasan yang belum dipadamkan adalah 0.1 ekar (0.04 hektar).</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="footer-left"></div>
+                        <div class="footer-center" id="out-tagline1">“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia</div>
+                        <div class="footer-right toggle-field" id="footerRight1">Disediakan Oleh : Pusat Gerakan Operasi Negeri Johor</div>
+                    </div>
+                </div>
+
+                <!-- ================= PAGE 2 (GAMBAR 1-4) ================= -->
+                <div class="card" id="page2">
+                    <div class="card-bg" id="cardBg2"></div>
+                    <div class="header">
+                        <div class="header-top">
+                            <div class="logo"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Logo_of_the_Malaysian_Fire_and_Rescue_Department.svg" alt="Logo" /><span class="logo-text">JABATAN BOMBA DAN PENYELAMAT MALAYSIA NEGERI JOHOR</span></div>
+                            <div class="lokasi-tag"><span>Lokasi</span><span id="out2-lokasiTag" style="color:var(--merah); font-size:10px;">KAMPUNG PAYA KOPI</span><span class="tarikh-laporan">Tarikh Laporan</span><span class="tarikh-laporan-val" id="out2-tarikhLaporan">25 OGOS 2026 (SELASA)</span></div>
+                        </div>
+                        <p class="kicker">LAPORAN SITUASI OPERASI (SITREP)</p>
+                        <h1 class="headline" id="out2-headline">INSIDEN KEBAKARAN KEBUN TANAH GAMBUT</h1>
+                        <span class="subline" id="out2-subline">NEGERI JOHOR | BBP PAGOH</span>
+                    </div>
+                    <div class="body-gambar">
+                        <div class="grid-gambar">
+                            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk1">GAMBAR 1</div><div class="gambar-wadah"><img id="gambarImg1" src="" alt="Gambar 1" style="display:none;" /><div class="gambar-kosong" id="gambarPlaceholder1">Tiada gambar</div></div></div>
+                            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk2">GAMBAR 2</div><div class="gambar-wadah"><img id="gambarImg2" src="" alt="Gambar 2" style="display:none;" /><div class="gambar-kosong" id="gambarPlaceholder2">Tiada gambar</div></div></div>
+                            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk3">GAMBAR 3</div><div class="gambar-wadah"><img id="gambarImg3" src="" alt="Gambar 3" style="display:none;" /><div class="gambar-kosong" id="gambarPlaceholder3">Tiada gambar</div></div></div>
+                            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk4">GAMBAR 4</div><div class="gambar-wadah"><img id="gambarImg4" src="" alt="Gambar 4" style="display:none;" /><div class="gambar-kosong" id="gambarPlaceholder4">Tiada gambar</div></div></div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="footer-left"></div>
+                        <div class="footer-center" id="out2-tagline">“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia</div>
+                        <div class="footer-right toggle-field" id="footerRight2">Disediakan Oleh : Pusat Gerakan Operasi Negeri Johor</div>
+                    </div>
+                </div>
+
+                <!-- ================= PAGE 3 (GAMBAR 5-8) ================= -->
+                <div class="card" id="page3">
+                    <div class="card-bg" id="cardBg3"></div>
+                    <div class="header">
+                        <div class="header-top">
+                            <div class="logo"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Logo_of_the_Malaysian_Fire_and_Rescue_Department.svg" alt="Logo" /><span class="logo-text">JABATAN BOMBA DAN PENYELAMAT MALAYSIA NEGERI JOHOR</span></div>
+                            <div class="lokasi-tag"><span>Lokasi</span><span id="out3-lokasiTag" style="color:var(--merah); font-size:10px;">KAMPUNG PAYA KOPI</span><span class="tarikh-laporan">Tarikh Laporan</span><span class="tarikh-laporan-val" id="out3-tarikhLaporan">25 OGOS 2026 (SELASA)</span></div>
+                        </div>
+                        <p class="kicker">LAPORAN SITUASI OPERASI (SITREP)</p>
+                        <h1 class="headline" id="out3-headline">INSIDEN KEBAKARAN KEBUN TANAH GAMBUT</h1>
+                        <span class="subline" id="out3-subline">NEGERI JOHOR | BBP PAGOH</span>
+                    </div>
+                    <div class="body-gambar">
+                        <div class="grid-gambar">
+                            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk5">GAMBAR 5</div><div class="gambar-wadah"><img id="gambarImg5" src="" alt="Gambar 5" style="display:none;" /><div class="gambar-kosong" id="gambarPlaceholder5">Tiada gambar</div></div></div>
+                            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk6">GAMBAR 6</div><div class="gambar-wadah"><img id="gambarImg6" src="" alt="Gambar 6" style="display:none;" /><div class="gambar-kosong" id="gambarPlaceholder6">Tiada gambar</div></div></div>
+                            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk7">GAMBAR 7</div><div class="gambar-wadah"><img id="gambarImg7" src="" alt="Gambar 7" style="display:none;" /><div class="gambar-kosong" id="gambarPlaceholder7">Tiada gambar</div></div></div>
+                            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk8">GAMBAR 8</div><div class="gambar-wadah"><img id="gambarImg8" src="" alt="Gambar 8" style="display:none;" /><div class="gambar-kosong" id="gambarPlaceholder8">Tiada gambar</div></div></div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="footer-left"></div>
+                        <div class="footer-center" id="out3-tagline">“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia</div>
+                        <div class="footer-right toggle-field" id="footerRight3">Disediakan Oleh : Pusat Gerakan Operasi Negeri Johor</div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
     </div>
-    <div class="footer">
-        <div class="footer-left"></div>
-        <div class="footer-center" id="out-tagline1">“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia</div>
-        <div class="footer-right toggle-field" id="footerRight1">Disediakan Oleh : Pusat Gerakan Operasi Negeri Johor</div>
-    </div>
-</div>
 
-<!-- PAGE 2 (GAMBAR 1-4) -->
-<div class="card" id="page2">
-    <div class="card-bg" id="cardBg2"></div>
-    <div class="header">
-        <div class="header-top">
-            <div class="logo"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Logo_of_the_Malaysian_Fire_and_Rescue_Department.svg" alt="Logo" /><span class="logo-text">JABATAN BOMBA DAN PENYELAMAT MALAYSIA NEGERI JOHOR</span></div>
-            <div class="lokasi-tag"><span>Lokasi</span><span id="out2-lokasiTag" style="color:var(--merah); font-size:10px;">KAMPUNG PAYA KOPI</span><span class="tarikh-laporan">Tarikh Laporan</span><span class="tarikh-laporan-val" id="out2-tarikhLaporan">25 OGOS 2026 (SELASA)</span></div>
-        </div>
-        <p class="kicker">LAPORAN SITUASI OPERASI (SITREP)</p>
-        <h1 class="headline" id="out2-headline">INSIDEN KEBAKARAN KEBUN TANAH GAMBUT</h1>
-        <span class="subline" id="out2-subline">NEGERI JOHOR | BBP PAGOH</span>
-    </div>
-    <div class="body-gambar">
-        <div class="grid-gambar">
-            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk1">GAMBAR 1</div><div class="gambar-wadah"><img id="gambarImg1" src="" alt="Gambar 1" style="display:none;" /><div class="gambar-kosong" id="gambarPlaceholder1">Tiada gambar</div></div></div>
-            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk2">GAMBAR 2</div><div class="gambar-wadah"><img id="gambarImg2" src="" alt="Gambar 2" style="display:none;" /><div class="gambar-kosong" id="gambarPlaceholder2">Tiada gambar</div></div></div>
-            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk3">GAMBAR 3</div><div class="gambar-wadah"><img id="gambarImg3" src="" alt="Gambar 3" style="display:none;" /><div class="gambar-kosong" id="gambarPlaceholder3">Tiada gambar</div></div></div>
-            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk4">GAMBAR 4</div><div class="gambar-wadah"><img id="gambarImg4" src="" alt="Gambar 4" style="display:none;" /><div class="gambar-kosong" id="gambarPlaceholder4">Tiada gambar</div></div></div>
-        </div>
-    </div>
-    <div class="footer">
-        <div class="footer-left"></div>
-        <div class="footer-center" id="out2-tagline">“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia</div>
-        <div class="footer-right toggle-field" id="footerRight2">Disediakan Oleh : Pusat Gerakan Operasi Negeri Johor</div>
-    </div>
-</div>
+    <script>
+        // ============================================================
+        //  SKRIP — HANYA GUNAKAN LOCALSTORAGE (TIADA BACKEND)
+        // ============================================================
 
-<!-- PAGE 3 (GAMBAR 5-8) -->
-<div class="card" id="page3">
-    <div class="card-bg" id="cardBg3"></div>
-    <div class="header">
-        <div class="header-top">
-            <div class="logo"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Logo_of_the_Malaysian_Fire_and_Rescue_Department.svg" alt="Logo" /><span class="logo-text">JABATAN BOMBA DAN PENYELAMAT MALAYSIA NEGERI JOHOR</span></div>
-            <div class="lokasi-tag"><span>Lokasi</span><span id="out3-lokasiTag" style="color:var(--merah); font-size:10px;">KAMPUNG PAYA KOPI</span><span class="tarikh-laporan">Tarikh Laporan</span><span class="tarikh-laporan-val" id="out3-tarikhLaporan">25 OGOS 2026 (SELASA)</span></div>
-        </div>
-        <p class="kicker">LAPORAN SITUASI OPERASI (SITREP)</p>
-        <h1 class="headline" id="out3-headline">INSIDEN KEBAKARAN KEBUN TANAH GAMBUT</h1>
-        <span class="subline" id="out3-subline">NEGERI JOHOR | BBP PAGOH</span>
-    </div>
-    <div class="body-gambar">
-        <div class="grid-gambar">
-            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk5">GAMBAR 5</div><div class="gambar-wadah"><img id="gambarImg5" src="" alt="Gambar 5" style="display:none;" /><div class="gambar-kosong" id="gambarPlaceholder5">Tiada gambar</div></div></div>
-            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk6">GAMBAR 6</div><div class="gambar-wadah"><img id="gambarImg6" src="" alt="Gambar 6" style="display:none;" /><div class="gambar-kosong" id="gambarPlaceholder6">Tiada gambar</div></div></div>
-            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk7">GAMBAR 7</div><div class="gambar-wadah"><img id="gambarImg7" src="" alt="Gambar 7" style="display:none;" /><div class="gambar-kosong" id="gambarPlaceholder7">Tiada gambar</div></div></div>
-            <div class="gambar-item-card"><div class="gambar-tajuk" id="out-gambarTajuk8">GAMBAR 8</div><div class="gambar-wadah"><img id="gambarImg8" src="" alt="Gambar 8" style="display:none;" /><div class="gambar-kosong" id="gambarPlaceholder8">Tiada gambar</div></div></div>
-        </div>
-    </div>
-    <div class="footer">
-        <div class="footer-left"></div>
-        <div class="footer-center" id="out3-tagline">“Cepat Dan Mesra” — Jabatan Bomba dan Penyelamat Malaysia</div>
-        <div class="footer-right toggle-field" id="footerRight3">Disediakan Oleh : Pusat Gerakan Operasi Negeri Johor</div>
-    </div>
-</div>
+        const PETA_KUNCI = {
+            'infografik-bencana-1-banjir.html': 'bencana-1',
+            'infografik-bencana-2-tanah-runtuh.html': 'bencana-2',
+            'infografik-bencana-3-ribut-angin-kencang.html': 'bencana-3',
+            'infografik-bencana-4-kemalangan-jalan-raya.html': 'bencana-4',
+            'infografik-bencana-5-kejadian-am.html': 'bencana-5',
+            'infografik-kebakaran-1-sitrep.html': 'kebakaran-1',
+            'infografik-kebakaran-2-bangunan.html': 'kebakaran-2',
+            'infografik-kebakaran-3-kenderaan.html': 'kebakaran-3',
+            'infografik-kebakaran-4-hutan-semak.html': 'kebakaran-4',
+            'infografik-kebakaran-5-rumusan-statistik.html': 'kebakaran-5'
+        };
 
-</div>
-</main>
-</div>
+        function kunciSemasa() {
+            const namaFail = location.pathname.split('/').pop();
+            return PETA_KUNCI[namaFail] || null;
+        }
 
-<script>
-    // ============================================================
-    //  SKRIP UTAMA
-    // ============================================================
+        function getStoragePrefix() {
+            const kunci = kunciSemasa();
+            return kunci ? kunci + '_' : '';
+        }
 
-    const uploadedImages = [null, null, null, null, null, null, null, null];
+        // ===== DATA GAMBAR (disimpan dalam memori, tidak ke localStorage) =====
+        const uploadedImages = [null, null, null, null, null, null, null, null];
 
-    const fieldIdsPage1 = [
-        "headline", "subline", "lokasiTag", "tarikhLaporan", "tarikhMasa", "masaTiba", "lokasiPenuh",
-        "tindakan", "asetJentera", "kekuatan", "statusMangsa", "tagline",
-        "k1nama", "k1peranan", "k1tel", "k2nama", "k2peranan", "k2tel"
-    ];
-    const fieldIdsPage2 = ["headline", "subline", "lokasiTag", "tarikhLaporan", "tagline"];
-    const fieldIdsPage3 = ["headline", "subline", "lokasiTag", "tarikhLaporan", "tagline"];
+        // ============================================================
+        //  PADAM GAMBAR
+        // ============================================================
+        function padamGambar(index) {
+            uploadedImages[index] = null;
+            const fileInput = document.getElementById('gambarFile' + (index + 1));
+            if (fileInput) fileInput.value = '';
+            const fileNameSpan = document.getElementById('fileName' + (index + 1));
+            if (fileNameSpan) fileNameSpan.textContent = 'Tiada fail';
+            const padamBtn = document.getElementById('padamBtn' + (index + 1));
+            if (padamBtn) padamBtn.style.display = 'none';
+            const statusEl = document.getElementById('gambarStatus' + (index + 1));
+            if (statusEl) { statusEl.textContent = '⏳ Belum disimpan';
+                statusEl.className = 'gambar-status'; }
+            render();
+        }
 
-    const toggleFieldIds = ["masaOperasiTerkawal", "masaOperasiTamat", "keanggotaanUnit", "catatan"];
-    const numIds = ["jumlahKeluasan", "keluasanDipadam"];
-    const selectIds = ["statusOperasi"];
+        // ============================================================
+        //  RENDER – KEMAS KINI PREVIEW + SEMBUNYI KOMANDER KOSONG
+        // ============================================================
+        const fieldIdsPage1 = [
+            "headline", "subline", "lokasiTag", "tarikhLaporan", "tarikhMasa", "masaTiba", "lokasiPenuh",
+            "tindakan", "asetJentera", "kekuatan", "statusMangsa", "tagline",
+            "k1nama", "k1peranan", "k1tel",
+            "k2nama", "k2peranan", "k2tel",
+            "k3nama", "k3peranan", "k3tel",
+            "k4nama", "k4peranan", "k4tel"
+        ];
+        const fieldIdsPage2 = ["headline", "subline", "lokasiTag", "tarikhLaporan", "tagline"];
+        const fieldIdsPage3 = ["headline", "subline", "lokasiTag", "tarikhLaporan", "tagline"];
 
-    const sektorFields = [
-        { nama: "sektor1_nama", maklumat: "sektor1_maklumat", row: "sektor1-row", show: "showSektor1" },
-        { nama: "sektor2_nama", maklumat: "sektor2_maklumat", row: "sektor2-row", show: "showSektor2" },
-        { nama: "sektor3_nama", maklumat: "sektor3_maklumat", row: "sektor3-row", show: "showSektor3" },
-        { nama: "sektor4_nama", maklumat: "sektor4_maklumat", row: "sektor4-row", show: "showSektor4" }
-    ];
+        const toggleFieldIds = ["masaOperasiTerkawal", "masaOperasiTamat", "keanggotaanUnit", "catatan"];
+        const numIds = ["jumlahKeluasan", "keluasanDipadam"];
+        const selectIds = ["statusOperasi"];
 
-    const gambarTajukIds = [
-        "gambarTajuk1", "gambarTajuk2", "gambarTajuk3", "gambarTajuk4",
-        "gambarTajuk5", "gambarTajuk6", "gambarTajuk7", "gambarTajuk8"
-    ];
-    const outTajukIds = [
-        "out-gambarTajuk1", "out-gambarTajuk2", "out-gambarTajuk3", "out-gambarTajuk4",
-        "out-gambarTajuk5", "out-gambarTajuk6", "out-gambarTajuk7", "out-gambarTajuk8"
-    ];
-    const imgIds = [
-        "gambarImg1", "gambarImg2", "gambarImg3", "gambarImg4",
-        "gambarImg5", "gambarImg6", "gambarImg7", "gambarImg8"
-    ];
-    const placeholderIds = [
-        "gambarPlaceholder1", "gambarPlaceholder2", "gambarPlaceholder3", "gambarPlaceholder4",
-        "gambarPlaceholder5", "gambarPlaceholder6", "gambarPlaceholder7", "gambarPlaceholder8"
-    ];
-    const fileInputIds = [
-        "gambarFile1", "gambarFile2", "gambarFile3", "gambarFile4",
-        "gambarFile5", "gambarFile6", "gambarFile7", "gambarFile8"
-    ];
-    const fileNameIds = [
-        "fileName1", "fileName2", "fileName3", "fileName4",
-        "fileName5", "fileName6", "fileName7", "fileName8"
-    ];
-    const padamBtnIds = [
-        "padamBtn1", "padamBtn2", "padamBtn3", "padamBtn4",
-        "padamBtn5", "padamBtn6", "padamBtn7", "padamBtn8"
-    ];
+        const sektorFields = [
+            { nama: "sektor1_nama", maklumat: "sektor1_maklumat", row: "sektor1-row", show: "showSektor1" },
+            { nama: "sektor2_nama", maklumat: "sektor2_maklumat", row: "sektor2-row", show: "showSektor2" },
+            { nama: "sektor3_nama", maklumat: "sektor3_maklumat", row: "sektor3-row", show: "showSektor3" },
+            { nama: "sektor4_nama", maklumat: "sektor4_maklumat", row: "sektor4-row", show: "showSektor4" }
+        ];
 
-    const checkboxIds = [
-        "showSektorBlock", "showSektor1", "showSektor2", "showSektor3", "showSektor4",
-        "showBackground", "showMasaOperasiTerkawal", "showMasaOperasiTamat",
-        "showKeanggotaanUnit", "showCatatan", "showGambarPage2", "showGambarPage3",
-        "showFooterRight"
-    ];
+        const gambarTajukIds = [
+            "gambarTajuk1", "gambarTajuk2", "gambarTajuk3", "gambarTajuk4",
+            "gambarTajuk5", "gambarTajuk6", "gambarTajuk7", "gambarTajuk8"
+        ];
+        const outTajukIds = [
+            "out-gambarTajuk1", "out-gambarTajuk2", "out-gambarTajuk3", "out-gambarTajuk4",
+            "out-gambarTajuk5", "out-gambarTajuk6", "out-gambarTajuk7", "out-gambarTajuk8"
+        ];
+        const imgIds = [
+            "gambarImg1", "gambarImg2", "gambarImg3", "gambarImg4",
+            "gambarImg5", "gambarImg6", "gambarImg7", "gambarImg8"
+        ];
+        const placeholderIds = [
+            "gambarPlaceholder1", "gambarPlaceholder2", "gambarPlaceholder3", "gambarPlaceholder4",
+            "gambarPlaceholder5", "gambarPlaceholder6", "gambarPlaceholder7", "gambarPlaceholder8"
+        ];
+        const fileInputIds = [
+            "gambarFile1", "gambarFile2", "gambarFile3", "gambarFile4",
+            "gambarFile5", "gambarFile6", "gambarFile7", "gambarFile8"
+        ];
+        const fileNameIds = [
+            "fileName1", "fileName2", "fileName3", "fileName4",
+            "fileName5", "fileName6", "fileName7", "fileName8"
+        ];
+        const padamBtnIds = [
+            "padamBtn1", "padamBtn2", "padamBtn3", "padamBtn4",
+            "padamBtn5", "padamBtn6", "padamBtn7", "padamBtn8"
+        ];
 
-    const allInputIds = [
-        ...fieldIdsPage1,
-        ...numIds,
-        ...selectIds,
-        "unitLuas",
-        ...toggleFieldIds,
-        ...gambarTajukIds,
-        ...sektorFields.map(sf => sf.nama),
-        ...sektorFields.map(sf => sf.maklumat),
-        "footerRightText"
-    ];
+        const checkboxIds = [
+            "showSektorBlock", "showSektor1", "showSektor2", "showSektor3", "showSektor4",
+            "showBackground", "showMasaOperasiTerkawal", "showMasaOperasiTamat",
+            "showKeanggotaanUnit", "showCatatan", "showGambarPage2", "showGambarPage3",
+            "showFooterRight",
+            "sektor1_sub1_check", "sektor1_sub2_check", "sektor1_sub3_check",
+            "sektor2_sub1_check", "sektor2_sub2_check", "sektor2_sub3_check",
+            "sektor3_sub1_check", "sektor3_sub2_check", "sektor3_sub3_check",
+            "sektor4_sub1_check", "sektor4_sub2_check", "sektor4_sub3_check"
+        ];
 
-    function saveToLocalStorage() {
-        try {
-            allInputIds.forEach(id => {
+        const allInputIds = [
+            ...fieldIdsPage1,
+            ...numIds,
+            ...selectIds,
+            "unitLuas",
+            ...toggleFieldIds,
+            ...gambarTajukIds,
+            ...sektorFields.map(sf => sf.nama),
+            ...sektorFields.map(sf => sf.maklumat),
+            "footerRightText",
+            "sektor1_sub1_nama", "sektor1_sub1_maklumat",
+            "sektor1_sub2_nama", "sektor1_sub2_maklumat",
+            "sektor1_sub3_nama", "sektor1_sub3_maklumat",
+            "sektor2_sub1_nama", "sektor2_sub1_maklumat",
+            "sektor2_sub2_nama", "sektor2_sub2_maklumat",
+            "sektor2_sub3_nama", "sektor2_sub3_maklumat",
+            "sektor3_sub1_nama", "sektor3_sub1_maklumat",
+            "sektor3_sub2_nama", "sektor3_sub2_maklumat",
+            "sektor3_sub3_nama", "sektor3_sub3_maklumat",
+            "sektor4_sub1_nama", "sektor4_sub1_maklumat",
+            "sektor4_sub2_nama", "sektor4_sub2_maklumat",
+            "sektor4_sub3_nama", "sektor4_sub3_maklumat"
+        ];
+
+        function saveToLocalStorage() {
+            try {
+                const prefix = getStoragePrefix();
+                allInputIds.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) localStorage.setItem(prefix + 'input_' + id, el.value);
+                });
+                checkboxIds.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) localStorage.setItem(prefix + 'checkbox_' + id, el.checked ? 'true' : 'false');
+                });
+            } catch (e) {}
+        }
+
+        function loadFromLocalStorage() {
+            try {
+                const prefix = getStoragePrefix();
+                allInputIds.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        const val = localStorage.getItem(prefix + 'input_' + id);
+                        if (val !== null) el.value = val;
+                    }
+                });
+                checkboxIds.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        const val = localStorage.getItem(prefix + 'checkbox_' + id);
+                        if (val !== null) el.checked = (val === 'true');
+                    }
+                });
+            } catch (e) {}
+        }
+
+        // ----- RENDER SUBSEKTOR DI PREVIEW -----
+        function renderSubsektor(sektorNum) {
+            for (let sub = 1; sub <= 3; sub++) {
+                const checkId = 'sektor' + sektorNum + '_sub' + sub + '_check';
+                const namaId = 'sektor' + sektorNum + '_sub' + sub + '_nama';
+                const maklumatId = 'sektor' + sektorNum + '_sub' + sub + '_maklumat';
+                const outNama = document.getElementById('out-' + namaId);
+                const outMaklumat = document.getElementById('out-' + maklumatId);
+                const displayDiv = document.getElementById('sektor' + sektorNum + '_sub' + sub + '_display');
+
+                const isChecked = document.getElementById(checkId) ? document.getElementById(checkId).checked : false;
+                const hasData = (document.getElementById(namaId)?.value || '').trim() || (document.getElementById(
+                    maklumatId)?.value || '').trim();
+
+                if (outNama) {
+                    const inputNama = document.getElementById(namaId);
+                    outNama.textContent = inputNama ? inputNama.value || 'Sub ' + sektorNum + '.' + sub : 'Sub';
+                }
+                if (outMaklumat) {
+                    const inputMaklumat = document.getElementById(maklumatId);
+                    outMaklumat.textContent = inputMaklumat ? inputMaklumat.value || '-' : '-';
+                }
+
+                if (displayDiv) displayDiv.style.display = (isChecked && hasData) ? 'block' : 'none';
+            }
+            const container = document.getElementById('sektor' + sektorNum + '_sub_container');
+            if (container) {
+                const anyVisible = container.querySelector('.item[style*="block"]');
+                container.style.display = anyVisible ? 'block' : 'none';
+            }
+        }
+
+        function fmtHa(n) {
+            const unit = document.getElementById("unitLuas") ? document.getElementById("unitLuas").value : "Hektar";
+            return (Math.round(n * 100) / 100).toString() + " " + unit;
+        }
+
+        function render() {
+            // Page 1
+            fieldIdsPage1.forEach(id => {
                 const el = document.getElementById(id);
-                if (el) localStorage.setItem('input_' + id, el.value);
+                const out = document.getElementById("out-" + id);
+                if (el && out) out.textContent = el.value;
             });
-            checkboxIds.forEach(id => {
+            fieldIdsPage2.forEach(id => {
                 const el = document.getElementById(id);
-                if (el) localStorage.setItem('checkbox_' + id, el.checked ? 'true' : 'false');
+                const out = document.getElementById("out2-" + id);
+                if (el && out) out.textContent = el.value;
             });
-        } catch (e) {}
-    }
-
-    function loadFromLocalStorage() {
-        try {
-            allInputIds.forEach(id => {
+            fieldIdsPage3.forEach(id => {
                 const el = document.getElementById(id);
-                if (el) {
-                    const val = localStorage.getItem('input_' + id);
-                    if (val !== null) el.value = val;
+                const out = document.getElementById("out3-" + id);
+                if (el && out) out.textContent = el.value;
+            });
+
+            selectIds.forEach(id => {
+                const el = document.getElementById(id);
+                const out = document.getElementById("out-" + id);
+                if (el && out) out.textContent = el.value;
+            });
+
+            toggleFieldIds.forEach(id => {
+                const el = document.getElementById(id);
+                const out = document.getElementById("out-" + id);
+                if (el && out) out.textContent = el.value;
+                const showCb = document.getElementById("show" + id.charAt(0).toUpperCase() + id.slice(1));
+                const row = document.getElementById("row-" + id);
+                if (showCb && row) {
+                    if (showCb.checked) row.classList.remove("hidden-field");
+                    else row.classList.add("hidden-field");
                 }
             });
-            checkboxIds.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) {
-                    const val = localStorage.getItem('checkbox_' + id);
-                    if (val !== null) el.checked = (val === 'true');
+
+            sektorFields.forEach((sf, idx) => {
+                const namaEl = document.getElementById(sf.nama);
+                const maklumatEl = document.getElementById(sf.maklumat);
+                const outNama = document.getElementById("out-" + sf.nama);
+                const outMaklumat = document.getElementById("out-" + sf.maklumat);
+                if (namaEl && outNama) outNama.textContent = namaEl.value || "SEKTOR " + (idx + 1);
+                if (maklumatEl && outMaklumat) outMaklumat.textContent = maklumatEl.value || "-";
+                const showCb = document.getElementById(sf.show);
+                const row = document.getElementById(sf.row);
+                if (showCb && row) {
+                    if (showCb.checked) row.classList.remove("hidden-field");
+                    else row.classList.add("hidden-field");
                 }
             });
-        } catch (e) {}
-    }
 
-    function padamGambar(index) {
-        uploadedImages[index] = null;
-        const fileInput = document.getElementById(fileInputIds[index]);
-        if (fileInput) fileInput.value = '';
-        const fileNameSpan = document.getElementById(fileNameIds[index]);
-        if (fileNameSpan) fileNameSpan.textContent = 'Tiada fail';
-        const padamBtn = document.getElementById(padamBtnIds[index]);
-        if (padamBtn) padamBtn.style.display = 'none';
-        render();
-    }
-
-    function fmtHa(n) {
-        const unit = document.getElementById("unitLuas") ? document.getElementById("unitLuas").value : "Hektar";
-        return (Math.round(n * 100) / 100).toString() + " " + unit;
-    }
-
-    function render() {
-        // --- Page 1 fields ---
-        fieldIdsPage1.forEach(id => {
-            const el = document.getElementById(id);
-            const out = document.getElementById("out-" + id);
-            if (el && out) out.textContent = el.value;
-        });
-        fieldIdsPage2.forEach(id => {
-            const el = document.getElementById(id);
-            const out = document.getElementById("out2-" + id);
-            if (el && out) out.textContent = el.value;
-        });
-        fieldIdsPage3.forEach(id => {
-            const el = document.getElementById(id);
-            const out = document.getElementById("out3-" + id);
-            if (el && out) out.textContent = el.value;
-        });
-
-        selectIds.forEach(id => {
-            const el = document.getElementById(id);
-            const out = document.getElementById("out-" + id);
-            if (el && out) out.textContent = el.value;
-        });
-
-        toggleFieldIds.forEach(id => {
-            const el = document.getElementById(id);
-            const out = document.getElementById("out-" + id);
-            if (el && out) out.textContent = el.value;
-            const showCb = document.getElementById("show" + id.charAt(0).toUpperCase() + id.slice(1));
-            const row = document.getElementById("row-" + id);
-            if (showCb && row) {
-                if (showCb.checked) row.classList.remove("hidden-field");
-                else row.classList.add("hidden-field");
+            for (let s = 1; s <= 4; s++) {
+                renderSubsektor(s);
             }
-        });
 
-        sektorFields.forEach((sf, idx) => {
-            const namaEl = document.getElementById(sf.nama);
-            const maklumatEl = document.getElementById(sf.maklumat);
-            const outNama = document.getElementById("out-" + sf.nama);
-            const outMaklumat = document.getElementById("out-" + sf.maklumat);
-            if (namaEl && outNama) outNama.textContent = namaEl.value || "SEKTOR " + (idx + 1);
-            if (maklumatEl && outMaklumat) outMaklumat.textContent = maklumatEl.value || "-";
-            const showCb = document.getElementById(sf.show);
-            const row = document.getElementById(sf.row);
-            if (showCb && row) {
-                if (showCb.checked) row.classList.remove("hidden-field");
-                else row.classList.add("hidden-field");
+            const showSektorBlockCb = document.getElementById("showSektorBlock");
+            const sektorBlockEl = document.getElementById("row-sektorBlock");
+            if (showSektorBlockCb && sektorBlockEl) {
+                if (showSektorBlockCb.checked) sektorBlockEl.classList.remove("hidden-field");
+                else sektorBlockEl.classList.add("hidden-field");
             }
-        });
 
-        const showSektorBlockCb = document.getElementById("showSektorBlock");
-        const sektorBlockEl = document.getElementById("row-sektorBlock");
-        if (showSektorBlockCb && sektorBlockEl) {
-            if (showSektorBlockCb.checked) sektorBlockEl.classList.remove("hidden-field");
-            else sektorBlockEl.classList.add("hidden-field");
+            // ===== SEMBUNYI KOMANDER JIKA KOSONG =====
+            ['komander1', 'komander2', 'komander3', 'komander4'].forEach(id => {
+                const container = document.getElementById(id);
+                if (container) {
+                    const nama = container.querySelector('.nama');
+                    const peranan = container.querySelector('.peranan');
+                    const tel = container.querySelector('.tel');
+                    const hasData = (nama?.textContent || '').trim() ||
+                        (peranan?.textContent || '').trim() ||
+                        (tel?.textContent || '').trim();
+                    container.style.display = hasData ? 'flex' : 'none';
+                }
+            });
+
+            const showPage2 = document.getElementById("showGambarPage2");
+            const page2 = document.getElementById("page2");
+            if (showPage2 && page2) {
+                if (showPage2.checked) page2.classList.remove("hidden-page");
+                else page2.classList.add("hidden-page");
+            }
+            const showPage3 = document.getElementById("showGambarPage3");
+            const page3 = document.getElementById("page3");
+            if (showPage3 && page3) {
+                if (showPage3.checked) page3.classList.remove("hidden-page");
+                else page3.classList.add("hidden-page");
+            }
+
+            for (let i = 0; i < 8; i++) {
+                const tajukInput = document.getElementById(gambarTajukIds[i]);
+                const outTajuk = document.getElementById(outTajukIds[i]);
+                if (tajukInput && outTajuk) {
+                    outTajuk.textContent = tajukInput.value || "Gambar " + (i + 1);
+                }
+                const imgEl = document.getElementById(imgIds[i]);
+                const placeholder = document.getElementById(placeholderIds[i]);
+                const padamBtn = document.getElementById(padamBtnIds[i]);
+                if (imgEl && placeholder) {
+                    if (uploadedImages[i]) {
+                        imgEl.src = uploadedImages[i];
+                        imgEl.style.display = "block";
+                        placeholder.style.display = "none";
+                        if (padamBtn) padamBtn.style.display = 'inline-block';
+                    } else {
+                        imgEl.style.display = "none";
+                        placeholder.style.display = "block";
+                        if (padamBtn) padamBtn.style.display = 'none';
+                    }
+                }
+            }
+
+            const bgCb = document.getElementById("showBackground");
+            [1, 2, 3].forEach(num => {
+                const bgEl = document.getElementById("cardBg" + num);
+                if (bgCb && bgEl) {
+                    if (bgCb.checked) bgEl.classList.remove("hidden");
+                    else bgEl.classList.add("hidden");
+                }
+            });
+
+            const footerRightText = document.getElementById("footerRightText");
+            const showFooterRight = document.getElementById("showFooterRight");
+            for (let p = 1; p <= 3; p++) {
+                const rightEl = document.getElementById("footerRight" + p);
+                if (rightEl) {
+                    if (footerRightText) rightEl.textContent = footerRightText.value;
+                    if (showFooterRight) {
+                        if (showFooterRight.checked) rightEl.classList.remove("hidden-field");
+                        else rightEl.classList.add("hidden-field");
+                    }
+                }
+            }
+
+            const jumlah = parseFloat(document.getElementById("jumlahKeluasan").value) || 0;
+            const dipadam = parseFloat(document.getElementById("keluasanDipadam").value) || 0;
+            const baki = Math.max(jumlah - dipadam, 0);
+            const pct = jumlah > 0 ? Math.min((dipadam / jumlah) * 100, 100) : 0;
+
+            document.getElementById("out-jumlahKeluasan").textContent = fmtHa(jumlah);
+            document.getElementById("out-keluasanDipadam").textContent = fmtHa(dipadam);
+            document.getElementById("out-baki").textContent = fmtHa(baki);
+            document.getElementById("out-pct").textContent = pct.toFixed(1) + "%";
+            document.getElementById("out-bar").style.width = pct.toFixed(1) + "%";
+
+            saveToLocalStorage();
         }
 
-        const showPage2 = document.getElementById("showGambarPage2");
-        const page2 = document.getElementById("page2");
-        if (showPage2 && page2) {
-            if (showPage2.checked) page2.classList.remove("hidden-page");
-            else page2.classList.add("hidden-page");
-        }
-        const showPage3 = document.getElementById("showGambarPage3");
-        const page3 = document.getElementById("page3");
-        if (showPage3 && page3) {
-            if (showPage3.checked) page3.classList.remove("hidden-page");
-            else page3.classList.add("hidden-page");
-        }
-
-        for (let i = 0; i < 8; i++) {
-            const tajukInput = document.getElementById(gambarTajukIds[i]);
-            const outTajuk = document.getElementById(outTajukIds[i]);
-            if (tajukInput && outTajuk) {
-                outTajuk.textContent = tajukInput.value || "Gambar " + (i + 1);
-            }
-            const imgEl = document.getElementById(imgIds[i]);
-            const placeholder = document.getElementById(placeholderIds[i]);
-            const padamBtn = document.getElementById(padamBtnIds[i]);
-            if (imgEl && placeholder) {
-                if (uploadedImages[i]) {
-                    imgEl.src = uploadedImages[i];
-                    imgEl.style.display = "block";
-                    placeholder.style.display = "none";
-                    if (padamBtn) padamBtn.style.display = 'inline-block';
+        // ============================================================
+        //  SETUP FILE UPLOAD
+        // ============================================================
+        function setupFileUpload(index) {
+            const fileInput = document.getElementById(fileInputIds[index]);
+            const fileNameDisplay = document.getElementById(fileNameIds[index]);
+            const padamBtn = document.getElementById(padamBtnIds[index]);
+            if (!fileInput) return;
+            fileInput.addEventListener("change", function(e) {
+                const file = e.target.files[0];
+                const idx = index;
+                if (file) {
+                    fileNameDisplay.textContent = file.name;
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        uploadedImages[idx] = event.target.result;
+                        if (padamBtn) padamBtn.style.display = 'inline-block';
+                        const s = document.getElementById('gambarStatus' + (idx + 1));
+                        if (s) { s.textContent = '⏳ Belum disimpan';
+                            s.className = 'gambar-status'; }
+                        render();
+                    };
+                    reader.readAsDataURL(file);
                 } else {
-                    imgEl.style.display = "none";
-                    placeholder.style.display = "block";
+                    fileNameDisplay.textContent = "Tiada fail";
+                    uploadedImages[idx] = null;
                     if (padamBtn) padamBtn.style.display = 'none';
-                }
-            }
-        }
-
-        const bgCb = document.getElementById("showBackground");
-        [1, 2, 3].forEach(num => {
-            const bgEl = document.getElementById("cardBg" + num);
-            if (bgCb && bgEl) {
-                if (bgCb.checked) bgEl.classList.remove("hidden");
-                else bgEl.classList.add("hidden");
-            }
-        });
-
-        // --- Footer Right ---
-        const footerRightText = document.getElementById("footerRightText");
-        const showFooterRight = document.getElementById("showFooterRight");
-        for (let p = 1; p <= 3; p++) {
-            const rightEl = document.getElementById("footerRight" + p);
-            if (rightEl) {
-                if (footerRightText) rightEl.textContent = footerRightText.value;
-                if (showFooterRight) {
-                    if (showFooterRight.checked) rightEl.classList.remove("hidden-field");
-                    else rightEl.classList.add("hidden-field");
-                }
-            }
-        }
-
-        // --- Peratus ---
-        const jumlah = parseFloat(document.getElementById("jumlahKeluasan").value) || 0;
-        const dipadam = parseFloat(document.getElementById("keluasanDipadam").value) || 0;
-        const baki = Math.max(jumlah - dipadam, 0);
-        const pct = jumlah > 0 ? Math.min((dipadam / jumlah) * 100, 100) : 0;
-
-        document.getElementById("out-jumlahKeluasan").textContent = fmtHa(jumlah);
-        document.getElementById("out-keluasanDipadam").textContent = fmtHa(dipadam);
-        document.getElementById("out-baki").textContent = fmtHa(baki);
-        document.getElementById("out-pct").textContent = pct.toFixed(1) + "%";
-        document.getElementById("out-bar").style.width = pct.toFixed(1) + "%";
-
-        saveToLocalStorage();
-    }
-
-    function setupFileUpload(index) {
-        const fileInput = document.getElementById(fileInputIds[index]);
-        const fileNameDisplay = document.getElementById(fileNameIds[index]);
-        const padamBtn = document.getElementById(padamBtnIds[index]);
-        if (!fileInput) return;
-        fileInput.addEventListener("change", function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                fileNameDisplay.textContent = file.name;
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    uploadedImages[index] = event.target.result;
-                    if (padamBtn) padamBtn.style.display = 'inline-block';
+                    const s = document.getElementById('gambarStatus' + (idx + 1));
+                    if (s) { s.textContent = '⏳ Belum disimpan';
+                        s.className = 'gambar-status'; }
                     render();
-                };
-                reader.readAsDataURL(file);
-            } else {
-                fileNameDisplay.textContent = "Tiada fail";
-                uploadedImages[index] = null;
-                if (padamBtn) padamBtn.style.display = 'none';
-                render();
-            }
+                }
+            });
+        }
+        for (let i = 0; i < 8; i++) setupFileUpload(i);
+
+        // ============================================================
+        //  EVENT LISTENER
+        // ============================================================
+        allInputIds.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.addEventListener("input", render);
         });
-    }
-    for (let i = 0; i < 8; i++) setupFileUpload(i);
+        checkboxIds.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.addEventListener("change", render);
+        });
 
-    allInputIds.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.addEventListener("input", render);
-    });
-    checkboxIds.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.addEventListener("change", render);
-    });
-
-    // ========== AUTO-PARSE (sama seperti sebelumnya) ==========
-    const BULAN = ["JANUARI", "FEBRUARI", "MAC", "APRIL", "MEI", "JUN", "JULAI", "OGOS", "SEPTEMBER", "OKTOBER", "NOVEMBER",
-        "DISEMBER"
-    ];
-
-    function formatTarikh(ddmmyyyy) {
-        const m = ddmmyyyy.match(/(\d{1,2})[.\/\-](\d{1,2})[.\/\-](\d{4})/);
-        if (!m) return ddmmyyyy;
-        const d = parseInt(m[1], 10),
-            mo = parseInt(m[2], 10),
-            y = m[3];
-        if (mo < 1 || mo > 12) return ddmmyyyy;
-        return d + " " + BULAN[mo - 1] + " " + y;
-    }
-
-    function grab(text, patterns) {
-        for (const p of patterns) { const m = text.match(p); if (m && m[1]) return m[1].trim(); }
-        return null;
-    }
-
-    function grabAll(text, pattern) {
-        const out = [];
-        let m;
-        const re = new RegExp(pattern.source, pattern.flags.includes("g") ? pattern.flags : pattern.flags + "g");
-        while ((m = re.exec(text)) !== null) { out.push(m); if (m.index === re.lastIndex) re.lastIndex++; }
-        return out;
-    }
-
-    function parseRawText() {
-        const text = document.getElementById("rawText").value;
-        if (!text.trim()) { alert("Sila tampal teks Infoblast dahulu."); return; }
-        const jenis = grab(text, [/^Jenis Insiden\s*:\s*(.+)$/im]);
-        if (jenis) document.getElementById("headline").value = jenis.toUpperCase();
-        const tm = text.match(/Tarikh\s*\/\s*Masa\s*Pa[nñ]?ggilan\s*:\s*([\d.\/\-]+)\s*Jam\s*([\d:]+)/i);
-        if (tm) { document.getElementById("tarikhMasa").value = formatTarikh(tm[1]) + " | " + tm[2] + " HRS"; }
-        const alamat = grab(text, [/^Alamat\s*:\s*(.+)$/im]);
-        if (alamat) document.getElementById("lokasiPenuh").value = alamat.toUpperCase();
-        const kgM = text.match(/Kg\.?\s+([A-Za-z\s]+?)(?:,|\s+Pagoh|\s*\()/i) || text.match(/Kampung\s+([A-Za-z\s]+?)(?:,|\s*\()/i);
-        if (kgM) document.getElementById("lokasiTag").value = "KAMPUNG " + kgM[1].trim().toUpperCase();
-        const masaSampai = grab(text, [/^Masa Jentera Sampai\s*:\s*([\d:]+)/im]);
-        const jarak = grab(text, [/^Jarak ke Tempat Kejadian\s*:\s*(.+)$/im]);
-        if (masaSampai || jarak) {
-            let val = masaSampai ? masaSampai + " HRS" : "";
-            if (jarak) val += (val ? " " : "") + "(JARAK: " + jarak.toUpperCase() + ")";
-            document.getElementById("masaTiba").value = val;
-        }
-        const mangsa = grab(text, [/^Mangsa\s*:\s*(.+)$/im]);
-        if (mangsa) { document.getElementById("statusMangsa").value = /tiada/i.test(mangsa) ? "TIADA MANGSA" : mangsa
-                .toUpperCase(); }
-        const keanggotaan = grab(text, [/^Keanggotaan\s*:\s*(.+)$/im]);
-        if (keanggotaan) {
-            document.getElementById("keanggotaanUnit").value = keanggotaan.toUpperCase();
-            const negeriM = text.match(/JBPM\s*Negeri\s+(\w+)/i);
-            const negeri = negeriM ? negeriM[1].toUpperCase() : "JOHOR";
-            document.getElementById("subline").value = "NEGERI " + negeri + " | " + keanggotaan.toUpperCase();
-        }
-        const k1 = text.match(/^Komander Operasi\s*:\s*(.+?)\s*\(([\d\-\s]+)\)/im);
-        if (k1) {
-            document.getElementById("k1nama").value = k1[1].trim();
-            document.getElementById("k1tel").value = k1[2].trim();
-            document.getElementById("k1peranan").value = "Komander Operasi";
-        }
-        const k2 = text.match(/^Komander Operasi Kanan\s*:\s*(.+?)\s*\(([\d\-\s]+)\)/im);
-        if (k2) {
-            document.getElementById("k2nama").value = k2[1].trim();
-            document.getElementById("k2tel").value = k2[2].trim();
-            document.getElementById("k2peranan").value = "Komander Operasi Kanan";
-        }
-        const jumlahEkar = grab(text, [/Keluasan\s*kebakaran\s*:\s*([\d.]+)\s*ekar/i]);
-        const dipadamEkar = grab(text, [/Jumlah\s*keluasan\s*telah\s*dipadam\s*:\s*([\d.]+)\s*ekar/i]);
-        if (jumlahEkar || dipadamEkar) {
-            document.getElementById("unitLuas").value = "Ekar";
-            if (jumlahEkar) document.getElementById("jumlahKeluasan").value = jumlahEkar;
-            if (dipadamEkar) document.getElementById("keluasanDipadam").value = dipadamEkar;
-        }
-        const bilAnggota = grab(text, [/Jumlah\s*Keanggotaan\s*:\s*(\d+)\s*Anggota/i]);
-        if (bilAnggota) {
-            const unit = document.getElementById("keanggotaanUnit").value || "";
-            document.getElementById("kekuatan").value = bilAnggota + " Anggota" + (unit ? " " + unit : "");
-        }
-        const jentera = grab(text, [/^Jentera\s*:\s*(.+)$/im]);
-        if (jentera) document.getElementById("asetJentera").value = jentera.replace(/\s+/g, " ").trim();
-        const tindakanMatches = grabAll(text, /pemadaman menggunakan\s+(.+?)\./gi);
-        if (tindakanMatches.length) {
-            const last = tindakanMatches[tindakanMatches.length - 1];
-            document.getElementById("tindakan").value = "Operasi menggunakan " + last[1].trim();
-        }
-        const terkawal = grab(text, [/^Masa Operasi Terkawal\s*:\s*(.+)$/im]);
-        if (terkawal) document.getElementById("masaOperasiTerkawal").value = terkawal;
-        const tamat = grab(text, [/^Masa Operasi Tamat\s*:\s*(.+)$/im]);
-        if (tamat) {
-            document.getElementById("masaOperasiTamat").value = tamat;
-            if (/tangguh/i.test(tamat)) document.getElementById("statusOperasi").value = "OPERASI DITANGGUHKAN";
-            else if (/tiada|masih/i.test(tamat)) document.getElementById("statusOperasi").value = "MASIH BEROPERASI";
-            else document.getElementById("statusOperasi").value = "OPERASI SELESAI";
-        } else if (/masih\s*beroperasi/i.test(text)) {
-            document.getElementById("statusOperasi").value = "MASIH BEROPERASI";
-        }
-        const catatanMatch = text.match(/Catatan\s*:\s*([\s\S]*?)(?=\n\s*Sekian,|\n\s*"CEPAT DAN MESRA"|\n\s*PKPgB|\s*$)/i);
-        if (catatanMatch) {
-            let catatan = catatanMatch[1].trim();
-            catatan = catatan.replace(/\s*Sekian,?\s*Terima\s*Kasih\.?\s*/i, "");
-            catatan = catatan.replace(/\s*"CEPAT\s*DAN\s*MESRA"\s*/i, "");
-            catatan = catatan.replace(/\s*PKPgB\s+[\w\s]+\s*$/i, "");
-            document.getElementById("catatan").value = catatan.trim();
-        }
-
-        const disediakan = text.match(/Disediakan\s*Oleh\s*:\s*(.+?)(?:\n|$)/i);
-        if (disediakan) {
-            document.getElementById("footerRightText").value = "Disediakan Oleh : " + disediakan[1].trim();
-        }
-
+        // ============================================================
+        //  INIT
+        // ============================================================
+        loadFromLocalStorage();
         render();
-    }
 
-    function downloadPNG() {
-        if (typeof html2canvas === "undefined") {
-            alert("Pustaka penjana PNG tidak dapat dimuatkan.\n\nSila guna butang \"Cetak (Lanskap A4)\" sebagai gantinya.");
-            return;
-        }
-        const container = document.getElementById("pagesContainer");
-        html2canvas(container, { scale: 2, useCORS: true, backgroundColor: "#ffffff" }).then(canvas => {
-            const link = document.createElement("a");
-            link.download = "infografik-sitrep-3-halaman-" + Date.now() + ".png";
-            link.href = canvas.toDataURL("image/png");
-            link.click();
-        }).catch(err => {
-            alert("Gagal jana PNG: " + err.message);
-        });
-    }
-
-    loadFromLocalStorage();
-    render();
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer>
-</script>
+        // Tiada backend – semua data disimpan di localStorage sahaja.
+        // ============================================================
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer>
+    </script>
 </body>
 </html>
